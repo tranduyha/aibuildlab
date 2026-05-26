@@ -8,10 +8,14 @@
     "license": "Pexels License",
     "license_url": "https://www.pexels.com/license/",
     "downloaded_at": "2026-05-26T08:51:06.037Z",
-    "alt_text": "Contemporary workspace featuring computers, coding screens, and office essentials in a tech environment.",
+    "alt_text": "AI workstation setup for local LLM and GPU planning",
     "used_in_pages": [
       "/"
-    ]
+    ],
+    "category": "hero",
+    "width": 1880,
+    "height": 1254,
+    "needsReview": false
   },
   {
     "id": "pexels-gpu-6385893",
@@ -24,8 +28,12 @@
     "downloaded_at": "2026-05-26T08:51:06.888Z",
     "alt_text": "Detailed close-up of a red circuit board highlighting electronic components and connectors.",
     "used_in_pages": [
-      "/gpu"
-    ]
+      "/"
+    ],
+    "category": "gpu",
+    "width": 1880,
+    "height": 1250,
+    "needsReview": false
   },
   {
     "id": "pexels-builds-13162096",
@@ -38,8 +46,12 @@
     "downloaded_at": "2026-05-26T08:51:07.692Z",
     "alt_text": "A sleek home office setup featuring a large monitor, keyboard, plants, and headphones on a desk.",
     "used_in_pages": [
-      "/builds"
-    ]
+      "/"
+    ],
+    "category": "builds",
+    "width": 1880,
+    "height": 1253,
+    "needsReview": false
   },
   {
     "id": "pexels-guides-12741843",
@@ -52,8 +64,12 @@
     "downloaded_at": "2026-05-26T08:51:08.229Z",
     "alt_text": "A man in a laboratory uniform working on computer components and wiring at a workstation.",
     "used_in_pages": [
-      "/guides"
-    ]
+      "/"
+    ],
+    "category": "guides",
+    "width": 1880,
+    "height": 1253,
+    "needsReview": false
   },
   {
     "id": "pexels-tools-5831258",
@@ -65,8 +81,10 @@
     "license_url": "https://www.pexels.com/license/",
     "downloaded_at": "2026-05-26T08:51:08.818Z",
     "alt_text": "Close-up of stock market analysis charts on a monitor, showcasing market trends.",
-    "used_in_pages": [
-      "/tools/vram-calculator"
-    ]
+    "used_in_pages": [],
+    "category": "tools",
+    "width": 1880,
+    "height": 1255,
+    "needsReview": false
   }
 ]

@@ -14,6 +14,10 @@ interface ImageManifestEntry {
   downloaded_at: string;
   alt_text: string;
   used_in_pages: string[];
+  category: ImageCategory;
+  width: number | null;
+  height: number | null;
+  needsReview: boolean;
 }
 
 interface PexelsPhoto {
@@ -280,6 +284,10 @@ async function main() {
         downloaded_at: new Date().toISOString(),
         alt_text: photo.alt?.trim() || config.fallbackAlt,
         used_in_pages: config.usedInPages,
+        category: currentCategory,
+        width: null,
+        height: null,
+        needsReview: false,
       });
       console.log(`Downloaded ${localPath}`);
     }

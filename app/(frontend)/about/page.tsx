@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
 import ArchitectureFlow from "@/components/ArchitectureFlow";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "About",
-  description: "The organization and data approach used by AI Build Lab.",
-};
+  description: "The organization and data approach used by this AI hardware workspace.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

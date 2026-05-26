@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Logo from "@/components/Logo";
+import MainNav from "@/components/MainNav";
 import { siteSettingsService } from "@/services/site-settings.service";
 
 export default function Header() {
@@ -8,20 +10,16 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="brand" href="/" aria-label={`${settings.name} home`}>
-          <span className="brand-mark">AI</span>
-          <span>{settings.name}</span>
+        <Logo
+          siteName={settings.name}
+          text={settings.logo.text}
+          shortText={settings.logo.shortText}
+        />
+        <MainNav items={navigation} />
+        <Link className="header-action" href="/tools/vram-calculator">
+          <span className="header-action-long">Try VRAM Calculator</span>
+          <span className="header-action-short">Calculator</span>
         </Link>
-        <nav className="navigation" aria-label="Primary navigation">
-          {navigation.map((item) => (
-            <Link key={item.id} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <a className="header-action" href={`mailto:${settings.contactEmail}`}>
-          Contact
-        </a>
       </div>
     </header>
   );

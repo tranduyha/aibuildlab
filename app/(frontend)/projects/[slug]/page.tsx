@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/format";
+import { buildMetadata } from "@/lib/seo";
 import { projectService } from "@/services/project.service";
 
 export function generateStaticParams() {
@@ -20,10 +21,11 @@ export async function generateMetadata({
     return { title: "Project not found" };
   }
 
-  return {
+  return buildMetadata({
     title: project.name,
     description: project.summary,
-  };
+    path: `/projects/${project.slug}`,
+  });
 }
 
 export default async function ProjectDetailPage({

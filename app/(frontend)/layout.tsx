@@ -1,28 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { getSiteSettings } from "@/lib/seo";
 import "./globals.css";
 import "./theme.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const siteSettings = getSiteSettings();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(siteSettings.siteUrl),
   title: {
-    default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
+    default: siteSettings.name,
+    template: `%s | ${siteSettings.name}`,
   },
-  description: SITE_DESCRIPTION,
+  description: siteSettings.description,
 };
 
 export default function FrontendLayout({
@@ -32,9 +29,14 @@ export default function FrontendLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={inter.variable}>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <Header />
-        <main className="page-content">{children}</main>
+        <main className="page-content" id="main-content">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -10,6 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: SITE_URL, lastModified: new Date() },
+    { url: `${SITE_URL}/tools/vram-calculator`, lastModified: new Date() },
+    { url: `${SITE_URL}/gpu`, lastModified: new Date() },
+    { url: `${SITE_URL}/builds`, lastModified: new Date() },
+    { url: `${SITE_URL}/guides`, lastModified: new Date() },
     { url: `${SITE_URL}/projects`, lastModified: new Date() },
     { url: `${SITE_URL}/about`, lastModified: new Date() },
     ...projectPages,

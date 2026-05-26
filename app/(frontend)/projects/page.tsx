@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import ProjectCard from "@/components/ProjectCard";
 import SectionHeading from "@/components/SectionHeading";
+import { buildMetadata } from "@/lib/seo";
 import { projectService } from "@/services/project.service";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Projects",
-  description: "Browse AI Build Lab projects.",
-};
+  description: "Browse practical AI hardware and utility projects.",
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   const projects = projectService.listProjects();
