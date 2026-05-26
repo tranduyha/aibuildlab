@@ -1,0 +1,72 @@
+[
+  {
+    "id": "pexels-hero-6804612",
+    "local_path": "/images/hero/pexels-hero-6804612.jpg",
+    "source": "pexels",
+    "source_url": "https://www.pexels.com/photo/workstations-of-a-startup-software-company-6804612/",
+    "author": "cottonbro studio",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "downloaded_at": "2026-05-26T08:51:06.037Z",
+    "alt_text": "Contemporary workspace featuring computers, coding screens, and office essentials in a tech environment.",
+    "used_in_pages": [
+      "/"
+    ]
+  },
+  {
+    "id": "pexels-gpu-6385893",
+    "local_path": "/images/gpu/pexels-gpu-6385893.jpg",
+    "source": "pexels",
+    "source_url": "https://www.pexels.com/photo/a-red-circuit-board-in-close-up-shot-6385893/",
+    "author": "Armando Are",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "downloaded_at": "2026-05-26T08:51:06.888Z",
+    "alt_text": "Detailed close-up of a red circuit board highlighting electronic components and connectors.",
+    "used_in_pages": [
+      "/gpu"
+    ]
+  },
+  {
+    "id": "pexels-builds-13162096",
+    "local_path": "/images/builds/pexels-builds-13162096.jpg",
+    "source": "pexels",
+    "source_url": "https://www.pexels.com/photo/flowerpots-on-desk-with-computer-13162096/",
+    "author": "Pew Nguyen",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "downloaded_at": "2026-05-26T08:51:07.692Z",
+    "alt_text": "A sleek home office setup featuring a large monitor, keyboard, plants, and headphones on a desk.",
+    "used_in_pages": [
+      "/builds"
+    ]
+  },
+  {
+    "id": "pexels-guides-12741843",
+    "local_path": "/images/guides/pexels-guides-12741843.jpg",
+    "source": "pexels",
+    "source_url": "https://www.pexels.com/photo/man-in-uniform-typing-on-keyboard-12741843/",
+    "author": "Quang Nguyen Vinh",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "downloaded_at": "2026-05-26T08:51:08.229Z",
+    "alt_text": "A man in a laboratory uniform working on computer components and wiring at a workstation.",
+    "used_in_pages": [
+      "/guides"
+    ]
+  },
+  {
+    "id": "pexels-tools-5831258",
+    "local_path": "/images/tools/pexels-tools-5831258.jpg",
+    "source": "pexels",
+    "source_url": "https://www.pexels.com/photo/computer-monitor-displaying-a-graph-5831258/",
+    "author": "AlphaTradeZone",
+    "license": "Pexels License",
+    "license_url": "https://www.pexels.com/license/",
+    "downloaded_at": "2026-05-26T08:51:08.818Z",
+    "alt_text": "Close-up of stock market analysis charts on a monitor, showcasing market trends.",
+    "used_in_pages": [
+      "/tools/vram-calculator"
+    ]
+  }
+]
