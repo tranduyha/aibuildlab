@@ -48,8 +48,11 @@ Không dùng thư mục `src`.
 - [x] Có `types`.
 - [x] Có `AGENTS.md`.
 - [ ] Có roadmap/checklist đã đồng bộ hoàn toàn với cấu trúc hiện tại.
-- [ ] Có data GPU ban đầu.
-- [ ] Có data AI model ban đầu.
+- [x] Có data GPU ban đầu dưới dạng seed draft.
+- [x] Có data AI model ban đầu dưới dạng seed draft.
+- [x] Có comparison seed records dạng draft.
+- [x] Có build seed records dạng draft.
+- [x] Có guide seed records dạng draft.
 - [ ] Có VRAM calculator.
 - [ ] Có GPU profile page.
 - [ ] Có comparison page.
@@ -60,16 +63,14 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 1 - Chuẩn hóa repo và tài liệu vận hành theo kiến trúc thật.
+Day 2 - Data model ban đầu cho AI Hardware SEO.
 
 ## Today Scope
 
-- Kiểm tra cấu trúc repo hiện tại.
-- Đồng bộ `AGENTS.md`, `TASK_STATUS.md`, `DAILY_LOG.md`, `docs/ROADMAP_THANG_1_2.md`, `docs/CHECKLIST_NGHIEM_THU.md`.
-- Không tạo lại project.
-- Không tạo thư mục `src`.
-- Không di chuyển code lớn nếu chưa cần.
-- Chuẩn bị hướng triển khai data model cho AI hardware SEO.
+- Tạo seed JSON cho GPU, AI models, comparisons, builds và guides.
+- Tạo TypeScript types, repositories và services theo data flow hiện tại.
+- Giữ tất cả dữ liệu chưa xác minh ở trạng thái `draft`, confidence `low`.
+- Không public thông số, benchmark, VRAM estimate hoặc giá chưa có nguồn.
 
 ## Done Today
 
@@ -78,6 +79,29 @@ Day 1 - Chuẩn hóa repo và tài liệu vận hành theo kiến trúc thật.
 - [x] Đã chạy `npm run build`.
 - [x] Đã cập nhật `DAILY_LOG.md`.
 - [x] Đã cập nhật `TASK_STATUS.md`.
+
+## Day 2 Data Layer Update - 2026-05-26
+
+- [x] Tạo `data/gpus.json` với 10 GPU seed records.
+- [x] Tạo `data/ai-models.json` với 8 AI model/use case seed records.
+- [x] Tạo `data/comparisons.json` với 5 draft comparisons.
+- [x] Tạo `data/builds.json` với 5 draft builds.
+- [x] Tạo `data/guides.json` với 8 draft guides.
+- [x] Tạo 5 type files tương ứng trong `types/`.
+- [x] Tạo 5 repositories đọc/lọc dữ liệu tĩnh.
+- [x] Tạo 4 services có warning/guard cho dữ liệu chưa xác minh.
+- [x] Xác nhận JSON hợp lệ, slug duy nhất trong từng dataset.
+- [x] Xác nhận không có thư mục `src` và `.env.local` không được Git track.
+
+Tất cả Day 2 records hiện là seed data:
+
+```txt
+status: draft
+needsReview: true
+dataConfidence: low
+sources: []
+lastVerifiedAt: null
+```
 
 ## Image System Update - 2026-05-26
 
@@ -90,14 +114,15 @@ Day 1 - Chuẩn hóa repo và tài liệu vận hành theo kiến trúc thật.
 
 ## Blockers
 
-- Chưa có dữ liệu GPU/AI model chính thức.
+- Dữ liệu GPU/AI model hiện chỉ là seed draft; specs và model facts chưa được xác minh từ source chính thức.
+- Chưa có benchmark hoặc VRAM estimate đã xác minh để đưa ra recommendation public.
 - Ảnh Pexels mẫu chưa được nối vào UI/page public.
 - Chưa có trang VRAM calculator.
 - Chưa có các page SEO động.
 
 ## Next Recommended Task
 
-Day 2 - Tạo data model ban đầu cho GPUs, AI models, comparisons, builds, guides và image manifest theo kiến trúc hiện tại.
+Day 3 - VRAM Calculator service + page skeleton.
 
 ## Notes for Next Agent
 

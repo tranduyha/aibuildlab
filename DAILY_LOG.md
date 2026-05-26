@@ -109,3 +109,61 @@ Create a compliant local image workflow using Pexels API and manifest metadata.
 
 ### Next Step
 Connect selected manifest images to the homepage and upcoming GPU/build/guide/tool pages through the established data layer.
+
+---
+
+## 2026-05-26 - Day 2 data model
+
+### Agent
+Codex
+
+### Planned Task
+Create the initial AI Hardware SEO data layer without publishing unverified specifications.
+
+### Completed
+- [x] Read `docs/DATA_SOURCES.md` before creating hardware or model data.
+- [x] Added 10 GPU, 8 AI model/use case, 5 comparison, 5 build, and 8 guide seed records.
+- [x] Marked every new record as draft/low confidence/review required with empty sources.
+- [x] Left unverified specs, benchmarks, VRAM estimates, verdicts, prices, and components as `null`.
+- [x] Added 5 TypeScript model files and exported them from `types/index.ts`.
+- [x] Added 5 repositories for static JSON queries.
+- [x] Added 4 services with filtering and explicit unverified-data warnings.
+
+### Checked
+- [x] JSON parsed successfully and each new dataset has unique slugs.
+- [x] Sensitive technical fields remain `null` unless source-backed.
+- [x] No `src` directory was created.
+- [x] `.env.local` remains ignored and is not tracked by Git.
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Seed records are not suitable for public specification or recommendation pages until official/model-card sources are collected.
+- VRAM calculator must not claim verified requirements until its estimation assumptions and source policy are documented.
+
+### Files Changed
+- `data/gpus.json`
+- `data/ai-models.json`
+- `data/comparisons.json`
+- `data/builds.json`
+- `data/guides.json`
+- `types/gpu.ts`
+- `types/ai-model.ts`
+- `types/comparison.ts`
+- `types/build.ts`
+- `types/guide.ts`
+- `types/index.ts`
+- `repositories/gpu.repository.ts`
+- `repositories/ai-model.repository.ts`
+- `repositories/comparison.repository.ts`
+- `repositories/build.repository.ts`
+- `repositories/guide.repository.ts`
+- `services/gpu.service.ts`
+- `services/ai-model.service.ts`
+- `services/comparison.service.ts`
+- `services/build.service.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 3 - implement the VRAM Calculator service and a page skeleton that clearly labels estimates as unverified until sourced.
