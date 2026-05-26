@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "slug": "knowledge-assistant",
+    "name": "Knowledge Assistant",
+    "summary": "Search and answer questions from curated technical documents.",
+    "description": "A reference project for retrieval, grounded responses, and review workflows. Its records currently live in JSON so the UI can be developed before a storage decision is made.",
+    "category": "AI Application",
+    "status": "building",
+    "featured": true,
+    "technologies": ["Next.js", "TypeScript", "RAG"],
+    "updatedAt": "2026-05-20"
+  },
+  {
+    "id": 2,
+    "slug": "prompt-evaluation-suite",
+    "name": "Prompt Evaluation Suite",
+    "summary": "Compare prompt versions against expected response criteria.",
+    "description": "A compact evaluation workspace for recording prompt experiments and quality checks. It demonstrates how project detail pages consume repository data through a service.",
+    "category": "Evaluation",
+    "status": "concept",
+    "featured": true,
+    "technologies": ["Next.js", "JSON datasets", "Testing"],
+    "updatedAt": "2026-05-14"
+  },
+  {
+    "id": 3,
+    "slug": "workflow-automator",
+    "name": "Workflow Automator",
+    "summary": "Coordinate repetitive internal workflows with auditable steps.",
+    "description": "A released sample entry used to show filtering and status presentation while all content remains file-backed.",
+    "category": "Automation",
+    "status": "released",
+    "featured": false,
+    "technologies": ["React", "Next.js", "Automation"],
+    "updatedAt": "2026-04-28"
+  }
+]

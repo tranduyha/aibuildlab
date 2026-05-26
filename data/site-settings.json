@@ -1,0 +1,8 @@
+{
+  "name": "AI Build Lab",
+  "description": "A structured Next.js workspace for building practical AI products.",
+  "heroTitle": "Build AI products with a clear delivery path.",
+  "heroDescription": "Explore small, maintainable experiments organized for iteration, review, and release.",
+  "contactEmail": "hello@aibuildlab.dev",
+  "repositoryUrl": "https://github.com/tranduyha/aibuildlab"
+}
