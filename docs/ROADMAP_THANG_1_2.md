@@ -296,108 +296,789 @@ Sau khi local build ổn:
 - Kiểm tra production URL.
 - Submit sitemap vào Google Search Console sau khi có domain.
 
-## 6. Lịch triển khai 30 ngày
+## 6. Lịch triển khai 30 ngày - bản chỉnh theo hướng monetization mới
 
-### Ngày 1-3: Chuẩn hóa nền
+Định hướng từ Day 4 trở đi được điều chỉnh theo mô hình:
 
-- Đồng bộ docs theo cấu trúc thật.
-- Kiểm tra build/lint.
-- Chuẩn hóa README.
-- Tạo data skeleton.
+```txt
+AI hardware trước
+→ Cloud GPU / AI infra affiliate
+→ AI SaaS / software affiliate
+→ SaaS/tool riêng dài hạn
+```
 
-### Ngày 4-7: Data layer
+Mục tiêu không còn chỉ là “hardware affiliate SEO site”, mà là:
 
-- Tạo data GPU.
-- Tạo data AI model.
-- Tạo types.
-- Tạo repositories.
-- Tạo services cơ bản.
+```txt
+Local AI Hardware + Cloud GPU + AI Tooling Affiliate Platform
+```
 
-### Ngày 8-12: Tool đầu tiên
+### Nguyên tắc xuyên suốt từ Day 4
 
-- Tạo VRAM Calculator UI.
-- Tạo service tính toán.
-- Tạo page `/tools/vram-calculator`.
-- Thêm metadata/internal links.
+- Không tạo thư mục `src`.
+- Không hardcode brand/domain.
+- Không dùng Google Images.
+- Không publish data seed như dữ liệu đã verify.
+- Data chưa xác minh để `status: "draft"`, `needsReview: true`.
+- Brand/site name/domain/disclosure lấy từ `data/site-settings.json`.
+- Không gắn affiliate link thật nếu chưa có chương trình và disclosure rõ.
+- Mỗi page phải phục vụ người dùng trước, SEO sau, affiliate sau cùng.
 
-### Ngày 13-18: GPU pages
+---
 
-- Tạo dynamic route `/gpu/[slug]`.
-- Render spec table.
-- Render AI use case.
-- Render recommended models.
-- Tạo 10 GPU pages.
+## 7. Định hướng monetization mới
 
-### Ngày 19-22: Comparison pages
+Website sẽ kiếm tiền theo 3 tầng:
 
-- Tạo `/compare/[slug]`.
-- Tạo bảng so sánh.
-- Tạo verdict.
-- Tạo 5 comparison pages.
+```txt
+Tier 1: Hardware affiliate
+Tier 2: Cloud GPU / VPS / AI infra affiliate
+Tier 3: AI SaaS / software / dev tools affiliate
+```
 
-### Ngày 23-25: Build pages
+Phần cứng có buyer intent mạnh nhưng commission thường thấp. Cloud GPU, VPS, AI infra và AI SaaS có tiềm năng cao hơn vì có thể recurring hoặc spend-based commission, hợp với người dùng local AI, và dễ gắn vào nội dung “cloud vs local”.
 
-- Tạo `/builds/[slug]`.
-- Tạo 5 build landing pages.
-- Mỗi page có use case, budget, component list, CTA.
+Funnel mới:
 
-### Ngày 26-27: Guides
+```txt
+Google Search
+→ VRAM Calculator / GPU Guide
+→ User biết cần bao nhiêu VRAM
+→ Option A: mua GPU
+→ Option B: thuê cloud GPU
+→ Option C: dùng AI SaaS/software thay thế
+→ affiliate click / email lead / saved build
+```
 
-- Tạo `/guides/[slug]`.
-- Tạo 8-10 guide pages chất lượng.
-- Liên kết guide → tool → GPU → build.
+Không định vị site là “hardware affiliate blog”. Định vị nên là:
 
-### Ngày 28: SEO QA
+```txt
+A source-aware planning platform for GPU memory, local AI hardware, cloud GPU options, and AI workflow tools.
+```
 
-- Check sitemap.
-- Check robots.
-- Check metadata.
-- Check broken links.
-- Check PageSpeed cơ bản.
-- Check mobile.
+Nếu dùng brand `VRAM Forge`, tagline nên là:
 
-### Ngày 29: Cloudflare deploy
+```txt
+Plan GPU memory, hardware, and tools for local AI workloads.
+```
 
-- Deploy Cloudflare Pages.
-- Kiểm tra production URL.
-- Fix lỗi build/deploy nếu có.
+---
 
-### Ngày 30: Tổng kết và nghiệm thu
+## 8. Roadmap chi tiết từ Day 4 đến Day 14
 
-- Chấm checklist.
-- Cập nhật `TASK_STATUS.md`.
-- Cập nhật `DAILY_LOG.md`.
-- Tạo backlog tháng 2.
+## Day 4 — GPU profile page skeleton
 
-## 7. Hướng tháng 2
+### Mục tiêu
 
-Chỉ sang tháng 2 khi tháng 1 đạt tối thiểu:
+Tạo nền cho các page GPU profile, dùng data từ `data/gpus.json`.
 
+### Files dự kiến
+
+```txt
+app/(frontend)/gpu/page.tsx
+app/(frontend)/gpu/[slug]/page.tsx
+components/GpuCard.tsx
+components/GpuSpecTable.tsx
+components/GpuAiUseCaseSection.tsx
+components/DataConfidenceBadge.tsx
+```
+
+### Yêu cầu
+
+- Dùng repository/service, không đọc JSON trực tiếp trong page nếu có thể.
+- Có `generateStaticParams`.
+- Có `generateMetadata`.
+- Không hardcode brand/domain.
+- Không claim benchmark nếu chưa có nguồn.
+- Với data `draft`/`needsReview`, hiển thị wording cẩn thận:
+  - “Seed data”
+  - “Needs verification”
+  - “Specs should be verified before purchase”
+- Không affiliate link thật ở Day 4 nếu chưa có program.
+
+### SEO yêu cầu
+
+Page `/gpu/[slug]` cần có:
+
+- H1: tên GPU.
+- Short description.
+- Spec table.
+- AI use case section.
+- VRAM suitability section.
+- Related links:
+  - VRAM Calculator.
+  - Related GPU comparisons.
+  - Relevant build guides.
+- FAQ ngắn nếu phù hợp.
+
+### Definition of Done
+
+- `/gpu` hiển thị danh sách GPU seed.
+- `/gpu/[slug]` render được ít nhất 10 GPU.
+- Không vỡ build.
+- Không publish claim chưa verify.
+- `npm run lint` pass hoặc lỗi ghi rõ.
+- `npm run build` pass.
+- `DAILY_LOG.md` và `TASK_STATUS.md` được cập nhật.
+
+---
+
+## Day 5 — GPU profile SEO upgrade
+
+### Mục tiêu
+
+Nâng GPU profile thành page có giá trị SEO hơn, không chỉ render data.
+
+### Tasks
+
+- Thêm section:
+  - “Best for”.
+  - “Local AI notes”.
+  - “VRAM limitations”.
+  - “When to choose cloud GPU instead”.
+- Thêm disclaimer source-aware.
+- Thêm internal links.
+- Thêm FAQ section.
+- Thêm Product/Article/Breadcrumb schema nếu phù hợp, nhưng không tạo claim giá/affiliate khi chưa có nguồn.
+
+### Monetization chuẩn bị
+
+Mỗi GPU page nên có placeholder CTA:
+
+```txt
+Option A: Compare local GPU options
+Option B: Try a cloud GPU before buying
+```
+
+Chưa cần affiliate link thật.
+
+### Definition of Done
+
+- GPU page hữu ích hơn cho người dùng.
+- Có cloud GPU bridge CTA.
+- Có data confidence warning nếu cần.
+- Build/lint pass.
+
+---
+
+## Day 6 — Comparison page skeleton
+
+### Mục tiêu
+
+Tạo page so sánh GPU từ `data/comparisons.json`.
+
+### Files dự kiến
+
+```txt
+app/(frontend)/compare/page.tsx
+app/(frontend)/compare/[slug]/page.tsx
+components/ComparisonTable.tsx
+components/ComparisonVerdict.tsx
+components/ComparisonCta.tsx
+```
+
+### Yêu cầu
+
+- Render tối thiểu 5 comparison seed.
+- Không tự bịa benchmark.
+- Nếu không có benchmark, chỉ so sánh specs/source-aware.
+- Wording cẩn thận:
+  - “Based on seed specs”.
+  - “Verify before buying”.
+  - “Actual AI performance depends on software/runtime”.
+
+### SEO focus
+
+```txt
+/compare/rtx-3090-vs-rtx-4090-for-local-llm
+/compare/rtx-3060-12gb-vs-rtx-4060-ti-16gb-for-ai
+```
+
+Cần có:
+
+- H1 rõ intent.
+- Comparison table.
+- Verdict cautious.
+- Use case recommendations.
+- Related GPU links.
+- Cloud GPU alternative section.
+
+### Definition of Done
+
+- `/compare` có list page.
+- `/compare/[slug]` render được.
+- Có verdict nhưng không claim quá chắc.
+- Build/lint pass.
+
+---
+
+## Day 7 — Build landing page skeleton
+
+### Mục tiêu
+
+Tạo page build AI workstation từ `data/builds.json`.
+
+### Files dự kiến
+
+```txt
+app/(frontend)/builds/page.tsx
+app/(frontend)/builds/[slug]/page.tsx
+components/BuildCard.tsx
+components/BuildComponentList.tsx
+components/BuildUseCaseSection.tsx
+components/BuildAlternatives.tsx
+```
+
+### Yêu cầu
+
+- Render 5 build seed.
+- Không hardcode giá nếu chưa có source.
+- Không affiliate link thật nếu chưa có program.
+- Có alternative section:
+  - “Buy local hardware”.
+  - “Try cloud GPU first”.
+  - “Use AI SaaS if you do not need full local control”.
+
+### SEO focus
+
+```txt
+/builds/budget-local-ai-pc
+/builds/stable-diffusion-creator-pc
+/builds/local-llm-workstation
+```
+
+### Definition of Done
+
+- Build pages render.
+- Có CTA bridge sang cloud/SaaS nhưng không affiliate spam.
+- Build/lint pass.
+
+---
+
+## Day 8 — Cloud GPU data model
+
+### Mục tiêu
+
+Thêm data layer cho Cloud GPU / AI infra affiliate tương lai.
+
+### Files cần tạo
+
+```txt
+data/cloud-gpu-providers.json
+types/cloud-gpu-provider.ts
+repositories/cloud-gpu-provider.repository.ts
+services/cloud-gpu-provider.service.ts
+```
+
+### Seed providers
+
+Thêm seed data dạng draft cho:
+
+- RunPod
+- Vast.ai
+- Lambda
+- Paperspace
+- DigitalOcean GPU
+- Vultr GPU
+- Modal
+- Replicate
+
+### Mỗi provider cần có
+
+```txt
+id
+slug
+name
+shortDescription
+seoTitle
+seoDescription
+providerType
+useCases
+pricingModel
+affiliateStatus
+affiliateProgramUrl
+commissionNotes
+status
+needsReview
+dataConfidence
+sources
+lastVerifiedAt
+notes
+```
+
+### Quy tắc dữ liệu
+
+- Không tự bịa commission.
+- Nếu chưa verify affiliate program, để:
+  - `affiliateStatus: "unknown"`
+  - `needsReview: true`
+- Không claim recurring nếu chưa có nguồn.
+- Không hardcode affiliate link.
+
+### Definition of Done
+
+- Có data model cloud GPU.
+- Có repository/service.
+- Build/lint pass.
+- Task status cập nhật.
+
+---
+
+## Day 9 — Cloud GPU vs Local GPU guide
+
+### Mục tiêu
+
+Tạo guide bridge đầu tiên giữa hardware và cloud affiliate.
+
+### Files dự kiến
+
+```txt
+app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx
+components/CloudVsLocalTable.tsx
+components/DecisionMatrix.tsx
+```
+
+### Nội dung cần có
+
+- Khi nào nên mua GPU local.
+- Khi nào nên thuê cloud GPU.
+- Cost factors:
+  - upfront cost
+  - electricity
+  - utilization
+  - setup time
+  - privacy/control
+  - scalability
+- Không đưa giá cụ thể nếu chưa có nguồn.
+- CTA:
+  - Use VRAM Calculator.
+  - Compare GPUs.
+  - Explore cloud GPU options.
+
+### SEO target
+
+```txt
+cloud gpu vs local gpu
+rent gpu vs buy gpu
+best way to run local llm
+```
+
+### Definition of Done
+
+- Guide có ích, không spam affiliate.
+- Có internal links tới calculator/GPU/build.
+- Build/lint pass.
+
+---
+
+## Day 10 — Cloud GPU provider index + provider page skeleton
+
+### Mục tiêu
+
+Tạo trang cloud GPU provider để chuẩn bị affiliate tầng 2.
+
+### Files dự kiến
+
+```txt
+app/(frontend)/cloud-gpu/page.tsx
+app/(frontend)/cloud-gpu/[slug]/page.tsx
+components/CloudGpuProviderCard.tsx
+components/CloudGpuUseCaseSection.tsx
+```
+
+### Yêu cầu
+
+- Render data từ `data/cloud-gpu-providers.json`.
+- Không claim commission/price nếu chưa có nguồn.
+- Có use case:
+  - local LLM testing.
+  - Stable Diffusion.
+  - training/fine-tuning.
+  - batch jobs.
+  - serverless inference.
+- Có disclaimer:
+  - prices and availability change.
+  - verify provider terms before use.
+
+### Navigation
+
+Cân nhắc thêm menu `Cloud GPU`, nhưng chỉ thêm nếu page đã đủ ổn.
+
+### Definition of Done
+
+- `/cloud-gpu` render.
+- `/cloud-gpu/[slug]` render.
+- Build/lint pass.
+
+---
+
+## Day 11 — AI SaaS / software tool data model
+
+### Mục tiêu
+
+Thêm data model để sau này monetization qua AI SaaS/software.
+
+### Files cần tạo
+
+```txt
+data/ai-tools.json
+types/ai-tool.ts
+repositories/ai-tool.repository.ts
+services/ai-tool.service.ts
+```
+
+### Tool categories
+
+```txt
+ai_coding
+image_generation
+video_generation
+llm_api
+agent_platform
+vector_database
+automation
+seo_ai
+productivity
+```
+
+### Mỗi tool cần có
+
+```txt
+id
+slug
+name
+category
+shortDescription
+seoTitle
+seoDescription
+pricingModel
+affiliateStatus
+affiliateProgramUrl
+recommendedPlacements
+status
+needsReview
+dataConfidence
+sources
+lastVerifiedAt
+notes
+```
+
+### Quy tắc
+
+- Không tự bịa commission.
+- Không tự claim “best” nếu chưa có review.
+- Không add affiliate link chưa verify.
+- Không biến site thành SaaS spam directory.
+
+### Definition of Done
+
+- Có data model AI tools.
+- Có repository/service.
+- Build/lint pass.
+
+---
+
+## Day 12 — AI software bridge guide
+
+### Mục tiêu
+
+Tạo guide đầu tiên nối từ local hardware sang AI SaaS/software.
+
+### Guide đề xuất
+
+```txt
+/guides/local-ai-vs-ai-saas
+```
+
+### Nội dung
+
+- Khi nào nên chạy AI local.
+- Khi nào nên dùng AI SaaS.
+- Tradeoff:
+  - cost
+  - privacy
+  - setup time
+  - quality
+  - reliability
+  - control
+  - team workflow
+- Internal links:
+  - VRAM Calculator.
+  - Cloud GPU vs Local GPU.
+  - GPU guides.
+  - AI tools index sau này.
+
+### Definition of Done
+
+- Guide hữu ích, cân bằng.
+- Không affiliate spam.
+- Build/lint pass.
+
+---
+
+## Day 13 — Monetization placement system
+
+### Mục tiêu
+
+Thêm hệ thống placement để sau này quản lý CTA/affiliate mà không hardcode lung tung.
+
+### Files đề xuất
+
+```txt
+data/monetization-placements.json
+types/monetization-placement.ts
+repositories/monetization-placement.repository.ts
+services/monetization-placement.service.ts
+components/MonetizationCta.tsx
+```
+
+### Placement types
+
+```txt
+vram-calculator-result
+gpu-profile-sidebar
+comparison-verdict
+build-page-components
+cloud-vs-local-guide
+ai-saas-guide
+footer-disclosure
+```
+
+### Quy tắc
+
+- Không affiliate link thật nếu chưa có program.
+- Placement có thể là CTA trung lập:
+  - “Compare local GPUs”.
+  - “Try cloud GPU first”.
+  - “Explore AI workflow tools”.
+- Mọi affiliate CTA phải minh bạch.
+
+### Definition of Done
+
+- Có data placement.
+- Có component CTA reusable.
+- Không spam.
+- Build/lint pass.
+
+---
+
+## Day 14 — SEO QA + internal link audit
+
+### Mục tiêu
+
+Kiểm tra toàn bộ nền site trước khi scale thêm.
+
+### Kiểm tra
+
+- Homepage.
+- VRAM Calculator.
+- GPU index/profile.
+- Comparison pages.
+- Build pages.
+- Cloud GPU guide.
+- Cloud GPU provider pages nếu có.
+- AI SaaS bridge guide nếu có.
+
+### Checklist
+
+- H1 duy nhất.
+- Metadata không trùng quá nhiều.
+- Canonical đúng.
+- Không hardcode brand/domain.
+- Không 404 từ menu chính.
+- Internal links rõ.
+- Footer disclosure hiện.
+- Data draft không bị claim như verified.
 - Build pass.
-- Production site chạy ổn.
-- Có 25-30 URL indexable.
-- Có VRAM calculator dùng được.
-- Có data GPU cơ bản.
-- Có sitemap/robots/metadata.
-- Có handoff docs.
+- Lint pass.
 
-### Mục tiêu tháng 2
+### Definition of Done
 
-- Tăng từ 30 URL lên 100-150 URL chất lượng.
-- Mở rộng GPU database.
-- Mở rộng AI model database.
-- Tạo thêm comparison pages.
-- Tạo thêm build pages.
-- Cải thiện VRAM Calculator.
-- Thêm click tracking nội bộ đơn giản.
-- Chuẩn bị affiliate link thật nếu có chương trình phù hợp.
-- Phân tích Google Search Console nếu đã có dữ liệu.
-- Tối ưu internal links.
+- Site nền đủ ổn để bước sang scale content.
+- Có backlog rõ cho Month 2.
+- TASK_STATUS cập nhật.
 
-### Không nên làm trong tháng 2
+---
 
-- Chưa làm SaaS dashboard.
-- Chưa làm login nếu chưa có nhu cầu rõ.
-- Chưa làm payment.
-- Chưa tạo hàng nghìn page AI mỏng.
-- Chưa thêm Payload/Postgres nếu data JSON vẫn đủ.
+## 9. Month 2 — Roadmap điều chỉnh
+
+## Mục tiêu Month 2
+
+Thay vì chỉ scale hardware pages, Month 2 chia 3 cụm:
+
+```txt
+Cluster A: Hardware / GPU / VRAM
+Cluster B: Cloud GPU / AI infra
+Cluster C: AI SaaS / software bridge
+```
+
+### Cluster A — Hardware / GPU / VRAM
+
+Tạo thêm:
+
+- 20 GPU profile pages.
+- 20 comparison pages.
+- 10 AI build pages.
+- 10 model VRAM requirement pages.
+
+Ví dụ:
+
+```txt
+/guides/best-gpu-for-local-llm
+/guides/best-gpu-for-stable-diffusion
+/gpu/rtx-3090-for-ai
+/gpu/rtx-4090-for-ai
+/compare/rtx-3090-vs-rtx-4090-for-local-llm
+/models/llama-3-1-8b-vram-requirements
+```
+
+### Cluster B — Cloud GPU / AI infra
+
+Tạo:
+
+```txt
+/cloud-gpu
+/cloud-gpu/runpod
+/cloud-gpu/vast-ai
+/cloud-gpu/lambda
+/guides/cloud-gpu-vs-local-gpu
+/guides/best-cloud-gpu-for-local-llm
+/guides/cheapest-way-to-run-llama-70b
+```
+
+CTA hợp lý:
+
+```txt
+Try cloud GPU before buying hardware
+```
+
+Không spam affiliate.
+
+### Cluster C — AI SaaS / software bridge
+
+Tạo:
+
+```txt
+/ai-tools
+/ai-tools/ai-coding
+/ai-tools/image-generation
+/ai-tools/llm-api
+/guides/local-ai-vs-ai-saas
+/guides/best-ai-tools-for-local-ai-users
+/guides/ai-workstation-software-stack
+```
+
+CTA hợp lý:
+
+```txt
+If you do not need full local control, compare hosted AI tools.
+```
+
+---
+
+## 10. Domain/brand guidance
+
+Nếu đổi sang `VRAMForge.com`, cập nhật duy nhất ở:
+
+```txt
+data/site-settings.json
+```
+
+Gợi ý config:
+
+```json
+{
+  "name": "VRAM Forge",
+  "shortName": "VF",
+  "domain": "vramforge.com",
+  "siteUrl": "https://vramforge.com",
+  "description": "Estimate VRAM needs, compare GPUs, and plan local or cloud AI workflows.",
+  "tagline": "Plan GPU memory, hardware, and tools for local AI workloads."
+}
+```
+
+Không sửa hardcode trong component/page.
+
+---
+
+## 11. Prompt mẫu cho Day 4
+
+```txt
+Đọc:
+- AGENTS.md
+- TASK_STATUS.md
+- DAILY_LOG.md
+- docs/ROADMAP_THANG_1_2.md
+- docs/DATA_SOURCES.md
+
+Hôm nay thực hiện Day 4 - GPU profile page skeleton.
+
+Yêu cầu:
+1. Không tạo thư mục src.
+2. Không hardcode brand/domain.
+3. Không thêm database/auth/payment/Payload.
+4. Không dùng data draft như dữ liệu đã verify.
+5. Dùng data/gpus.json thông qua repository/service.
+6. Tạo /gpu và /gpu/[slug].
+7. Có generateStaticParams và generateMetadata.
+8. Có GpuCard, GpuSpecTable, DataConfidenceBadge nếu cần.
+9. Có internal links tới VRAM Calculator.
+10. Có section “When to consider cloud GPU instead” nhưng chưa affiliate spam.
+11. Chạy npm run lint và npm run build.
+12. Cập nhật DAILY_LOG.md và TASK_STATUS.md.
+```
+
+---
+
+## 12. Definition of Done tổng cho phase Day 4-14
+
+Phase này được coi là ổn khi có:
+
+- GPU profile pages.
+- Comparison pages.
+- Build pages.
+- Cloud GPU data model.
+- Cloud GPU vs Local GPU guide.
+- AI tools/software data model.
+- Local AI vs AI SaaS bridge guide.
+- Monetization placement system.
+- Internal link audit.
+- Không hardcode brand/domain.
+- Không affiliate spam.
+- Không claim data chưa verify.
+- Build/lint pass.
+- Handoff docs cập nhật đầy đủ.
+
+---
+
+## 13. Ghi chú quan trọng
+
+Không nên vội gắn affiliate link thật trước khi:
+
+- page đủ trust
+- data có nguồn
+- CTA đúng intent
+- disclosure đầy đủ
+- user flow rõ
+
+Thứ tự đúng:
+
+```txt
+Tool hữu ích
+→ data có nguồn
+→ page SEO tốt
+→ internal link
+→ cloud/software bridge
+→ affiliate CTA
+→ conversion optimization
+```
+
+Không đi theo hướng:
+
+```txt
+page mỏng
+→ affiliate link sớm
+→ spam CTA
+→ mất trust
+```
+
