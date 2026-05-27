@@ -471,3 +471,83 @@ None.
 
 ### Next Step
 Day 4 - GPU profile page skeleton.
+
+## 2026-05-27 - Cloudflare Pages static export and VRAM Forge branding
+
+### Agent
+Codex
+
+### Planned Task
+Configure Cloudflare Pages Static HTML Export and move public branding/domain to VRAM Forge through centralized site settings.
+
+### Completed
+- [x] Added `output: "export"` and `images.unoptimized: true` to `next.config.ts`.
+- [x] Changed public site settings to `VRAM Forge` and `https://vramforge.com`, including logo, tagline and trust/disclosure content.
+- [x] Removed the unused legacy repository identifier from public site settings; the repository URL remains documented in project handoff status.
+- [x] Kept public metadata/canonical URLs config-driven by removing environment URL override behavior in `lib/seo.ts`.
+- [x] Added metadata description fallback to site settings in the SEO helper.
+- [x] Configured `robots.ts` and `sitemap.ts` as static metadata routes required by Next.js export.
+- [x] Updated `.env.example` and `AGENTS.md` with the production brand/domain and Cloudflare Pages static export settings.
+- [x] Confirmed no public brand/domain literal is hardcoded in UI, app-page, SEO, service or repository code.
+
+### Checked
+- [x] `npm run lint`.
+- [x] `npm run build`.
+- [x] Verified `out/` was generated.
+- [x] Verified exported `robots.txt`, `sitemap.xml`, metadata, logo text and disclosure use `https://vramforge.com` / `VRAM Forge`.
+- [x] Confirmed `.env.local` remains ignored and is not included in Git changes.
+
+### Issues
+- The first static export build reported that `/sitemap.xml` needed explicit static route configuration with `output: "export"`. This was fixed by exporting `dynamic = "force-static"` from sitemap and robots metadata routes; the final build passes.
+
+### Files Changed
+- `.env.example`
+- `AGENTS.md`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+- `next.config.ts`
+- `data/site-settings.json`
+- `types/site-settings.type.ts`
+- `lib/seo.ts`
+- `app/robots.ts`
+- `app/(frontend)/sitemap.ts`
+
+### Next Step
+Day 4 - GPU profile page skeleton.
+
+---
+
+## 2026-05-27 - Favicon logo sync
+
+### Agent
+Codex
+
+### Planned Task
+Replace the default favicon with the VRAM Forge chip logo shown in the provided reference.
+
+### Completed
+- [x] Replaced the old starter favicon appearance with a light outlined chip mark and `VF` center label.
+- [x] Updated `app/icon.svg` to match the existing config-driven header logo treatment.
+- [x] Increased the `VF` scale in the header logo and favicon after review showed the original center text was too small relative to the chip.
+- [x] Changed the favicon `VF` center to heavier vector strokes for better recognition at browser-tab sizes.
+- [x] Generated a multi-size `app/favicon.ico` from the updated SVG so browsers do not keep rendering the starter icon.
+- [x] Left header/footer logo rendering config-driven through `site-settings`.
+
+### Checked
+- [x] Reviewed a raster preview of the new chip icon.
+- [x] Reviewed an enlarged rendering of the 16px favicon variant after increasing the center mark.
+- [x] `npm run lint`.
+- [x] `npm run build`.
+- [x] Verified the static export contains `out/favicon.ico` and `out/icon.svg`.
+
+### Issues
+None.
+
+### Files Changed
+- `app/icon.svg`
+- `app/favicon.ico`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 4 - GPU profile page skeleton.

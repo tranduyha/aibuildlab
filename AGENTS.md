@@ -337,3 +337,14 @@ Không gom quá nhiều loại thay đổi vào một commit nếu không cần.
 - Không tạo 1.000 page bằng AI khi chưa có dữ liệu tốt.
 - Không làm hệ thống affiliate phức tạp trước khi có traffic/index.
 - Không đổi kiến trúc repo nếu không có lý do mạnh.
+
+## 13. Production domain và Cloudflare Pages deployment
+
+- Production domain: `vramforge.com`.
+- Public brand: `VRAM Forge`.
+- Brand và domain public vẫn phải lấy từ `data/site-settings.json` thông qua repository/service/helper; không hardcode trong UI hoặc SEO helper.
+- Cloudflare Pages production branch: `publish`.
+- Cloudflare Pages framework preset: `Next.js (Static HTML Export)`.
+- Cloudflare Pages build command: `npm run build`.
+- Cloudflare Pages output directory: `out`.
+- Site tĩnh hiện tại không dùng Worker, Wrangler, OpenNext hoặc SSR runtime.

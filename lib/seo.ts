@@ -2,23 +2,18 @@ import type { Metadata } from "next";
 import { siteSettingsService } from "@/services/site-settings.service";
 
 export interface BuildMetadataInput {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   path: string;
   image?: string | null;
   type?: "website" | "article";
 }
 
 export function getSiteSettings() {
-  const settings = siteSettingsService.getSettings();
-
-  return {
-    ...settings,
-    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? settings.siteUrl,
-  };
+  return siteSettingsService.getSettings();
 }
 
-export function buildPageTitle(pageTitle: string): string {
+export function buildPageTitle(pageTitle?: string): string {
   const { name } = getSiteSettings();
   return pageTitle ? `${pageTitle} | ${name}` : name;
 }
@@ -40,16 +35,17 @@ export function buildMetadata({
 }: BuildMetadataInput): Metadata {
   const settings = getSiteSettings();
   const pageTitle = buildPageTitle(title);
+  const pageDescription = description ?? settings.description;
   const canonicalUrl = buildCanonicalUrl(path);
   const socialImage = image ?? settings.defaultOgImage;
 
   return {
     title: { absolute: pageTitle },
-    description,
+    description: pageDescription,
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: pageTitle,
-      description,
+      description: pageDescription,
       type,
       url: canonicalUrl,
       siteName: settings.name,

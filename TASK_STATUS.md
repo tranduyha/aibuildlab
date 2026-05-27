@@ -65,13 +65,14 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 3.7 - Completed: homepage UX/visual/trust refinement and logo improvement.
+Configuration task - Cloudflare Pages static export and VRAM Forge public branding (2026-05-27).
 
 ## Today Scope
 
-- Chốt trạng thái cuối ngày và chuẩn hóa tài liệu handoff.
-- Xác nhận lint/build, homepage và VRAM Calculator vẫn hoạt động sau Day 3.7.
-- Ghi rõ quy tắc cho Day 4 mà không phát triển thêm feature.
+- Configure Next.js for Cloudflare Pages Static HTML Export.
+- Move the public site identity to `VRAM Forge` / `vramforge.com` through site settings.
+- Verify metadata, sitemap/robots and image handling remain compatible with static output.
+- Run lint/build and confirm `out/` is generated before returning to Day 4 work.
 
 ## Done Today
 
@@ -83,7 +84,7 @@ Day 3.7 - Completed: homepage UX/visual/trust refinement and logo improvement.
 
 ## Last Completed Task
 
-Homepage UX/visual/trust refinement, logo improvement, visual system, and documentation handoff.
+Cloudflare Pages Static HTML Export configuration and VRAM Forge public branding update.
 
 ## Done
 
@@ -243,3 +244,33 @@ Day 4 dự kiến gồm:
 - Dùng `data/gpus.json` thông qua repository/service.
 - Có `generateStaticParams` và `generateMetadata`.
 - Không publish claim chưa verify; dữ liệu draft chỉ render với wording thận trọng.
+
+## Static Export and Branding Configuration Update - 2026-05-27
+
+- [x] Official public brand is `VRAM Forge`; production domain is `vramforge.com`.
+- [x] `data/site-settings.json` now owns public name, logo text, URL, tagline and trust/disclosure copy.
+- [x] `next.config.ts` uses `output: "export"` and `images.unoptimized: true` for Cloudflare Pages static output.
+- [x] SEO canonical URLs and metadata read the configured production URL instead of local environment overrides.
+- [x] `robots.txt` and `sitemap.xml` metadata routes are forced static for Next.js export compatibility.
+- [x] Cloudflare Pages settings: branch `publish`, preset `Next.js (Static HTML Export)`, command `npm run build`, output `out`.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and created `out/`.
+- [x] `.env.local` remains ignored and was not modified or added to Git changes.
+
+### Resolved During Verification
+
+- Initial static export build failed because `/sitemap.xml` lacked explicit static metadata route configuration under Next.js 16. Added `dynamic = "force-static"` to sitemap and robots routes; the subsequent build passed.
+
+### Next Recommended Task
+
+Day 4 - GPU profile page skeleton.
+
+## Favicon Logo Sync Update - 2026-05-27
+
+- [x] Replaced the starter triangle favicon with the VRAM Forge chip mark.
+- [x] Updated `app/icon.svg` to the light outlined `VF` logo treatment matching the configured header mark.
+- [x] Enlarged the `VF` mark in the shared logo and converted the favicon letters to heavier vector strokes for clearer small-size rendering.
+- [x] Regenerated `app/favicon.ico` from the logo SVG at favicon sizes for browser compatibility.
+- [x] Kept header/footer logo text sourced from `data/site-settings.json` through existing component props.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and exported the updated icon files to `out/`.

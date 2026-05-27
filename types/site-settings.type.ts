@@ -32,5 +32,4 @@ export interface SiteSettings {
   heroTitle: string;
   heroDescription: string;
   contactEmail: string;
-  repositoryUrl: string;
 }

@@ -1,14 +1,14 @@
 {
-  "name": "AI Build Lab",
-  "shortName": "ABL",
-  "siteUrl": "http://localhost:3000",
-  "domain": "",
-  "description": "Find the right hardware for local AI, LLMs, Stable Diffusion, and AI workstations.",
-  "tagline": "Build smarter local AI workstations.",
+  "name": "VRAM Forge",
+  "shortName": "VF",
+  "siteUrl": "https://vramforge.com",
+  "domain": "vramforge.com",
+  "description": "Estimate VRAM needs, compare GPUs, and plan local or cloud AI workflows.",
+  "tagline": "Plan GPU memory, hardware, and tools for local AI workloads.",
   "logo": {
     "type": "text",
-    "text": "AI Build Lab",
-    "shortText": "ABL"
+    "text": "VRAM Forge",
+    "shortText": "VF"
   },
   "theme": {
     "font": "inter",
@@ -16,15 +16,14 @@
     "radius": "large"
   },
   "trust": {
-    "editorialNote": "AI Build Lab focuses on transparent estimates, source-aware hardware data, and practical planning tools for local AI builds.",
-    "dataDisclaimer": "Hardware requirements and VRAM estimates are for educational planning only. Verify specs, prices, compatibility, and availability before purchasing.",
-    "affiliateDisclosure": "AI Build Lab may earn a commission when you buy through links on this site. This does not affect the price you pay.",
+    "editorialNote": "VRAM Forge focuses on transparent estimates, source-aware hardware data, and practical planning tools for local and cloud AI workflows.",
+    "dataDisclaimer": "Hardware requirements and VRAM estimates are for educational planning only. Verify specs, prices, compatibility, availability, and provider terms before purchasing hardware or renting cloud GPUs.",
+    "affiliateDisclosure": "VRAM Forge may earn a commission when you buy or sign up through links on this site. This does not affect the price you pay.",
     "planningNote": "Estimates are transparent, source-aware, and designed for planning - not inflated affiliate claims.",
     "purchaseReminder": "Always verify compatibility, prices, availability, and power requirements before purchasing hardware."
   },
   "defaultOgImage": null,
-  "heroTitle": "Build smarter local AI workstations",
-  "heroDescription": "Estimate VRAM needs, compare GPUs, and plan hardware for local LLMs, Stable Diffusion, Ollama, and AI workstation builds.",
-  "contactEmail": "hello@aibuildlab.dev",
-  "repositoryUrl": "https://github.com/tranduyha/aibuildlab"
+  "heroTitle": "Plan GPU memory for local AI workloads",
+  "heroDescription": "Estimate VRAM needs, compare GPUs, and plan local or cloud AI workflows for LLMs, image generation, and workstation builds.",
+  "contactEmail": "hello@vramforge.com"
 }
