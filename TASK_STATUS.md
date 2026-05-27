@@ -59,20 +59,19 @@ Không dùng thư mục `src`.
 - [ ] Có build landing page.
 - [ ] Có guide pages.
 - [x] Có image manifest.
-- [ ] Có Cloudflare Pages deploy.
+- [x] Có Cloudflare Pages preview deploy tại `https://vramforge.pages.dev/`.
 - [x] Có global site shell, brand config và trust/disclosure foundation.
 - [x] Có visual image layer dùng manifest, service validation và component fallback.
 
 ## Current Day
 
-Configuration task - Cloudflare Pages static export and VRAM Forge public branding (2026-05-27).
+Day 3.11 - Completed: Homepage help-card visual sizing balance (2026-05-27).
 
 ## Today Scope
 
-- Configure Next.js for Cloudflare Pages Static HTML Export.
-- Move the public site identity to `VRAM Forge` / `vramforge.com` through site settings.
-- Verify metadata, sitemap/robots and image handling remain compatible with static output.
-- Run lint/build and confirm `out/` is generated before returning to Day 4 work.
+- Return the six horizontal help-card visual blocks to their earlier compact footprint.
+- Preserve labels and proportional square SVG icons without increasing card height.
+- Preserve the existing homepage content, links, responsive grid and static export behavior.
 
 ## Done Today
 
@@ -84,7 +83,7 @@ Configuration task - Cloudflare Pages static export and VRAM Forge public brandi
 
 ## Last Completed Task
 
-Cloudflare Pages Static HTML Export configuration and VRAM Forge public branding update.
+Homepage help-card visual sizing balance.
 
 ## Done
 
@@ -275,3 +274,65 @@ Day 4 - GPU profile page skeleton.
 - [x] Kept header/footer logo text sourced from `data/site-settings.json` through existing component props.
 - [x] `npm run lint` passed.
 - [x] `npm run build` passed and exported the updated icon files to `out/`.
+
+## Day 3.8 Homepage and Calculator Refinement Update - 2026-05-27
+
+- [x] Removed duplicated responsive text nodes from the header CTA; the exported link now reads only `Try VRAM Calculator`.
+- [x] Strengthened the config-driven logo mark contrast and brand text weight without increasing header height.
+- [x] Reduced homepage section spacing slightly and softened the secondary hero CTA relative to the primary calculator CTA.
+- [x] Replaced placeholder-like card symbols with six lightweight SVG visuals for memory, comparison, model, image, workstation and local/cloud intent.
+- [x] Moved the interactive calculator directly below its short hero introduction so inputs and results appear before long explanatory content.
+- [x] Strengthened estimate hierarchy with status badges, clear minimum/tier/confidence labeling and runtime-validation wording.
+- [x] Added result next-step links to available `/gpu` and `/guides` routes without affiliate links or dead routes.
+- [x] Confirmed homepage/calculator each render one H1 and retain required internal links, FAQ, disclosure and config-driven schema/metadata behavior.
+- [x] Reviewed desktop and compact (`500px`) static renders; the `<=480px` CSS branch keeps the chip mark and full CTA while hiding the wordmark for space.
+- [x] Verified `/`, `/tools/vram-calculator`, `/gpu`, `/builds` and `/guides` return HTTP `200` from local static output.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and produced `out/`.
+
+### Next Recommended Task
+
+Day 4 - GPU profile page skeleton.
+
+## Day 3.9 Homepage Help-Card Icon Refinement Update - 2026-05-27
+
+- [x] Replaced stretched `120 x 38` banner glyphs with compact `48 x 48` SVG drawings inside `56 x 56` visual blocks.
+- [x] Removed redundant decorative abbreviation text from the visual marker while keeping card titles and `Explore` links intact.
+- [x] Removed obsolete visual-marker abbreviation props from homepage card data after the decorative treatment no longer used them.
+- [x] Kept distinct icon intent for VRAM memory, GPU comparison, model network, image generation, workstation and cloud/local planning.
+- [x] Kept icons decorative with `aria-hidden="true"` and introduced no icon library or external asset.
+- [x] Reviewed exported homepage at desktop and compact widths; the three-column and one-column card layouts remain intact.
+- [x] Confirmed generated homepage contains six square glyphs and no former horizontal glyph viewBox.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and produced `out/`.
+
+### Next Recommended Task
+
+Day 4 - GPU profile page skeleton.
+
+## Day 3.10 Homepage Help-Card Horizontal Visual Refinement Update - 2026-05-27
+
+- [x] Restored a full-width, light-blue visual block above each of the six homepage help-card titles.
+- [x] Added small left-side labels (`VRAM`, `GPU`, `LLM`, `IMG`, `BUILD`, `CLOUD`) and retained distinct compact square SVG glyphs on the right.
+- [x] Sized the horizontal visual block to `78px` high while fixing each icon at `54px`, preventing stretch or flattened proportions.
+- [x] Kept visual blocks decorative with `aria-hidden="true"` and made no changes to heading hierarchy or card destinations.
+- [x] Reviewed exported homepage at desktop and compact widths; three-column desktop and single-column compact layouts remain readable.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and produced `out/`.
+
+### Next Recommended Task
+
+Day 4 - GPU profile page skeleton.
+
+## Day 3.11 Homepage Help-Card Visual Sizing Update - 2026-05-27
+
+- [x] Kept the full-width visual header and six decorative labels introduced in Day 3.10.
+- [x] Returned the visual header height from `78px` to the original `52px` footprint and restored the card minimum height to `207px`.
+- [x] Reduced each SVG icon to a fixed proportional `38px` square so it remains readable without stretching or enlarging the card.
+- [x] Reviewed desktop and compact homepage renders; the visual header now fills the top of each card without making the card taller than necessary.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and produced `out/`.
+
+### Next Recommended Task
+
+Day 4 - GPU profile page skeleton.

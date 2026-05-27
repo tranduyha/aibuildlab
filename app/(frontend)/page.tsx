@@ -83,21 +83,18 @@ const upcomingAreas = [
     title: "GPU profiles",
     description: "Specifications will appear only after source review.",
     href: "/gpu",
-    marker: "GPU",
     category: "gpu" as const,
   },
   {
     title: "Build guides",
     description: "Planning pages for validated workstation research.",
     href: "/builds",
-    marker: "BUILD",
     category: "builds" as const,
   },
   {
     title: "Research guides",
     description: "Evidence-led notes for local AI workflows.",
     href: "/guides",
-    marker: "DOC",
     category: "guides" as const,
   },
 ];
@@ -236,7 +233,6 @@ export default function HomePage() {
               href={area.href}
               image={imageService.getImagesByCategory(area.category)[0] ?? null}
               key={area.title}
-              marker={area.marker}
               title={area.title}
             />
           ))}

@@ -19,7 +19,7 @@ const CONTEXT_OVERHEAD_GB: Record<ContextPreset, number> = {
 };
 
 const ESTIMATE_WARNING =
-  "This is a rough estimate, not an official benchmark. Actual VRAM usage depends on runtime, quantization format, context length, KV cache, batch size, drivers, and model architecture.";
+  "This is a rough estimate and needs runtime-specific validation. Actual VRAM usage depends on quantization, context length, KV cache, runtime, batch size, drivers, and model architecture.";
 
 function roundToSingleDecimal(value: number): number {
   return Math.ceil(value * 10) / 10;

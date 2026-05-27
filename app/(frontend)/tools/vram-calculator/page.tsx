@@ -124,6 +124,15 @@ export default function VramCalculatorPage() {
             <p className="tool-lead">{PAGE_DESCRIPTION}</p>
           </header>
 
+          <VramCalculator />
+
+          <p className="tool-disclaimer">
+            This calculator provides a rough estimate only. Use runtime-specific
+            validation before selecting hardware: actual VRAM usage depends on
+            quantization, context length, KV cache, runtime, batch size, drivers,
+            and model architecture.
+          </p>
+
           <section className="tool-section">
             <h2>Estimate GPU VRAM for LLMs and AI workloads</h2>
             <div className="intro-copy">
@@ -192,14 +201,6 @@ export default function VramCalculatorPage() {
             </ol>
           </section>
 
-          <VramCalculator />
-
-          <p className="tool-disclaimer">
-            This calculator provides a rough estimate only. Actual VRAM usage depends
-            on runtime, quantization format, context length, KV cache, batch size,
-            drivers, and model architecture.
-          </p>
-
           <section className="tool-section explanation-grid">
             <div>
               <h2>How this VRAM estimate works</h2>
@@ -243,7 +244,7 @@ export default function VramCalculatorPage() {
             </p>
             <div className="related-links">
               {relatedLinks.map((link) => (
-                <Link href={link.href} key={link.href}>
+                <Link href={link.href} key={link.label}>
                   {link.label} <span>&rarr;</span>
                 </Link>
               ))}

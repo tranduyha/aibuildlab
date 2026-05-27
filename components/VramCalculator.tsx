@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
   calculateEstimatedVram,
@@ -101,7 +102,10 @@ export default function VramCalculator() {
       </div>
 
       <div className="calculator-result" aria-live="polite">
-        <p className="panel-label">Rough estimate</p>
+        <div className="estimate-badges" aria-label="Estimate status">
+          <span>Rough estimate</span>
+          <span>Needs runtime validation</span>
+        </div>
         <p className="estimate-value">{result.estimatedVramGb.toFixed(1)} GB</p>
         <p className="estimate-minimum">
           Recommended planning minimum: <strong>{result.recommendedMinimumVramGb} GB VRAM</strong>
@@ -119,7 +123,7 @@ export default function VramCalculator() {
           </div>
           <div>
             <dt>Confidence</dt>
-            <dd>Low - estimate requires validation</dd>
+            <dd>Low confidence until tested</dd>
           </div>
         </dl>
         <p className="calculator-summary">{formatVramResult(result)}</p>
@@ -129,6 +133,13 @@ export default function VramCalculator() {
             <li key={note}>{note}</li>
           ))}
         </ul>
+        <nav className="result-actions" aria-label="Next planning steps">
+          <Link className="result-action-primary" href="/gpu">
+            View GPUs with this VRAM tier
+          </Link>
+          <Link href="/guides">Compare local vs cloud GPU</Link>
+          <Link href="/guides">Read GPU planning guides</Link>
+        </nav>
       </div>
     </section>
   );

@@ -17,8 +17,7 @@ export default function Header() {
         />
         <MainNav items={navigation} />
         <Link className="header-action" href="/tools/vram-calculator">
-          <span className="header-action-long">Try VRAM Calculator</span>
-          <span className="header-action-short">Calculator</span>
+          Try VRAM Calculator
         </Link>
       </div>
     </header>
