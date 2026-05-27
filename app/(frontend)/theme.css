@@ -1757,11 +1757,11 @@ body {
 }
 
 .brand-chip-text {
-  fill: var(--primary-dark);
+  fill: #0d4668;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
 }
 
 .brand-text {

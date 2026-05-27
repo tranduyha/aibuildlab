@@ -8,13 +8,13 @@
     stroke-linecap="round"
     stroke-width="2"
   />
-  <path d="M18 19h28M18 45h28" fill="none" stroke="#c3e8f6" stroke-linecap="round" stroke-width="2"/>
+  <path d="M17 17h30M17 47h30" fill="none" stroke="#c3e8f6" stroke-linecap="round" stroke-width="2"/>
   <path
-    d="M20 25l5.5 14L31 25M35 39V25h10M35 32h8"
+    d="M17.5 22.5l7 19 7-19M36 41.5v-19h12M36 31.8h10"
     fill="none"
-    stroke="#155474"
+    stroke="#0d4668"
     stroke-linecap="round"
     stroke-linejoin="round"
-    stroke-width="3.2"
+    stroke-width="4"
   />
 </svg>

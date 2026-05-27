@@ -530,12 +530,14 @@ Replace the default favicon with the VRAM Forge chip logo shown in the provided 
 - [x] Updated `app/icon.svg` to match the existing config-driven header logo treatment.
 - [x] Increased the `VF` scale in the header logo and favicon after review showed the original center text was too small relative to the chip.
 - [x] Changed the favicon `VF` center to heavier vector strokes for better recognition at browser-tab sizes.
+- [x] Increased the header logo mark to a bolder `14px` treatment and enlarged/darkened the favicon vector mark for stronger emphasis.
 - [x] Generated a multi-size `app/favicon.ico` from the updated SVG so browsers do not keep rendering the starter icon.
 - [x] Left header/footer logo rendering config-driven through `site-settings`.
 
 ### Checked
 - [x] Reviewed a raster preview of the new chip icon.
 - [x] Reviewed an enlarged rendering of the 16px favicon variant after increasing the center mark.
+- [x] Reviewed the bolder large icon and updated 16px rendition before rebuilding the export.
 - [x] `npm run lint`.
 - [x] `npm run build`.
 - [x] Verified the static export contains `out/favicon.ico` and `out/icon.svg`.

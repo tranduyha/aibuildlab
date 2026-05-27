@@ -270,6 +270,7 @@ Day 4 - GPU profile page skeleton.
 - [x] Replaced the starter triangle favicon with the VRAM Forge chip mark.
 - [x] Updated `app/icon.svg` to the light outlined `VF` logo treatment matching the configured header mark.
 - [x] Enlarged the `VF` mark in the shared logo and converted the favicon letters to heavier vector strokes for clearer small-size rendering.
+- [x] Increased the logo mark again to `14px`/heavier weight and expanded the favicon vector lettering with darker contrast after visual review.
 - [x] Regenerated `app/favicon.ico` from the logo SVG at favicon sizes for browser compatibility.
 - [x] Kept header/footer logo text sourced from `data/site-settings.json` through existing component props.
 - [x] `npm run lint` passed.
