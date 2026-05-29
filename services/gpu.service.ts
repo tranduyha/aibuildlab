@@ -9,7 +9,30 @@ export interface ReviewedResult<T> {
 const REVIEW_WARNING =
   "Seed data only. Verify specifications and workload evidence before publishing recommendations.";
 
+function getGpuReviewWarning(gpu: Gpu): string | null {
+  if (gpu.status === "draft" || gpu.needsReview || gpu.dataConfidence === "low") {
+    return REVIEW_WARNING;
+  }
+
+  return null;
+}
+
 export const gpuService = {
+  listAllGpus(): ReviewedResult<Gpu[]> {
+    return {
+      data: gpuRepository.getAllGpus(),
+      warning: REVIEW_WARNING,
+    };
+  },
+
+  getGpuProfileBySlug(slug: string): ReviewedResult<Gpu | null> {
+    const gpu = gpuRepository.getGpuBySlug(slug);
+    return {
+      data: gpu,
+      warning: gpu ? getGpuReviewWarning(gpu) : null,
+    };
+  },
+
   listGpusByMinimumVram(minimumVramGb: number): ReviewedResult<Gpu[]> {
     const data = gpuRepository
       .getAllGpus()

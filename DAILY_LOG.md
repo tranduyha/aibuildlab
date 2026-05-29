@@ -717,3 +717,46 @@ None.
 
 ### Next Step
 Day 4 - GPU profile page skeleton.
+
+---
+
+## 2026-05-29 - Day 4 GPU profile page skeleton
+
+### Agent
+Codex
+
+### Planned Task
+Implement GPU profile page skeleton with static generation, draft-data safety wording, and SEO baseline for `/gpu` and `/gpu/[slug]`.
+
+### Completed
+- [x] Upgraded `/gpu` from placeholder to a seed GPU planning index rendered from `gpuService`.
+- [x] Added reusable `GpuCard`, `GpuSpecTable`, and `DataConfidenceBadge` components.
+- [x] Added dynamic route `app/(frontend)/gpu/[slug]/page.tsx` with `generateStaticParams`, `generateMetadata`, and `notFound()`.
+- [x] Added breadcrumb UI, FAQ, related links, and safe JSON-LD (`BreadcrumbList`, `WebPage`) on GPU profile pages.
+- [x] Added cautious seed/draft/confidence warning copy and avoided benchmark/recommendation claims.
+- [x] Added GPU page styles for cards, badges, and mobile-safe spec table overflow handling.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output confirms `/gpu` static route and `/gpu/[slug]` SSG with all 10 seed GPU paths.
+- [x] Verified no `src` directory was created.
+- [x] Scanned `app/(frontend)`, `components`, `lib`, `services`, `repositories` for hardcoded brand/domain literals.
+
+### Issues
+- GPU specs remain mostly `null` by design because seed records are still draft and unverified.
+- Profile pages intentionally show planning-oriented wording until source verification is completed.
+
+### Files Changed
+- `app/(frontend)/gpu/page.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `components/GpuCard.tsx`
+- `components/GpuSpecTable.tsx`
+- `components/DataConfidenceBadge.tsx`
+- `services/gpu.service.ts`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 5 - GPU profile SEO upgrade.

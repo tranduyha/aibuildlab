@@ -2027,3 +2027,149 @@ body {
 .home-hero .secondary-button:hover {
   color: var(--primary);
 }
+
+.gpu-index-hero {
+  padding-bottom: 24px;
+}
+
+.gpu-index-cta-note {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.gpu-index-cta-note a {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.gpu-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.gpu-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 20px;
+}
+
+.gpu-card h2 {
+  margin-top: 12px;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+
+.gpu-card h2 a:hover {
+  color: var(--primary);
+}
+
+.gpu-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.gpu-card-cta {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.data-confidence-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.data-confidence-badge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.data-confidence-badge-draft {
+  border: 1px solid #c6dfef;
+  background: #eef7fd;
+  color: #0f4f75;
+}
+
+.data-confidence-badge-review {
+  border: 1px solid #f1d9ac;
+  background: #fff5de;
+  color: #79580d;
+}
+
+.data-confidence-badge-confidence {
+  border: 1px solid #dfd4f2;
+  background: #f7f1ff;
+  color: #56398f;
+}
+
+.gpu-profile-hero {
+  padding-bottom: 24px;
+}
+
+.gpu-spec-table-wrap {
+  overflow-x: auto;
+}
+
+.gpu-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.gpu-spec-table caption {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  text-align: left;
+}
+
+.gpu-spec-table th,
+.gpu-spec-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.gpu-spec-table th {
+  width: 38%;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gpu-spec-table td {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.gpu-spec-table tr:last-child th,
+.gpu-spec-table tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .gpu-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

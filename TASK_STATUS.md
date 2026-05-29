@@ -54,7 +54,7 @@ Không dùng thư mục `src`.
 - [x] Có build seed records dạng draft.
 - [x] Có guide seed records dạng draft.
 - [x] Có VRAM calculator estimate page skeleton.
-- [ ] Có GPU profile page.
+- [x] Co GPU profile page (skeleton Day 4).
 - [ ] Có comparison page.
 - [ ] Có build landing page.
 - [ ] Có guide pages.
@@ -65,25 +65,28 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 3.11 - Completed: Homepage help-card visual sizing balance (2026-05-27).
+Day 4 - Completed: GPU profile page skeleton (2026-05-29).
 
 ## Today Scope
 
-- Return the six horizontal help-card visual blocks to their earlier compact footprint.
-- Preserve labels and proportional square SVG icons without increasing card height.
-- Preserve the existing homepage content, links, responsive grid and static export behavior.
+- Upgrade `/gpu` from placeholder to a seed GPU planning index with confidence warnings.
+- Add dynamic static route `/gpu/[slug]` with `generateStaticParams`, `generateMetadata`, and `notFound()` fallback.
+- Add reusable GPU components for cards, confidence badges, and safe spec rendering.
 
 ## Done Today
 
-- [x] Đã kiểm tra production local bằng `npm run start` sau build.
-- [x] Đã chạy `npm run lint`.
-- [x] Đã chạy `npm run build`.
-- [x] Đã cập nhật `DAILY_LOG.md`.
-- [x] Đã cập nhật `TASK_STATUS.md`.
+- [x] Da tao GPU profile page skeleton cho toan bo seed slugs.
+- [x] Da them data-confidence/status warnings tren `/gpu` va `/gpu/[slug]`.
+- [x] Da them related links, breadcrumb, FAQ va JSON-LD an toan cho profile page.
+- [x] Da chay `npm run lint`.
+- [x] Da chay `npm run build`.
+- [x] Da scan hardcoded brand/domain trong `app/(frontend)`, `components`, `lib`, `services`, `repositories`.
+- [x] Da cap nhat `DAILY_LOG.md`.
+- [x] Da cap nhat `TASK_STATUS.md`.
 
 ## Last Completed Task
 
-Homepage help-card visual sizing balance.
+GPU profile page skeleton.
 
 ## Done
 
@@ -207,7 +210,7 @@ lastVerifiedAt: null
 
 None.
 
-## Open Limitations Before Day 4
+## Open Limitations Before Day 5
 
 - Dữ liệu GPU/AI model hiện chỉ là seed draft; specs và model facts chưa được xác minh từ source chính thức.
 - Calculator là rough estimate theo giả định MVP, chưa phải benchmark hoặc hardware recommendation đã xác minh.
@@ -216,7 +219,7 @@ None.
 
 ## Next Recommended Task
 
-Day 4 - GPU profile page skeleton.
+Day 5 - GPU profile SEO upgrade.
 
 ## Notes for Next Agent
 
@@ -262,7 +265,7 @@ Day 4 dự kiến gồm:
 
 ### Next Recommended Task
 
-Day 4 - GPU profile page skeleton.
+Day 5 - GPU profile SEO upgrade.
 
 ## Favicon Logo Sync Update - 2026-05-27
 
@@ -292,7 +295,7 @@ Day 4 - GPU profile page skeleton.
 
 ### Next Recommended Task
 
-Day 4 - GPU profile page skeleton.
+Day 5 - GPU profile SEO upgrade.
 
 ## Day 3.9 Homepage Help-Card Icon Refinement Update - 2026-05-27
 
@@ -308,7 +311,7 @@ Day 4 - GPU profile page skeleton.
 
 ### Next Recommended Task
 
-Day 4 - GPU profile page skeleton.
+Day 5 - GPU profile SEO upgrade.
 
 ## Day 3.10 Homepage Help-Card Horizontal Visual Refinement Update - 2026-05-27
 
@@ -322,7 +325,7 @@ Day 4 - GPU profile page skeleton.
 
 ### Next Recommended Task
 
-Day 4 - GPU profile page skeleton.
+Day 5 - GPU profile SEO upgrade.
 
 ## Day 3.11 Homepage Help-Card Visual Sizing Update - 2026-05-27
 
@@ -335,4 +338,9 @@ Day 4 - GPU profile page skeleton.
 
 ### Next Recommended Task
 
-Day 4 - GPU profile page skeleton.
+Day 5 - GPU profile SEO upgrade.
+
+
+
+
+
