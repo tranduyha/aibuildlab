@@ -17,6 +17,8 @@ export interface DataSource {
     | "manual-check";
   fields: string[];
   accessedAt: string;
+  scope?: "general" | "variant-specific";
+  variantName?: string;
 }
 
 export interface Gpu {

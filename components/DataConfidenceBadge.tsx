@@ -11,16 +11,24 @@ export default function DataConfidenceBadge({ gpu }: DataConfidenceBadgeProps) {
     badges.push({ label: "Seed data", tone: "draft" });
   }
 
+  if (gpu.status === "published" || gpu.status === "reviewed") {
+    badges.push({ label: "Source-backed profile", tone: "confidence" });
+  }
+
   if (gpu.needsReview) {
     badges.push({ label: "Needs verification", tone: "review" });
   }
 
   if (gpu.dataConfidence === "low") {
-    badges.push({ label: "Low confidence", tone: "confidence" });
+    badges.push({ label: "Low confidence", tone: "draft" });
   }
 
-  if (badges.length === 0) {
-    badges.push({ label: "Reviewed data", tone: "confidence" });
+  if (gpu.dataConfidence === "medium") {
+    badges.push({ label: "Medium confidence", tone: "confidence" });
+  }
+
+  if (gpu.dataConfidence === "high") {
+    badges.push({ label: "High confidence", tone: "confidence" });
   }
 
   return (

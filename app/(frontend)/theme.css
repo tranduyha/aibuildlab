@@ -2223,3 +2223,95 @@ body {
   background: #fff5de;
   color: #79580d;
 }
+.gpu-howto-list,
+.gpu-checklist {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.explanation-grid h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.spec-meta {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.source-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-list li {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 12px;
+}
+
+.source-list a {
+  color: var(--primary-dark);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.source-list span {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.gpu-card-meta {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.gpu-card-meta div {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.gpu-card-meta dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.gpu-card-meta dd {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.gpu-calc-cta-inline a {
+  display: inline-flex;
+  margin-top: 6px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 9px 12px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gpu-calc-cta-inline a:hover {
+  background: var(--primary);
+  color: white;
+}

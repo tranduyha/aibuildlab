@@ -65,22 +65,22 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 4.11 - GPU multi-source enrichment with official + AIB coverage (2026-05-29).
+Day 5.2 - Final GPU page cleanup before Day 6 (2026-05-29).
 
 ## Today Scope
 
-- Run GPU source-gap audit (`10_SOURCE_GAP_AUDIT.md`) after replacing `daily_data_update/` with optimized v1 source coverage.
-- Run GPU multi-source enrichment (`11_GPU_MULTI_SOURCE_ENRICHMENT.md`) with official + AIB variant-specific sources.
-- Re-validate data, lint, and build after GPU field enrichment.
+- Shorten variant-specific copy inside `GpuSpecTable`.
+- Hide optional unverified fields that are not important for planning.
+- Add one VRAM-class-specific planning FAQ/note when applicable.
+- Confirm no debug/issue badge is part of production UI code.
 
 ## Done Today
 
-- [x] Audited GPU field gaps via `10_SOURCE_GAP_AUDIT.md`.
-- [x] Updated `data/update-candidates/source-gap-candidates.json` with GPU-only source gaps.
-- [x] Enriched 10 Month 1 GPU records with new source-backed fields from official and AIB/database coverage.
-- [x] Added/expanded variant-specific AIB mappings for MSI, PNY, Gigabyte, and ASRock sources.
-- [x] Kept unsafe/unverified fields (`benchmark`, `tokensPerSecond`, `price`, `availability`) as `null`.
-- [x] Re-ran source-gap file after enrichment to track remaining gaps.
+- [x] Shortened table variant-specific note to concise wording: `Variant-specific. Verify exact card.`
+- [x] Kept long variant/source context in `Sources and data confidence` section.
+- [x] Hid optional unverified fields in spec table (`cardDimensionsMm`, `displayOutputs`, `launchDate`, `launchYear`) while keeping important planning fields visible with verification state.
+- [x] Added one VRAM-class planning FAQ note for 12GB/16GB/24GB/32GB classes when matched.
+- [x] Searched UI code and found no `1 issue`/debug overlay badge implementation in app components/pages.
 - [x] Ran `npm run data:validate` (0 errors, 0 warnings).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build`.
@@ -89,8 +89,7 @@ Day 4.11 - GPU multi-source enrichment with official + AIB coverage (2026-05-29)
 
 ## Last Completed Task
 
-Day 4.11 GPU multi-source enrichment + source-gap refresh with passing checks.
-
+Day 5.2 final GPU page cleanup before Day 6 with passing checks.
 ## Done
 
 - [x] Global layout đã có Header/Footer.
@@ -341,6 +340,7 @@ Day 5 - GPU profile SEO upgrade.
 ### Next Recommended Task
 
 Day 5 - GPU profile SEO upgrade.
+
 
 
 

@@ -1096,3 +1096,127 @@ Run prompt 10 then prompt 11 to improve GPU source coverage with official vendor
 
 ### Next Step
 Continue Day 4.x with focused AIB variant-field expansion (dimensions/outputs/connectors/PSU) and keep source-gap list current.
+
+---
+
+## 2026-05-29 - Day 5 GPU profile SEO upgrade
+
+### Agent
+Codex
+
+### Planned Task
+Upgrade `/gpu` and `/gpu/[slug]` from Day 4 skeleton to richer SEO/UX pages using source-backed Day 4 data without adding unsupported claims.
+
+### Completed
+- [x] Audited current GPU profile implementation and source-backed dataset status before edits.
+- [x] Upgraded `/gpu` into a source-aware hub with verified-first list, draft separation, and "how to use" planning steps.
+- [x] Upgraded `/gpu/[slug]` with expanded sections: breadcrumb, planning summary, source-backed spec snapshot, planning fit, local AI notes, VRAM limitations, cloud-usage bridge, technical checklist, sources, FAQ, and related links.
+- [x] Added safe structured data (`BreadcrumbList`, `WebPage`, `FAQPage`) on GPU detail pages.
+- [x] Updated spec table logic to mark variant-specific AIB fields and preserve null fields as verification-needed.
+- [x] Extended GPU source type with optional variant metadata fields to align type safety with current data.
+- [x] Kept all content planning-oriented; did not add benchmark, tokens/s, image speed, price, availability, or affiliate recommendation claims.
+
+### GPU Data Usage Summary
+- Total GPU records: `11`
+- Source-backed published/reviewed: `10`
+- Records with `vramGb`: `10`
+- Draft/low-confidence remaining: `1` (`rtx-4070-super`)
+- AIB variant-specific data present and explicitly labeled in UI where used.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output confirms static `/gpu` and SSG `/gpu/[slug]` routes.
+
+### Issues
+- Some optional fields remain null (for example launch date/year, dimensions, display outputs on several cards) due to source gaps; UI now keeps these as verification-needed.
+- Responsive behavior reviewed via code/CSS and build output in this run; no viewport screenshot QA was executed in this patch.
+
+### Files Changed
+- `types/gpu.ts`
+- `components/GpuSpecTable.tsx`
+- `components/DataConfidenceBadge.tsx`
+- `app/(frontend)/gpu/page.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 5.x follow-up: GPU profile SEO content polish (source freshness, deeper FAQ intent coverage, and optional comparison-link integration where valid pages exist).
+
+---
+
+## 2026-05-29 - Day 5.1 GPU profile refinement before Day 6
+
+### Agent
+Codex
+
+### Planned Task
+Improve GPU profile UX, make spec rendering vendor-aware, strengthen calculator CTA, and reduce template-like copy without introducing unsupported claims.
+
+### Completed
+- [x] Refined `GpuSpecTable` to be vendor-aware and hide irrelevant fields by vendor.
+- [x] Kept “Needs verification” only for relevant fields instead of showing irrelevant vendor rows.
+- [x] Improved `/gpu` cards with compact VRAM, memory type, planning focus, and confidence visibility.
+- [x] Added stronger CTA wording “Estimate VRAM before comparing this GPU” on profile page near planning/VRAM sections.
+- [x] Made `/gpu/[slug]` copy more unique by using `vendor`, `architecture`, `vramGb`, `memoryType`, and `notes` where available.
+- [x] Expanded source explanation for manufacturer/AIB + variant-specific semantics and non-universal field caution.
+- [x] Preserved all Day 5 sections and trust-safe wording.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Some optional fields remain null due to unresolved source gaps (for example launch date/year, dimensions, display outputs on several cards).
+- No benchmark/performance/price/availability claims were added in this refinement.
+
+### Files Changed
+- `components/GpuSpecTable.tsx`
+- `components/GpuCard.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 6 - comparison page foundation using source-backed GPU profiles and calculator-aware positioning.
+
+---
+
+## 2026-05-29 - Day 5.2 final GPU page cleanup before Day 6
+
+### Agent
+Codex
+
+### Planned Task
+Apply small cleanup only on GPU pages before Day 6: tighten table notes, hide optional unverified fields, add VRAM-class planning FAQ note, and verify no debug issue badge in app UI.
+
+### Completed
+- [x] Shortened variant-specific note in `GpuSpecTable` to concise wording.
+- [x] Moved long-form source/variant context to existing `Sources and data confidence` section.
+- [x] Hid optional unverified fields (`cardDimensionsMm`, `displayOutputs`, `launchDate`, `launchYear`) from spec table.
+- [x] Kept important planning fields (VRAM, memory type, memory bus, power/PSU-related fields) visible with verification status.
+- [x] Added one VRAM-class-specific planning FAQ note for 12GB/16GB/24GB/32GB classes.
+- [x] Searched app code and found no `1 issue`/debug badge overlay implementation.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- No in-app debug issue badge found in code; reported red badge is likely browser extension/dev overlay context.
+- Optional fields remain omitted when unverified by design.
+
+### Files Changed
+- `components/GpuSpecTable.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Ready to start Day 6 comparison page implementation.
