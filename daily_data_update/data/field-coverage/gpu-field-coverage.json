@@ -1,0 +1,295 @@
+{
+  "fields": {
+    "vramGb": {
+      "requiredFor": [
+        "calculatorMatching"
+      ],
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ]
+    },
+    "memoryType": {
+      "requiredFor": [
+        "gpuProfile"
+      ],
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ]
+    },
+    "memoryBusBit": {
+      "requiredFor": [
+        "gpuProfile"
+      ],
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "database",
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "memoryBandwidthGbps": {
+      "requiredFor": [
+        "gpuProfile"
+      ],
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ]
+    },
+    "cudaCores": {
+      "vendor": "NVIDIA",
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "database",
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "computeUnits": {
+      "vendor": "AMD",
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "database"
+      ]
+    },
+    "xeCores": {
+      "vendor": "Intel",
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "database"
+      ]
+    },
+    "boostClockGhz": {
+      "primary": [
+        "official",
+        "manufacturer"
+      ],
+      "secondary": [
+        "database",
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "boardPowerWatts": {
+      "primary": [
+        "official",
+        "manufacturer"
+      ],
+      "secondary": [
+        "review",
+        "database"
+      ]
+    },
+    "currentPrice": {
+      "primary": [
+        "affiliate-api",
+        "marketplace-api"
+      ],
+      "secondary": [
+        "manual-check"
+      ]
+    },
+    "memorySpeedGbps": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "boostClockMhz": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "powerConsumptionWatts": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "powerConnectors": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "recommendedPsuWatts": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "cardDimensionsMm": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    },
+    "displayOutputs": {
+      "primary": [
+        "official"
+      ],
+      "secondary": [
+        "manufacturer",
+        "database"
+      ],
+      "aibSources": [
+        "MSI",
+        "ASUS",
+        "Gigabyte",
+        "Sapphire",
+        "PowerColor",
+        "PNY",
+        "Zotac",
+        "ASRock"
+      ],
+      "sourceScopeWhenAib": "variant-specific",
+      "notes": "If sourced from MSI/AIB, mark as variant-specific and do not present as universal GPU claim when SKU-dependent."
+    }
+  }
+}

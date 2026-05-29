@@ -1,0 +1,2285 @@
+{
+  "generatedAt": "2026-05-29",
+  "version": "day-4.11-gpu-source-gap-audit-post-enrichment",
+  "totalGaps": 134,
+  "gaps": [
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3060-12gb",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "powerConnectors",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "powerConnectors is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4060-ti-16gb",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "powerConnectors",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "powerConnectors is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "vramGb",
+      "currentValue": null,
+      "priority": "required-for-calculator",
+      "neededSourceType": "official",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "vramGb is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "memoryType",
+      "currentValue": null,
+      "priority": "required-for-page",
+      "neededSourceType": "official",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "memoryType is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "memoryBusBit",
+      "currentValue": null,
+      "priority": "required-for-page",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "memoryBusBit is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "memoryBandwidthGbps",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "memoryBandwidthGbps is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "architecture",
+      "currentValue": null,
+      "priority": "required-for-page",
+      "neededSourceType": "official",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "architecture is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "baseClockGhz",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "baseClockGhz is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "boostClockGhz",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boostClockGhz is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "memorySpeedGbps",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "memorySpeedGbps is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "tgpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tgpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "powerConsumptionWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "powerConsumptionWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "powerConnectors",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "powerConnectors is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-super",
+      "field": "cudaCores",
+      "currentValue": null,
+      "priority": "required-for-page",
+      "neededSourceType": "official",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cudaCores is required for NVIDIA profile coverage when available from official specs.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4070-ti-super",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "memorySpeedGbps",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "memorySpeedGbps is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4080-super",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "memorySpeedGbps",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "memorySpeedGbps is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-4090",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-3090",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "tgpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tgpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "powerConsumptionWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "powerConsumptionWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rx-7900-xtx",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "tbpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tbpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "rtx-5090",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "launchDate",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchDate is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "launchYear",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-database",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "launchYear is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "tgpWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tgpWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "boardPowerWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "official-or-manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "boardPowerWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "recommendedPsuWatts",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "recommendedPsuWatts is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "cardDimensionsMm",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "cardDimensionsMm is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "displayOutputs",
+      "currentValue": null,
+      "priority": "useful-but-optional",
+      "neededSourceType": "manufacturer",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "displayOutputs is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "benchmark",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "benchmark is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "tokensPerSecond",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "benchmark-with-test-conditions",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "tokensPerSecond is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "price",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-price-api",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "price is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    },
+    {
+      "dataset": "gpus",
+      "slug": "intel-arc-a770-16gb",
+      "field": "availability",
+      "currentValue": null,
+      "priority": "unsafe-to-fill-without-api",
+      "neededSourceType": "approved-affiliate-or-store-feed",
+      "suggestedSourceOrder": [
+        "official GPU vendor source",
+        "official AIB/manufacturer source for variant-specific fields",
+        "reputable database cross-check source",
+        "benchmark/review source only for performance fields",
+        "approved affiliate/API source only for price and availability"
+      ],
+      "reason": "availability is missing and should be filled only when source-backed based on GPU field coverage policy.",
+      "status": "source-gap"
+    }
+  ]
+}

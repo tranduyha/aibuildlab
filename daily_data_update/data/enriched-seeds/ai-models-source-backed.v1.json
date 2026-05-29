@@ -1,0 +1,716 @@
+[
+  {
+    "slug": "llama-3-8b",
+    "name": "Meta Llama 3 8B",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCountB": 8,
+    "contextLengthTokens": 8192,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 8
+    },
+    "sources": [
+      {
+        "name": "Meta Llama 3 Model Card",
+        "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Meta-Llama-3-8B Hugging Face Model Card",
+        "url": "https://huggingface.co/meta-llama/Meta-Llama-3-8B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Use as a small local LLM planning profile; VRAM output remains estimate-only."
+  },
+  {
+    "slug": "llama-3-70b",
+    "name": "Meta Llama 3 70B",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCountB": 70,
+    "contextLengthTokens": 8192,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 70
+    },
+    "sources": [
+      {
+        "name": "Meta Llama 3 Model Card",
+        "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Meta-Llama-3-70B Hugging Face Model Card",
+        "url": "https://huggingface.co/meta-llama/Meta-Llama-3-70B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Large LLM planning profile; do not turn estimates into runtime benchmarks."
+  },
+  {
+    "slug": "llama-3-1-8b-instruct",
+    "name": "Meta Llama 3.1 8B Instruct",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCountB": 8,
+    "contextLengthTokens": 128000,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 8
+    },
+    "sources": [
+      {
+        "name": "Introducing Llama 3.1",
+        "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Llama-3.1-8B-Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Long-context capable family; calculator should still expose context presets and warnings."
+  },
+  {
+    "slug": "llama-3-1-70b-instruct",
+    "name": "Meta Llama 3.1 70B Instruct",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCountB": 70,
+    "contextLengthTokens": 128000,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 70
+    },
+    "sources": [
+      {
+        "name": "Introducing Llama 3.1",
+        "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Llama-3.1-70B-Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Large long-context LLM planning profile; actual fit depends on quantization/runtime/context."
+  },
+  {
+    "slug": "qwen2-5-7b-instruct",
+    "name": "Qwen2.5 7B Instruct",
+    "family": "Qwen",
+    "developer": "Qwen",
+    "parameterCountB": 7.61,
+    "contextLengthTokens": 131072,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 7.61
+    },
+    "sources": [
+      {
+        "name": "Qwen2.5 7B Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Qwen 7B-class local LLM planning profile."
+  },
+  {
+    "slug": "qwen2-5-14b-instruct",
+    "name": "Qwen2.5 14B Instruct",
+    "family": "Qwen",
+    "developer": "Qwen",
+    "parameterCountB": 14.7,
+    "contextLengthTokens": 131072,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 14.7
+    },
+    "sources": [
+      {
+        "name": "Qwen2.5 14B Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-14B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Qwen 14B-class planning profile."
+  },
+  {
+    "slug": "qwen2-5-32b-instruct",
+    "name": "Qwen2.5 32B Instruct",
+    "family": "Qwen",
+    "developer": "Qwen",
+    "parameterCountB": 32.5,
+    "contextLengthTokens": 131072,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 32.5
+    },
+    "sources": [
+      {
+        "name": "Qwen2.5 32B Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Qwen 32B-class planning profile."
+  },
+  {
+    "slug": "qwen2-5-72b-instruct",
+    "name": "Qwen2.5 72B Instruct",
+    "family": "Qwen",
+    "developer": "Qwen",
+    "parameterCountB": 72.7,
+    "contextLengthTokens": 131072,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 72.7
+    },
+    "sources": [
+      {
+        "name": "Qwen2.5 72B Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Large Qwen planning profile."
+  },
+  {
+    "slug": "mistral-7b-instruct-v0-3",
+    "name": "Mistral 7B Instruct v0.3",
+    "family": "Mistral",
+    "developer": "Mistral AI",
+    "parameterCountB": 7.3,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 7.3
+    },
+    "sources": [
+      {
+        "name": "Mistral 7B announcement",
+        "url": "https://mistral.ai/news/announcing-mistral-7b",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "developer",
+          "family",
+          "modality",
+          "license"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Mistral-7B-Instruct-v0.3 Hugging Face Model Card",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+        "type": "model-card",
+        "fields": [
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Mistral 7B-class planning profile; context should remain preset-based unless source-backed in current schema.",
+    "license": "Apache-2.0"
+  },
+  {
+    "slug": "mixtral-8x7b-instruct-v0-1",
+    "name": "Mixtral 8x7B Instruct v0.1",
+    "family": "Mixtral",
+    "developer": "Mistral AI",
+    "parameterCountB": 47,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 47
+    },
+    "sources": [
+      {
+        "name": "Mixtral 8x7B Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/mistralai/Mixtral-8x7B-Instruct-v0.1",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "developer",
+          "family",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Mixtral of experts announcement",
+        "url": "https://mistral.ai/news/mixtral-of-experts/",
+        "type": "official",
+        "fields": [
+          "developer",
+          "family",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Mixture-of-experts model. Calculator should label estimates carefully because active parameters and total parameters differ."
+  },
+  {
+    "slug": "gemma-2-9b-it",
+    "name": "Gemma 2 9B Instruct",
+    "family": "Gemma",
+    "developer": "Google",
+    "parameterCountB": 9,
+    "contextLengthTokens": 8192,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 9
+    },
+    "sources": [
+      {
+        "name": "Gemma 2 Hugging Face blog",
+        "url": "https://huggingface.co/blog/gemma2",
+        "type": "documentation",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Gemma 2 9B IT Hugging Face Model Card",
+        "url": "https://huggingface.co/google/gemma-2-9b-it",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Gemma 2 9B planning profile."
+  },
+  {
+    "slug": "gemma-2-27b-it",
+    "name": "Gemma 2 27B Instruct",
+    "family": "Gemma",
+    "developer": "Google",
+    "parameterCountB": 27,
+    "contextLengthTokens": 8192,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 27
+    },
+    "sources": [
+      {
+        "name": "Gemma 2 Hugging Face blog",
+        "url": "https://huggingface.co/blog/gemma2",
+        "type": "documentation",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Gemma 2 27B IT Hugging Face Model Card",
+        "url": "https://huggingface.co/google/gemma-2-27b-it",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Gemma 2 27B planning profile."
+  },
+  {
+    "slug": "phi-3-mini-4k-instruct",
+    "name": "Phi-3 Mini 4K Instruct",
+    "family": "Phi",
+    "developer": "Microsoft",
+    "parameterCountB": 3.8,
+    "contextLengthTokens": 4096,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 3.8
+    },
+    "sources": [
+      {
+        "name": "Phi-3 Mini 4K Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Small model planning profile; useful as a low-VRAM calculator option."
+  },
+  {
+    "slug": "phi-3-5-mini-instruct",
+    "name": "Phi-3.5 Mini Instruct",
+    "family": "Phi",
+    "developer": "Microsoft",
+    "parameterCountB": 3.8,
+    "contextLengthTokens": 128000,
+    "modality": "text",
+    "dataConfidence": "medium",
+    "needsReview": false,
+    "status": "published",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": true,
+    "defaultCalculatorProfile": {
+      "modelType": "llm",
+      "modelSizeB": 3.8
+    },
+    "sources": [
+      {
+        "name": "Phi-3.5 Mini Instruct Hugging Face Model Card",
+        "url": "https://huggingface.co/microsoft/Phi-3.5-mini-instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Small long-context model planning profile."
+  },
+  {
+    "slug": "sdxl-base-1-0",
+    "name": "Stable Diffusion XL Base 1.0",
+    "family": "Stable Diffusion",
+    "developer": "Stability AI",
+    "parameterCountB": null,
+    "contextLengthTokens": null,
+    "modality": "image",
+    "dataConfidence": "medium",
+    "needsReview": true,
+    "status": "draft",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": false,
+    "defaultCalculatorProfile": {
+      "modelType": "image-generation"
+    },
+    "sources": [
+      {
+        "name": "SDXL Base 1.0 Hugging Face Model Card",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        "type": "model-card",
+        "fields": [
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Image-generation planning profile. Keep calculatorEligible false unless image estimate mode is implemented."
+  },
+  {
+    "slug": "stable-diffusion-3-5-large",
+    "name": "Stable Diffusion 3.5 Large",
+    "family": "Stable Diffusion",
+    "developer": "Stability AI",
+    "parameterCountB": null,
+    "contextLengthTokens": null,
+    "modality": "image",
+    "dataConfidence": "medium",
+    "needsReview": true,
+    "status": "draft",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": false,
+    "defaultCalculatorProfile": {
+      "modelType": "image-generation"
+    },
+    "sources": [
+      {
+        "name": "Stable Diffusion 3.5 announcement",
+        "url": "https://stability.ai/news-updates/introducing-stable-diffusion-3-5",
+        "type": "official",
+        "fields": [
+          "modality",
+          "developer",
+          "family",
+          "license"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Stable Diffusion 3.5 Large Hugging Face Model Card",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large",
+        "type": "model-card",
+        "fields": [
+          "modality",
+          "developer",
+          "family",
+          "license"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Image-generation planning profile. Do not force through LLM VRAM formula.",
+    "license": "Stability AI Community License"
+  },
+  {
+    "slug": "bge-m3",
+    "name": "BAAI BGE-M3",
+    "family": "BGE",
+    "developer": "BAAI",
+    "parameterCountB": null,
+    "contextLengthTokens": 8192,
+    "modality": "embedding",
+    "dataConfidence": "medium",
+    "needsReview": true,
+    "status": "draft",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": false,
+    "defaultCalculatorProfile": {
+      "modelType": "embedding"
+    },
+    "sources": [
+      {
+        "name": "BAAI BGE-M3 Hugging Face Model Card",
+        "url": "https://huggingface.co/BAAI/bge-m3",
+        "type": "model-card",
+        "fields": [
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Embedding/reranker-related utility model. Not calculatorEligible unless embedding estimate mode is implemented."
+  },
+  {
+    "slug": "nomic-embed-text-v1-5",
+    "name": "Nomic Embed Text v1.5",
+    "family": "Nomic Embed",
+    "developer": "Nomic AI",
+    "parameterCountB": null,
+    "contextLengthTokens": 8192,
+    "modality": "embedding",
+    "dataConfidence": "medium",
+    "needsReview": true,
+    "status": "draft",
+    "lastVerifiedAt": "2026-05-29",
+    "calculatorEligible": false,
+    "defaultCalculatorProfile": {
+      "modelType": "embedding"
+    },
+    "sources": [
+      {
+        "name": "Nomic Embed Text v1.5 Hugging Face Model Card",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+        "type": "model-card",
+        "fields": [
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Nomic Embed Text v1.5 GGUF Model Card",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5-GGUF",
+        "type": "model-card",
+        "fields": [
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "notes": "Embedding utility model. Keep out of LLM calculator dropdown until embedding estimate mode exists."
+  }
+]

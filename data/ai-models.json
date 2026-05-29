@@ -1,202 +1,1046 @@
 [
   {
-    "id": "model-llama-3-1-8b",
-    "slug": "llama-3-1-8b",
-    "name": "Llama 3.1 8B",
-    "shortDescription": "Seed model record for future local inference hardware guidance.",
-    "seoTitle": "Llama 3.1 8B Hardware Requirements - Draft",
-    "seoDescription": "Draft local hardware guidance record for Llama 3.1 8B pending verification.",
-    "tags": ["llm", "local-inference"],
-    "useCases": ["local-llm", "ai-coding"],
-    "modelFamily": null,
-    "parameterCount": null,
-    "contextLength": null,
-    "modality": null,
+    "id": "model-llama-3-8b",
+    "slug": "llama-3-8b",
+    "name": "Meta Llama 3 8B",
+    "shortDescription": "Source-backed LLM profile for local AI planning and calculator model selection.",
+    "seoTitle": "Meta Llama 3 8B VRAM Planning Profile",
+    "seoDescription": "Source-backed Meta Llama 3 8B model profile for VRAM planning workflows.",
+    "tags": [
+      "llm",
+      "meta",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "Llama",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCount": "8B",
+    "parameterCountB": 8,
+    "contextLength": 8192,
+    "contextLengthTokens": 8192,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 8,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Meta Llama 3 model card",
+        "url": "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "modelFamily",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Meta-Llama-3-8B Hugging Face model card",
+        "url": "https://huggingface.co/meta-llama/Meta-Llama-3-8B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "modelFamily",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Planning profile only; validate runtime-specific behavior before hardware decisions."
   },
   {
-    "id": "model-llama-3-1-70b",
-    "slug": "llama-3-1-70b",
-    "name": "Llama 3.1 70B",
-    "shortDescription": "Seed model record for future larger local LLM workstation research.",
-    "seoTitle": "Llama 3.1 70B Hardware Requirements - Draft",
-    "seoDescription": "Draft record for investigating Llama 3.1 70B hardware requirements with sourced tests.",
-    "tags": ["llm", "workstation"],
-    "useCases": ["local-llm", "ai-workstation"],
-    "modelFamily": null,
-    "parameterCount": null,
-    "contextLength": null,
-    "modality": null,
+    "id": "model-llama-3-1-8b-instruct",
+    "slug": "llama-3-1-8b-instruct",
+    "name": "Meta Llama 3.1 8B Instruct",
+    "shortDescription": "Source-backed LLM profile for long-context local planning.",
+    "seoTitle": "Llama 3.1 8B Instruct VRAM Planning Profile",
+    "seoDescription": "Source-backed Llama 3.1 8B Instruct profile for local AI VRAM planning.",
+    "tags": [
+      "llm",
+      "meta",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "Llama",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCount": "8B",
+    "parameterCountB": 8,
+    "contextLength": 128000,
+    "contextLengthTokens": 128000,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 8,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Introducing Llama 3.1",
+        "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "modelFamily",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Llama-3.1-8B-Instruct Hugging Face model card",
+        "url": "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Long context metadata is source-backed; effective VRAM still depends on runtime and KV cache strategy."
   },
   {
-    "id": "model-qwen-2-5-7b",
-    "slug": "qwen-2-5-7b",
-    "name": "Qwen 2.5 7B",
-    "shortDescription": "Seed record for researching local Qwen deployment hardware.",
-    "seoTitle": "Qwen 2.5 7B Hardware Requirements - Draft",
-    "seoDescription": "Draft Qwen 2.5 7B hardware record awaiting model-card and runtime verification.",
-    "tags": ["llm", "local-inference"],
-    "useCases": ["local-llm", "ai-coding"],
-    "modelFamily": null,
-    "parameterCount": null,
-    "contextLength": null,
-    "modality": null,
+    "id": "model-llama-3-1-70b-instruct",
+    "slug": "llama-3-1-70b-instruct",
+    "name": "Meta Llama 3.1 70B Instruct",
+    "shortDescription": "Source-backed large-model profile for high-VRAM planning.",
+    "seoTitle": "Llama 3.1 70B Instruct VRAM Planning Profile",
+    "seoDescription": "Source-backed Llama 3.1 70B Instruct profile for high-memory local AI planning.",
+    "tags": [
+      "llm",
+      "meta",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "Llama",
+    "family": "Llama",
+    "developer": "Meta",
+    "parameterCount": "70B",
+    "parameterCountB": 70,
+    "contextLength": 128000,
+    "contextLengthTokens": 128000,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 70,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Introducing Llama 3.1",
+        "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "developer",
+          "modelFamily",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Llama-3.1-70B-Instruct Hugging Face model card",
+        "url": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Planning profile only; not a runtime benchmark claim."
   },
   {
-    "id": "model-qwen-2-5-32b",
-    "slug": "qwen-2-5-32b",
-    "name": "Qwen 2.5 32B",
-    "shortDescription": "Seed record for future hardware testing of a larger Qwen workload.",
-    "seoTitle": "Qwen 2.5 32B Hardware Requirements - Draft",
-    "seoDescription": "Draft Qwen 2.5 32B hardware entry awaiting sourced runtime validation.",
-    "tags": ["llm", "workstation"],
-    "useCases": ["local-llm", "ai-workstation"],
-    "modelFamily": null,
-    "parameterCount": null,
+    "id": "model-qwen2-5-7b-instruct",
+    "slug": "qwen2-5-7b-instruct",
+    "name": "Qwen2.5 7B Instruct",
+    "shortDescription": "Source-backed Qwen profile for calculator-ready local LLM planning.",
+    "seoTitle": "Qwen2.5 7B Instruct VRAM Planning Profile",
+    "seoDescription": "Source-backed Qwen2.5 7B Instruct profile for local AI calculator workflows.",
+    "tags": [
+      "llm",
+      "qwen",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "Qwen2.5",
+    "family": "Qwen",
+    "developer": "Alibaba Cloud / Qwen",
+    "parameterCount": "7B",
+    "parameterCountB": 7,
     "contextLength": null,
-    "modality": null,
+    "contextLengthTokens": null,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 7,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Qwen/Qwen2.5-7B-Instruct Hugging Face model card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen official site",
+        "url": "https://qwenlm.github.io/",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Context length left null until explicit field verification for this exact card mapping."
   },
   {
-    "id": "model-mistral-7b",
-    "slug": "mistral-7b",
-    "name": "Mistral 7B",
-    "shortDescription": "Seed record for a future verified local LLM guide.",
-    "seoTitle": "Mistral 7B Hardware Requirements - Draft",
-    "seoDescription": "Draft Mistral 7B hardware planning record; specifications require verification.",
-    "tags": ["llm", "local-inference"],
-    "useCases": ["local-llm", "ai-coding"],
-    "modelFamily": null,
-    "parameterCount": null,
+    "id": "model-qwen2-5-14b-instruct",
+    "slug": "qwen2-5-14b-instruct",
+    "name": "Qwen2.5 14B Instruct",
+    "shortDescription": "Source-backed mid-large Qwen profile for calculator planning.",
+    "seoTitle": "Qwen2.5 14B Instruct VRAM Planning Profile",
+    "seoDescription": "Source-backed Qwen2.5 14B Instruct profile for local AI memory planning.",
+    "tags": [
+      "llm",
+      "qwen",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "Qwen2.5",
+    "family": "Qwen",
+    "developer": "Alibaba Cloud / Qwen",
+    "parameterCount": "14B",
+    "parameterCountB": 14,
     "contextLength": null,
-    "modality": null,
+    "contextLengthTokens": null,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 14,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Qwen/Qwen2.5-14B-Instruct Hugging Face model card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-14B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen official site",
+        "url": "https://qwenlm.github.io/",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Use as planning input only; runtime/context behavior must be validated separately."
   },
   {
-    "id": "model-stable-diffusion-xl",
-    "slug": "stable-diffusion-xl",
-    "name": "Stable Diffusion XL",
-    "shortDescription": "Seed record for image-generation hardware guidance content.",
-    "seoTitle": "Stable Diffusion XL GPU Requirements - Draft",
-    "seoDescription": "Draft Stable Diffusion XL hardware entry awaiting sourced workflow benchmarks.",
-    "tags": ["image-generation", "creator"],
-    "useCases": ["stable-diffusion", "ai-creation"],
-    "modelFamily": null,
-    "parameterCount": null,
+    "id": "model-qwen2-5-32b-instruct",
+    "slug": "qwen2-5-32b-instruct",
+    "name": "Qwen2.5 32B Instruct",
+    "shortDescription": "Source-backed large Qwen profile for workstation planning.",
+    "seoTitle": "Qwen2.5 32B Instruct VRAM Planning Profile",
+    "seoDescription": "Source-backed Qwen2.5 32B Instruct model profile for local workstation planning.",
+    "tags": [
+      "llm",
+      "qwen",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "Qwen2.5",
+    "family": "Qwen",
+    "developer": "Alibaba Cloud / Qwen",
+    "parameterCount": "32B",
+    "parameterCountB": 32,
     "contextLength": null,
-    "modality": null,
+    "contextLengthTokens": null,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 32,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Qwen/Qwen2.5-32B-Instruct Hugging Face model card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-32B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen official site",
+        "url": "https://qwenlm.github.io/",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Context length kept null until explicitly verified for this model version."
+  },
+  {
+    "id": "model-qwen2-5-72b-instruct",
+    "slug": "qwen2-5-72b-instruct",
+    "name": "Qwen2.5 72B Instruct",
+    "shortDescription": "Source-backed very large Qwen profile for high-VRAM planning.",
+    "seoTitle": "Qwen2.5 72B Instruct VRAM Planning Profile",
+    "seoDescription": "Source-backed Qwen2.5 72B Instruct profile for high-memory local AI planning.",
+    "tags": [
+      "llm",
+      "qwen",
+      "high-end"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "Qwen2.5",
+    "family": "Qwen",
+    "developer": "Alibaba Cloud / Qwen",
+    "parameterCount": "72B",
+    "parameterCountB": 72,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 72,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Qwen/Qwen2.5-72B-Instruct Hugging Face model card",
+        "url": "https://huggingface.co/Qwen/Qwen2.5-72B-Instruct",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen official site",
+        "url": "https://qwenlm.github.io/",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Use only for planning estimates; actual runtime feasibility must be benchmark-validated."
+  },
+  {
+    "id": "model-mistral-7b-instruct-v0-3",
+    "slug": "mistral-7b-instruct-v0-3",
+    "name": "Mistral 7B Instruct v0.3",
+    "shortDescription": "Source-backed Mistral profile for calculator planning.",
+    "seoTitle": "Mistral 7B Instruct v0.3 VRAM Planning Profile",
+    "seoDescription": "Source-backed Mistral 7B Instruct v0.3 profile for local AI planning use.",
+    "tags": [
+      "llm",
+      "mistral",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "Mistral 7B",
+    "family": "Mistral",
+    "developer": "Mistral AI",
+    "parameterCount": "7B",
+    "parameterCountB": 7,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 7,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "mistralai/Mistral-7B-Instruct-v0.3 Hugging Face model card",
+        "url": "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.3",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Mistral AI official site",
+        "url": "https://mistral.ai/",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Model metadata is source-backed; deployment characteristics remain runtime-dependent."
+  },
+  {
+    "id": "model-gemma-2-9b",
+    "slug": "gemma-2-9b",
+    "name": "Gemma 2 9B",
+    "shortDescription": "Source-backed Gemma profile for mid-range local LLM planning.",
+    "seoTitle": "Gemma 2 9B VRAM Planning Profile",
+    "seoDescription": "Source-backed Gemma 2 9B profile for local AI calculator planning.",
+    "tags": [
+      "llm",
+      "gemma",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "Gemma 2",
+    "family": "Gemma",
+    "developer": "Google",
+    "parameterCount": "9B",
+    "parameterCountB": 9,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 9,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "google/gemma-2-9b Hugging Face model card",
+        "url": "https://huggingface.co/google/gemma-2-9b",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Gemma 2 model card reference",
+        "url": "https://huggingface.co/google/gemma-2-27b",
+        "type": "model-card",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Use as planning input only; runtime memory behavior depends on backend configuration."
+  },
+  {
+    "id": "model-gemma-2-27b",
+    "slug": "gemma-2-27b",
+    "name": "Gemma 2 27B",
+    "shortDescription": "Source-backed Gemma large-model profile for workstation planning.",
+    "seoTitle": "Gemma 2 27B VRAM Planning Profile",
+    "seoDescription": "Source-backed Gemma 2 27B model profile for higher-memory local AI planning.",
+    "tags": [
+      "llm",
+      "gemma",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "Gemma 2",
+    "family": "Gemma",
+    "developer": "Google",
+    "parameterCount": "27B",
+    "parameterCountB": 27,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 27,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "google/gemma-2-27b Hugging Face model card",
+        "url": "https://huggingface.co/google/gemma-2-27b",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "google/gemma-2-27b-it Hugging Face model card",
+        "url": "https://huggingface.co/google/gemma-2-27b-it",
+        "type": "model-card",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Planning profile only; verify runtime and quantization setup before hardware purchase decisions."
+  },
+  {
+    "id": "model-sdxl-base-1-0",
+    "slug": "sdxl-base-1-0",
+    "name": "Stable Diffusion XL Base 1.0",
+    "shortDescription": "Source-backed image model profile for planning workflows.",
+    "seoTitle": "SDXL Base 1.0 Planning Profile",
+    "seoDescription": "Source-backed SDXL Base 1.0 profile for image generation planning workflows.",
+    "tags": [
+      "image-generation",
+      "diffusion",
+      "stability-ai"
+    ],
+    "useCases": [
+      "stable-diffusion",
+      "ai-creation"
+    ],
+    "modelFamily": "Stable Diffusion",
+    "family": "Stable Diffusion",
+    "developer": "Stability AI",
+    "parameterCount": null,
+    "parameterCountB": null,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "image",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": false,
+    "calculatorGroup": "image-diffusion",
+    "defaultCalculatorProfile": {
+      "modelType": "image-diffusion",
+      "profileKey": "sdxl-base"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "stabilityai/stable-diffusion-xl-base-1.0 Hugging Face model card",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+        "type": "model-card",
+        "fields": [
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Stability AI official site",
+        "url": "https://stability.ai/",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Image estimate mode is experimental and currently not used as exact calculator input."
+  },
+  {
+    "id": "model-sd-3-5-large",
+    "slug": "stable-diffusion-3-5-large",
+    "name": "Stable Diffusion 3.5 Large",
+    "shortDescription": "Source-backed image generation profile for future calculator expansion.",
+    "seoTitle": "Stable Diffusion 3.5 Large Planning Profile",
+    "seoDescription": "Source-backed SD 3.5 Large model profile for planning-oriented hardware research.",
+    "tags": [
+      "image-generation",
+      "diffusion",
+      "stability-ai"
+    ],
+    "useCases": [
+      "stable-diffusion",
+      "ai-creation"
+    ],
+    "modelFamily": "Stable Diffusion 3.5",
+    "family": "Stable Diffusion",
+    "developer": "Stability AI",
+    "parameterCount": null,
+    "parameterCountB": null,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "image",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": false,
+    "calculatorGroup": "image-diffusion",
+    "defaultCalculatorProfile": {
+      "modelType": "image-diffusion",
+      "profileKey": "sd-3-5-large"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "stabilityai/stable-diffusion-3.5-large Hugging Face model card",
+        "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large",
+        "type": "model-card",
+        "fields": [
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Introducing Stable Diffusion 3.5",
+        "url": "https://stability.ai/news-updates/introducing-stable-diffusion-3-5",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Use as planning profile only; no benchmark-based speed/performance claims."
   },
   {
     "id": "model-flux-1-dev",
     "slug": "flux-1-dev",
     "name": "FLUX.1 dev",
-    "shortDescription": "Seed record for future source-verified image workflow research.",
-    "seoTitle": "FLUX.1 dev GPU Requirements - Draft",
-    "seoDescription": "Draft FLUX.1 dev hardware guidance record awaiting official and benchmark sources.",
-    "tags": ["image-generation", "creator"],
-    "useCases": ["image-generation", "ai-creation"],
-    "modelFamily": null,
+    "shortDescription": "Source-backed image model profile for diffusion planning workflows.",
+    "seoTitle": "FLUX.1 dev Planning Profile",
+    "seoDescription": "Source-backed FLUX.1 dev profile for image workflow planning and GPU research.",
+    "tags": [
+      "image-generation",
+      "flux",
+      "diffusion"
+    ],
+    "useCases": [
+      "image-generation",
+      "ai-creation"
+    ],
+    "modelFamily": "FLUX",
+    "family": "FLUX",
+    "developer": "Black Forest Labs",
     "parameterCount": null,
+    "parameterCountB": null,
     "contextLength": null,
-    "modality": null,
+    "contextLengthTokens": null,
+    "modality": "image",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": false,
+    "calculatorGroup": "image-diffusion",
+    "defaultCalculatorProfile": {
+      "modelType": "image-diffusion",
+      "profileKey": "flux-dev"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "black-forest-labs/FLUX.1-dev Hugging Face model card",
+        "url": "https://huggingface.co/black-forest-labs/flux.1-dev",
+        "type": "model-card",
+        "fields": [
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Black Forest Labs official inference repository",
+        "url": "https://github.com/black-forest-labs/flux",
+        "type": "documentation",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Planning-only profile; image generation throughput claims require benchmark sources."
   },
   {
-    "id": "model-ollama-local-assistant",
-    "slug": "ollama-local-assistant",
-    "name": "Ollama local assistant",
-    "shortDescription": "Seed use-case entry for a local assistant workflow to be validated later.",
-    "seoTitle": "Ollama Local Assistant Hardware - Draft",
-    "seoDescription": "Draft planning entry for local assistant workloads using Ollama-compatible models.",
-    "tags": ["local-assistant", "runtime"],
-    "useCases": ["local-llm", "ai-coding"],
-    "modelFamily": null,
-    "parameterCount": null,
+    "id": "model-mixtral-8x7b-instruct-v0-1",
+    "slug": "mixtral-8x7b-instruct-v0-1",
+    "name": "Mixtral 8x7B Instruct v0.1",
+    "shortDescription": "Source-backed MoE profile for advanced local LLM planning.",
+    "seoTitle": "Mixtral 8x7B Instruct v0.1 Planning Profile",
+    "seoDescription": "Source-backed Mixtral 8x7B Instruct profile for advanced local LLM planning research.",
+    "tags": [
+      "llm",
+      "mistral",
+      "moe"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "Mixtral",
+    "family": "Mistral",
+    "developer": "Mistral AI",
+    "parameterCount": "47B total / 13B active",
+    "parameterCountB": null,
     "contextLength": null,
-    "modality": null,
+    "contextLengthTokens": null,
+    "modality": "text",
     "license": null,
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "calculatorEligible": false,
+    "calculatorGroup": "other",
+    "defaultCalculatorProfile": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Mixtral 8x7B model card (Mistral Docs)",
+        "url": "https://docs.mistral.ai/models/model-cards/mixtral-8x7b-0-1",
+        "type": "documentation",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "mistralai/Mixtral-8x7B-v0.1 Hugging Face model card",
+        "url": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1",
+        "type": "model-card",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "MoE parameter semantics differ from dense LLMs; excluded from default calculator path until explicit formula support is implemented."
+  },
+  {
+    "id": "model-bge-large-en-v1-5",
+    "slug": "bge-large-en-v1-5",
+    "name": "BGE Large EN v1.5",
+    "shortDescription": "Source-backed embedding model profile for future utility workflows.",
+    "seoTitle": "BGE Large EN v1.5 Planning Profile",
+    "seoDescription": "Source-backed BGE embedding model profile for future retrieval and embedding workflow planning.",
+    "tags": [
+      "embedding",
+      "retrieval",
+      "utility"
+    ],
+    "useCases": [
+      "embedding",
+      "ai-coding"
+    ],
+    "modelFamily": "BGE",
+    "family": "BGE",
+    "developer": "BAAI",
+    "parameterCount": null,
+    "parameterCountB": null,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": false,
+    "calculatorGroup": "other",
+    "defaultCalculatorProfile": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "BAAI/bge-large-en-v1.5 Hugging Face model card",
+        "url": "https://huggingface.co/BAAI/bge-large-en-v1.5",
+        "type": "model-card",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Not included in VRAM calculator dropdown until embedding-specific estimation mode is defined."
+  },
+  {
+    "id": "model-nomic-embed-text-v1-5",
+    "slug": "nomic-embed-text-v1-5",
+    "name": "Nomic Embed Text v1.5",
+    "shortDescription": "Source-backed embedding model profile for future retrieval planning.",
+    "seoTitle": "Nomic Embed Text v1.5 Planning Profile",
+    "seoDescription": "Source-backed Nomic embedding model profile for retrieval and utility planning workflows.",
+    "tags": [
+      "embedding",
+      "retrieval",
+      "utility"
+    ],
+    "useCases": [
+      "embedding",
+      "ai-coding"
+    ],
+    "modelFamily": "Nomic Embed",
+    "family": "Nomic",
+    "developer": "Nomic AI",
+    "parameterCount": null,
+    "parameterCountB": null,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": null,
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": false,
+    "calculatorGroup": "other",
+    "defaultCalculatorProfile": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "nomic-ai/nomic-embed-text-v1.5 Hugging Face model card",
+        "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5",
+        "type": "model-card",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Not part of default VRAM calculator because embedding workloads require a separate estimation policy."
   }
 ]

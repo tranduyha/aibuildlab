@@ -4,7 +4,19 @@ import type { Gpu } from "@/types";
 const gpus = gpuData as Gpu[];
 
 export function getAllGpus(): Gpu[] {
-  return [...gpus];
+  return [...gpus].sort((a, b) => {
+    const score = (gpu: Gpu) => {
+      if ((gpu.status === "published" || gpu.status === "reviewed") && !gpu.needsReview) {
+        return 2;
+      }
+      if (!gpu.needsReview && gpu.dataConfidence === "medium") {
+        return 1;
+      }
+      return 0;
+    };
+
+    return score(b) - score(a);
+  });
 }
 
 export function getGpuBySlug(slug: string): Gpu | null {

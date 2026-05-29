@@ -760,3 +760,339 @@ Implement GPU profile page skeleton with static generation, draft-data safety wo
 
 ### Next Step
 Day 5 - GPU profile SEO upgrade.
+
+---
+
+## 2026-05-29 - Day 4.5 install daily_data_update layer
+
+### Agent
+Codex
+
+### Planned Task
+Install `daily_data_update` data operations layer into the main repo without modifying existing seed core files.
+
+### Completed
+- [x] Copied `daily_data_update/data/source-registry.json` to `data/source-registry.json`.
+- [x] Copied `daily_data_update/data/update-candidates/*.json` to `data/update-candidates/`.
+- [x] Copied `daily_data_update/scripts/validate-data.ts` to `scripts/validate-data.ts`.
+- [x] Copied `daily_data_update/scripts/generate-daily-data-report.ts` to `scripts/generate-daily-data-report.ts`.
+- [x] Added package scripts: `data:validate` and `data:report`.
+- [x] Added `tsx` as dev dependency to run data scripts.
+- [x] Kept `data/gpus.json` and `data/ai-models.json` unchanged.
+
+### Checked
+- [x] `npm run data:validate`
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- `data:validate` reports 2 warnings: `data/calculator-assumptions.json` and `data/calculator-validation.json` are not present yet.
+
+### Files Changed
+- `data/source-registry.json`
+- `data/update-candidates/*`
+- `scripts/validate-data.ts`
+- `scripts/generate-daily-data-report.ts`
+- `package.json`
+- `package-lock.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 4.6 - enrich first 10 GPU records with source-backed fields and keep unverified fields null.
+
+---
+
+## 2026-05-29 - Day 4.6 GPU enrichment (10 source-backed publishable profiles)
+
+### Agent
+Codex
+
+### Planned Task
+Enrich GPU records with source-backed fields so `/gpu` and `/gpu/[slug]` can render at least 10 publishable planning profiles with confidence metadata.
+
+### Completed
+- [x] Merged source-backed GPU fields into `data/gpus.json` from `daily_data_update/data/enriched-seeds/gpu-specs-source-backed.v2.json` by slug.
+- [x] Added one additional source-backed record (`intel-arc-a770-16gb`) so the dataset now contains at least 10 publishable profiles while keeping draft records visible.
+- [x] Added/normalized `sources[]`, `lastVerifiedAt`, `dataConfidence`, `needsReview`, and `status` for enriched records.
+- [x] Updated published record notes to verification-first wording and kept draft warning semantics.
+- [x] Extended `types/gpu.ts` for optional source-backed spec fields.
+- [x] Updated `components/GpuSpecTable.tsx` to render additional verified spec fields with safe fallback wording.
+- [x] Updated `repositories/gpu.repository.ts` so `/gpu` can prioritize source-backed profiles first while still including drafts.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 2 expected warnings for missing calculator files)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Data validation still warns that `data/calculator-assumptions.json` and `data/calculator-validation.json` are not present yet.
+
+### Files Changed
+- `data/gpus.json`
+- `types/gpu.ts`
+- `components/GpuSpecTable.tsx`
+- `repositories/gpu.repository.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 5 - GPU profile SEO upgrade using enriched source-backed records.
+
+---
+
+## 2026-05-29 - Day 4.7 calculator data foundation
+
+### Agent
+Codex
+
+### Planned Task
+Make VRAM calculator source-aware and versioned by adding assumption/validation datasets and upgrading calculator logic to consume model/runtime/context profiles.
+
+### Completed
+- [x] Added `data/calculator-assumptions.json` from enriched seed.
+- [x] Added `data/calculator-validation.json` from validation samples seed.
+- [x] Added `types/calculator-assumption.ts` and `types/calculator-validation.ts`.
+- [x] Added `repositories/calculator-assumption.repository.ts` and `services/calculator-assumption.service.ts`.
+- [x] Upgraded `services/vram-calculator.service.ts` to consume exact model selection, quantization profile, context preset, runtime profile, and safety margin.
+- [x] Extended calculator output with `assumptionVersion`, `warnings`, `assumptionsUsed`, and source-aware GPU matches.
+- [x] Upgraded `components/VramCalculator.tsx` with exact AI model dropdown and runtime profile selection.
+- [x] Updated type exports and VRAM calculator type model to match the new data foundation.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- None.
+
+### Files Changed
+- `data/calculator-assumptions.json`
+- `data/calculator-validation.json`
+- `types/calculator-assumption.ts`
+- `types/calculator-validation.ts`
+- `types/vram-calculator.ts`
+- `types/index.ts`
+- `repositories/calculator-assumption.repository.ts`
+- `services/calculator-assumption.service.ts`
+- `services/vram-calculator.service.ts`
+- `components/VramCalculator.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 4.8 - AI model enrichment for calculator-ready source-backed model options.
+
+---
+
+## 2026-05-29 - Day 4.8 and Day 4.9 model enrichment + calculator GPU matching
+
+### Agent
+Codex
+
+### Planned Task
+1) Enrich AI model records for calculator dropdown with source-backed fields. 2) Complete safe model-to-GPU matching UX for calculator results.
+
+### Completed
+- [x] Replaced `data/ai-models.json` with 8 source-backed calculator-eligible model profiles (LLM + image diffusion groups).
+- [x] Added source-backed model fields: `developer`, `family/modelFamily`, `parameterCountB`, `contextLengthTokens` where sourced, `calculatorEligible`, `defaultCalculatorProfile`, `lastVerifiedAt`, `dataConfidence`, `sources`.
+- [x] Extended `types/ai-model.ts` with optional calculator/model metadata fields.
+- [x] Updated calculator assumption service to return grouped model options and profile-driven model sizes.
+- [x] Updated VRAM service matching logic to split results into source-backed matches vs planning candidates.
+- [x] Updated calculator UI with grouped model dropdown (`LLM`, `Image diffusion`, `Embedding / other`), explicit non-benchmark warning, source-backed/planning badges, and no-source-backed-match fallback message.
+- [x] Added explanation block "How to read this estimate" and preserved internal links to `/gpu`, `/builds`, `/guides`.
+- [x] Added styles for GPU match cards and badges.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- None.
+
+### Files Changed
+- `data/ai-models.json`
+- `types/ai-model.ts`
+- `types/vram-calculator.ts`
+- `services/calculator-assumption.service.ts`
+- `services/vram-calculator.service.ts`
+- `components/VramCalculator.tsx`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 5 - GPU profile SEO upgrade with enriched GPU + model data.
+
+---
+
+## 2026-05-29 - Day 4.6-4.9 patch (GPU + AI model data depth)
+
+### Agent
+Codex
+
+### Planned Task
+Patch previous daily_data_update v2 result to satisfy new Day 4.6-4.9 depth requirements without reinstalling tooling.
+
+### Completed
+- [x] Audited current dataset and calculator flow before patching.
+- [x] Confirmed GPU dataset already meets source-backed target: 11 total, 10 source-backed published/reviewed, 10 with usable `vramGb`.
+- [x] Expanded `data/ai-models.json` from 8 to 16 source-backed model/use-case records.
+- [x] Increased calculator-ready models to 10 records with `calculatorEligible: true`.
+- [x] Kept exact model selection flow in calculator (model -> quantization -> runtime -> context -> safety margin -> estimate).
+- [x] Kept GPU match output split into `Source-backed GPU matches` and `Planning-only GPU candidates` using GPU `vramGb`.
+- [x] Preserved safe wording: planning estimate only, not benchmark/recommendation.
+
+### Audit Snapshot (before patch)
+- GPU total: `11`
+- GPU source-backed published/reviewed: `10`
+- GPU with usable `vramGb`: `10`
+- AI model total: `8`
+- AI model source-backed size/parameter basis: `6`
+- AI model `calculatorEligible: true`: `8`
+- Calculator exact model selection: `Yes`
+- GPU matching based on source-backed `vramGb`: `Yes`
+
+### Audit Snapshot (after patch)
+- GPU total: `11`
+- GPU source-backed published/reviewed: `10`
+- GPU with usable `vramGb`: `10`
+- AI model total: `16`
+- AI model source-backed size/parameter basis: `10`
+- AI model `calculatorEligible: true`: `10`
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output confirms static `/gpu`, static `/tools/vram-calculator`, and SSG `/gpu/[slug]` paths.
+
+### Issues
+- Image generation models are present as planning profiles but remain non-eligible for exact calculator estimate mode until formula mode is explicitly implemented/validated.
+- Estimates remain planning-oriented and not benchmark/performance claims.
+
+### Files Changed
+- `data/ai-models.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 5 - GPU profile SEO upgrade.
+
+---
+
+## 2026-05-29 - Day 4.10 source gap audit refresh
+
+### Agent
+Codex
+
+### Planned Task
+Audit current GPU/AI model/calculator data depth and track remaining source gaps without overwriting production records.
+
+### Completed
+- [x] Re-read required project + daily_data_update governance docs before changes.
+- [x] Audited `data/gpus.json`, `data/ai-models.json`, and calculator flow/service status.
+- [x] Confirmed targets remain satisfied: GPU source-backed count, AI model depth, calculator eligible count, exact-model matching flow.
+- [x] Ran prompt workflow from `daily_data_update/prompts/10_SOURCE_GAP_AUDIT.md`.
+- [x] Added `data/update-candidates/source-gap-candidates.json` with tracked missing/weak fields for next enrichment rounds.
+- [x] Kept production data unchanged in this session (candidate-first gap tracking only).
+
+### Audit Result (before source-gap file update)
+- GPU total: `11`
+- GPU with `vramGb`: `10`
+- GPU with `sources[]`: `10`
+- GPU source-backed/reviewed/published usable set: `10`
+- AI model total: `16`
+- AI model with `parameterCountB` or size class: `10`
+- AI model `calculatorEligible: true`: `10`
+- Calculator model mode: exact model selection by slug
+- GPU matching: uses source-backed `vramGb` threshold
+- Output includes: assumption version + warning
+
+### Prompt Used
+- `daily_data_update/prompts/10_SOURCE_GAP_AUDIT.md`
+
+### Source Gaps Remaining
+- Added `243` tracked gaps in candidate file, mainly:
+- GPU: memory bus/bandwidth, compute field coverage per vendor, launch date/year, power fields, and safe price/availability placeholders.
+- AI models: context/license/runtime/quantization metadata gaps and non-calculator model parameter-size gaps.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Gaps remain intentionally unresolved until next enrichment pass with source-backed evidence.
+- Estimates remain planning-only and not benchmark claims.
+
+### Files Changed
+- `data/update-candidates/source-gap-candidates.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 4.x follow-up: run GPU/AI enrichment pass against tracked source gaps, then re-validate calculator coverage.
+
+---
+
+## 2026-05-29 - Day 4.11 GPU multi-source enrichment (official + AIB coverage)
+
+### Agent
+Codex
+
+### Planned Task
+Run prompt 10 then prompt 11 to improve GPU source coverage with official vendor first and AIB variant-specific enrichment where safe.
+
+### Completed
+- [x] Re-read required governance and source policy docs before data edits.
+- [x] Ran source-gap audit flow (`daily_data_update/prompts/10_SOURCE_GAP_AUDIT.md`) for GPU fields.
+- [x] Updated `data/update-candidates/source-gap-candidates.json` with post-enrichment GPU gaps.
+- [x] Ran GPU multi-source enrichment flow (`daily_data_update/prompts/11_GPU_MULTI_SOURCE_ENRICHMENT.md`) on `data/gpus.json`.
+- [x] Enriched 10 Month 1 GPU records with additional source-backed fields (official + AIB/database cross-check).
+- [x] Added variant-specific source scope metadata for AIB-backed fields (MSI, PNY, Gigabyte, ASRock).
+- [x] Kept unsupported fields (`benchmark`, `tokensPerSecond`, `price`, `availability`) as `null`.
+
+### Audit Result Before Enrichment
+- GPU records audited: `11`
+- Source gaps written (GPU-only audit pass): `204`
+- Core source-backed profiles already present: `10`
+
+### Enrichment Summary
+- GPU records enriched: `10`
+- Added/expanded fields where source-backed:
+- `memoryBusBit`, `memoryBandwidthGbps`, `baseClockGhz`, `boostClockGhz`
+- `memorySpeedGbps`, `tgpWatts`, `tbpWatts`, `powerConsumptionWatts`
+- `powerConnectors`
+- AIB/manufacturer sources used in this patch:
+- `MSI`, `PNY`, `Gigabyte`, `ASRock`
+- Official vendor sources reinforced:
+- `NVIDIA`, `AMD`, `Intel`
+
+### Source Gaps Remaining
+- Post-enrichment GPU source gaps: `134`
+- Main remaining gaps:
+- `launchDate` / `launchYear` not uniformly source-backed for all cards
+- variant-only fields still missing for some cards (`cardDimensionsMm`, `displayOutputs`, some connector/PSU mappings)
+- dynamic/unsafe fields intentionally null (`price`, `availability`, benchmark-derived fields)
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 0 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- None blocking build/lint/validation.
+
+### Files Changed
+- `data/gpus.json`
+- `data/update-candidates/source-gap-candidates.json`
+- `types/gpu.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Continue Day 4.x with focused AIB variant-field expansion (dimensions/outputs/connectors/PSU) and keep source-gap list current.

@@ -1,5 +1,7 @@
 import type { ContentStatus, DataConfidence, DataSource } from "./gpu";
 
+export type CalculatorModelGroup = "llm" | "image-diffusion" | "other";
+
 export interface AiModel {
   id: string;
   slug: string;
@@ -24,4 +26,16 @@ export interface AiModel {
   sources: DataSource[];
   lastVerifiedAt: string | null;
   notes?: string;
+
+  developer?: string | null;
+  family?: string | null;
+  parameterCountB?: number | null;
+  contextLengthTokens?: number | null;
+  calculatorEligible?: boolean;
+  calculatorGroup?: CalculatorModelGroup;
+  defaultCalculatorProfile?: {
+    modelSizeB?: number;
+    modelType?: CalculatorModelGroup;
+    profileKey?: string;
+  } | null;
 }

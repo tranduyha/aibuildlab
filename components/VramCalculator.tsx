@@ -5,33 +5,48 @@ import { useMemo, useState } from "react";
 import {
   calculateEstimatedVram,
   formatVramResult,
+  getCalculatorModelGroups,
+  getCalculatorModelOptions,
+  getCalculatorProfiles,
+  getDefaultCalculatorInput,
   getVramRecommendation,
+  isContextPreset,
+  isQuantization,
+  isRuntimeKey,
 } from "@/services/vram-calculator.service";
-import type {
-  ContextPreset,
-  ModelSizeBillion,
-  Quantization,
-  VramCalculatorInput,
-} from "@/types";
+import type { VramCalculatorInput } from "@/types";
 
-const DEFAULT_INPUT: VramCalculatorInput = {
-  modelSizeBillion: 8,
-  quantization: "int4",
-  contextPreset: "medium",
-  safetyMarginPercent: 20,
+const MODEL_OPTIONS = getCalculatorModelOptions();
+const MODEL_GROUPS = getCalculatorModelGroups();
+const PROFILES = getCalculatorProfiles();
+
+const GROUP_LABELS: Record<string, string> = {
+  llm: "LLM",
+  "image-diffusion": "Image diffusion",
+  other: "Embedding / other",
 };
 
-const MODEL_SIZES: ModelSizeBillion[] = [7, 8, 13, 32, 70];
-
 export default function VramCalculator() {
-  const [input, setInput] = useState<VramCalculatorInput>(DEFAULT_INPUT);
-  const result = useMemo(() => calculateEstimatedVram(input), [input]);
+  const [input, setInput] = useState<VramCalculatorInput>(getDefaultCalculatorInput());
+
+  const selectedModel = useMemo(
+    () => MODEL_OPTIONS.find((model) => model.slug === input.modelSlug) ?? MODEL_OPTIONS[0],
+    [input.modelSlug],
+  );
+
+  const normalizedInput = useMemo(
+    () => ({
+      ...input,
+      modelSlug: selectedModel?.slug ?? input.modelSlug,
+      modelSizeBillion: selectedModel?.modelSizeBillion ?? input.modelSizeBillion,
+    }),
+    [input, selectedModel],
+  );
+
+  const result = useMemo(() => calculateEstimatedVram(normalizedInput), [normalizedInput]);
   const recommendation = getVramRecommendation(result);
 
-  function updateInput<Key extends keyof VramCalculatorInput>(
-    key: Key,
-    value: VramCalculatorInput[Key],
-  ) {
+  function updateInput<Key extends keyof VramCalculatorInput>(key: Key, value: VramCalculatorInput[Key]) {
     setInput((current) => ({ ...current, [key]: value }));
   }
 
@@ -39,19 +54,23 @@ export default function VramCalculator() {
     <section className="calculator-card" aria-label="VRAM estimate calculator">
       <div className="calculator-form">
         <label>
-          Model size
+          AI model
           <select
-            aria-label="Select model size"
-            value={input.modelSizeBillion}
-            onChange={(event) =>
-              updateInput("modelSizeBillion", Number(event.target.value) as ModelSizeBillion)
-            }
+            aria-label="Select AI model"
+            value={normalizedInput.modelSlug}
+            onChange={(event) => updateInput("modelSlug", event.target.value)}
           >
-            {MODEL_SIZES.map((size) => (
-              <option key={size} value={size}>
-                {size}B parameters
-              </option>
-            ))}
+            {Object.entries(MODEL_GROUPS).map(([key, items]) =>
+              items.length > 0 ? (
+                <optgroup key={key} label={GROUP_LABELS[key] ?? key}>
+                  {items.map((model) => (
+                    <option key={model.slug} value={model.slug}>
+                      {model.name} ({model.modelSizeBillion}B)
+                    </option>
+                  ))}
+                </optgroup>
+              ) : null,
+            )}
           </select>
         </label>
 
@@ -59,14 +78,19 @@ export default function VramCalculator() {
           Quantization
           <select
             aria-label="Select quantization"
-            value={input.quantization}
-            onChange={(event) =>
-              updateInput("quantization", event.target.value as Quantization)
-            }
+            value={normalizedInput.quantization}
+            onChange={(event) => {
+              const value = event.target.value;
+              if (isQuantization(value)) {
+                updateInput("quantization", value);
+              }
+            }}
           >
-            <option value="fp16">FP16</option>
-            <option value="int8">INT8</option>
-            <option value="int4">INT4</option>
+            {PROFILES.quantizationProfiles.map((profile) => (
+              <option key={profile.key} value={profile.key}>
+                {profile.label}
+              </option>
+            ))}
           </select>
         </label>
 
@@ -74,37 +98,61 @@ export default function VramCalculator() {
           Context preset
           <select
             aria-label="Select context preset"
-            value={input.contextPreset}
-            onChange={(event) =>
-              updateInput("contextPreset", event.target.value as ContextPreset)
-            }
+            value={normalizedInput.contextPreset}
+            onChange={(event) => {
+              const value = event.target.value;
+              if (isContextPreset(value)) {
+                updateInput("contextPreset", value);
+              }
+            }}
           >
-            <option value="short">Short (+1 GB overhead)</option>
-            <option value="medium">Medium (+2 GB overhead)</option>
-            <option value="long">Long (+4 GB overhead)</option>
+            {PROFILES.contextPresets.map((profile) => (
+              <option key={profile.key} value={profile.key}>
+                {profile.label} ({profile.contextTokens.toLocaleString()} tokens)
+              </option>
+            ))}
           </select>
         </label>
 
         <label>
-          Safety margin: {input.safetyMarginPercent}%
+          Runtime profile
+          <select
+            aria-label="Select runtime profile"
+            value={normalizedInput.runtime}
+            onChange={(event) => {
+              const value = event.target.value;
+              if (isRuntimeKey(value)) {
+                updateInput("runtime", value);
+              }
+            }}
+          >
+            {PROFILES.runtimeProfiles.map((profile) => (
+              <option key={profile.key} value={profile.key}>
+                {profile.label}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label>
+          Safety margin: {normalizedInput.safetyMarginPercent}%
           <input
             aria-label="Set safety margin percentage"
             min={0}
             max={50}
             step={5}
             type="range"
-            value={input.safetyMarginPercent}
-            onChange={(event) =>
-              updateInput("safetyMarginPercent", Number(event.target.value))
-            }
+            value={normalizedInput.safetyMarginPercent}
+            onChange={(event) => updateInput("safetyMarginPercent", Number(event.target.value))}
           />
         </label>
       </div>
 
       <div className="calculator-result" aria-live="polite">
         <div className="estimate-badges" aria-label="Estimate status">
-          <span>Rough estimate</span>
-          <span>Needs runtime validation</span>
+          <span>Planning estimate</span>
+          <span>Not benchmark data</span>
+          <span>Assumption profile {result.assumptionVersion}</span>
         </div>
         <p className="estimate-value">{result.estimatedVramGb.toFixed(1)} GB</p>
         <p className="estimate-minimum">
@@ -116,14 +164,16 @@ export default function VramCalculator() {
             <dd>{recommendation.gpuTier}</dd>
           </div>
           <div>
-            <dt>Selected mode</dt>
-            <dd>
-              {result.quantization.toUpperCase()} / {result.contextPreset} context
-            </dd>
+            <dt>Selected model</dt>
+            <dd>{selectedModel?.name ?? "Model not found"}</dd>
+          </div>
+          <div>
+            <dt>Runtime</dt>
+            <dd>{result.assumptionsUsed.runtimeLabel}</dd>
           </div>
           <div>
             <dt>Confidence</dt>
-            <dd>Low confidence until tested</dd>
+            <dd>{result.confidence.toUpperCase()}</dd>
           </div>
         </dl>
         <p className="calculator-summary">{formatVramResult(result)}</p>
@@ -133,12 +183,45 @@ export default function VramCalculator() {
             <li key={note}>{note}</li>
           ))}
         </ul>
+
+        <section className="calculator-match-section" aria-label="Source-backed GPU matches">
+          <h3>Source-backed GPU matches</h3>
+          {result.sourceBackedGpuMatches.length === 0 ? (
+            <p className="muted">No exact source-backed GPU match yet.</p>
+          ) : (
+            <div className="gpu-match-grid">
+              {result.sourceBackedGpuMatches.map((gpu) => (
+                <Link key={gpu.slug} className="gpu-match-card" href={`/gpu/${gpu.slug}`}>
+                  <strong>{gpu.name}</strong>
+                  <span>{gpu.vramGb} GB VRAM</span>
+                  <span className="gpu-match-badge">Source-backed</span>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {result.planningGpuCandidates.length > 0 ? (
+          <section className="calculator-match-section" aria-label="Planning GPU candidates">
+            <h3>Planning candidates (needs verification)</h3>
+            <div className="gpu-match-grid">
+              {result.planningGpuCandidates.map((gpu) => (
+                <Link key={gpu.slug} className="gpu-match-card" href={`/gpu/${gpu.slug}`}>
+                  <strong>{gpu.name}</strong>
+                  <span>{gpu.vramGb} GB VRAM</span>
+                  <span className="gpu-match-badge gpu-match-badge-draft">Planning-only</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <nav className="result-actions" aria-label="Next planning steps">
           <Link className="result-action-primary" href="/gpu">
-            View GPUs with this VRAM tier
+            View all GPU planning profiles
           </Link>
-          <Link href="/guides">Compare local vs cloud GPU</Link>
-          <Link href="/guides">Read GPU planning guides</Link>
+          <Link href="/builds">Explore build planning pages</Link>
+          <Link href="/guides">Read local AI planning guides</Link>
         </nav>
       </div>
     </section>

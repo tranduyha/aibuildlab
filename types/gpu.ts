@@ -1,4 +1,4 @@
-export type ContentStatus = "draft" | "published";
+export type ContentStatus = "draft" | "published" | "reviewed";
 export type DataConfidence = "low" | "medium" | "high";
 
 export interface DataSource {
@@ -33,13 +33,28 @@ export interface Gpu {
   vramGb: number | null;
   memoryType: string | null;
   memoryBusBit: number | null;
+  memoryBandwidthGbps?: number | null;
+  memorySpeedGbps?: number | null;
   cudaCores: number | null;
   streamProcessors: number | null;
   computeUnits: number | null;
+  xeCores?: number | null;
+  tensorCores?: number | null;
+  rtCores?: number | null;
+  baseClockGhz?: number | null;
+  boostClockGhz?: number | null;
   tgpWatts: number | null;
   tbpWatts: number | null;
+  boardPowerWatts?: number | null;
+  powerConsumptionWatts?: number | null;
+  powerConnectors?: string | null;
+  recommendedPsuWatts?: number | null;
+  cardDimensionsMm?: string | null;
+  displayOutputs?: string | null;
   architecture: string | null;
+  launchDate?: string | null;
   launchYear: number | null;
+  msrp?: number | null;
   aiTops: number | null;
   benchmark: null;
   tokensPerSecond: number | null;

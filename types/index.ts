@@ -6,11 +6,17 @@ export type { Comparison } from "./comparison";
 export type { Build } from "./build";
 export type { Guide } from "./guide";
 export type { ImageCategory, ImageManifestEntry } from "./image";
+export type { CalculatorAssumption, ContextPresetProfile, QuantizationProfile, RuntimeProfile } from "./calculator-assumption";
+export type { CalculatorValidationSample } from "./calculator-validation";
 export type {
   ContextPreset,
   ModelSizeBillion,
   Quantization,
+  RuntimeKey,
   VramCalculatorInput,
   VramEstimateResult,
   VramRecommendation,
+  CalculatorModelOption,
+  VramAssumptionsUsed,
+  VramGpuMatch,
 } from "./vram-calculator";

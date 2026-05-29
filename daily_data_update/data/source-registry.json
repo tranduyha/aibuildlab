@@ -1,0 +1,406 @@
+{
+  "gpuSpecs": [
+    {
+      "name": "NVIDIA GeForce Graphics Cards",
+      "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "nvidia gpu name",
+        "cuda cores",
+        "memory size",
+        "memory type",
+        "boost clock",
+        "architecture",
+        "official launch/spec context"
+      ]
+    },
+    {
+      "name": "NVIDIA GeForce Compare",
+      "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/compare/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "cross-model official specs"
+      ]
+    },
+    {
+      "name": "AMD Radeon Graphics Product Specifications",
+      "url": "https://www.amd.com/en/products/graphics/desktops/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "amd gpu memory",
+        "compute units",
+        "memory bandwidth",
+        "power guidance",
+        "launch context"
+      ]
+    },
+    {
+      "name": "Intel Arc Graphics Product Specifications",
+      "url": "https://www.intel.com/content/www/us/en/products/details/discrete-gpus/arc.html",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "intel arc gpu identity",
+        "memory",
+        "xe cores",
+        "graphics clock",
+        "official specs"
+      ]
+    },
+    {
+      "name": "ASUS Graphics Cards",
+      "url": "https://www.asus.com/motherboards-components/graphics-cards/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific clocks",
+        "dimensions",
+        "connectors",
+        "ports",
+        "recommended psu"
+      ]
+    },
+    {
+      "name": "MSI Graphics Cards",
+      "url": "https://www.msi.com/Graphics-Cards",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific core clock",
+        "variant-specific boost clock",
+        "memory size/type/speed when listed",
+        "memory bus when listed",
+        "CUDA cores when listed",
+        "power consumption",
+        "power connectors",
+        "recommended PSU",
+        "card dimensions",
+        "display outputs",
+        "cooler/physical design notes"
+      ],
+      "scope": "variant-specific",
+      "disallowedUses": [
+        "generic benchmark claim",
+        "tokens per second",
+        "image generation speed",
+        "current market price unless using approved price API",
+        "availability",
+        "universal reference GPU claim if the field is variant-specific"
+      ],
+      "notes": "Use MSI product specification pages to fill variant-specific GPU fields. Mark source scope as variant-specific in data records."
+    },
+    {
+      "name": "Gigabyte Graphics Cards",
+      "url": "https://www.gigabyte.com/Graphics-Card",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific specs"
+      ]
+    },
+    {
+      "name": "Sapphire Graphics Cards",
+      "url": "https://www.sapphiretech.com/en/consumer",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "amd aib variant specs"
+      ]
+    },
+    {
+      "name": "PowerColor Graphics Cards",
+      "url": "https://www.powercolor.com/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "amd aib variant specs"
+      ]
+    },
+    {
+      "name": "PNY Graphics Cards",
+      "url": "https://www.pny.com/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "nvidia aib variant specs"
+      ]
+    },
+    {
+      "name": "Zotac Graphics Cards",
+      "url": "https://www.zotac.com/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "nvidia aib variant specs"
+      ]
+    },
+    {
+      "name": "ASRock Graphics Cards",
+      "url": "https://www.asrock.com/Graphics-Card/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "intel/amd aib variant specs"
+      ]
+    },
+    {
+      "name": "XFX Graphics Cards",
+      "url": "https://www.xfxforce.com/graphics-cards",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "amd aib variant specs"
+      ]
+    },
+    {
+      "name": "TechPowerUp GPU Database",
+      "url": "https://www.techpowerup.com/gpu-specs/",
+      "type": "database",
+      "priority": 3,
+      "allowedUses": [
+        "cross-check",
+        "memory bus",
+        "bandwidth",
+        "die",
+        "launch info",
+        "database specs when official incomplete"
+      ]
+    },
+    {
+      "name": "NotebookCheck GPU Database",
+      "url": "https://www.notebookcheck.net/",
+      "type": "database",
+      "priority": 3,
+      "allowedUses": [
+        "mobile gpu cross-check",
+        "performance class context"
+      ]
+    },
+    {
+      "name": "VideoCardz",
+      "url": "https://videocardz.com/",
+      "type": "database",
+      "priority": 3,
+      "allowedUses": [
+        "spec cross-check with source trail",
+        "launch context"
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "Puget Systems",
+      "url": "https://www.pugetsystems.com/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "workstation benchmark",
+        "ai/creator workload when test conditions clear"
+      ]
+    },
+    {
+      "name": "Gamers Nexus",
+      "url": "https://www.gamersnexus.net/",
+      "type": "benchmark",
+      "priority": 2,
+      "allowedUses": [
+        "power/thermal/performance review"
+      ]
+    },
+    {
+      "name": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/",
+      "type": "benchmark",
+      "priority": 2,
+      "allowedUses": [
+        "review and benchmark with conditions"
+      ]
+    },
+    {
+      "name": "Phoronix",
+      "url": "https://www.phoronix.com/",
+      "type": "benchmark",
+      "priority": 2,
+      "allowedUses": [
+        "linux compute benchmarks"
+      ]
+    },
+    {
+      "name": "ServeTheHome",
+      "url": "https://www.servethehome.com/",
+      "type": "benchmark",
+      "priority": 2,
+      "allowedUses": [
+        "server/workstation/ai hardware review"
+      ]
+    },
+    {
+      "name": "TechPowerUp Reviews",
+      "url": "https://www.techpowerup.com/review/",
+      "type": "benchmark",
+      "priority": 2,
+      "allowedUses": [
+        "gpu review and measured data"
+      ]
+    }
+  ],
+  "aiModels": [
+    {
+      "name": "Meta Llama",
+      "url": "https://ai.meta.com/llama/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "llama releases",
+        "model family",
+        "license context"
+      ]
+    },
+    {
+      "name": "Meta Llama Hugging Face",
+      "url": "https://huggingface.co/meta-llama",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "model cards",
+        "parameter count",
+        "context",
+        "license",
+        "intended use"
+      ]
+    },
+    {
+      "name": "Qwen Hugging Face",
+      "url": "https://huggingface.co/Qwen",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "qwen model cards"
+      ]
+    },
+    {
+      "name": "Mistral AI",
+      "url": "https://mistral.ai/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "mistral releases and docs"
+      ]
+    },
+    {
+      "name": "Mistral Hugging Face",
+      "url": "https://huggingface.co/mistralai",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "mistral model cards"
+      ]
+    },
+    {
+      "name": "Stability AI",
+      "url": "https://stability.ai/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "stable diffusion release notes"
+      ]
+    },
+    {
+      "name": "Stability AI Hugging Face",
+      "url": "https://huggingface.co/stabilityai",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "image model cards"
+      ]
+    },
+    {
+      "name": "Ollama Library",
+      "url": "https://ollama.com/library",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "runtime availability",
+        "model tags",
+        "local model variants"
+      ]
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "local runtime notes"
+      ]
+    },
+    {
+      "name": "vLLM Docs",
+      "url": "https://docs.vllm.ai/",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "serving/runtime memory notes"
+      ]
+    }
+  ],
+  "priceAffiliate": [
+    {
+      "name": "Amazon Product Advertising API",
+      "url": "https://webservices.amazon.com/paapi5/documentation/",
+      "type": "affiliate-api",
+      "priority": 1,
+      "allowedUses": [
+        "price",
+        "availability",
+        "affiliate url",
+        "product image"
+      ]
+    },
+    {
+      "name": "eBay Browse API",
+      "url": "https://developer.ebay.com/api-docs/buy/browse/overview.html",
+      "type": "marketplace-api",
+      "priority": 1,
+      "allowedUses": [
+        "used price",
+        "availability",
+        "seller listing",
+        "product image"
+      ]
+    },
+    {
+      "name": "Newegg Partner/Feed",
+      "url": "https://www.newegg.com/",
+      "type": "affiliate-api",
+      "priority": 2,
+      "allowedUses": [
+        "price",
+        "availability",
+        "affiliate url"
+      ]
+    },
+    {
+      "name": "B&H Affiliate/Product Feed",
+      "url": "https://www.bhphotovideo.com/",
+      "type": "affiliate-api",
+      "priority": 2,
+      "allowedUses": [
+        "creator hardware price",
+        "availability"
+      ]
+    }
+  ],
+  "blockedSources": [
+    "Google search snippets",
+    "Reddit/forum comments as primary specs",
+    "social posts as primary specs",
+    "marketplace listings as primary specs",
+    "AI-generated summaries",
+    "affiliate blogs without source trail",
+    "YouTube comments"
+  ]
+}

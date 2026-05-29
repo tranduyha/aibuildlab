@@ -1,0 +1,147 @@
+{
+  "version": "2026-05-mvp-v2",
+  "status": "draft",
+  "dataConfidence": "low",
+  "needsReview": true,
+  "lastReviewedAt": "2026-05-29",
+  "purpose": "Make VRAM calculator assumptions explicit and versioned. This is a planning estimate, not a benchmark.",
+  "supportedModelTypes": [
+    "llm",
+    "image-diffusion"
+  ],
+  "llmEstimatePolicy": {
+    "description": "Estimate weights memory from parameter count and quantization bits, then add context/runtime overhead and safety margin.",
+    "formula": "estimatedVramGb = ((modelSizeB * quantizationBits) / 8) * overheadMultiplier + contextOverheadGb + runtimeOverheadGb + safetyMarginGb",
+    "warning": "This does not model every architecture, KV cache implementation, batch size, offloading setup, or runtime-specific optimization."
+  },
+  "quantizationProfiles": [
+    {
+      "key": "fp16",
+      "label": "FP16/BF16",
+      "bitsPerParameter": 16,
+      "overheadMultiplier": 1.15,
+      "confidence": "low",
+      "notes": "Planning profile only."
+    },
+    {
+      "key": "int8",
+      "label": "8-bit",
+      "bitsPerParameter": 8,
+      "overheadMultiplier": 1.2,
+      "confidence": "low",
+      "notes": "Implementation-specific."
+    },
+    {
+      "key": "int4",
+      "label": "4-bit / Q4 planning profile",
+      "bitsPerParameter": 4,
+      "overheadMultiplier": 1.3,
+      "confidence": "low",
+      "notes": "GGUF/GPTQ/AWQ/bitsandbytes can differ."
+    }
+  ],
+  "contextPresets": [
+    {
+      "key": "basic",
+      "label": "Basic context",
+      "contextTokens": 4096,
+      "contextOverheadGb": 0.5,
+      "notes": "MVP placeholder; validate per runtime/model."
+    },
+    {
+      "key": "medium",
+      "label": "Medium context",
+      "contextTokens": 8192,
+      "contextOverheadGb": 1.0,
+      "notes": "MVP placeholder; KV cache grows with context."
+    },
+    {
+      "key": "large",
+      "label": "Large context",
+      "contextTokens": 32768,
+      "contextOverheadGb": 3.0,
+      "notes": "MVP placeholder; large context can dominate memory."
+    }
+  ],
+  "runtimeProfiles": [
+    {
+      "key": "llama-cpp",
+      "label": "llama.cpp / GGUF planning",
+      "runtimeOverheadGb": 1.0,
+      "confidence": "low",
+      "notes": "Local inference runtime; exact memory varies by build/model/offload."
+    },
+    {
+      "key": "ollama",
+      "label": "Ollama planning",
+      "runtimeOverheadGb": 1.0,
+      "confidence": "low",
+      "notes": "Ollama uses model/runtime abstractions; exact memory varies."
+    },
+    {
+      "key": "vllm",
+      "label": "vLLM serving planning",
+      "runtimeOverheadGb": 2.0,
+      "confidence": "low",
+      "notes": "vLLM serving can allocate memory for KV cache and batching."
+    },
+    {
+      "key": "transformers",
+      "label": "Transformers planning",
+      "runtimeOverheadGb": 2.0,
+      "confidence": "low",
+      "notes": "Exact memory varies by dtype, device map, attention implementation."
+    }
+  ],
+  "safetyMarginDefaultPercent": 20,
+  "gpuSuggestionPolicy": {
+    "minHeadroomPercent": 10,
+    "preferDataConfidence": [
+      "high",
+      "medium"
+    ],
+    "allowDraftGpuCandidates": true,
+    "draftGpuLabel": "Planning-only candidate; verify specs before purchase."
+  },
+  "sources": [
+    {
+      "name": "Hugging Face Accelerate Model Memory Estimator",
+      "url": "https://huggingface.co/docs/accelerate/en/usage_guides/model_size_estimator",
+      "type": "documentation",
+      "fields": [
+        "llmEstimatePolicy"
+      ],
+      "accessedAt": "2026-05-29"
+    },
+    {
+      "name": "vLLM Optimization and Tuning",
+      "url": "https://docs.vllm.ai/en/stable/configuration/optimization/",
+      "type": "documentation",
+      "fields": [
+        "runtimeProfiles",
+        "contextPresets"
+      ],
+      "accessedAt": "2026-05-29"
+    },
+    {
+      "name": "vLLM Quantized KV Cache",
+      "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
+      "type": "documentation",
+      "fields": [
+        "runtimeProfiles",
+        "contextPresets"
+      ],
+      "accessedAt": "2026-05-29"
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "type": "documentation",
+      "fields": [
+        "runtimeProfiles"
+      ],
+      "accessedAt": "2026-05-29"
+    }
+  ],
+  "notes": "Keep status draft/low until formulas are validated against runtime-specific benchmarks."
+}

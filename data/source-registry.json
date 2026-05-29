@@ -1,0 +1,554 @@
+{
+  "version": "2026-05-mvp-v2",
+  "purpose": "Approved source registry for aibuildlab daily data updates. Use this before enriching JSON data.",
+  "sourceTypes": [
+    "official",
+    "manufacturer",
+    "database",
+    "benchmark",
+    "model-card",
+    "documentation",
+    "paper",
+    "affiliate-api",
+    "marketplace-api",
+    "manual-check",
+    "pricing-page"
+  ],
+  "blockedAsPrimarySources": [
+    {
+      "name": "Google search snippets",
+      "reason": "Snippet can be incomplete/stale and is not a source of record."
+    },
+    {
+      "name": "Google Images",
+      "reason": "Not a valid image/license or specs source."
+    },
+    {
+      "name": "Reddit/forum/social comments",
+      "reason": "Useful for discovery only; not source of record."
+    },
+    {
+      "name": "Marketplace listings",
+      "reason": "May be used for price/availability only through approved APIs or timestamped manual snapshot; not specs source."
+    },
+    {
+      "name": "AI-generated content without citations",
+      "reason": "Not source-backed."
+    }
+  ],
+  "gpuSpecs": [
+    {
+      "name": "NVIDIA GeForce Graphics Cards",
+      "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "GPU name",
+        "CUDA cores",
+        "memory size",
+        "memory type",
+        "boost clock",
+        "architecture/generation if listed",
+        "official MSRP if listed"
+      ],
+      "notes": "Use as primary source for NVIDIA reference GPU family specs."
+    },
+    {
+      "name": "AMD Radeon Graphics Products",
+      "url": "https://www.amd.com/en/products/graphics",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "GPU name",
+        "compute units",
+        "memory size",
+        "memory type",
+        "memory speed",
+        "memory bandwidth",
+        "recommended PSU if listed",
+        "launch information if listed"
+      ],
+      "notes": "Use as primary source for AMD reference GPU specs."
+    },
+    {
+      "name": "Intel Arc Graphics Product Specifications",
+      "url": "https://www.intel.com/content/www/us/en/products/details/discrete-gpus/arc.html",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "GPU name",
+        "Xe cores",
+        "ray tracing units",
+        "memory size",
+        "memory type",
+        "graphics clock",
+        "TBP if listed"
+      ],
+      "notes": "Use Intel ARK/product specification pages as source of record."
+    },
+    {
+      "name": "ASUS Graphics Cards",
+      "url": "https://www.asus.com/motherboards-components/graphics-cards/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific clock",
+        "variant-specific dimensions",
+        "variant-specific power connectors",
+        "variant-specific memory interface if listed"
+      ],
+      "notes": "Do not treat one AIB model as universal reference spec unless field is also cross-checked."
+    },
+    {
+      "name": "MSI Graphics Cards",
+      "url": "https://www.msi.com/Graphics-Cards",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific clock",
+        "variant-specific dimensions",
+        "variant-specific power connectors",
+        "variant-specific power consumption"
+      ],
+      "notes": "Label variant-specific fields."
+    },
+    {
+      "name": "Gigabyte Graphics Cards",
+      "url": "https://www.gigabyte.com/Graphics-Card",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific card specs"
+      ],
+      "notes": "Label variant-specific fields."
+    },
+    {
+      "name": "Sapphire Graphics Cards",
+      "url": "https://www.sapphiretech.com/en/consumer",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific AMD card specs"
+      ],
+      "notes": "Label variant-specific fields."
+    },
+    {
+      "name": "PowerColor Graphics Cards",
+      "url": "https://www.powercolor.com/",
+      "type": "manufacturer",
+      "priority": 2,
+      "allowedUses": [
+        "variant-specific AMD card specs"
+      ],
+      "notes": "Label variant-specific fields."
+    },
+    {
+      "name": "TechPowerUp GPU Database",
+      "url": "https://www.techpowerup.com/gpu-specs/",
+      "type": "database",
+      "priority": 3,
+      "allowedUses": [
+        "cross-check GPU specs",
+        "fill unavailable reference specs with database label"
+      ],
+      "notes": "Prefer official source first."
+    },
+    {
+      "name": "NotebookCheck GPU Database",
+      "url": "https://www.notebookcheck.net/",
+      "type": "database",
+      "priority": 3,
+      "allowedUses": [
+        "cross-check laptop/mobile GPU specs"
+      ],
+      "notes": "Prefer official source first."
+    },
+    {
+      "name": "VideoCardz",
+      "url": "https://videocardz.com/",
+      "type": "database",
+      "priority": 3,
+      "allowedUses": [
+        "cross-check launches/spec news"
+      ],
+      "notes": "Use cautiously and cite exact page."
+    }
+  ],
+  "aiModels": [
+    {
+      "name": "Meta Llama official",
+      "url": "https://ai.meta.com/llama/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "Llama model family",
+        "release notes",
+        "context length if listed",
+        "license notes"
+      ],
+      "notes": "Use official Meta pages or model cards."
+    },
+    {
+      "name": "Meta Llama Hugging Face",
+      "url": "https://huggingface.co/meta-llama",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "model name",
+        "parameter count",
+        "context length",
+        "modality",
+        "release date",
+        "model card details"
+      ],
+      "notes": "Use exact model card URL for source object."
+    },
+    {
+      "name": "Qwen official",
+      "url": "https://qwenlm.github.io/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "Qwen family information",
+        "release notes"
+      ],
+      "notes": "Use with Hugging Face model card when possible."
+    },
+    {
+      "name": "Qwen Hugging Face",
+      "url": "https://huggingface.co/Qwen",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "model name",
+        "parameter count",
+        "context length",
+        "license if listed",
+        "modality"
+      ],
+      "notes": "Use exact model card URL."
+    },
+    {
+      "name": "Mistral AI Docs/Models",
+      "url": "https://mistral.ai/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "Mistral family/model info",
+        "license and release information if listed"
+      ],
+      "notes": "Cross-check with Hugging Face when possible."
+    },
+    {
+      "name": "Mistral Hugging Face",
+      "url": "https://huggingface.co/mistralai",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "model name",
+        "parameter count",
+        "model card fields"
+      ],
+      "notes": "Use exact model card URL."
+    },
+    {
+      "name": "Stability AI",
+      "url": "https://stability.ai/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "Stable Diffusion family information",
+        "release notes"
+      ],
+      "notes": "Use official model card for exact technical fields."
+    },
+    {
+      "name": "Stability AI Hugging Face",
+      "url": "https://huggingface.co/stabilityai",
+      "type": "model-card",
+      "priority": 1,
+      "allowedUses": [
+        "model card fields",
+        "license",
+        "modality"
+      ],
+      "notes": "Use exact model card URL."
+    },
+    {
+      "name": "Ollama Library",
+      "url": "https://ollama.com/library",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "available local model variants",
+        "usage hints"
+      ],
+      "notes": "Do not treat as authoritative source for original model specs unless model card links corroborate."
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "runtime support",
+        "GGUF/local inference notes"
+      ],
+      "notes": "Use docs/release notes; do not infer benchmark performance."
+    },
+    {
+      "name": "vLLM Docs",
+      "url": "https://docs.vllm.ai/",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "runtime memory behavior",
+        "KV cache notes",
+        "serving configuration"
+      ],
+      "notes": "Use for runtime assumption notes, not model facts."
+    },
+    {
+      "name": "Hugging Face Accelerate Model Memory Estimator",
+      "url": "https://huggingface.co/docs/accelerate/en/usage_guides/model_size_estimator",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "memory estimation concept",
+        "validation references"
+      ],
+      "notes": "Use to explain estimator is approximate; do not copy exact output without running tool."
+    }
+  ],
+  "calculator": [
+    {
+      "name": "Hugging Face Accelerate Model Memory Estimator",
+      "url": "https://huggingface.co/docs/accelerate/en/usage_guides/model_size_estimator",
+      "type": "documentation",
+      "priority": 1,
+      "allowedUses": [
+        "memory estimation workflow",
+        "explain model-size-based memory estimates"
+      ],
+      "notes": "Use as supporting source for estimator concept."
+    },
+    {
+      "name": "vLLM Optimization and Tuning",
+      "url": "https://docs.vllm.ai/en/stable/configuration/optimization/",
+      "type": "documentation",
+      "priority": 1,
+      "allowedUses": [
+        "KV cache/memory utilization explanation",
+        "batch/context caveats"
+      ],
+      "notes": "Useful for warning that context/batching changes memory."
+    },
+    {
+      "name": "vLLM Quantized KV Cache",
+      "url": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
+      "type": "documentation",
+      "priority": 1,
+      "allowedUses": [
+        "KV cache quantization caveats"
+      ],
+      "notes": "Use for runtime-specific caveats only."
+    },
+    {
+      "name": "llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp",
+      "type": "documentation",
+      "priority": 2,
+      "allowedUses": [
+        "local inference runtime notes"
+      ],
+      "notes": "Do not turn runtime support into benchmark claims."
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "Puget Systems",
+      "url": "https://www.pugetsystems.com/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "workstation/creator benchmarks",
+        "AI workstation articles"
+      ],
+      "notes": "Benchmark must include test conditions."
+    },
+    {
+      "name": "Gamers Nexus",
+      "url": "https://www.gamersnexus.net/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "GPU review/thermal/power data"
+      ],
+      "notes": "Use review-specific page/video notes with date and testbed."
+    },
+    {
+      "name": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "GPU reviews and news"
+      ],
+      "notes": "Record exact URL and test conditions."
+    },
+    {
+      "name": "Phoronix",
+      "url": "https://www.phoronix.com/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "Linux compute/driver benchmarks"
+      ],
+      "notes": "Useful for Linux/local AI hardware notes."
+    },
+    {
+      "name": "ServeTheHome",
+      "url": "https://www.servethehome.com/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "workstation/server GPU tests"
+      ],
+      "notes": "Record exact test conditions."
+    },
+    {
+      "name": "TechPowerUp Reviews",
+      "url": "https://www.techpowerup.com/review/",
+      "type": "benchmark",
+      "priority": 1,
+      "allowedUses": [
+        "GPU review benchmarks and power"
+      ],
+      "notes": "Record exact review URL."
+    }
+  ],
+  "cloudGpu": [
+    {
+      "name": "RunPod Pricing",
+      "url": "https://www.runpod.io/pricing",
+      "type": "pricing-page",
+      "priority": 1,
+      "allowedUses": [
+        "cloud GPU SKU discovery",
+        "pricing candidates",
+        "availability candidates"
+      ],
+      "notes": "Pricing changes often; timestamp every check."
+    },
+    {
+      "name": "Lambda Cloud Pricing",
+      "url": "https://lambda.ai/service/gpu-cloud/pricing",
+      "type": "pricing-page",
+      "priority": 1,
+      "allowedUses": [
+        "cloud GPU pricing candidates"
+      ],
+      "notes": "Timestamp every check."
+    },
+    {
+      "name": "Vast.ai Pricing",
+      "url": "https://vast.ai/pricing",
+      "type": "pricing-page",
+      "priority": 1,
+      "allowedUses": [
+        "marketplace cloud GPU pricing candidates"
+      ],
+      "notes": "Marketplace changes rapidly; do not hardcode long-term price."
+    },
+    {
+      "name": "DigitalOcean Paperspace",
+      "url": "https://www.digitalocean.com/products/paperspace",
+      "type": "pricing-page",
+      "priority": 1,
+      "allowedUses": [
+        "cloud GPU provider candidates"
+      ],
+      "notes": "Record exact pricing/docs page."
+    }
+  ],
+  "pricesAffiliate": [
+    {
+      "name": "Amazon Product Advertising API",
+      "url": "https://affiliate-program.amazon.com/",
+      "type": "affiliate-api",
+      "priority": 1,
+      "allowedUses": [
+        "price",
+        "availability",
+        "affiliate product links",
+        "product image if terms allow"
+      ],
+      "notes": "Use only after approved. Never manually scrape Amazon pages."
+    },
+    {
+      "name": "eBay Browse API",
+      "url": "https://developer.ebay.com/api-docs/buy/browse/overview.html",
+      "type": "marketplace-api",
+      "priority": 1,
+      "allowedUses": [
+        "used GPU prices",
+        "availability",
+        "seller offers",
+        "product images via API"
+      ],
+      "notes": "Use for price/availability, not source specs."
+    },
+    {
+      "name": "Newegg Partner/Affiliate Feed",
+      "url": "https://www.newegg.com/",
+      "type": "affiliate-api",
+      "priority": 2,
+      "allowedUses": [
+        "hardware price and product candidates"
+      ],
+      "notes": "Use official feed/API if approved."
+    },
+    {
+      "name": "B&H Affiliate/Product Feed",
+      "url": "https://www.bhphotovideo.com/",
+      "type": "affiliate-api",
+      "priority": 2,
+      "allowedUses": [
+        "creator/workstation gear prices"
+      ],
+      "notes": "Use approved feed/API."
+    }
+  ],
+  "images": [
+    {
+      "name": "Pexels API",
+      "url": "https://www.pexels.com/api/",
+      "type": "official",
+      "priority": 1,
+      "allowedUses": [
+        "illustration images"
+      ],
+      "notes": "Record author/license/source URL in manifest."
+    },
+    {
+      "name": "Unsplash API",
+      "url": "https://unsplash.com/developers",
+      "type": "official",
+      "priority": 2,
+      "allowedUses": [
+        "illustration images"
+      ],
+      "notes": "Record license/source metadata."
+    },
+    {
+      "name": "Wikimedia Commons API",
+      "url": "https://commons.wikimedia.org/wiki/API",
+      "type": "official",
+      "priority": 2,
+      "allowedUses": [
+        "open-license images"
+      ],
+      "notes": "Verify license."
+    }
+  ]
+}

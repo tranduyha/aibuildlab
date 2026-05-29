@@ -65,28 +65,31 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 4 - Completed: GPU profile page skeleton (2026-05-29).
+Day 4.11 - GPU multi-source enrichment with official + AIB coverage (2026-05-29).
 
 ## Today Scope
 
-- Upgrade `/gpu` from placeholder to a seed GPU planning index with confidence warnings.
-- Add dynamic static route `/gpu/[slug]` with `generateStaticParams`, `generateMetadata`, and `notFound()` fallback.
-- Add reusable GPU components for cards, confidence badges, and safe spec rendering.
+- Run GPU source-gap audit (`10_SOURCE_GAP_AUDIT.md`) after replacing `daily_data_update/` with optimized v1 source coverage.
+- Run GPU multi-source enrichment (`11_GPU_MULTI_SOURCE_ENRICHMENT.md`) with official + AIB variant-specific sources.
+- Re-validate data, lint, and build after GPU field enrichment.
 
 ## Done Today
 
-- [x] Da tao GPU profile page skeleton cho toan bo seed slugs.
-- [x] Da them data-confidence/status warnings tren `/gpu` va `/gpu/[slug]`.
-- [x] Da them related links, breadcrumb, FAQ va JSON-LD an toan cho profile page.
-- [x] Da chay `npm run lint`.
-- [x] Da chay `npm run build`.
-- [x] Da scan hardcoded brand/domain trong `app/(frontend)`, `components`, `lib`, `services`, `repositories`.
-- [x] Da cap nhat `DAILY_LOG.md`.
-- [x] Da cap nhat `TASK_STATUS.md`.
+- [x] Audited GPU field gaps via `10_SOURCE_GAP_AUDIT.md`.
+- [x] Updated `data/update-candidates/source-gap-candidates.json` with GPU-only source gaps.
+- [x] Enriched 10 Month 1 GPU records with new source-backed fields from official and AIB/database coverage.
+- [x] Added/expanded variant-specific AIB mappings for MSI, PNY, Gigabyte, and ASRock sources.
+- [x] Kept unsafe/unverified fields (`benchmark`, `tokensPerSecond`, `price`, `availability`) as `null`.
+- [x] Re-ran source-gap file after enrichment to track remaining gaps.
+- [x] Ran `npm run data:validate` (0 errors, 0 warnings).
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 ## Last Completed Task
 
-GPU profile page skeleton.
+Day 4.11 GPU multi-source enrichment + source-gap refresh with passing checks.
 
 ## Done
 
@@ -212,10 +215,9 @@ None.
 
 ## Open Limitations Before Day 5
 
-- Dữ liệu GPU/AI model hiện chỉ là seed draft; specs và model facts chưa được xác minh từ source chính thức.
-- Calculator là rough estimate theo giả định MVP, chưa phải benchmark hoặc hardware recommendation đã xác minh.
-- GPU/build/guide index pages mới là placeholder; chưa có nội dung động/source-verified.
-- Chưa có các GPU profile SEO pages động.
+- Estimates are planning-oriented and not benchmark/performance claims.
+- Image generation model matching remains planning-only unless a dedicated validated image-estimate mode is implemented.
+- Price/availability/affiliate product mapping is not implemented in this patch scope.
 
 ## Next Recommended Task
 
@@ -339,6 +341,15 @@ Day 5 - GPU profile SEO upgrade.
 ### Next Recommended Task
 
 Day 5 - GPU profile SEO upgrade.
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,94 +3,239 @@
     "id": "gpu-rtx-3060-12gb",
     "slug": "rtx-3060-12gb",
     "name": "RTX 3060 12GB",
-    "shortDescription": "Seed record for evaluating this GPU in entry-level local AI content.",
-    "seoTitle": "RTX 3060 12GB for AI - Draft Hardware Profile",
-    "seoDescription": "Draft profile for future verification of RTX 3060 12GB local AI use cases.",
-    "tags": ["nvidia", "geforce", "local-ai"],
-    "useCases": ["local-llm", "stable-diffusion"],
+    "shortDescription": "Source-backed planning profile for entry-level local LLM and Stable Diffusion workflows.",
+    "seoTitle": "RTX 3060 12GB for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 3060 12GB planning profile for local AI workloads with transparent confidence and verification notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "local-ai"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion"
+    ],
     "featured": true,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 12,
+    "memoryType": "GDDR6",
+    "memoryBusBit": 192,
+    "cudaCores": 3584,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 170,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ampere",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 3060 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-3060ti/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "boostClockGhz",
+          "vramGb",
+          "memoryType",
+          "architecture",
+          "baseClockGhz",
+          "memoryBusBit"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "MSI GeForce RTX 3060 GAMING X 12G Specification",
+        "url": "https://www.msi.com/Graphics-Card/GeForce-RTX-3060-GAMING-X-12G/Specification",
+        "type": "manufacturer",
+        "fields": [
+          "memoryBusBit",
+          "boardPowerWatts",
+          "recommendedPsuWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "PNY GEFORCE RTX 3060 12GB Product Brochure",
+        "url": "https://www.bhphotovideo.com/lit_files/890688.pdf",
+        "type": "manufacturer",
+        "scope": "variant-specific",
+        "variantName": "PNY GeForce RTX 3060 12GB",
+        "fields": [
+          "memoryBandwidthGbps",
+          "tgpWatts",
+          "powerConsumptionWatts",
+          "powerConnectors",
+          "memorySpeedGbps"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Reference specs are from NVIDIA where available; board power/PSU/memory bus cross-checked from MSI/ASUS variant-specific pages. Includes variant-specific PNY board fields. Do not treat AIB-specific values as universal across all RTX 3060 cards.",
+    "boostClockGhz": 1.78,
+    "boardPowerWatts": 170,
+    "recommendedPsuWatts": 550,
+    "memoryBandwidthGbps": 360,
+    "baseClockGhz": 1.32,
+    "memorySpeedGbps": 15,
+    "powerConsumptionWatts": 170,
+    "powerConnectors": "1 x 8-pin"
   },
   {
     "id": "gpu-rtx-4060-ti-16gb",
     "slug": "rtx-4060-ti-16gb",
     "name": "RTX 4060 Ti 16GB",
-    "shortDescription": "Seed record for future analysis of a GeForce option for AI workloads.",
-    "seoTitle": "RTX 4060 Ti 16GB for AI - Draft Profile",
-    "seoDescription": "Draft RTX 4060 Ti 16GB AI hardware profile awaiting sourced specification review.",
-    "tags": ["nvidia", "geforce", "local-ai"],
-    "useCases": ["local-llm", "stable-diffusion"],
+    "shortDescription": "Source-backed planning profile for mid-range local AI and image workflow research.",
+    "seoTitle": "RTX 4060 Ti 16GB for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 4060 Ti 16GB planning profile for local AI workloads and VRAM-oriented shortlist research.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "local-ai"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion"
+    ],
     "featured": true,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 16,
+    "memoryType": "GDDR6",
+    "memoryBusBit": 128,
+    "cudaCores": 4352,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 165,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ada Lovelace",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 4060 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4060-4060ti/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "architecture",
+          "memoryBusBit",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 Ti User Guide",
+        "url": "https://www.nvidia.com/content/geforce-gtx/GEFORCE_RTX_4060_Ti_User_Guide_Rev1.pdf",
+        "type": "documentation",
+        "fields": [
+          "memoryBandwidthGbps"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Use NVIDIA RTX 4060 family official specs for reference fields. Use AIB pages for variant-specific fields only. Core reference specs are official. Variant-specific board layout fields still require AIB card-page verification.",
+    "memoryBandwidthGbps": 288,
+    "baseClockGhz": 2.31,
+    "boostClockGhz": 2.54,
+    "memorySpeedGbps": 18,
+    "powerConsumptionWatts": 165
   },
   {
     "id": "gpu-rtx-4070",
     "slug": "rtx-4070",
     "name": "RTX 4070",
-    "shortDescription": "Seed record reserved for a sourced AI workload profile.",
-    "seoTitle": "RTX 4070 for AI - Draft Hardware Profile",
-    "seoDescription": "Draft RTX 4070 profile for local AI and creator workflow research.",
-    "tags": ["nvidia", "geforce", "creator"],
-    "useCases": ["stable-diffusion", "ai-coding"],
+    "shortDescription": "Source-backed planning profile for creator-focused local AI workloads.",
+    "seoTitle": "RTX 4070 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 4070 planning profile for local AI use-case research with confidence and source mapping.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "creator"
+    ],
+    "useCases": [
+      "stable-diffusion",
+      "ai-coding"
+    ],
     "featured": false,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 12,
+    "memoryType": "GDDR6 / GDDR6X",
+    "memoryBusBit": 192,
+    "cudaCores": 5888,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 200,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ada Lovelace",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 4070 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "boostClockGhz",
+          "vramGb",
+          "memoryType",
+          "architecture",
+          "baseClockGhz"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4070 Desktop GPU Specs (Notebookcheck cross-check)",
+        "url": "https://www.notebookcheck.net/NVIDIA-GeForce-RTX-4070-Desktop-GPU-Benchmarks-and-Specs.742254.0.html",
+        "type": "database",
+        "fields": [
+          "memoryBusBit",
+          "memorySpeedGbps",
+          "memoryBandwidthGbps",
+          "tgpWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "MSI GeForce RTX 4070 VENTUS 3X 12G OC Specification",
+        "url": "https://us.msi.com/Graphics-Card/GeForce-RTX-4070-VENTUS-3X-12G-OC/Specification",
+        "type": "manufacturer",
+        "scope": "variant-specific",
+        "variantName": "MSI GeForce RTX 4070 VENTUS 3X 12G OC",
+        "fields": [
+          "powerConsumptionWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "NVIDIA lists RTX 4070 memory type as GDDR6 / GDDR6X depending on model; avoid presenting one memory type as universal without card-specific source. Memory/power fields include cross-check and MSI variant-specific coverage; verify board-specific connector/output details per AIB model.",
+    "boostClockGhz": 2.48,
+    "memoryBandwidthGbps": 504,
+    "baseClockGhz": 1.92,
+    "memorySpeedGbps": 21,
+    "powerConsumptionWatts": 200
   },
   {
     "id": "gpu-rtx-4070-super",
@@ -99,8 +244,15 @@
     "shortDescription": "Seed record for later sourced comparison and AI workflow testing.",
     "seoTitle": "RTX 4070 Super for AI - Draft Profile",
     "seoDescription": "Draft RTX 4070 Super AI profile; specifications and results require verification.",
-    "tags": ["nvidia", "geforce", "creator"],
-    "useCases": ["stable-diffusion", "ai-coding"],
+    "tags": [
+      "nvidia",
+      "geforce",
+      "creator"
+    ],
+    "useCases": [
+      "stable-diffusion",
+      "ai-coding"
+    ],
     "featured": false,
     "vendor": "NVIDIA",
     "vramGb": null,
@@ -127,186 +279,572 @@
     "id": "gpu-rtx-4070-ti-super",
     "slug": "rtx-4070-ti-super",
     "name": "RTX 4070 Ti Super",
-    "shortDescription": "Seed record for a future sourced AI hardware comparison.",
-    "seoTitle": "RTX 4070 Ti Super for AI - Draft Profile",
-    "seoDescription": "Draft RTX 4070 Ti Super AI use-case profile awaiting verified source data.",
-    "tags": ["nvidia", "geforce", "workstation"],
-    "useCases": ["local-llm", "stable-diffusion"],
+    "shortDescription": "Source-backed planning profile for higher-memory local AI workloads.",
+    "seoTitle": "RTX 4070 Ti Super for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 4070 Ti Super planning profile for local AI research and VRAM suitability checks.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion"
+    ],
     "featured": true,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 16,
+    "memoryType": "GDDR6X",
+    "memoryBusBit": 256,
+    "cudaCores": 8448,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 285,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ada Lovelace",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 4070 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "boostClockGhz",
+          "vramGb",
+          "memoryType",
+          "architecture",
+          "baseClockGhz"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "MSI GeForce RTX 4070 Ti SUPER 16G VENTUS 3X OC Datasheet",
+        "url": "https://storage-asset.msi.com/datasheet/vga/us/GeForce-RTX-4070-Ti-SUPER-16G-VENTUS-3X-OC.pdf",
+        "type": "manufacturer",
+        "scope": "variant-specific",
+        "variantName": "MSI GeForce RTX 4070 Ti SUPER 16G VENTUS 3X OC",
+        "fields": [
+          "memoryBusBit",
+          "powerConsumptionWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "PNY GeForce RTX 4070 Ti SUPER 16GB Product Brochure",
+        "url": "https://www.pny.com/file%20library/company/support/product%20brochures/geforce%20graphics/english/pny-geforce-rtx-4070-ti-super-16gb-tf-led-oc.pdf",
+        "type": "manufacturer",
+        "scope": "variant-specific",
+        "variantName": "PNY GeForce RTX 4070 Ti SUPER 16GB",
+        "fields": [
+          "memoryBandwidthGbps",
+          "powerConnectors",
+          "tgpWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Memory bus/bandwidth and connector references are variant-specific (MSI/PNY) and should not be presented as universal for every board-partner SKU.",
+    "boostClockGhz": 2.61,
+    "memoryBandwidthGbps": 672,
+    "baseClockGhz": 2.34,
+    "memorySpeedGbps": 21,
+    "powerConsumptionWatts": 285,
+    "powerConnectors": "1 x 16-pin"
   },
   {
     "id": "gpu-rtx-4080-super",
     "slug": "rtx-4080-super",
     "name": "RTX 4080 Super",
-    "shortDescription": "Seed record for high-end creator and image generation research.",
-    "seoTitle": "RTX 4080 Super for AI - Draft Profile",
-    "seoDescription": "Draft RTX 4080 Super profile for future verified Stable Diffusion analysis.",
-    "tags": ["nvidia", "geforce", "high-end"],
-    "useCases": ["stable-diffusion", "ai-workstation"],
+    "shortDescription": "Source-backed planning profile for high-end local AI creator workflows.",
+    "seoTitle": "RTX 4080 Super for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 4080 Super planning profile for local AI workload planning with transparent source references.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "high-end"
+    ],
+    "useCases": [
+      "stable-diffusion",
+      "ai-workstation"
+    ],
     "featured": false,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 16,
+    "memoryType": "GDDR6X",
+    "memoryBusBit": 256,
+    "cudaCores": 10240,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 320,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ada Lovelace",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 4080 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4080-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "architecture"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4080 SUPER and RTX 4080",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4080/",
+        "type": "official",
+        "fields": [
+          "memoryBusBit",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "TechPowerUp GeForce RTX 4080 SUPER database",
+        "url": "https://www.techpowerup.com/gpu-specs/geforce-rtx-4080-super.c4182",
+        "type": "database",
+        "fields": [
+          "memoryBandwidthGbps",
+          "powerConnectors"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Reference specs are official; memory bandwidth and connector are cross-checked from database coverage.",
+    "memoryBandwidthGbps": 736.3,
+    "baseClockGhz": 2.29,
+    "boostClockGhz": 2.55,
+    "powerConsumptionWatts": 320,
+    "powerConnectors": "1 x 16-pin"
   },
   {
     "id": "gpu-rtx-4090",
     "slug": "rtx-4090",
     "name": "RTX 4090",
-    "shortDescription": "Seed record for future local LLM and AI creation research.",
-    "seoTitle": "RTX 4090 for AI - Draft Hardware Profile",
-    "seoDescription": "Draft RTX 4090 AI profile awaiting sourced specifications and benchmarks.",
-    "tags": ["nvidia", "geforce", "high-end"],
-    "useCases": ["local-llm", "stable-diffusion", "ai-workstation"],
+    "shortDescription": "Source-backed planning profile for high-memory local AI workflows.",
+    "seoTitle": "RTX 4090 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 4090 planning profile for local AI workload planning and hardware verification workflow.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "high-end"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion",
+      "ai-workstation"
+    ],
     "featured": true,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 24,
+    "memoryType": "GDDR6X",
+    "memoryBusBit": 384,
+    "cudaCores": 16384,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 450,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ada Lovelace",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 4090 Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "architecture",
+          "memoryBusBit",
+          "baseClockGhz",
+          "boostClockGhz",
+          "powerConnectors"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA Ada GPU Architecture Whitepaper (Appendix A)",
+        "url": "https://images.nvidia.com/aem-dam/Solutions/Data-Center/l4/nvidia-ada-gpu-architecture-whitepaper-V2.02.pdf",
+        "type": "paper",
+        "fields": [
+          "memoryBandwidthGbps",
+          "tgpWatts",
+          "powerConsumptionWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Power and bandwidth are sourced from NVIDIA architecture appendix; verify partner-card connector implementation before purchase.",
+    "memoryBandwidthGbps": 1008,
+    "baseClockGhz": 2.23,
+    "boostClockGhz": 2.52,
+    "powerConsumptionWatts": 450,
+    "powerConnectors": "1 x PCIe Gen5 (or 3 x 8-pin adapter)"
   },
   {
     "id": "gpu-rtx-3090",
     "slug": "rtx-3090",
     "name": "RTX 3090",
-    "shortDescription": "Seed record for future local LLM workstation research.",
-    "seoTitle": "RTX 3090 for Local LLM - Draft Profile",
-    "seoDescription": "Draft RTX 3090 local LLM profile; validate all specifications before release.",
-    "tags": ["nvidia", "geforce", "local-llm"],
-    "useCases": ["local-llm", "ai-workstation"],
+    "shortDescription": "Source-backed planning profile for high-VRAM local LLM workstation research.",
+    "seoTitle": "RTX 3090 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 3090 planning profile for local AI and workstation research with confidence indicators.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "local-llm"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
     "featured": true,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 24,
+    "memoryType": "GDDR6X",
+    "memoryBusBit": 384,
+    "cudaCores": 10496,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 350,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Ampere",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 3090 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "architecture"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 3090 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/",
+        "type": "official",
+        "fields": [
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 3090 (regional official spec page)",
+        "url": "https://www.nvidia.com/en-ph/geforce/graphics-cards/30-series/rtx-3090/",
+        "type": "official",
+        "fields": [
+          "memoryBusBit",
+          "powerConsumptionWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "TechSpot RTX 3090 specs cross-check",
+        "url": "https://www.techspot.com/specs/gpu/224809-nvidia-geforce-rtx-3090.html",
+        "type": "database",
+        "fields": [
+          "memoryBandwidthGbps",
+          "memorySpeedGbps"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Power connector field refers to NVIDIA reference design; AIB models may vary and should be treated as variant-specific.",
+    "memoryBandwidthGbps": 936.2,
+    "baseClockGhz": 1.4,
+    "boostClockGhz": 1.7,
+    "powerConsumptionWatts": 350,
+    "memorySpeedGbps": 19.5,
+    "powerConnectors": "1 x 12-pin (reference)"
   },
   {
     "id": "gpu-rx-7900-xtx",
     "slug": "rx-7900-xtx",
     "name": "RX 7900 XTX",
-    "shortDescription": "Seed record for later evaluation of AMD hardware in AI workflows.",
-    "seoTitle": "RX 7900 XTX for AI - Draft Hardware Profile",
-    "seoDescription": "Draft RX 7900 XTX AI profile pending sourced specifications and compatibility research.",
-    "tags": ["amd", "radeon", "workstation"],
-    "useCases": ["local-llm", "ai-workstation"],
+    "shortDescription": "Source-backed planning profile for AMD-based local AI workstation exploration.",
+    "seoTitle": "RX 7900 XTX for Local AI Planning Profile",
+    "seoDescription": "Source-backed RX 7900 XTX planning profile for local AI workload planning and verification-first research.",
+    "tags": [
+      "amd",
+      "radeon",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
     "featured": false,
     "vendor": "AMD",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
+    "vramGb": 24,
+    "memoryType": "GDDR6",
+    "memoryBusBit": 384,
     "cudaCores": null,
     "streamProcessors": null,
-    "computeUnits": null,
+    "computeUnits": 96,
     "tgpWatts": null,
-    "tbpWatts": null,
-    "architecture": null,
+    "tbpWatts": 355,
+    "architecture": "RDNA 3",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "AMD Radeon RX 7900 XTX Official Page",
+        "url": "https://www.amd.com/en/products/graphics/desktops/radeon/7000-series/amd-radeon-rx-7900xtx.html",
+        "type": "official",
+        "fields": [
+          "vramGb",
+          "memoryType",
+          "memoryBandwidthGbps",
+          "recommendedPsuWatts",
+          "architecture",
+          "memoryBusBit",
+          "boostClockGhz",
+          "baseClockGhz",
+          "tbpWatts"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Notebookcheck RX 7900 XTX specs cross-check",
+        "url": "https://www.notebookcheck.net/AMD-Radeon-RX-7900-XTX-GPU-Benchmarks-and-Specs.674159.0.html",
+        "type": "database",
+        "fields": [
+          "computeUnits",
+          "memorySpeedGbps"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Gigabyte Radeon RX 7900 XTX GAMING OC 24G",
+        "url": "https://www.gigabyte.com/uk/Graphics-Card/GV-R79XTXGAMING-OC-24GD/sp",
+        "type": "manufacturer",
+        "scope": "variant-specific",
+        "variantName": "Gigabyte Radeon RX 7900 XTX GAMING OC 24G",
+        "fields": [
+          "powerConnectors"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Power connector information is variant-specific from Gigabyte AIB coverage; not universal for every RX 7900 XTX SKU.",
+    "memoryBandwidthGbps": 960,
+    "recommendedPsuWatts": 800,
+    "baseClockGhz": 1.9,
+    "boostClockGhz": 2.5,
+    "memorySpeedGbps": 20,
+    "powerConnectors": "2 x 8-pin"
   },
   {
     "id": "gpu-rtx-5090",
     "slug": "rtx-5090",
     "name": "RTX 5090",
-    "shortDescription": "Seed placeholder for a future source-verified AI hardware profile.",
-    "seoTitle": "RTX 5090 for AI - Draft Hardware Profile",
-    "seoDescription": "Draft RTX 5090 record; no specifications are published here until verified.",
-    "tags": ["nvidia", "geforce", "high-end"],
-    "useCases": ["local-llm", "stable-diffusion", "ai-workstation"],
+    "shortDescription": "Source-backed planning profile for next-generation local AI hardware research.",
+    "seoTitle": "RTX 5090 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5090 planning profile for local AI workflows with transparent source mapping and cautionary notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "high-end"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion",
+      "ai-workstation"
+    ],
     "featured": false,
     "vendor": "NVIDIA",
-    "vramGb": null,
-    "memoryType": null,
-    "memoryBusBit": null,
-    "cudaCores": null,
+    "vramGb": 32,
+    "memoryType": "GDDR7",
+    "memoryBusBit": 512,
+    "cudaCores": 21760,
     "streamProcessors": null,
     "computeUnits": null,
-    "tgpWatts": null,
+    "tgpWatts": 575,
     "tbpWatts": null,
-    "architecture": null,
+    "architecture": "Blackwell",
     "launchYear": null,
     "aiTops": null,
     "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 50 Series Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "boardPowerWatts",
+          "architecture"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA RTX Blackwell GPU Architecture",
+        "url": "https://images.nvidia.com/aem-dam/Solutions/geforce/blackwell/nvidia-rtx-blackwell-gpu-architecture.pdf",
+        "type": "paper",
+        "fields": [
+          "memoryBusBit",
+          "memoryBandwidthGbps",
+          "tgpWatts",
+          "powerConsumptionWatts",
+          "memorySpeedGbps"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Notebookcheck GeForce RTX 5090 specs",
+        "url": "https://www.notebookcheck.net/NVIDIA-GeForce-RTX-5090-Benchmarks-and-Specs.935680.0.html",
+        "type": "database",
+        "fields": [
+          "baseClockGhz",
+          "boostClockGhz"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Reference values are source-backed, but partner-card board design and connector implementation can vary by AIB model.",
+    "boardPowerWatts": 575,
+    "memoryBandwidthGbps": 1792,
+    "powerConsumptionWatts": 575,
+    "baseClockGhz": 2.01,
+    "boostClockGhz": 2.41,
+    "memorySpeedGbps": 28,
+    "powerConnectors": "1 x 16-pin"
+  },
+  {
+    "id": "gpu-intel-arc-a770-16gb",
+    "slug": "intel-arc-a770-16gb",
+    "name": "Intel Arc A770 16GB",
+    "shortDescription": "Source-backed planning profile for Intel-based local AI and creator workflow research.",
+    "seoTitle": "Intel Arc A770 16GB for Local AI Planning Profile",
+    "seoDescription": "Source-backed Intel Arc A770 16GB planning profile for local AI workload research with transparent confidence metadata.",
+    "tags": [
+      "intel",
+      "arc",
+      "local-ai"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "featured": false,
+    "vendor": "Intel",
+    "vramGb": 16,
+    "memoryType": "GDDR6",
+    "memoryBusBit": 256,
+    "cudaCores": null,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": null,
+    "tbpWatts": 225,
+    "architecture": "Xe HPG",
+    "launchYear": null,
+    "aiTops": null,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Intel Arc A770 Graphics 16GB Product Specifications",
+        "url": "https://www.intel.com/content/www/us/en/products/sku/229151/intel-arc-a770-graphics-16gb/specifications.html",
+        "type": "official",
+        "fields": [
+          "vramGb",
+          "memoryType",
+          "xeCores",
+          "architecture",
+          "memoryBandwidthGbps"
+        ],
+        "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "ASRock Intel Arc A770 Challenger 16GB OC",
+        "url": "https://www.asrock.com/Graphics-Card/Intel/Intel%20Arc%20A770%20Challenger%2016GB%20OC/",
+        "type": "manufacturer",
+        "fields": [
+          "memoryBusBit",
+          "memorySpeedGbps",
+          "tbpWatts",
+          "powerConnectors",
+          "powerConsumptionWatts"
+        ],
+        "accessedAt": "2026-05-29",
+        "scope": "variant-specific",
+        "variantName": "ASRock Intel Arc A770 Challenger 16GB OC"
+      },
+      {
+        "name": "TechSpot Intel Arc A770 16GB Specs",
+        "url": "https://www.techspot.com/specs/gpu/258615-intel-arc-a770-16gb.html",
+        "type": "database",
+        "fields": [
+          "baseClockGhz",
+          "boostClockGhz"
+        ],
+        "accessedAt": "2026-05-29"
+      }
+    ],
+    "lastVerifiedAt": "2026-05-29",
+    "notes": "Bandwidth is official; clock/power connector details include cross-check and ASRock variant-specific coverage.",
+    "xeCores": 32,
+    "memoryBandwidthGbps": 560,
+    "baseClockGhz": 2.1,
+    "boostClockGhz": 2.4,
+    "memorySpeedGbps": 17.5,
+    "powerConnectors": "1 x 8-pin",
+    "powerConsumptionWatts": 225
   }
 ]

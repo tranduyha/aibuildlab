@@ -1,0 +1,28 @@
+[
+  {
+    "id": "llama-3-8b-int4-basic-llama-cpp",
+    "modelSlug": "llama-3-8b",
+    "modelType": "llm",
+    "quantization": "int4",
+    "contextPreset": "basic",
+    "runtime": "llama-cpp",
+    "estimatedVramGb": null,
+    "observedVramGb": null,
+    "status": "estimate-only",
+    "source": null,
+    "notes": "Use this as a validation slot after a source-backed runtime benchmark is found."
+  },
+  {
+    "id": "llama-3-1-8b-int4-medium-vllm",
+    "modelSlug": "llama-3-1-8b-instruct",
+    "modelType": "llm",
+    "quantization": "int4",
+    "contextPreset": "medium",
+    "runtime": "vllm",
+    "estimatedVramGb": null,
+    "observedVramGb": null,
+    "status": "estimate-only",
+    "source": null,
+    "notes": "Do not show observed value until a benchmark source with configuration is attached."
+  }
+]

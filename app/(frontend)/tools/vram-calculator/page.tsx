@@ -223,6 +223,26 @@ export default function VramCalculatorPage() {
             </div>
           </section>
 
+          <section className="tool-section explanation-grid">
+            <div>
+              <h2>How to read this estimate</h2>
+              <p>
+                Treat the estimate as a planning baseline. First review whether
+                your selected model, runtime, and context are realistic for your
+                workflow, then compare source-backed GPU profiles before testing
+                the exact setup on your own environment.
+              </p>
+            </div>
+            <div>
+              <h2>Source-backed vs planning-only matches</h2>
+              <p>
+                Source-backed matches prioritize GPUs with verified core fields.
+                Planning-only candidates can still appear when needed, but they
+                are not benchmark claims and require additional verification.
+              </p>
+            </div>
+          </section>
+
           <section className="tool-section faq-section">
             <h2>Frequently asked questions</h2>
             <div className="faq-grid">

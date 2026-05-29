@@ -1,0 +1,17 @@
+[
+  {
+    "date": "2026-05-29",
+    "topic": "Example candidate placeholder",
+    "slugSuggestion": "example-candidate",
+    "candidateType": "runtime-benchmark",
+    "reason": "Replace this object during the first real update.",
+    "sourceName": null,
+    "sourceUrl": null,
+    "sourceType": null,
+    "affectedFields": [],
+    "confidence": "low",
+    "recommendedAction": "replace-placeholder",
+    "status": "candidate",
+    "notes": "Placeholder only; do not render this on public pages."
+  }
+]

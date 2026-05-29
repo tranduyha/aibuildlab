@@ -348,3 +348,14 @@ Không gom quá nhiều loại thay đổi vào một commit nếu không cần.
 - Cloudflare Pages build command: `npm run build`.
 - Cloudflare Pages output directory: `out`.
 - Site tĩnh hiện tại không dùng Worker, Wrangler, OpenNext hoặc SSR runtime.
+
+## Daily data update rules
+
+Với task liên quan data research, source gap, enrichment hoặc calculator matching, bắt buộc đọc `daily_data_update/README.md` và các docs liên quan trước khi sửa data.
+
+Luồng dữ liệu research chuẩn:
+`daily_data_update` / external research → `data/update-candidates/*.json` → verified enrichment → `data/*.json` → repositories → services → pages/components.
+
+Không ghi dữ liệu mới thẳng vào data public nếu chưa có source hợp lệ, field-level mapping trong `sources[]`, `lastVerifiedAt`, và `npm run data:validate` pass.
+
+Field còn thiếu nguồn phải giữ `null`, ghi source gap/candidate, và UI phải hiển thị “Needs verification” hoặc omit field đó. Không được tự bịa GPU specs, AI model facts, benchmark, giá, availability, tokens/s, image speed hoặc buying recommendation.
