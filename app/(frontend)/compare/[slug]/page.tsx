@@ -102,6 +102,10 @@ function getPairSpecificFaq(slug: string, gpus: Gpu[]): { question: string; answ
   }
 }
 
+function cleanComparisonSeoTitle(title: string): string {
+  return title.replace(/\s+-\s+Draft$/i, "");
+}
+
 export async function generateStaticParams() {
   return comparisonService.getComparisonStaticParams();
 }
@@ -119,7 +123,7 @@ export async function generateMetadata({ params }: CompareDetailPageProps): Prom
   }
 
   return buildMetadata({
-    title: resolved.comparison.seoTitle,
+    title: cleanComparisonSeoTitle(resolved.comparison.seoTitle),
     description: resolved.comparison.seoDescription,
     path: `/compare/${resolved.comparison.slug}`,
     type: "article",
@@ -138,9 +142,9 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
   const settings = getSiteSettings();
   const pagePath = `/compare/${comparison.slug}`;
   const pageUrl = buildCanonicalPath(pagePath);
-  const pairNames = getPairNames(gpus, comparison.title);
   const pairSpecificFaq = getPairSpecificFaq(comparison.slug, gpus);
   const comparisonIntent = comparisonService.getComparisonIntent(comparison, gpus);
+  const seoTitle = cleanComparisonSeoTitle(comparison.seoTitle);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -155,7 +159,7 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
   const webPageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: comparison.seoTitle,
+    name: seoTitle,
     description: comparison.seoDescription,
     url: pageUrl,
     isPartOf: { "@type": "WebSite", name: settings.name, url: settings.siteUrl },
@@ -175,18 +179,10 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
       },
       {
         "@type": "Question",
-        name: `Why compare ${pairNames.pair} for local AI planning?`,
+        name: "When should I use the VRAM Calculator with this comparison?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The comparison helps plan around VRAM headroom, memory subsystem, power constraints, and source confidence before any benchmark or purchase decision.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Is more VRAM more important than newer architecture between ${pairNames.first} and ${pairNames.second}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "More VRAM can matter for larger models and context headroom, but architecture, runtime support, memory bandwidth, drivers, and workload type also matter.",
+          text: "Use the VRAM Calculator before comparing cards so the shortlist is based on estimated memory requirements rather than GPU names alone.",
         },
       },
       {
@@ -195,6 +191,14 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
         acceptedAnswer: {
           "@type": "Answer",
           text: "Choose cloud GPU for occasional high-memory workloads, when local VRAM is below estimate, or to validate workload fit before buying hardware.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Should I rely on this comparison as purchase guidance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. This page is planning guidance and intentionally avoids unsupported benchmark, price, availability, and buying claims.",
         },
       },
     ],
@@ -332,30 +336,19 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
                 <p>{pairSpecificFaq.answer}</p>
               </div>
               <div className="faq-item">
-                <h3>Why compare {pairNames.pair} for local AI planning?</h3>
-                <p>
-                  This pair helps compare memory headroom, source confidence, power planning, and runtime caveats
-                  before you look for benchmark evidence.
-                </p>
-              </div>
-              <div className="faq-item">
-                <h3>Is more VRAM more important than newer architecture?</h3>
-                <p>
-                  More VRAM can matter for model size and context headroom, but architecture, bandwidth, software
-                  support, and drivers can change practical fit.
-                </p>
-              </div>
-              <div className="faq-item">
-                <h3>Should I rely on this comparison as purchase guidance?</h3>
-                <p>No. This page is planning guidance and intentionally avoids unsupported benchmark claims.</p>
-              </div>
-              <div className="faq-item">
                 <h3>When should I use the VRAM Calculator first?</h3>
                 <p>Use it before comparing cards so your shortlist matches estimated memory requirements.</p>
               </div>
               <div className="faq-item">
                 <h3>When should I choose cloud GPU instead?</h3>
                 <p>When local VRAM is below estimate, testing is occasional, or you need validation before buying.</p>
+              </div>
+              <div className="faq-item">
+                <h3>Should I rely on this comparison as purchase guidance?</h3>
+                <p>
+                  No. This page is planning guidance and intentionally avoids unsupported benchmark, price,
+                  availability, and buying claims.
+                </p>
               </div>
             </div>
           </section>

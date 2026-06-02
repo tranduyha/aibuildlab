@@ -114,7 +114,7 @@ export function calculateEstimatedVram(input: VramCalculatorInput): VramEstimate
         needsReview: gpu.needsReview,
         isSourceBacked,
         note: isSourceBacked
-          ? "Source-backed profile. Verify compatibility and workload behavior."
+          ? "Source-backed GPU specs available. Verify compatibility and workload behavior."
           : assumptions.gpuSuggestionPolicy.draftGpuLabel,
       };
     });

@@ -66,10 +66,11 @@ export default function GpuIndexPage() {
         </section>
 
         {drafts.length > 0 ? (
-          <section className="tool-section" aria-label="Draft GPU profiles">
+          <section className="tool-section" aria-label="Planning draft GPU profiles">
             <h2>Planning profiles needing verification</h2>
             <p className="related-note">
-              These records remain draft or low confidence. Treat them as placeholders until official or trusted manufacturer data is attached.
+              These records remain planning drafts or lack stronger benchmark evidence. Treat them as early planning
+              references until official or trusted manufacturer data is attached.
             </p>
             <div className="gpu-card-grid">
               {drafts.map((gpu) => (

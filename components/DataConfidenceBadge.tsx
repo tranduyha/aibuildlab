@@ -8,11 +8,11 @@ export default function DataConfidenceBadge({ gpu }: DataConfidenceBadgeProps) {
   const badges: { label: string; tone: "draft" | "review" | "confidence" }[] = [];
 
   if (gpu.status === "draft") {
-    badges.push({ label: "Seed data", tone: "draft" });
+    badges.push({ label: "Planning draft", tone: "draft" });
   }
 
   if (gpu.status === "published" || gpu.status === "reviewed") {
-    badges.push({ label: "Source-backed profile", tone: "confidence" });
+    badges.push({ label: "Source-backed GPU specs available", tone: "confidence" });
   }
 
   if (gpu.needsReview) {
@@ -20,7 +20,7 @@ export default function DataConfidenceBadge({ gpu }: DataConfidenceBadgeProps) {
   }
 
   if (gpu.dataConfidence === "low") {
-    badges.push({ label: "Low confidence", tone: "draft" });
+    badges.push({ label: "Benchmark evidence missing", tone: "draft" });
   }
 
   if (gpu.dataConfidence === "medium") {

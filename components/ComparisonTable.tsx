@@ -199,7 +199,9 @@ function buildSections(gpus: Gpu[]): TableSection[] {
       rows: [
         {
           label: "Status",
-          values: gpus.map((gpu) => (gpu.needsReview ? "Needs verification" : "Source-backed profile")),
+          values: gpus.map((gpu) =>
+            gpu.needsReview ? "Needs verification" : "Source-backed GPU specs available",
+          ),
         },
         {
           label: "Data confidence",

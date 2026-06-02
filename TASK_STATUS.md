@@ -65,47 +65,44 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 6.2 - Focused comparison page polish (2026-06-02).
+Pre-Day 7 - Micro content and SEO cleanup (2026-06-02).
 
 ## Today Scope
 
-- Fix comparison copy labels and keep next-step labels clean.
-- Add a CSS/HTML visual comparison block near the top of `/compare/[slug]`.
-- Group the comparison table by planning section and hide irrelevant vendor-specific rows.
-- Strengthen cautious verdict copy using only source-backed planning fields.
-- Add pair-specific FAQ and a concise interpretation section for each comparison detail page.
-- Keep comparison cards source-aware without adding benchmark, price, availability, affiliate, or buying claims.
+- Clean homepage wording so GPU profiles and comparison pages no longer sound only future/upcoming.
+- Soften user-facing planning status labels without removing data safety warnings.
+- Remove duplicate FAQ questions from comparison detail pages.
+- Remove `- Draft` from comparison metadata titles while keeping planning status visible in page body.
+- Ensure calculator result actions link clearly to GPU profiles and GPU comparisons.
 
 ## Done Today
 
-- [x] Added `components/ComparisonHeroVisual.tsx` with GPU A vs GPU B cards using source-backed VRAM, memory type, bandwidth, power, and confidence labels.
-- [x] Placed the visual comparison block after the detail-page warning and before the full comparison table.
-- [x] Reworked `ComparisonTable` into grouped sections: Memory planning, Compute / architecture, Power planning, and Verification.
-- [x] Replaced separate CUDA / compute / Xe rows with one `Core / execution units` row and removed irrelevant vendor-only rows.
-- [x] Kept variant notes short: `Variant-specific. Verify exact card.`
-- [x] Updated `ComparisonVerdict` with cautious explanatory copy based on source-backed VRAM, bandwidth, and power fields only.
-- [x] Added one pair-specific FAQ per comparison slug and included it in FAQ JSON-LD.
-- [x] Added `How to interpret this comparison` section to comparison detail pages.
-- [x] Updated comparison card GPU hints to omit unsourced specs and show `Needs verification` when no source-backed hint exists.
-- [x] Confirmed `/compare/[slug]` links to related GPU profiles and VRAM Calculator.
+- [x] Replaced homepage `Upcoming hardware data` copy with current planning-page wording for GPU profiles and comparisons.
+- [x] Updated shared data badges: `Planning draft`, `Benchmark evidence missing`, and `Source-backed GPU specs available`.
+- [x] Softened GPU service warning from `Seed data only` to `Planning data only`.
+- [x] Reduced each `/compare/[slug]` FAQ set to four distinct questions: pair-specific, calculator, cloud GPU, and purchase-guidance disclaimer.
+- [x] Updated FAQ JSON-LD to match the cleaned comparison FAQ set.
+- [x] Stripped `- Draft` from comparison detail metadata title and WebPage schema title at render time.
+- [x] Updated calculator result actions with `View matching GPU profiles` and `Compare source-backed GPU planning profiles`.
+- [x] Removed `Best GPU` wording from calculator related links.
 - [x] Ran brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories` (no forbidden literals found).
-- [x] Confirmed no project-level `src` directory outside dependency/build folders.
+- [x] Confirmed compare static output no longer includes metadata titles ending in `- Draft`.
 - [x] Ran `npm run data:validate` (0 errors, 51 existing warnings from GPU source-field mapping gaps).
 - [x] Ran `npm run lint`.
-- [x] Ran `npm run build` (pass; `/compare` + 5 `/compare/[slug]` paths generated).
+- [x] Ran `npm run build`.
 - [x] Updated `DAILY_LOG.md`.
 - [x] Updated `TASK_STATUS.md`.
 
 ## Last Completed Task
 
-Day 6.2 focused comparison page polish with passing validation/lint/build.
+Pre-Day 7 micro content/SEO cleanup with passing validation/lint/build.
 
 ## Open Limitations
 
 - Comparisons remain source-aware planning pages, not benchmark verdicts.
-- RTX 4070 Super remains draft/low confidence, so unsourced fields show `Needs verification`.
-- No price, availability, image speed, tokens/s, affiliate link, or buying recommendation was added.
-- `npm run data:validate` still reports 51 existing GPU source-field mapping warnings unrelated to this comparison polish.
+- RTX 4070 Super remains a planning draft, so unsourced fields still show `Needs verification`.
+- No benchmark, price, availability, image speed, tokens/s, affiliate link, or buying recommendation was added.
+- `npm run data:validate` still reports 51 existing GPU source-field mapping warnings unrelated to this copy cleanup.
 ## Done
 
 - [x] Global layout đã có Header/Footer.

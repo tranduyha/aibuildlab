@@ -218,8 +218,9 @@ export default function VramCalculator() {
 
         <nav className="result-actions" aria-label="Next planning steps">
           <Link className="result-action-primary" href="/gpu">
-            View all GPU planning profiles
+            View matching GPU profiles
           </Link>
+          <Link href="/compare">Compare source-backed GPU planning profiles</Link>
           <Link href="/builds">Explore build planning pages</Link>
           <Link href="/guides">Read local AI planning guides</Link>
         </nav>

@@ -1388,3 +1388,51 @@ Polish existing comparison pages to make them more useful, easier to scan, and s
 
 ### Next Step
 Day 7 - build landing page skeleton using source-aware planning structure.
+
+---
+
+## 2026-06-02 - Pre-Day 7 micro content and SEO cleanup
+
+### Agent
+Codex
+
+### Planned Task
+Apply a small content and SEO polish after Day 6.2 without rebuilding existing pages or adding unsupported claims.
+
+### Completed
+- [x] Replaced outdated homepage `Upcoming hardware data` messaging with current planning-page copy for GPU profiles and comparisons.
+- [x] Softened shared status badges to `Planning draft`, `Benchmark evidence missing`, and `Source-backed GPU specs available`.
+- [x] Softened GPU service warning wording while preserving verification requirements.
+- [x] Cleaned comparison detail FAQ down to four non-duplicate questions: pair-specific, calculator, cloud GPU, and purchase-guidance disclaimer.
+- [x] Updated comparison FAQ JSON-LD to match the cleaned FAQ set.
+- [x] Removed `- Draft` from comparison detail metadata titles and WebPage schema titles at render time.
+- [x] Updated calculator result actions to link clearly to GPU profiles and comparisons.
+- [x] Removed `Best GPU` wording from calculator related links.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing GPU source-field mapping warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories`
+- [x] Static output scan confirmed comparison metadata titles no longer include `- Draft`
+
+### Issues
+- Existing GPU source-field mapping warnings remain unchanged.
+- Comparison pages remain planning guidance and do not include benchmark, price, availability, affiliate, tokens/s, image speed, or buying claims.
+
+### Files Changed
+- `app/(frontend)/page.tsx`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `app/(frontend)/gpu/page.tsx`
+- `app/(frontend)/compare/page.tsx`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `components/DataConfidenceBadge.tsx`
+- `components/VramCalculator.tsx`
+- `components/ComparisonTable.tsx`
+- `services/gpu.service.ts`
+- `services/vram-calculator.service.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 7 - build landing page skeleton using source-aware planning structure.

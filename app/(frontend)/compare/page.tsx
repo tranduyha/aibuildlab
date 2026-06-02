@@ -33,7 +33,7 @@ export default function CompareIndexPage() {
         </header>
 
         <p className="tool-disclaimer">
-          Comparison records may include draft entries. Verify exact card variants, runtime requirements, and
+          Comparison records may include planning drafts. Verify exact card variants, runtime requirements, and
           workload constraints before purchase.
         </p>
 
@@ -66,8 +66,8 @@ export default function CompareIndexPage() {
         <section className="tool-section">
           <h2>Available comparisons</h2>
           <p className="related-note">
-            Cards show source-backed hints where GPU profile data exists. Draft comparison records remain clearly
-            labelled until benchmark-specific evidence is attached.
+            Cards show source-backed hints where GPU profile data exists. Planning draft records remain clearly
+            labelled until stronger sources or benchmark-specific evidence are attached.
           </p>
           {Object.entries(groupedItems).map(([intent, group]) => (
             <div className="comparison-group" key={intent}>

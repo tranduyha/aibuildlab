@@ -7,7 +7,7 @@ export interface ReviewedResult<T> {
 }
 
 const REVIEW_WARNING =
-  "Seed data only. Verify specifications and workload evidence before publishing recommendations.";
+  "Planning data only. Verify specifications and workload evidence before publishing recommendations.";
 
 function getGpuReviewWarning(gpu: Gpu): string | null {
   if (gpu.status === "draft" || gpu.needsReview || gpu.dataConfidence === "low") {

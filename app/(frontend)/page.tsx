@@ -81,7 +81,7 @@ const workflowSteps = [
 const upcomingAreas = [
   {
     title: "GPU profiles",
-    description: "Specifications will appear only after source review.",
+    description: "Planning pages with source-aware specs and visible review status.",
     href: "/gpu",
     category: "gpu" as const,
   },
@@ -217,12 +217,12 @@ export default function HomePage() {
 
       <section className="shell home-section future-grid">
         <div>
-          <p className="eyebrow">Upcoming hardware data</p>
-          <h2>Structured pages, published only when evidence supports them</h2>
+          <p className="eyebrow">Hardware planning data</p>
+          <h2>GPU profiles and comparisons with visible review status</h2>
           <p className="section-copy">
-            Dataset records are currently drafts. Future hardware pages will expose
-            specifications and comparisons only after their sources and review
-            status support publication.
+            GPU profiles and comparisons are available as planning pages. Draft or
+            low-confidence records are clearly labelled until stronger sources or
+            benchmark evidence are attached.
           </p>
         </div>
         <div className="future-visual-grid">

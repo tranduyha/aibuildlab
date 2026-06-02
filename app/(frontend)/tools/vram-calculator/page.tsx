@@ -38,9 +38,9 @@ const faqItems = [
 
 const relatedLinks = [
   { label: "Compare source-backed GPU profiles", href: "/compare" },
-  { label: "Best GPU for Local LLM", href: "/guides#planned-guides" },
-  { label: "Best GPU for Stable Diffusion", href: "/guides#planned-guides" },
-  { label: "RTX 3060 12GB for AI", href: "/gpu" },
+  { label: "Local LLM GPU planning guides", href: "/guides#planned-guides" },
+  { label: "Stable Diffusion hardware planning", href: "/guides#planned-guides" },
+  { label: "View matching GPU profiles", href: "/gpu" },
   { label: "Budget AI Workstation", href: "/builds#planned-builds" },
 ];
 
