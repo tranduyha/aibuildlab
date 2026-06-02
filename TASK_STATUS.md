@@ -65,28 +65,32 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 6.1 - Comparison UX/SEO integration refinement (2026-06-02).
+Day 6.2 - Focused comparison page polish (2026-06-02).
 
 ## Today Scope
 
-- Make `/compare` discoverable from main navigation, homepage, GPU pages, calculator, footer, and sitemap.
-- Improve `/compare` hub cards with intent, source-aware GPU hints, and grouped comparison sections.
-- Improve `/compare/[slug]` with above-the-fold summary, cautious labels, CTA, pair-specific FAQ, and richer source confidence.
-- Update mobile comparison table behavior to avoid horizontal overflow.
+- Fix comparison copy labels and keep next-step labels clean.
+- Add a CSS/HTML visual comparison block near the top of `/compare/[slug]`.
+- Group the comparison table by planning section and hide irrelevant vendor-specific rows.
+- Strengthen cautious verdict copy using only source-backed planning fields.
+- Add pair-specific FAQ and a concise interpretation section for each comparison detail page.
+- Keep comparison cards source-aware without adding benchmark, price, availability, affiliate, or buying claims.
 
 ## Done Today
 
-- [x] Added `Compare` to `data/navigation.json`; header and footer now expose `/compare` through config-driven navigation.
-- [x] Added homepage links to `/compare` in the topic grid and starting points.
-- [x] Added `/gpu` CTA linking to `/compare`.
-- [x] Added related comparison links on `/gpu/[slug]`, with fallback to `/compare` when no specific comparison exists.
-- [x] Added calculator links to `/compare` after VRAM estimate guidance.
-- [x] Upgraded `/compare` hub with workflow cards, grouped comparison sections, intent labels, and source-aware GPU hints.
-- [x] Upgraded `/compare/[slug]` pages with compact planning summary, cautious verdict labels, CTA block, pair-specific FAQ, and richer confidence/source notice.
-- [x] Updated comparison table to show `Needs verification` for un-sourced required fields and stack rows on mobile.
-- [x] Confirmed sitemap includes `/compare` and all 5 comparison detail URLs.
+- [x] Added `components/ComparisonHeroVisual.tsx` with GPU A vs GPU B cards using source-backed VRAM, memory type, bandwidth, power, and confidence labels.
+- [x] Placed the visual comparison block after the detail-page warning and before the full comparison table.
+- [x] Reworked `ComparisonTable` into grouped sections: Memory planning, Compute / architecture, Power planning, and Verification.
+- [x] Replaced separate CUDA / compute / Xe rows with one `Core / execution units` row and removed irrelevant vendor-only rows.
+- [x] Kept variant notes short: `Variant-specific. Verify exact card.`
+- [x] Updated `ComparisonVerdict` with cautious explanatory copy based on source-backed VRAM, bandwidth, and power fields only.
+- [x] Added one pair-specific FAQ per comparison slug and included it in FAQ JSON-LD.
+- [x] Added `How to interpret this comparison` section to comparison detail pages.
+- [x] Updated comparison card GPU hints to omit unsourced specs and show `Needs verification` when no source-backed hint exists.
+- [x] Confirmed `/compare/[slug]` links to related GPU profiles and VRAM Calculator.
 - [x] Ran brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories` (no forbidden literals found).
-- [x] Ran `npm run data:validate` (0 errors, 51 warnings from existing GPU source-field mapping gaps).
+- [x] Confirmed no project-level `src` directory outside dependency/build folders.
+- [x] Ran `npm run data:validate` (0 errors, 51 existing warnings from GPU source-field mapping gaps).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build` (pass; `/compare` + 5 `/compare/[slug]` paths generated).
 - [x] Updated `DAILY_LOG.md`.
@@ -94,14 +98,14 @@ Day 6.1 - Comparison UX/SEO integration refinement (2026-06-02).
 
 ## Last Completed Task
 
-Day 6.1 comparison UX/SEO integration refinement with passing validation/lint/build.
+Day 6.2 focused comparison page polish with passing validation/lint/build.
 
 ## Open Limitations
 
-- Comparisons remain source-aware planning pages.
-- No benchmark verdicts unless benchmark sources exist.
-- No price, availability, or affiliate data unless source-backed through approved sources.
-- `npm run data:validate` still reports existing GPU source-field mapping warnings unrelated to this integration patch.
+- Comparisons remain source-aware planning pages, not benchmark verdicts.
+- RTX 4070 Super remains draft/low confidence, so unsourced fields show `Needs verification`.
+- No price, availability, image speed, tokens/s, affiliate link, or buying recommendation was added.
+- `npm run data:validate` still reports 51 existing GPU source-field mapping warnings unrelated to this comparison polish.
 ## Done
 
 - [x] Global layout đã có Header/Footer.

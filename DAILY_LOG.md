@@ -1340,3 +1340,51 @@ Make `/compare` discoverable across the site and refine comparison UX/SEO before
 
 ### Next Step
 Day 7 - build landing page skeleton using source-aware planning structure.
+
+---
+
+## 2026-06-02 - Day 6.2 focused comparison page polish
+
+### Agent
+Codex
+
+### Planned Task
+Polish existing comparison pages to make them more useful, easier to scan, and stronger for SEO before Day 7 without rebuilding Day 6 or adding unsupported claims.
+
+### Completed
+- [x] Added a CSS/HTML `ComparisonHeroVisual` block for GPU A vs GPU B near the top of comparison detail pages.
+- [x] Kept the visual block free of external images, brand logos, and unsupported performance claims.
+- [x] Reworked `ComparisonTable` into grouped sections: Memory planning, Compute / architecture, Power planning, and Verification.
+- [x] Replaced separate vendor-specific core rows with one `Core / execution units` row.
+- [x] Hid irrelevant vendor-only rows and kept variant-specific notes short.
+- [x] Strengthened `ComparisonVerdict` with cautious explanatory sentences based only on source-backed VRAM, bandwidth, and power fields.
+- [x] Added pair-specific FAQ copy for all 5 comparison slugs and included the first pair-specific FAQ in JSON-LD.
+- [x] Added `How to interpret this comparison` to each comparison detail page.
+- [x] Updated comparison card GPU hints to avoid showing unsourced specs as source-backed hints.
+- [x] Cleaned next-step labels to `RECOMMENDED NEXT STEP` and `NEXT STEP`.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing GPU source-field mapping warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories`
+- [x] Confirmed no project-level `src` directory outside dependency/build folders
+- [x] Confirmed static export generated `/compare` and all 5 `/compare/[slug]` pages
+
+### Issues
+- `data:validate` warnings remain from existing GPU source-field mapping gaps, especially unsourced draft/spec fields in `data/gpus.json`.
+- No benchmark verdicts, price, availability, tokens/s, image speed, affiliate links, or purchase recommendations were added.
+
+### Files Changed
+- `components/ComparisonHeroVisual.tsx`
+- `components/ComparisonTable.tsx`
+- `components/ComparisonVerdict.tsx`
+- `components/ComparisonCta.tsx`
+- `services/comparison.service.ts`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 7 - build landing page skeleton using source-aware planning structure.

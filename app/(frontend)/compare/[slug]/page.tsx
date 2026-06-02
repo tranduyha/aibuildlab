@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ComparisonCta from "@/components/ComparisonCta";
+import ComparisonHeroVisual from "@/components/ComparisonHeroVisual";
 import ComparisonSourceNotice from "@/components/ComparisonSourceNotice";
 import ComparisonTable from "@/components/ComparisonTable";
 import ComparisonVerdict from "@/components/ComparisonVerdict";
@@ -14,8 +15,28 @@ interface CompareDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-function formatValue(value: number | string | null | undefined, suffix = ""): string {
+const SUMMARY_SOURCE_REQUIRED_FIELDS = new Set<keyof Gpu>([
+  "vramGb",
+  "memoryBandwidthGbps",
+  "powerConsumptionWatts",
+]);
+
+function hasSourceForSummaryField(gpu: Gpu, key: keyof Gpu): boolean {
+  if (!SUMMARY_SOURCE_REQUIRED_FIELDS.has(key)) {
+    return true;
+  }
+
+  return gpu.sources.some((source) => source.fields.includes(String(key)));
+}
+
+function formatValue(gpu: Gpu, key: keyof Gpu, suffix = ""): string {
+  const value = gpu[key] as number | string | null | undefined;
+
   if (value === null || value === undefined || value === "") {
+    return "Needs verification";
+  }
+
+  if (!hasSourceForSummaryField(gpu, key)) {
     return "Needs verification";
   }
 
@@ -28,18 +49,57 @@ function getDifferenceLine(gpus: Gpu[], key: keyof Gpu, suffix = ""): string {
   }
 
   const [first, second] = gpus;
-  const firstValue = first[key];
-  const secondValue = second[key];
 
-  return `${first.name}: ${formatValue(firstValue as number | string | null | undefined, suffix)} | ${
-    second.name
-  }: ${formatValue(secondValue as number | string | null | undefined, suffix)}`;
+  return `${first.name}: ${formatValue(first, key, suffix)} | ${second.name}: ${formatValue(second, key, suffix)}`;
 }
 
 function getPairNames(gpus: Gpu[], fallback: string): { first: string; second: string; pair: string } {
   const first = gpus[0]?.name ?? "the first GPU";
   const second = gpus[1]?.name ?? "the second GPU";
   return { first, second, pair: gpus.length >= 2 ? `${first} and ${second}` : fallback };
+}
+
+function getPairSpecificFaq(slug: string, gpus: Gpu[]): { question: string; answer: string } {
+  const pairNames = getPairNames(gpus, "these GPUs");
+
+  switch (slug) {
+    case "rtx-3060-12gb-vs-rtx-4060-ti-16gb-for-ai":
+      return {
+        question: "Why compare an older 12 GB GPU with a newer 16 GB GPU for local AI?",
+        answer:
+          "This pair is useful for separating VRAM capacity from generation changes. The comparison should still be verified against runtime support and workload testing before any hardware decision.",
+      };
+    case "rtx-3090-vs-rtx-4090-for-local-llm":
+      return {
+        question: "Why compare two 24 GB NVIDIA GPUs for local LLM planning?",
+        answer:
+          "Both profiles can fit into a high-VRAM shortlist, so the planning question shifts toward memory bandwidth, power, architecture, and tested runtime behavior rather than capacity alone.",
+      };
+    case "rtx-4070-super-vs-rtx-4070-ti-super-for-ai":
+      return {
+        question: "Why compare two close Ada-generation GPUs for AI planning?",
+        answer:
+          "Close-generation comparisons help identify whether extra VRAM or memory subsystem differences matter for the target workload. Draft or unsourced fields should be verified before treating the comparison as guidance.",
+      };
+    case "rx-7900-xtx-vs-rtx-4090-for-ai":
+      return {
+        question: "Why does runtime support matter when comparing AMD and NVIDIA GPUs for local AI?",
+        answer:
+          "VRAM and bandwidth are only part of the planning picture. Framework support, driver maturity, and model runtime compatibility can change real-world fit across vendors.",
+      };
+    case "rtx-4080-super-vs-rtx-4090-for-stable-diffusion":
+      return {
+        question: "Why compare 16 GB and 24 GB NVIDIA GPUs for image-generation planning?",
+        answer:
+          "The comparison helps separate capacity headroom from unsupported speed assumptions. Larger workflows may need more VRAM, but image-generation speed still requires benchmark evidence for the exact setup.",
+      };
+    default:
+      return {
+        question: `What makes ${pairNames.pair} worth comparing for AI planning?`,
+        answer:
+          "The pair can highlight planning differences in VRAM, memory bandwidth, power, source confidence, and runtime caveats before benchmark evidence is available.",
+      };
+  }
 }
 
 export async function generateStaticParams() {
@@ -79,6 +139,7 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
   const pagePath = `/compare/${comparison.slug}`;
   const pageUrl = buildCanonicalPath(pagePath);
   const pairNames = getPairNames(gpus, comparison.title);
+  const pairSpecificFaq = getPairSpecificFaq(comparison.slug, gpus);
   const comparisonIntent = comparisonService.getComparisonIntent(comparison, gpus);
 
   const breadcrumbSchema = {
@@ -104,6 +165,14 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
+      {
+        "@type": "Question",
+        name: pairSpecificFaq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: pairSpecificFaq.answer,
+        },
+      },
       {
         "@type": "Question",
         name: `Why compare ${pairNames.pair} for local AI planning?`,
@@ -159,6 +228,8 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
             purchase decisions.
           </p>
 
+          <ComparisonHeroVisual gpus={gpus} />
+
           <section className="tool-section">
             <h2>Quick planning summary</h2>
             <div className="comparison-summary-grid">
@@ -203,9 +274,23 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
 
           <ComparisonVerdict comparison={comparison} gpus={gpus} />
 
+          <section className="tool-section">
+            <h2>How to interpret this comparison</h2>
+            <div className="intro-copy">
+              <p>
+                VRAM is capacity headroom, not guaranteed speed. Memory bandwidth can matter, but benchmark evidence is
+                still needed before drawing performance conclusions.
+              </p>
+              <p>
+                Runtime support, drivers, and exact board-partner variants can change practical results. Use the VRAM
+                Calculator before treating this comparison as purchase guidance.
+              </p>
+            </div>
+          </section>
+
           <section className="comparison-cta-block" aria-label="Estimate your model before deciding">
             <div>
-              <p className="eyebrow">Estimate first</p>
+              <p className="eyebrow">RECOMMENDED NEXT STEP</p>
               <h2>Check model memory before choosing between these GPUs</h2>
               <p>
                 Run your model assumptions through the VRAM Calculator, then return to GPU profiles for source
@@ -243,6 +328,10 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
             <h2>FAQ</h2>
             <div className="faq-grid">
               <div className="faq-item">
+                <h3>{pairSpecificFaq.question}</h3>
+                <p>{pairSpecificFaq.answer}</p>
+              </div>
+              <div className="faq-item">
                 <h3>Why compare {pairNames.pair} for local AI planning?</h3>
                 <p>
                   This pair helps compare memory headroom, source confidence, power planning, and runtime caveats
@@ -257,7 +346,7 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
                 </p>
               </div>
               <div className="faq-item">
-                <h3>Should I rely on this comparison as a buying recommendation?</h3>
+                <h3>Should I rely on this comparison as purchase guidance?</h3>
                 <p>No. This page is planning guidance and intentionally avoids unsupported benchmark claims.</p>
               </div>
               <div className="faq-item">

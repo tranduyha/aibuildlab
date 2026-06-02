@@ -5,56 +5,145 @@ interface ComparisonVerdictProps {
   gpus: Gpu[];
 }
 
+const SOURCE_REQUIRED_FIELDS = new Set<keyof Gpu>([
+  "vramGb",
+  "memoryBandwidthGbps",
+  "powerConsumptionWatts",
+  "tgpWatts",
+  "tbpWatts",
+  "boardPowerWatts",
+]);
+
+function hasSourceForField(gpu: Gpu, key: keyof Gpu): boolean {
+  if (!SOURCE_REQUIRED_FIELDS.has(key)) {
+    return true;
+  }
+
+  return gpu.sources.some((source) => source.fields.includes(String(key)));
+}
+
+function getNumberField(gpu: Gpu, key: keyof Gpu): number | null {
+  const value = gpu[key];
+
+  if (typeof value !== "number" || !hasSourceForField(gpu, key)) {
+    return null;
+  }
+
+  return value;
+}
+
+function getPowerValue(gpu: Gpu): number | null {
+  const fields: Array<keyof Gpu> = [
+    "powerConsumptionWatts",
+    "tgpWatts",
+    "tbpWatts",
+    "boardPowerWatts",
+  ];
+
+  for (const field of fields) {
+    const value = getNumberField(gpu, field);
+    if (value !== null) {
+      return value;
+    }
+  }
+
+  return null;
+}
+
+function compareHigher(first: Gpu, second: Gpu, key: keyof Gpu, label: string): string | null {
+  const firstValue = getNumberField(first, key);
+  const secondValue = getNumberField(second, key);
+
+  if (firstValue === null || secondValue === null || firstValue === secondValue) {
+    return null;
+  }
+
+  return firstValue > secondValue
+    ? `${first.name}: ${label}`
+    : `${second.name}: ${label}`;
+}
+
 function getPlanningLabels(gpus: Gpu[]): string[] {
   if (gpus.length < 2) {
-    return ["Not enough verified data for a clear planning preference."];
+    return ["Needs more resolved GPU data"];
   }
 
-  const labels: string[] = [];
   const [first, second] = gpus;
+  const labels = [
+    compareHigher(first, second, "vramGb", "More VRAM headroom"),
+    compareHigher(first, second, "memoryBandwidthGbps", "Higher listed memory bandwidth"),
+  ].filter((label): label is string => Boolean(label));
 
-  if (first.vramGb !== null && second.vramGb !== null && first.vramGb !== second.vramGb) {
+  const firstPower = getPowerValue(first);
+  const secondPower = getPowerValue(second);
+  if (firstPower !== null && secondPower !== null && firstPower !== secondPower) {
     labels.push(
-      first.vramGb > second.vramGb
-        ? `${first.name}: Better VRAM headroom`
-        : `${second.name}: Better VRAM headroom`,
+      firstPower < secondPower
+        ? `${first.name}: Lower listed power planning`
+        : `${second.name}: Lower listed power planning`,
     );
   }
 
-  if (
-    first.memoryBandwidthGbps !== null &&
-    first.memoryBandwidthGbps !== undefined &&
-    second.memoryBandwidthGbps !== null &&
-    second.memoryBandwidthGbps !== undefined &&
-    first.memoryBandwidthGbps !== second.memoryBandwidthGbps
-  ) {
-    labels.push(
-      first.memoryBandwidthGbps > second.memoryBandwidthGbps
-        ? `${first.name}: Higher memory bandwidth`
-        : `${second.name}: Higher memory bandwidth`,
-    );
-  }
-
-  if (
-    first.powerConsumptionWatts !== null &&
-    first.powerConsumptionWatts !== undefined &&
-    second.powerConsumptionWatts !== null &&
-    second.powerConsumptionWatts !== undefined &&
-    first.powerConsumptionWatts !== second.powerConsumptionWatts
-  ) {
-    labels.push(
-      first.powerConsumptionWatts < second.powerConsumptionWatts
-        ? `${first.name}: Lower power planning profile`
-        : `${second.name}: Lower power planning profile`,
-    );
-  }
-
-  labels.push("Needs benchmark evidence");
+  labels.push("Benchmark evidence still missing");
   return labels;
+}
+
+function getVerdictCopy(gpus: Gpu[]): string[] {
+  if (gpus.length < 2) {
+    return [
+      "One or more GPU records are unresolved in this seed entry, so this page should be treated as a planning scaffold.",
+      "No benchmark conclusion is available until the compared records and workload evidence are attached.",
+    ];
+  }
+
+  const [first, second] = gpus;
+  const observations: string[] = [];
+  const firstVram = getNumberField(first, "vramGb");
+  const secondVram = getNumberField(second, "vramGb");
+  const firstBandwidth = getNumberField(first, "memoryBandwidthGbps");
+  const secondBandwidth = getNumberField(second, "memoryBandwidthGbps");
+  const firstPower = getPowerValue(first);
+  const secondPower = getPowerValue(second);
+
+  if (firstVram !== null && secondVram !== null && firstVram !== secondVram) {
+    observations.push(
+      firstVram > secondVram
+        ? `${first.name} has more source-backed VRAM headroom than ${second.name}.`
+        : `${second.name} has more source-backed VRAM headroom than ${first.name}.`,
+    );
+  }
+
+  if (firstBandwidth !== null && secondBandwidth !== null && firstBandwidth !== secondBandwidth) {
+    observations.push(
+      firstBandwidth > secondBandwidth
+        ? `${first.name} has higher listed memory bandwidth than ${second.name}.`
+        : `${second.name} has higher listed memory bandwidth than ${first.name}.`,
+    );
+  }
+
+  if (firstPower !== null && secondPower !== null && firstPower !== secondPower) {
+    observations.push(
+      firstPower < secondPower
+        ? `${first.name} has the lower listed power planning figure.`
+        : `${second.name} has the lower listed power planning figure.`,
+    );
+  }
+
+  const summary =
+    observations.length > 0
+      ? observations.slice(0, 2).join(" ")
+      : "Available source-backed planning fields do not create a clear split between these GPUs yet.";
+
+  return [
+    summary,
+    "This is not a benchmark verdict, and it should not be treated as purchase guidance.",
+    "Final fit still depends on model size, quantization, runtime support, drivers, and tested workload behavior.",
+  ];
 }
 
 export default function ComparisonVerdict({ comparison, gpus }: ComparisonVerdictProps) {
   const labels = getPlanningLabels(gpus);
+  const paragraphs = comparison.verdict ? [comparison.verdict] : getVerdictCopy(gpus);
 
   return (
     <section className="comparison-verdict">
@@ -64,12 +153,9 @@ export default function ComparisonVerdict({ comparison, gpus }: ComparisonVerdic
           <span key={label}>{label}</span>
         ))}
       </div>
-      {comparison.verdict ? <p>{comparison.verdict}</p> : null}
-      <p>
-        {gpus.length < 2
-          ? "One or more GPU records are unresolved in this seed entry, so treat this page as a draft planning scaffold."
-          : "Benchmark-specific claims are intentionally excluded until controlled benchmark sources are attached."}
-      </p>
+      {paragraphs.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
     </section>
   );
 }

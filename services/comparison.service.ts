@@ -47,11 +47,17 @@ function getComparisonIntent(comparison: Comparison, gpus: Gpu[]): string {
   return "Source-aware GPU planning";
 }
 
+function hasSourceForField(gpu: Gpu, key: keyof Gpu): boolean {
+  return gpu.sources.some((source) => source.fields.includes(String(key)));
+}
+
 function getSourceBackedHint(gpu: Gpu): string {
   const details = [
-    gpu.vramGb !== null ? `${gpu.vramGb} GB VRAM` : null,
-    gpu.memoryType,
-    gpu.memoryBandwidthGbps !== null && gpu.memoryBandwidthGbps !== undefined
+    gpu.vramGb !== null && hasSourceForField(gpu, "vramGb") ? `${gpu.vramGb} GB VRAM` : null,
+    gpu.memoryType && hasSourceForField(gpu, "memoryType") ? gpu.memoryType : null,
+    gpu.memoryBandwidthGbps !== null &&
+    gpu.memoryBandwidthGbps !== undefined &&
+    hasSourceForField(gpu, "memoryBandwidthGbps")
       ? `${gpu.memoryBandwidthGbps} GB/s bandwidth`
       : null,
   ].filter(Boolean);

@@ -2395,6 +2395,110 @@ body {
   font-weight: 600;
 }
 
+.comparison-hero-visual {
+  position: relative;
+  margin-top: 34px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f8fcff 0%, #ffffff 56%, #f4f8fb 100%);
+  padding: 22px;
+  overflow: hidden;
+}
+
+.comparison-hero-track {
+  position: absolute;
+  inset: 50% 28px auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.comparison-hero-track span {
+  height: 1px;
+  background: var(--border);
+}
+
+.comparison-hero-track strong {
+  border: 1px solid #c6dfef;
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 7px 10px;
+  color: var(--primary-dark);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.comparison-hero-cards {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 42px;
+}
+
+.comparison-hero-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 18px;
+  box-shadow: 0 14px 34px rgba(15, 46, 72, 0.08);
+}
+
+.comparison-hero-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comparison-hero-card-top > span {
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.comparison-hero-card h2 {
+  margin-top: 14px;
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+
+.comparison-hero-card dl {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+}
+
+.comparison-hero-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 9px;
+}
+
+.comparison-hero-card dl div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.comparison-hero-card dt {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.comparison-hero-card dd {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: right;
+}
+
 .compare-workflow-grid,
 .comparison-summary-grid,
 .comparison-source-grid {
@@ -2482,6 +2586,16 @@ body {
   font-weight: 600;
 }
 
+.comparison-table-section-row th {
+  width: auto;
+  background: #f4f8fb;
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .comparison-table td {
   color: var(--muted);
   font-size: 14px;
@@ -2567,9 +2681,22 @@ body {
   .compare-workflow-grid,
   .comparison-summary-grid,
   .comparison-source-grid,
+  .comparison-hero-cards,
   .comparison-cta-block,
   .compare-inline-cta {
     grid-template-columns: 1fr;
+  }
+
+  .comparison-hero-visual {
+    padding: 16px;
+  }
+
+  .comparison-hero-track {
+    display: none;
+  }
+
+  .comparison-hero-cards {
+    gap: 14px;
   }
 
   .comparison-cta-actions {
@@ -2621,6 +2748,18 @@ body {
     width: 100%;
     border-right: 0;
     background: var(--surface-alt);
+  }
+
+  .comparison-table-section-row {
+    margin: 18px 0 8px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .comparison-table-section-row th {
+    background: transparent;
+    padding: 0;
   }
 
   .comparison-table td {
