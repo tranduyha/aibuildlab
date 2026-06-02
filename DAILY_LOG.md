@@ -1220,3 +1220,123 @@ Apply small cleanup only on GPU pages before Day 6: tighten table notes, hide op
 
 ### Next Step
 Ready to start Day 6 comparison page implementation.
+
+---
+
+## 2026-06-02 - Day 6 comparison page skeleton
+
+### Agent
+Codex
+
+### Planned Task
+Create source-aware comparison pages (`/compare` and `/compare/[slug]`) using repository/service flow with cautious planning wording and static export compatibility.
+
+### Completed
+- [x] Audited comparison and GPU datasets before implementation.
+- [x] Added comparison repository/service helpers for static params, list items, and GPU slug resolution.
+- [x] Created `/compare` hub page with at least 5 seed comparison cards, data confidence labels, and how-to workflow.
+- [x] Created `/compare/[slug]` SSG page with `generateStaticParams`, `generateMetadata`, breadcrumb, quick summary, table, cautious verdict, cloud alternative section, related links, and FAQ.
+- [x] Added components: `ComparisonCard`, `ComparisonTable`, `ComparisonVerdict`, `ComparisonCta`, `ComparisonSourceNotice`.
+- [x] Added safe JSON-LD (`BreadcrumbList`, `WebPage`, `FAQPage`) for detail pages.
+- [x] Updated sitemap with `/compare` and dynamic comparison URLs.
+- [x] Added compare-specific styles with mobile-safe table container.
+- [x] Fixed TypeScript mismatch by updating `Gpu.benchmark` type to `number | null` to match existing data.
+
+### Audit Snapshot
+- Total comparison records: `5`
+- Valid slugs: `5`
+- Comparison GPU targets: `10`
+- Target GPU slugs found in `data/gpus.json`: `10/10`
+- Comparison records marked draft/low confidence: `5/5`
+- Comparison records with sources: `0/5`
+- GPU records referenced by comparisons: `8`
+- Referenced GPU records with sources: `7`
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/compare` and 5 `/compare/[slug]` static paths.
+
+### Issues
+- `data:validate` still reports existing warnings in `data/gpus.json` for source-field mapping gaps; this task did not modify GPU source mappings.
+- Comparison records are still draft and have no direct comparison-level sources, so verdicts remain planning-only.
+
+### Files Changed
+- `repositories/comparison.repository.ts`
+- `services/comparison.service.ts`
+- `types/gpu.ts`
+- `components/ComparisonCard.tsx`
+- `components/ComparisonTable.tsx`
+- `components/ComparisonVerdict.tsx`
+- `components/ComparisonCta.tsx`
+- `components/ComparisonSourceNotice.tsx`
+- `app/(frontend)/compare/page.tsx`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 7 - build landing page skeleton using source-aware planning structure.
+
+---
+
+## 2026-06-02 - Day 6.1 comparison UX and SEO integration refinement
+
+### Agent
+Codex
+
+### Planned Task
+Make `/compare` discoverable across the site and refine comparison UX/SEO before moving to Day 7.
+
+### What Was Missing After Initial Day 6
+- `/compare` existed and was in the sitemap, but it was not clearly discoverable from main navigation, homepage, GPU pages, calculator flow, or footer.
+- `/compare` cards were useful as links but did not yet expose enough source-backed planning hints.
+- `/compare/[slug]` pages had the required skeleton sections, but the above-the-fold summary and pair-specific FAQ needed refinement.
+
+### Completed
+- [x] Added `Compare` to config-driven navigation via `data/navigation.json`; header and footer now expose `/compare`.
+- [x] Added homepage links to `/compare` in the topic grid and starting points.
+- [x] Added a `/gpu` hub CTA: `Compare GPUs side by side`.
+- [x] Added related comparison links on `/gpu/[slug]`, with safe fallback to `/compare`.
+- [x] Added calculator links to `/compare` after VRAM estimate guidance.
+- [x] Upgraded `/compare` hub with workflow cards, grouped comparison sections, intent labels, and source-aware GPU hints.
+- [x] Upgraded comparison detail pages with quick summary cards, cautious verdict labels, CTA block, pair-specific FAQ, and richer source/confidence display.
+- [x] Updated comparison table behavior so required un-sourced fields show `Needs verification` and mobile rows stack without horizontal overflow.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/compare` and 5 `/compare/[slug]` static paths.
+- [x] Static export files exist for `/`, `/gpu`, `/tools/vram-calculator`, `/compare`, and all 5 comparison pages.
+- [x] Sitemap includes `/compare` and all comparison detail URLs.
+- [x] Brand/domain hardcode scan passed in `app`, `components`, `lib`, `services`, and `repositories`.
+- [x] Confirmed no project-level `src` directory outside dependency folders.
+
+### Issues
+- `data:validate` still reports 51 existing warnings in `data/gpus.json` for source-field mapping gaps; this patch did not modify GPU data.
+- Comparison records remain draft/low confidence and have no direct benchmark sources, so comparison pages stay planning-only.
+- No price, availability, tokens/s, image speed, affiliate link, or buying recommendation was added.
+
+### Files Changed
+- `data/navigation.json`
+- `services/comparison.service.ts`
+- `components/ComparisonCard.tsx`
+- `components/ComparisonTable.tsx`
+- `components/ComparisonVerdict.tsx`
+- `components/ComparisonSourceNotice.tsx`
+- `app/(frontend)/page.tsx`
+- `app/(frontend)/gpu/page.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `app/(frontend)/compare/page.tsx`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 7 - build landing page skeleton using source-aware planning structure.

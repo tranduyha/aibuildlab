@@ -37,10 +37,10 @@ const faqItems = [
 ];
 
 const relatedLinks = [
+  { label: "Compare source-backed GPU profiles", href: "/compare" },
   { label: "Best GPU for Local LLM", href: "/guides#planned-guides" },
   { label: "Best GPU for Stable Diffusion", href: "/guides#planned-guides" },
   { label: "RTX 3060 12GB for AI", href: "/gpu" },
-  { label: "RTX 3090 for Local LLM", href: "/gpu" },
   { label: "Budget AI Workstation", href: "/builds#planned-builds" },
 ];
 
@@ -231,6 +231,9 @@ export default function VramCalculatorPage() {
                 your selected model, runtime, and context are realistic for your
                 workflow, then compare source-backed GPU profiles before testing
                 the exact setup on your own environment.
+              </p>
+              <p className="gpu-calc-cta-inline">
+                <Link href="/compare">After estimating VRAM, compare source-backed GPU profiles</Link>
               </p>
             </div>
             <div>

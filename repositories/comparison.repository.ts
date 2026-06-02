@@ -21,9 +21,19 @@ export function getFeaturedComparisons(): Comparison[] {
   return comparisons.filter((comparison) => comparison.featured);
 }
 
+export function getComparisonStaticParams(): Array<{ slug: string }> {
+  return comparisons.map((comparison) => ({ slug: comparison.slug }));
+}
+
+export function getComparisonListItems(): Comparison[] {
+  return getAllComparisons().sort((a, b) => Number(b.featured) - Number(a.featured));
+}
+
 export const comparisonRepository = {
   getAllComparisons,
   getComparisonBySlug,
   getPublishedComparisons,
   getFeaturedComparisons,
+  getComparisonStaticParams,
+  getComparisonListItems,
 };

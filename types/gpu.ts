@@ -58,7 +58,7 @@ export interface Gpu {
   launchYear: number | null;
   msrp?: number | null;
   aiTops: number | null;
-  benchmark: null;
+  benchmark: number | null;
   tokensPerSecond: number | null;
   status: ContentStatus;
   needsReview: boolean;

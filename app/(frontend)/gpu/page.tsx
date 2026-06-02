@@ -44,6 +44,13 @@ export default function GpuIndexPage() {
           <p className="gpu-index-cta-note">
             Start with <Link href="/tools/vram-calculator">VRAM Calculator</Link> to estimate memory range, then review each GPU profile.
           </p>
+          <div className="compare-inline-cta">
+            <div>
+              <h3>Compare GPUs side by side</h3>
+              <p>Use comparisons after estimating VRAM and checking individual GPU profiles.</p>
+            </div>
+            <Link href="/compare">Browse GPU comparisons</Link>
+          </div>
         </section>
 
         <section className="tool-section" aria-label="Source-backed GPU profiles">

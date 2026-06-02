@@ -55,7 +55,7 @@ Không dùng thư mục `src`.
 - [x] Có guide seed records dạng draft.
 - [x] Có VRAM calculator estimate page skeleton.
 - [x] Co GPU profile page (skeleton Day 4).
-- [ ] Có comparison page.
+- [x] Có comparison page.
 - [ ] Có build landing page.
 - [ ] Có guide pages.
 - [x] Có image manifest.
@@ -65,31 +65,43 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 5.2 - Final GPU page cleanup before Day 6 (2026-05-29).
+Day 6.1 - Comparison UX/SEO integration refinement (2026-06-02).
 
 ## Today Scope
 
-- Shorten variant-specific copy inside `GpuSpecTable`.
-- Hide optional unverified fields that are not important for planning.
-- Add one VRAM-class-specific planning FAQ/note when applicable.
-- Confirm no debug/issue badge is part of production UI code.
+- Make `/compare` discoverable from main navigation, homepage, GPU pages, calculator, footer, and sitemap.
+- Improve `/compare` hub cards with intent, source-aware GPU hints, and grouped comparison sections.
+- Improve `/compare/[slug]` with above-the-fold summary, cautious labels, CTA, pair-specific FAQ, and richer source confidence.
+- Update mobile comparison table behavior to avoid horizontal overflow.
 
 ## Done Today
 
-- [x] Shortened table variant-specific note to concise wording: `Variant-specific. Verify exact card.`
-- [x] Kept long variant/source context in `Sources and data confidence` section.
-- [x] Hid optional unverified fields in spec table (`cardDimensionsMm`, `displayOutputs`, `launchDate`, `launchYear`) while keeping important planning fields visible with verification state.
-- [x] Added one VRAM-class planning FAQ note for 12GB/16GB/24GB/32GB classes when matched.
-- [x] Searched UI code and found no `1 issue`/debug overlay badge implementation in app components/pages.
-- [x] Ran `npm run data:validate` (0 errors, 0 warnings).
+- [x] Added `Compare` to `data/navigation.json`; header and footer now expose `/compare` through config-driven navigation.
+- [x] Added homepage links to `/compare` in the topic grid and starting points.
+- [x] Added `/gpu` CTA linking to `/compare`.
+- [x] Added related comparison links on `/gpu/[slug]`, with fallback to `/compare` when no specific comparison exists.
+- [x] Added calculator links to `/compare` after VRAM estimate guidance.
+- [x] Upgraded `/compare` hub with workflow cards, grouped comparison sections, intent labels, and source-aware GPU hints.
+- [x] Upgraded `/compare/[slug]` pages with compact planning summary, cautious verdict labels, CTA block, pair-specific FAQ, and richer confidence/source notice.
+- [x] Updated comparison table to show `Needs verification` for un-sourced required fields and stack rows on mobile.
+- [x] Confirmed sitemap includes `/compare` and all 5 comparison detail URLs.
+- [x] Ran brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories` (no forbidden literals found).
+- [x] Ran `npm run data:validate` (0 errors, 51 warnings from existing GPU source-field mapping gaps).
 - [x] Ran `npm run lint`.
-- [x] Ran `npm run build`.
+- [x] Ran `npm run build` (pass; `/compare` + 5 `/compare/[slug]` paths generated).
 - [x] Updated `DAILY_LOG.md`.
 - [x] Updated `TASK_STATUS.md`.
 
 ## Last Completed Task
 
-Day 5.2 final GPU page cleanup before Day 6 with passing checks.
+Day 6.1 comparison UX/SEO integration refinement with passing validation/lint/build.
+
+## Open Limitations
+
+- Comparisons remain source-aware planning pages.
+- No benchmark verdicts unless benchmark sources exist.
+- No price, availability, or affiliate data unless source-backed through approved sources.
+- `npm run data:validate` still reports existing GPU source-field mapping warnings unrelated to this integration patch.
 ## Done
 
 - [x] Global layout đã có Header/Footer.

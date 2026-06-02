@@ -21,8 +21,8 @@ const helpTopics = [
   },
   {
     title: "GPU comparison",
-    description: "Prepare for source-backed comparisons without relying on unverified performance claims.",
-    href: "/gpu",
+    description: "Compare source-backed GPU planning profiles before choosing local hardware.",
+    href: "/compare",
     marker: "GPU",
     visual: "compare" as const,
   },
@@ -74,7 +74,7 @@ const workflowSteps = [
   },
   {
     title: "Compare hardware and plan a build",
-    description: "Continue only with source-reviewed specifications and compatibility checks.",
+    description: "Compare source-reviewed specifications and compatibility checks before planning a build.",
   },
 ];
 
@@ -102,7 +102,7 @@ const upcomingAreas = [
 const startingPoints = [
   { label: "VRAM Calculator", href: "/tools/vram-calculator" },
   { label: "GPU planning hub", href: "/gpu" },
-  { label: "Local AI guides", href: "/guides" },
+  { label: "GPU comparisons", href: "/compare" },
   { label: "AI workstation builds", href: "/builds" },
 ];
 

@@ -5,6 +5,7 @@ import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import GpuSpecTable from "@/components/GpuSpecTable";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { gpuRepository } from "@/repositories/gpu.repository";
+import { comparisonService } from "@/services/comparison.service";
 import { gpuService } from "@/services/gpu.service";
 
 interface GpuProfilePageProps {
@@ -119,6 +120,7 @@ export default async function GpuProfilePage({ params }: GpuProfilePageProps) {
     benchmark: hasSourceType("benchmark", gpu.sources),
   };
   const vramClassNote = getVramClassNote(gpu.vramGb);
+  const relatedComparisons = comparisonService.getComparisonsForGpuSlug(gpu.slug);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -376,6 +378,26 @@ export default async function GpuProfilePage({ params }: GpuProfilePageProps) {
                   <p>{vramClassNote.body}</p>
                 </div>
               ) : null}
+            </div>
+          </section>
+
+          <section className="tool-section">
+            <h2>Related comparisons</h2>
+            <p className="related-note">
+              Compare this GPU against nearby planning options after estimating VRAM and reviewing source notes.
+            </p>
+            <div className="related-links">
+              {relatedComparisons.length > 0 ? (
+                relatedComparisons.map((item) => (
+                  <Link href={`/compare/${item.comparison.slug}`} key={item.comparison.slug}>
+                    {item.comparison.title} <span>&rarr;</span>
+                  </Link>
+                ))
+              ) : (
+                <Link href="/compare">
+                  Browse all source-aware GPU comparisons <span>&rarr;</span>
+                </Link>
+              )}
             </div>
           </section>
 
