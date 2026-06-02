@@ -2395,6 +2395,271 @@ body {
   font-weight: 600;
 }
 
+.build-index-hero,
+.build-detail-hero {
+  padding-bottom: 24px;
+}
+
+.build-card-grid,
+.build-gpu-grid,
+.build-comparison-grid,
+.build-summary-grid,
+.build-route-grid,
+.build-note-grid,
+.build-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.build-route-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.build-card,
+.build-gpu-card,
+.build-comparison-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 20px;
+}
+
+.build-card h2,
+.build-gpu-card h3,
+.build-comparison-card h3 {
+  margin-top: 12px;
+  font-size: 23px;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.build-card h2 a:hover,
+.build-gpu-card h3 a:hover,
+.build-comparison-card h3 a:hover {
+  color: var(--primary);
+}
+
+.build-card p,
+.build-comparison-card p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.build-card-meta,
+.build-gpu-card dl {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+.build-card-meta div,
+.build-gpu-card dl div {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-alt);
+  padding: 10px;
+}
+
+.build-card-meta dt,
+.build-gpu-card dt {
+  color: var(--foreground);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.build-card-meta dd,
+.build-gpu-card dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.build-card-cta {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.build-route-grid a {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 16px;
+}
+
+.build-route-grid a:hover {
+  border-color: var(--primary);
+}
+
+.build-route-grid strong {
+  color: var(--foreground);
+  font-size: 15px;
+}
+
+.build-route-grid span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.build-summary-grid div {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 18px;
+}
+
+.build-summary-grid span {
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.build-summary-grid p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.58;
+}
+
+.build-planning-stack {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.build-stack-step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  min-height: 190px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
+  padding: 18px;
+}
+
+.build-stack-step span {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid #c6dfef;
+  border-radius: 999px;
+  background: #eef7fd;
+  padding: 4px 8px;
+  color: var(--primary-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.build-stack-step h3,
+.build-note-grid h3,
+.build-decision-grid h3,
+.build-checklist-focus h3,
+.build-checklist-group h3 {
+  margin-top: 12px;
+  font-size: 17px;
+  letter-spacing: -0.02em;
+}
+
+.build-stack-step p,
+.build-note-grid p,
+.build-outcome p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.build-outcome {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-alt);
+  padding: 22px;
+}
+
+.build-checklist-wrap {
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 22px;
+}
+
+.build-checklist-focus {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 18px;
+}
+
+.build-checklist-focus h3,
+.build-checklist-group h3 {
+  margin-top: 0;
+}
+
+.build-checklist-focus ul,
+.build-checklist-group ul,
+.build-decision-grid ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.build-checklist-groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.build-checklist-group,
+.build-note-grid div,
+.build-decision-grid div {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-alt);
+  padding: 16px;
+}
+
+.build-decision-grid div {
+  background: var(--surface);
+}
+
+.build-cta-block {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-top: 42px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface-alt);
+  padding: 22px;
+}
+
+.build-cta-block h2 {
+  margin-bottom: 8px;
+}
+
+.build-cta-block p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 .comparison-hero-visual {
   position: relative;
   margin-top: 34px;
@@ -2678,6 +2943,16 @@ body {
 
 @media (max-width: 900px) {
   .comparison-card-grid,
+  .build-card-grid,
+  .build-gpu-grid,
+  .build-comparison-grid,
+  .build-summary-grid,
+  .build-route-grid,
+  .build-note-grid,
+  .build-decision-grid,
+  .build-planning-stack,
+  .build-checklist-groups,
+  .build-cta-block,
   .compare-workflow-grid,
   .comparison-summary-grid,
   .comparison-source-grid,
@@ -2708,6 +2983,9 @@ body {
     justify-content: center;
     width: 100%;
     text-align: center;
+  }
+  .build-stack-step {
+    min-height: 0;
   }
 }
 

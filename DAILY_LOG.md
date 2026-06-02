@@ -1436,3 +1436,105 @@ Apply a small content and SEO polish after Day 6.2 without rebuilding existing p
 
 ### Next Step
 Day 7 - build landing page skeleton using source-aware planning structure.
+
+---
+
+## 2026-06-02 - Day 7 build landing page skeleton
+
+### Agent
+Codex
+
+### Planned Task
+Create local AI workstation build planning hub and detail pages without adding exact parts, prices, affiliate links, benchmarks, tokens/s, FPS, image-speed, availability, or buying claims.
+
+### Completed
+- [x] Replaced `/builds` placeholder with a build planning hub listing 5 route cards.
+- [x] Reworked `data/builds.json` into 5 Day 7 planning records: local LLM starter, 16GB VRAM local AI, high-VRAM workstation, image workflow, and cloud-vs-local planning.
+- [x] Extended build types, repository, and service flow for static params, resolved GPU profiles, resolved comparison pages, and missing-link warnings.
+- [x] Added `/builds/[slug]` SSG pages with `generateStaticParams`, `generateMetadata`, breadcrumb, one H1, planning badges, summary cards, who-for copy, checklist, GPU options, related comparisons, cloud checkpoint, FAQ, CTA, and safe JSON-LD.
+- [x] Added build components: `BuildCard`, `BuildPlanningChecklist`, `BuildGpuOptions`, `BuildRelatedComparisons`, and `BuildCta`.
+- [x] Added all build detail pages to sitemap.
+- [x] Added responsive build page/card/checklist/CTA styling.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing GPU source-field mapping warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/builds` and 5 `/builds/[slug]` static paths.
+- [x] Static export contains `/builds.html` and all 5 detail HTML files.
+- [x] Brand/domain hardcode scan passed in `app`, `components`, `lib`, `services`, and `repositories`.
+- [x] Build-file unsupported-claim scan found only negative disclaimer wording.
+
+### Issues
+- Existing `data/gpus.json` source-field mapping warnings remain unchanged.
+- Build pages are planning drafts and not benchmark-backed recommendations.
+- No exact component list, price, availability, affiliate link, benchmark claim, tokens/s, FPS, image-speed claim, or buying recommendation was added.
+
+### Files Changed
+- `data/builds.json`
+- `types/build.ts`
+- `repositories/build.repository.ts`
+- `services/build.service.ts`
+- `components/BuildCard.tsx`
+- `components/BuildPlanningChecklist.tsx`
+- `components/BuildGpuOptions.tsx`
+- `components/BuildRelatedComparisons.tsx`
+- `components/BuildCta.tsx`
+- `app/(frontend)/builds/page.tsx`
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 7.x or Day 8 - continue with guide pages or source-backed build enrichment candidates before any purchase-oriented content.
+
+---
+
+## 2026-06-02 - Day 7.1 build page differentiation polish
+
+### Agent
+Codex
+
+### Planned Task
+Make build pages feel like full local AI workstation planning routes rather than GPU/Compare-style pages, without rebuilding Day 7 or adding unsupported hardware claims.
+
+### Completed
+- [x] Added `BuildPlanningStack` with Workload, VRAM tier, GPU planning class, System constraints, and Validation path.
+- [x] Added Planning outcome sections to every `/builds/[slug]` page.
+- [x] Reordered build detail pages so workload, summary, planning stack, system checklist, and build-specific notes appear before GPU planning options.
+- [x] Expanded `BuildPlanningChecklist` into grouped system-level sections: Memory planning, GPU planning, Power and thermals, Storage and workflow, Runtime validation, and Evidence.
+- [x] Added build-specific planning notes for starter, 16GB VRAM, high-VRAM, image workflow, and cloud-vs-local routes.
+- [x] Added a Cloud vs Local decision framework with cloud-first and local-planning criteria, without provider pricing or recommendations.
+- [x] Improved `/builds` with a `Choose a planning route` section and cards showing key build constraints plus GPU planning class.
+- [x] Updated build-specific FAQ questions to avoid generic repetition.
+- [x] Added compatibility disclaimer covering motherboard, case, PSU connector, cooling clearance, OS, driver, and runtime compatibility.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing GPU source-field mapping warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/builds` and 5 `/builds/[slug]` static paths.
+- [x] Brand/domain hardcode scan passed in `app`, `components`, `lib`, `services`, and `repositories`.
+- [x] Confirmed forbidden schema types (`Product`, `Review`, `Offer`, `AggregateRating`) are not present in build output.
+- [x] Confirmed static output includes Planning stack, Planning outcome, Choose a planning route, and Cloud vs local decision framework.
+
+### Issues
+- Existing `data/gpus.json` source-field mapping warnings remain unchanged.
+- Build pages remain planning drafts and do not validate exact PC parts, price, availability, benchmark speed, tokens/s, FPS, image speed, affiliate offers, or buying recommendations.
+- Output scans still find price/availability terms in safety disclaimers and footer transparency copy; no price/availability schema or offer markup was added.
+
+### Files Changed
+- `data/builds.json`
+- `components/BuildCard.tsx`
+- `components/BuildPlanningChecklist.tsx`
+- `components/BuildPlanningStack.tsx`
+- `app/(frontend)/builds/page.tsx`
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 7.2 or Day 8 - continue guide pages or source-backed enrichment candidates before any purchase-oriented build content.

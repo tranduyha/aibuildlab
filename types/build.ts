@@ -9,6 +9,17 @@ export interface Build {
   seoDescription: string;
   tags: string[];
   useCases: string[];
+  intent: string;
+  targetUseCase: string;
+  vramTier: string;
+  suggestedGpuClass: string;
+  suggestedGpuSlugs: string[];
+  relatedComparisonSlugs: string[];
+  checklistFocus: string[];
+  uniqueFaq: {
+    question: string;
+    answer: string;
+  };
   budgetMinUsd: number | null;
   budgetMaxUsd: number | null;
   recommendedGpuSlugs: string[];

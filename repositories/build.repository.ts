@@ -29,10 +29,15 @@ export function getBuildsByBudgetRange(minBudget: number, maxBudget: number): Bu
   );
 }
 
+export function getBuildStaticParams(): Array<{ slug: string }> {
+  return builds.map((build) => ({ slug: build.slug }));
+}
+
 export const buildRepository = {
   getAllBuilds,
   getBuildBySlug,
   getPublishedBuilds,
   getBuildsByUseCase,
   getBuildsByBudgetRange,
+  getBuildStaticParams,
 };

@@ -56,7 +56,7 @@ Không dùng thư mục `src`.
 - [x] Có VRAM calculator estimate page skeleton.
 - [x] Co GPU profile page (skeleton Day 4).
 - [x] Có comparison page.
-- [ ] Có build landing page.
+- [x] Có build landing page.
 - [ ] Có guide pages.
 - [x] Có image manifest.
 - [x] Có Cloudflare Pages preview deploy tại `https://vramforge.pages.dev/`.
@@ -65,28 +65,31 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Pre-Day 7 - Micro content and SEO cleanup (2026-06-02).
+Day 7.1 - Build page differentiation polish (2026-06-02).
 
 ## Today Scope
 
-- Clean homepage wording so GPU profiles and comparison pages no longer sound only future/upcoming.
-- Soften user-facing planning status labels without removing data safety warnings.
-- Remove duplicate FAQ questions from comparison detail pages.
-- Remove `- Draft` from comparison metadata titles while keeping planning status visible in page body.
-- Ensure calculator result actions link clearly to GPU profiles and GPU comparisons.
+- Differentiate Builds from Compare by making build pages full workstation planning routes instead of GPU-vs-GPU decision pages.
+- Add a `BuildPlanningStack` component and use it near the top of build detail pages.
+- Add Planning outcome sections and unique route-specific planning notes.
+- Expand build checklist into system-level groups covering memory, GPU, power/thermals, storage/workflow, runtime validation, and evidence.
+- Improve `/builds` route selection and cards with build constraints.
+- Add Cloud vs Local decision framework without provider pricing or recommendations.
 
 ## Done Today
 
-- [x] Replaced homepage `Upcoming hardware data` copy with current planning-page wording for GPU profiles and comparisons.
-- [x] Updated shared data badges: `Planning draft`, `Benchmark evidence missing`, and `Source-backed GPU specs available`.
-- [x] Softened GPU service warning from `Seed data only` to `Planning data only`.
-- [x] Reduced each `/compare/[slug]` FAQ set to four distinct questions: pair-specific, calculator, cloud GPU, and purchase-guidance disclaimer.
-- [x] Updated FAQ JSON-LD to match the cleaned comparison FAQ set.
-- [x] Stripped `- Draft` from comparison detail metadata title and WebPage schema title at render time.
-- [x] Updated calculator result actions with `View matching GPU profiles` and `Compare source-backed GPU planning profiles`.
-- [x] Removed `Best GPU` wording from calculator related links.
+- [x] Added `BuildPlanningStack` with Workload, VRAM tier, GPU planning class, System constraints, and Validation path.
+- [x] Placed Planning stack and Planning outcome above system checklist and before GPU planning options on `/builds/[slug]`.
+- [x] Reworked `BuildPlanningChecklist` into grouped system-level checks.
+- [x] Added route-specific planning notes for starter, 16GB, high-VRAM, image workflow, and cloud-vs-local pages.
+- [x] Moved GPU planning options later in the build detail flow and labelled them as secondary planning references.
+- [x] Added Cloud vs Local decision framework and renamed its GPU section to local hardware tiers against cloud testing.
+- [x] Added compatibility disclaimer covering motherboard, case, PSU connector, cooling clearance, OS, driver, and runtime compatibility.
+- [x] Improved `/builds` with `Choose a planning route` and build cards showing key constraints plus GPU planning class.
+- [x] Updated build-specific FAQ seed questions and answers.
 - [x] Ran brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories` (no forbidden literals found).
-- [x] Confirmed compare static output no longer includes metadata titles ending in `- Draft`.
+- [x] Confirmed forbidden schema types (`Product`, `Review`, `Offer`, `AggregateRating`) are not present in build output.
+- [x] Confirmed static output includes Planning stack, Planning outcome, Choose a planning route, and Cloud vs local decision framework.
 - [x] Ran `npm run data:validate` (0 errors, 51 existing warnings from GPU source-field mapping gaps).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build`.
@@ -95,10 +98,13 @@ Pre-Day 7 - Micro content and SEO cleanup (2026-06-02).
 
 ## Last Completed Task
 
-Pre-Day 7 micro content/SEO cleanup with passing validation/lint/build.
+Day 7.1 build page differentiation polish with passing validation/lint/build.
 
 ## Open Limitations
 
+- Build pages remain planning drafts, not benchmark-backed build recommendations.
+- Build pages do not include exact parts, prices, affiliate links, speed claims, availability claims, or buying recommendations.
+- Build pages now emphasize system-level planning before GPU options.
 - Comparisons remain source-aware planning pages, not benchmark verdicts.
 - RTX 4070 Super remains a planning draft, so unsourced fields still show `Needs verification`.
 - No benchmark, price, availability, image speed, tokens/s, affiliate link, or buying recommendation was added.

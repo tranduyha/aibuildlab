@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
+import { buildService } from "@/services/build.service";
 import { comparisonService } from "@/services/comparison.service";
 import { projectService } from "@/services/project.service";
 
@@ -14,6 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}/compare/${slug}`,
     lastModified: new Date(),
   }));
+  const buildPages = buildService.getBuildStaticParams().map(({ slug }) => ({
+    url: `${SITE_URL}/builds/${slug}`,
+    lastModified: new Date(),
+  }));
 
   return [
     { url: SITE_URL, lastModified: new Date() },
@@ -26,5 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`, lastModified: new Date() },
     ...projectPages,
     ...comparisonPages,
+    ...buildPages,
   ];
 }
