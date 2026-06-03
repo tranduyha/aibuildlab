@@ -59,7 +59,7 @@ export default function BuildsIndexPage() {
             </Link>
             <Link href="/builds/cloud-vs-local-ai-build-planning">
               <strong>Cloud vs Local</strong>
-              <span>Validate cloud testing before buying local hardware.</span>
+              <span>Validate cloud testing before local hardware commitment.</span>
             </Link>
           </div>
         </section>
@@ -94,7 +94,7 @@ export default function BuildsIndexPage() {
             <div>
               <span>04</span>
               <h3>Verify the exact build</h3>
-              <p>Confirm part compatibility, power, cooling, OS, drivers, and workload evidence before purchase.</p>
+              <p>Confirm part compatibility, power, cooling, OS, drivers, and workload evidence before hardware decisions.</p>
             </div>
           </div>
         </section>

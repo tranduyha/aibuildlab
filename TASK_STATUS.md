@@ -65,31 +65,33 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 7.1 - Build page differentiation polish (2026-06-02).
+Pre-Day 8 - Build UX cleanup (2026-06-03).
 
 ## Today Scope
 
-- Differentiate Builds from Compare by making build pages full workstation planning routes instead of GPU-vs-GPU decision pages.
-- Add a `BuildPlanningStack` component and use it near the top of build detail pages.
-- Add Planning outcome sections and unique route-specific planning notes.
-- Expand build checklist into system-level groups covering memory, GPU, power/thermals, storage/workflow, runtime validation, and evidence.
-- Improve `/builds` route selection and cards with build constraints.
-- Add Cloud vs Local decision framework without provider pricing or recommendations.
+- Polish `/builds` and `/builds/[slug]` UX before starting Day 8.
+- Make build checklist sections easier to scan without removing safety checks.
+- Reduce repeated warning badge weight below the hero.
+- Make GPU planning candidates visually secondary.
+- Add light visual cues to the planning stack.
+- Improve build FAQ uniqueness while keeping source-aware wording.
 
 ## Done Today
 
-- [x] Added `BuildPlanningStack` with Workload, VRAM tier, GPU planning class, System constraints, and Validation path.
-- [x] Placed Planning stack and Planning outcome above system checklist and before GPU planning options on `/builds/[slug]`.
-- [x] Reworked `BuildPlanningChecklist` into grouped system-level checks.
-- [x] Added route-specific planning notes for starter, 16GB, high-VRAM, image workflow, and cloud-vs-local pages.
-- [x] Moved GPU planning options later in the build detail flow and labelled them as secondary planning references.
-- [x] Added Cloud vs Local decision framework and renamed its GPU section to local hardware tiers against cloud testing.
-- [x] Added compatibility disclaimer covering motherboard, case, PSU connector, cooling clearance, OS, driver, and runtime compatibility.
-- [x] Improved `/builds` with `Choose a planning route` and build cards showing key constraints plus GPU planning class.
-- [x] Updated build-specific FAQ seed questions and answers.
+- [x] Reworked `BuildPlanningChecklist` into compact grouped cards with short summaries and six system-level groups.
+- [x] Kept route-specific priority checks while making checklist content shorter and easier to scan.
+- [x] Replaced repeated lower-page confidence badges in build, GPU, and comparison cards with lighter `Planning confidence` notes.
+- [x] Kept the primary `DataConfidenceBadge` near the build detail hero.
+- [x] Added compact visual markers to `BuildPlanningStack` for Workload, VRAM, GPU, System, and Validation flow.
+- [x] Changed GPU section heading to `GPU planning candidates` and added cautious copy: `These GPUs may fit this planning tier.`
+- [x] Kept GPU options after planning stack, outcome, checklist, and build-specific notes.
+- [x] Added route-aware FAQ sets so each build page has clearer unique intent coverage.
+- [x] Softened build wording away from buy/buying language toward local hardware commitment/decision wording.
+- [x] Improved build card/checklist/stack CSS for compact desktop grids and stacked mobile layout.
 - [x] Ran brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories` (no forbidden literals found).
 - [x] Confirmed forbidden schema types (`Product`, `Review`, `Offer`, `AggregateRating`) are not present in build output.
-- [x] Confirmed static output includes Planning stack, Planning outcome, Choose a planning route, and Cloud vs local decision framework.
+- [x] Confirmed static output includes GPU planning candidates, Planning confidence notes, route-specific checklist sections, and Evidence and testing.
+- [x] Confirmed build output does not append `Draft` to build SEO titles.
 - [x] Ran `npm run data:validate` (0 errors, 51 existing warnings from GPU source-field mapping gaps).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build`.
@@ -98,17 +100,25 @@ Day 7.1 - Build page differentiation polish (2026-06-02).
 
 ## Last Completed Task
 
-Day 7.1 build page differentiation polish with passing validation/lint/build.
+Pre-Day 8 build UX cleanup with passing validation/lint/build.
 
 ## Open Limitations
 
 - Build pages remain planning drafts, not benchmark-backed build recommendations.
 - Build pages do not include exact parts, prices, affiliate links, speed claims, availability claims, or buying recommendations.
-- Build pages now emphasize system-level planning before GPU options.
+- Build pages emphasize system-level planning before GPU candidates.
 - Comparisons remain source-aware planning pages, not benchmark verdicts.
 - RTX 4070 Super remains a planning draft, so unsourced fields still show `Needs verification`.
 - No benchmark, price, availability, image speed, tokens/s, affiliate link, or buying recommendation was added.
 - `npm run data:validate` still reports 51 existing GPU source-field mapping warnings unrelated to this copy cleanup.
+
+## Current Handoff Note
+
+- Ready for Day 8 - Cloud GPU data model.
+- Build pages are already live and polished for Pre-Day 8; do not rebuild Builds from scratch unless a new task explicitly asks for it.
+- Keep Day 8 data as draft/low-confidence seed records until sources are verified.
+- Do not add prices, affiliate links, exact parts, benchmarks, tokens/s, image speed, availability claims, or buying recommendations.
+
 ## Done
 
 - [x] Global layout đã có Header/Footer.
@@ -231,7 +241,7 @@ lastVerifiedAt: null
 
 None.
 
-## Open Limitations Before Day 5
+## Open Limitations Before Day 8
 
 - Estimates are planning-oriented and not benchmark/performance claims.
 - Image generation model matching remains planning-only unless a dedicated validated image-estimate mode is implemented.
@@ -239,7 +249,7 @@ None.
 
 ## Next Recommended Task
 
-Day 5 - GPU profile SEO upgrade.
+Day 8 - Cloud GPU data model.
 
 ## Notes for Next Agent
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import type { Build, Gpu } from "@/types";
 
 interface BuildCardProps {
@@ -18,7 +17,7 @@ function getKeyConstraints(build: Build): string {
     case "image-workflow-ai-build":
       return "Storage/cache, generated outputs, runtime extensions, driver caveats";
     case "cloud-vs-local-ai-build-planning":
-      return "Cloud testing, workload frequency, local control needs, purchase risk";
+      return "Cloud testing, workload frequency, local control needs, hardware risk";
     default:
       return "RAM, storage, power, thermals, OS, drivers, and runtime validation";
   }
@@ -27,7 +26,9 @@ function getKeyConstraints(build: Build): string {
 export default function BuildCard({ build, gpus }: BuildCardProps) {
   return (
     <article className="build-card">
-      <DataConfidenceBadge gpu={build} />
+      <p className="build-inline-note">
+        Planning confidence: {build.needsReview ? "Needs verification" : "source-backed route available"}
+      </p>
       <h2>
         <Link href={`/builds/${build.slug}`}>{build.title}</Link>
       </h2>

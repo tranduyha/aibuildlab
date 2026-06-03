@@ -2413,24 +2413,24 @@ body {
 }
 
 .build-route-grid {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 }
 
 .build-card,
 .build-gpu-card,
 .build-comparison-card {
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 12px;
   background: var(--surface);
-  padding: 20px;
+  padding: 18px;
 }
 
 .build-card h2,
 .build-gpu-card h3,
 .build-comparison-card h3 {
-  margin-top: 12px;
-  font-size: 23px;
-  letter-spacing: -0.03em;
+  margin-top: 10px;
+  font-size: 21px;
+  letter-spacing: 0;
   line-height: 1.25;
 }
 
@@ -2458,9 +2458,9 @@ body {
 .build-card-meta div,
 .build-gpu-card dl div {
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 8px;
   background: var(--surface-alt);
-  padding: 10px;
+  padding: 9px 10px;
 }
 
 .build-card-meta dt,
@@ -2513,7 +2513,7 @@ body {
 
 .build-summary-grid div {
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--surface);
   padding: 18px;
 }
@@ -2535,7 +2535,7 @@ body {
 .build-planning-stack {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 8px;
   align-items: stretch;
 }
 
@@ -2543,21 +2543,47 @@ body {
   position: relative;
   display: grid;
   align-content: start;
-  min-height: 190px;
+  min-height: 178px;
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 10px;
   background: linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
-  padding: 18px;
+  padding: 14px;
 }
 
-.build-stack-step span {
-  display: inline-flex;
-  width: fit-content;
+.build-stack-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 31px;
+  right: -8px;
+  z-index: 1;
+  width: 14px;
+  height: 1px;
+  background: #b7d2e4;
+}
+
+.build-stack-marker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.build-stack-marker span {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
   border: 1px solid #c6dfef;
-  border-radius: 999px;
+  border-radius: 8px;
   background: #eef7fd;
   padding: 4px 8px;
   color: var(--primary-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.build-stack-marker small {
+  color: var(--muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 11px;
   font-weight: 800;
@@ -2591,16 +2617,16 @@ body {
 
 .build-checklist-wrap {
   display: grid;
-  gap: 18px;
+  gap: 16px;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 12px;
   background: var(--surface);
-  padding: 22px;
+  padding: 18px;
 }
 
 .build-checklist-focus {
   border-bottom: 1px solid var(--border);
-  padding-bottom: 18px;
+  padding-bottom: 16px;
 }
 
 .build-checklist-focus h3,
@@ -2612,27 +2638,63 @@ body {
 .build-checklist-group ul,
 .build-decision-grid ul {
   display: grid;
-  gap: 8px;
+  gap: 7px;
   margin: 0;
   padding-left: 20px;
   color: var(--muted);
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .build-checklist-groups {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 12px;
 }
 
 .build-checklist-group,
 .build-note-grid div,
 .build-decision-grid div {
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--surface-alt);
-  padding: 16px;
+  padding: 14px;
+}
+
+.build-checklist-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.build-checklist-heading span {
+  display: inline-grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #c6dfef;
+  border-radius: 8px;
+  background: #eef7fd;
+  color: var(--primary-dark);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.build-checklist-group p {
+  margin: 8px 0 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.build-inline-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .build-decision-grid div {
@@ -2986,6 +3048,10 @@ body {
   }
   .build-stack-step {
     min-height: 0;
+  }
+
+  .build-stack-step::after {
+    display: none;
   }
 }
 

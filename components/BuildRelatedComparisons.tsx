@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import type { Comparison } from "@/types";
 
 interface BuildRelatedComparisonsProps {
@@ -19,7 +18,9 @@ export default function BuildRelatedComparisons({
     <div className="build-comparison-grid">
       {comparisons.map((comparison) => (
         <article className="build-comparison-card" key={comparison.slug}>
-          <DataConfidenceBadge gpu={comparison} />
+          <p className="build-inline-note">
+            Planning confidence: {comparison.needsReview ? "Needs verification" : "source-backed comparison available"}
+          </p>
           <h3>
             <Link href={`/compare/${comparison.slug}`}>{comparison.title}</Link>
           </h3>

@@ -1538,3 +1538,55 @@ Make build pages feel like full local AI workstation planning routes rather than
 
 ### Next Step
 Day 7.2 or Day 8 - continue guide pages or source-backed enrichment candidates before any purchase-oriented build content.
+
+---
+
+## 2026-06-03 - Pre-Day 8 build UX cleanup
+
+### Agent
+Codex
+
+### Planned Task
+Polish `/builds` and `/builds/[slug]` UX before starting Day 8, without rebuilding the Build section or adding unsupported hardware claims.
+
+### Completed
+- [x] Reworked `BuildPlanningChecklist` into compact grouped cards with short summaries for Memory planning, GPU planning, Power and thermals, Storage and workflow, Runtime validation, and Evidence and testing.
+- [x] Kept route-specific priority checks while making checklist content shorter and easier to scan.
+- [x] Replaced repeated lower-section confidence badges in build, GPU, and comparison cards with lighter inline `Planning confidence` notes.
+- [x] Kept the primary `DataConfidenceBadge` near the build detail hero.
+- [x] Added visual markers to `BuildPlanningStack` for Workload, VRAM, GPU, System, and Validation flow.
+- [x] Changed build detail GPU section heading to `GPU planning candidates` and used cautious planning copy.
+- [x] Kept GPU candidates after planning stack, planning outcome, checklist, and build-specific notes.
+- [x] Added route-aware FAQ sets so each build page has clearer unique intent coverage.
+- [x] Softened build wording away from buy/buying language toward local hardware commitment and decision wording.
+- [x] Improved build route/card/checklist/stack CSS for compact desktop grids and stacked mobile layout.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing GPU source-field mapping warnings)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories`
+- [x] Forbidden schema scan for `Product`, `Review`, `Offer`, and `AggregateRating` in build output
+- [x] Static output scan confirmed build pages include `GPU planning candidates`, `Planning confidence`, route-specific checklist sections, and `Evidence and testing`
+- [x] Static output scan confirmed build SEO titles do not append `Draft`
+
+### Issues
+- Existing `data/gpus.json` source-field mapping warnings remain unchanged.
+- Build pages remain planning drafts and do not include exact parts, prices, affiliate links, speed claims, availability claims, benchmarks, tokens/s, image speed, or buying recommendations.
+
+### Files Changed
+- `app/(frontend)/builds/page.tsx`
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `components/BuildCard.tsx`
+- `components/BuildGpuOptions.tsx`
+- `components/BuildPlanningChecklist.tsx`
+- `components/BuildPlanningStack.tsx`
+- `components/BuildRelatedComparisons.tsx`
+- `data/builds.json`
+- `services/build.service.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 8 - Cloud GPU data model.

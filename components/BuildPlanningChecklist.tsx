@@ -6,58 +6,71 @@ interface BuildPlanningChecklistProps {
 
 const CHECKLIST_GROUPS = [
   {
+    marker: "01",
     title: "Memory planning",
+    summary: "Start from workload memory, then keep headroom for runtime overhead.",
     items: [
-      "VRAM estimate from the calculator",
-      "System RAM for runtime and workload overhead",
-      "Context length, runtime overhead, and loaded model assumptions",
-      "Memory safety margin before treating a tier as usable",
+      "Calculator VRAM estimate",
+      "System RAM headroom",
+      "Context and runtime overhead",
+      "Loaded model assumptions",
     ],
   },
   {
+    marker: "02",
     title: "GPU planning",
+    summary: "Use GPU profiles as planning inputs, not final hardware verdicts.",
     items: [
       "VRAM tier fit",
-      "GPU profile source confidence",
+      "Source confidence",
       "Exact board-partner variant",
-      "Fields marked as draft or needing verification",
+      "Draft fields that need verification",
     ],
   },
   {
+    marker: "03",
     title: "Power and thermals",
+    summary: "Confirm the exact system can handle the GPU safely and consistently.",
     items: [
-      "PSU verification",
-      "Connector requirements",
-      "Cooling capacity",
+      "PSU headroom",
+      "Power connectors",
+      "Cooling path",
       "Case clearance",
-      "Total system load",
+      "Sustained system load",
     ],
   },
   {
+    marker: "04",
     title: "Storage and workflow",
+    summary: "Account for files and working space outside GPU memory.",
     items: [
       "Model files",
       "Cache",
       "Datasets",
       "Generated outputs",
-      "Working directory or scratch space",
+      "Scratch workspace",
     ],
   },
   {
+    marker: "05",
     title: "Runtime validation",
+    summary: "Check the software stack before treating the plan as usable.",
     items: [
       "OS support",
       "Driver support",
-      "CUDA, ROCm, DirectML, or runtime compatibility",
-      "Framework support for the target workload",
+      "CUDA, ROCm, DirectML, or runtime fit",
+      "Framework support",
     ],
   },
   {
-    title: "Evidence",
+    marker: "06",
+    title: "Evidence and testing",
+    summary: "Keep final decisions open until workload evidence exists.",
     items: [
-      "Benchmark evidence missing until attached",
-      "Test before purchase",
-      "Validate the actual workload before final hardware decisions",
+      "Benchmark evidence gap",
+      "Exact workload test",
+      "Compatibility review",
+      "Decision notes for unresolved risks",
     ],
   },
 ];
@@ -66,7 +79,7 @@ export default function BuildPlanningChecklist({ build }: BuildPlanningChecklist
   return (
     <div className="build-checklist-wrap">
       <div className="build-checklist-focus">
-        <h3>Route-specific checks</h3>
+        <h3>Route-specific priority checks</h3>
         <ul>
           {build.checklistFocus.map((item) => (
             <li key={item}>{item}</li>
@@ -76,7 +89,11 @@ export default function BuildPlanningChecklist({ build }: BuildPlanningChecklist
       <div className="build-checklist-groups">
         {CHECKLIST_GROUPS.map((group) => (
           <section className="build-checklist-group" key={group.title}>
-            <h3>{group.title}</h3>
+            <div className="build-checklist-heading">
+              <span>{group.marker}</span>
+              <h3>{group.title}</h3>
+            </div>
+            <p>{group.summary}</p>
             <ul>
               {group.items.map((item) => (
                 <li key={item}>{item}</li>

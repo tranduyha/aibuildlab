@@ -32,7 +32,7 @@ function getBuildSpecificNotes(slug: string): { title: string; body: string }[] 
             "This route is for first local LLM experiments. Start by estimating model memory, then treat 12GB to 16GB GPUs as a planning tier rather than purchase advice.",
         },
         {
-          title: "Validate model size before buying",
+          title: "Validate model size before local hardware commitment",
           body:
             "Starter builds can be sensitive to model size, context length, quantization, and runtime overhead. Verify the actual model path before committing to local hardware.",
         },
@@ -73,7 +73,7 @@ function getBuildSpecificNotes(slug: string): { title: string; body: string }[] 
         {
           title: "Runtime and driver caveats",
           body:
-            "Extensions, image pipelines, driver support, and runtime settings can change practical fit. Verify the exact workflow before buying parts.",
+            "Extensions, image pipelines, driver support, and runtime settings can change practical fit. Verify the exact workflow before committing to parts.",
         },
       ];
     case "cloud-vs-local-ai-build-planning":
@@ -100,10 +100,94 @@ function getBuildSpecificNotes(slug: string): { title: string; body: string }[] 
   }
 }
 
+function getBuildFaqItems(build: { slug: string; uniqueFaq: { question: string; answer: string } }) {
+  switch (build.slug) {
+    case "local-llm-starter-build":
+      return [
+        build.uniqueFaq,
+        {
+          question: "What should I validate after the first VRAM estimate?",
+          answer:
+            "Validate the exact model size, quantization, context length, and runtime overhead before treating a starter route as locally viable.",
+        },
+        {
+          question: "When should a starter route use cloud testing?",
+          answer:
+            "Use cloud testing when the target model is near the memory limit or when runtime support is still uncertain.",
+        },
+      ];
+    case "local-ai-16gb-vram-build":
+      return [
+        build.uniqueFaq,
+        {
+          question: "What makes a 16GB plan different from a starter plan?",
+          answer:
+            "A 16GB route gives more capacity to evaluate, but future model growth, extensions, and runtime overhead can still reduce usable headroom.",
+        },
+        {
+          question: "How should I compare 16GB GPU candidates?",
+          answer:
+            "Compare source-backed VRAM, memory, power, and runtime notes first, then validate the workload before narrowing the hardware plan.",
+        },
+      ];
+    case "high-vram-local-ai-workstation":
+      return [
+        build.uniqueFaq,
+        {
+          question: "Why does the checklist emphasize power and cooling?",
+          answer:
+            "High-VRAM GPUs can raise system-level requirements, so PSU, connector, thermal, and case checks matter before any local fit conclusion.",
+        },
+        {
+          question: "Should high VRAM replace workload testing?",
+          answer:
+            "No. VRAM capacity is only one planning input; runtime behavior and workload evidence still need validation.",
+        },
+      ];
+    case "image-workflow-ai-build":
+      return [
+        build.uniqueFaq,
+        {
+          question: "What should image workflow planning check besides VRAM?",
+          answer:
+            "Check model files, cache, generated outputs, extensions, driver support, and the exact runtime pipeline.",
+        },
+        {
+          question: "Can this page predict image generation speed?",
+          answer:
+            "No. This page avoids speed claims and keeps image workflow fit as a source-aware planning checklist.",
+        },
+      ];
+    case "cloud-vs-local-ai-build-planning":
+      return [
+        build.uniqueFaq,
+        {
+          question: "What does this route leave unresolved?",
+          answer:
+            "It does not validate provider pricing, availability, exact local parts, or final workload fit.",
+        },
+        {
+          question: "When does local hardware planning become more reasonable?",
+          answer:
+            "Local planning becomes more reasonable when workload frequency, data-control needs, VRAM fit, runtime support, and system constraints are all acceptable.",
+        },
+      ];
+    default:
+      return [
+        build.uniqueFaq,
+        {
+          question: "How should I use this build route?",
+          answer:
+            "Use it to organize workload assumptions, system constraints, GPU profile checks, and validation steps before hardware decisions.",
+        },
+      ];
+  }
+}
+
 function getPlanningOutcome(slug: string): string {
   switch (slug) {
     case "local-llm-starter-build":
-      return "This route helps you decide whether a 12GB to 16GB local LLM planning tier is worth testing further. It does not validate exact parts, prices, benchmark speed, or purchase fit; the next step is calculator-first model validation, then GPU profile review.";
+      return "This route helps you decide whether a 12GB to 16GB local LLM planning tier is worth testing further. It does not validate exact parts, prices, benchmark speed, or final hardware fit; the next step is calculator-first model validation, then GPU profile review.";
     case "local-ai-16gb-vram-build":
       return "This route helps you decide whether 16GB VRAM has enough headroom for a broader local AI workflow. If the estimate is close to the limit, verify with cloud testing before narrowing GPU profiles or comparison pages.";
     case "high-vram-local-ai-workstation":
@@ -111,9 +195,9 @@ function getPlanningOutcome(slug: string): string {
     case "image-workflow-ai-build":
       return "This route helps you decide whether an image workflow needs more than a simple VRAM shortlist. Verify storage, cache, generated output handling, driver support, and the exact image runtime before hardware decisions.";
     case "cloud-vs-local-ai-build-planning":
-      return "This route helps you decide whether cloud GPU testing should come before local hardware planning. It does not validate provider pricing, provider fit, exact local parts, or final purchase readiness.";
+      return "This route helps you decide whether cloud GPU testing should come before local hardware planning. It does not validate provider pricing, provider fit, exact local parts, or final hardware readiness.";
     default:
-      return "This route helps organize workload assumptions, system constraints, and validation steps. It does not validate exact parts, prices, benchmark speed, or final purchase fit.";
+      return "This route helps organize workload assumptions, system constraints, and validation steps. It does not validate exact parts, prices, benchmark speed, or final hardware fit.";
   }
 }
 
@@ -156,24 +240,7 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
   const seoTitle = cleanBuildSeoTitle(build.seoTitle);
   const buildSpecificNotes = getBuildSpecificNotes(build.slug);
   const isCloudVsLocal = isCloudVsLocalBuild(build.slug);
-  const faqItems = [
-    build.uniqueFaq,
-    {
-      question: "When should I use the VRAM Calculator with this build plan?",
-      answer:
-        "Use it before selecting a GPU tier so the build route starts from estimated model memory needs rather than a card name.",
-    },
-    {
-      question: "When is cloud GPU a better planning option?",
-      answer:
-        "Cloud GPU can be a better planning option for occasional high-memory tests, temporary projects, or validation before local hardware decisions.",
-    },
-    {
-      question: "Is this build page purchase guidance?",
-      answer:
-        "No. This page is a planning draft and intentionally avoids benchmark, price, availability, affiliate, speed, and buying claims.",
-    },
-  ];
+  const faqItems = getBuildFaqItems(build);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -233,7 +300,7 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
           <p className="tool-disclaimer">{buildService.getBuildWarning()}</p>
           <p className="tool-disclaimer">
             This page does not validate motherboard, case, PSU connector, cooling clearance, OS, driver, or runtime
-            compatibility. Treat it as a planning checklist and verify exact parts before buying.
+            compatibility. Treat it as a planning checklist and verify exact parts before hardware decisions.
           </p>
 
           <section className="tool-section">
@@ -277,7 +344,7 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
               <h2>Planning boundaries</h2>
               <p>
                 This page avoids exact part lists, prices, benchmark rankings, speed claims, and purchase
-                recommendations. Treat it as a checklist route before verification.
+                guidance. Treat it as a checklist route before verification.
               </p>
             </div>
           </section>
@@ -309,7 +376,7 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
                     <li>The workload is occasional.</li>
                     <li>The VRAM estimate is uncertain.</li>
                     <li>Benchmark evidence is missing.</li>
-                    <li>High-memory testing is needed before buying.</li>
+                    <li>High-memory testing is needed before local hardware commitment.</li>
                     <li>Local hardware purchase risk is high.</li>
                   </ul>
                 </div>
@@ -348,11 +415,11 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
             <h2>
               {isCloudVsLocal
                 ? "Local hardware tiers to compare against cloud testing"
-                : "GPU planning options"}
+                : "GPU planning candidates"}
             </h2>
             <p className="related-note">
-              These profiles are secondary planning references, not ranked recommendations. Verify sources, exact
-              variants, runtime support, and benchmark evidence before making a hardware decision.
+              These GPUs may fit this planning tier. Treat them as secondary planning references and verify sources,
+              exact variants, runtime support, and benchmark evidence before hardware decisions.
             </p>
             <BuildGpuOptions gpus={gpus} missingGpuSlugs={missingGpuSlugs} />
           </section>

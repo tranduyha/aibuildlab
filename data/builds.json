@@ -61,7 +61,7 @@
     ],
     "uniqueFaq": {
       "question": "When is 16GB VRAM a borderline local AI tier?",
-      "answer": "It can become borderline when runtime overhead, context length, larger model files, extensions, or future workload growth reduce usable headroom. Cloud testing can help validate uncertain workloads before local hardware decisions."
+        "answer": "It can become borderline when runtime overhead, context length, larger model files, extensions, or future workload growth reduce usable headroom. Cloud testing can help validate uncertain workloads before local hardware commitment."
     },
     "budgetMinUsd": null,
     "budgetMaxUsd": null,
@@ -157,13 +157,13 @@
     "id": "build-cloud-vs-local-ai-build-planning",
     "slug": "cloud-vs-local-ai-build-planning",
     "title": "Cloud vs Local AI Build Planning",
-    "shortDescription": "Decision route for testing cloud GPU before buying local hardware when workload fit is uncertain.",
+    "shortDescription": "Decision route for testing cloud GPU before local hardware commitment when workload fit is uncertain.",
     "seoTitle": "Cloud vs Local AI Build Planning",
     "seoDescription": "Plan whether to test cloud GPU first or continue toward local AI hardware with source-aware constraints and no provider pricing claims.",
     "tags": ["cloud-vs-local", "decision", "build-planning"],
     "useCases": ["local-vs-cloud-decision", "local-llm", "ai-workstation"],
     "intent": "local-vs-cloud-decision",
-    "targetUseCase": "Users deciding whether local hardware is worth validating before purchase",
+    "targetUseCase": "Users deciding whether local hardware is worth validating before commitment",
     "vramTier": "Variable VRAM planning tier",
     "suggestedGpuClass": "Compare local GPU tiers against a cloud test-first workflow",
     "suggestedGpuSlugs": ["rtx-4060-ti-16gb", "rtx-4090", "rtx-5090"],
@@ -173,13 +173,13 @@
     ],
     "checklistFocus": [
       "Use cloud testing when benchmark evidence is missing for your workload.",
-      "Validate model size, context, runtime, and driver assumptions before buying local hardware.",
+      "Validate model size, context, runtime, and driver assumptions before local hardware commitment.",
       "Keep provider pricing and availability out of this planning page until sourced.",
       "Compare local control needs against occasional high-VRAM usage."
     ],
     "uniqueFaq": {
-      "question": "When should I test cloud GPU before buying local hardware?",
-      "answer": "Test cloud first when the workload is occasional, the VRAM estimate is uncertain, benchmark evidence is missing, or local hardware purchase risk is high."
+      "question": "When should I test cloud GPU before local hardware commitment?",
+        "answer": "Test cloud first when the workload is occasional, the VRAM estimate is uncertain, benchmark evidence is missing, or local hardware commitment risk is high."
     },
     "budgetMinUsd": null,
     "budgetMaxUsd": null,

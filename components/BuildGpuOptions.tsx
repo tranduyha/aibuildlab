@@ -1,5 +1,4 @@
 import Link from "next/link";
-import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import type { Gpu } from "@/types";
 
 interface BuildGpuOptionsProps {
@@ -25,7 +24,10 @@ export default function BuildGpuOptions({ gpus, missingGpuSlugs }: BuildGpuOptio
     <div className="build-gpu-grid">
       {gpus.map((gpu) => (
         <article className="build-gpu-card" key={gpu.slug}>
-          <DataConfidenceBadge gpu={gpu} />
+          <p className="build-inline-note">
+            Planning confidence:{" "}
+            {gpu.needsReview ? "Needs verification" : "source-backed profile fields available"}
+          </p>
           <h3>
             <Link href={`/gpu/${gpu.slug}`}>{gpu.name}</Link>
           </h3>

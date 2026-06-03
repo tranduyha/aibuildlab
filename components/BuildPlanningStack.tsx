@@ -36,18 +36,21 @@ function getValidationPath(build: Build): string {
 
 export default function BuildPlanningStack({ build }: BuildPlanningStackProps) {
   const stackItems = [
-    { label: "Workload", value: build.targetUseCase },
-    { label: "VRAM tier", value: build.vramTier },
-    { label: "GPU planning class", value: build.suggestedGpuClass },
-    { label: "System constraints", value: getSystemConstraints(build) },
-    { label: "Validation path", value: getValidationPath(build) },
+    { icon: "WL", label: "Workload", value: build.targetUseCase },
+    { icon: "VR", label: "VRAM tier", value: build.vramTier },
+    { icon: "GP", label: "GPU class", value: build.suggestedGpuClass },
+    { icon: "SY", label: "System checks", value: getSystemConstraints(build) },
+    { icon: "OK", label: "Validation path", value: getValidationPath(build) },
   ];
 
   return (
     <div className="build-planning-stack" aria-label="Build planning stack">
       {stackItems.map((item, index) => (
         <div className="build-stack-step" key={item.label}>
-          <span>{String(index + 1).padStart(2, "0")}</span>
+          <div className="build-stack-marker">
+            <span aria-hidden="true">{item.icon}</span>
+            <small>{String(index + 1).padStart(2, "0")}</small>
+          </div>
           <h3>{item.label}</h3>
           <p>{item.value}</p>
         </div>

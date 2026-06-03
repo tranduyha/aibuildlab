@@ -21,7 +21,7 @@ export interface ResolvedBuild extends BuildListItem {
 }
 
 const BUILD_WARNING =
-  "Build pages are planning routes only. Verify VRAM needs, exact GPU variants, component compatibility, power, cooling, runtime support, and benchmark evidence before buying parts.";
+  "Build pages are planning routes only. Verify VRAM needs, exact GPU variants, component compatibility, power, cooling, runtime support, and benchmark evidence before local hardware decisions.";
 
 function resolveBuild(build: Build): BuildListItem {
   const gpuSlugs = build.suggestedGpuSlugs.length > 0 ? build.suggestedGpuSlugs : build.recommendedGpuSlugs;
