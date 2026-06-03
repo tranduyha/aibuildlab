@@ -208,11 +208,11 @@ const workflowSteps = [
     number: "04",
     title: "Test cloud if uncertain",
     description:
-      "If VRAM or workflow fit still feels unclear, consider cloud testing first, then review source-aware provider profiles as planning references.",
-    ctaLabel: "Review Cloud GPU provider profiles",
-    href: "/cloud-gpu",
-    secondaryCtaLabel: null,
-    secondaryHref: null,
+      "If VRAM or workflow fit still feels unclear, consider cloud testing first, then use provider profiles as source-aware planning references.",
+    ctaLabel: null,
+    href: null,
+    secondaryCtaLabel: "Review Cloud GPU provider profiles",
+    secondaryHref: "/cloud-gpu",
   },
   {
     number: "05",
@@ -510,12 +510,14 @@ export default function CloudGpuVsLocalGpuGuidePage() {
                   ) : null}
                   {step.secondaryHref && step.secondaryCtaLabel ? (
                     <div className="mt-auto flex flex-wrap gap-2">
-                      <Link
-                        className="inline-flex w-fit items-center rounded-full border border-[var(--primary)] bg-white px-3 py-1.5 text-sm font-semibold text-[var(--primary)] transition-colors hover:!bg-[var(--primary)] hover:!text-white"
-                        href={step.href}
-                      >
-                        {step.ctaLabel}
-                      </Link>
+                      {step.href && step.ctaLabel ? (
+                        <Link
+                          className="inline-flex w-fit items-center rounded-full border border-[var(--primary)] bg-white px-3 py-1.5 text-sm font-semibold text-[var(--primary)] transition-colors hover:!bg-[var(--primary)] hover:!text-white"
+                          href={step.href}
+                        >
+                          {step.ctaLabel}
+                        </Link>
+                      ) : null}
                       <Link
                         className="inline-flex w-fit items-center rounded-full border border-[var(--border)] bg-white px-3 py-1.5 text-sm font-semibold text-[var(--foreground)] transition-colors hover:!border-[var(--primary)] hover:!bg-[var(--primary)] hover:!text-white"
                         href={step.secondaryHref}
@@ -551,8 +553,9 @@ export default function CloudGpuVsLocalGpuGuidePage() {
           <section className="tool-section guide-provider-note">
             <h2>Why this guide does not rank cloud GPU providers</h2>
             <p>
-              {settings.name} currently has {providerCount} source-aware cloud GPU provider planning records prepared
-              from Day 8 work, but this guide does not rank providers or point users toward one platform over another.
+              {settings.name} currently has {providerCount} source-aware cloud GPU provider profiles available as
+              planning references, but this guide does not rank providers or point users toward one platform over
+              another.
             </p>
             <p>
               That is intentional because pricing, capacity, billing scope, and referral terms can change. Provider

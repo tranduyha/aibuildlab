@@ -2325,3 +2325,58 @@ Audit and polish the completed Cloud GPU hub, provider detail pages, related gui
 
 ### Next Step
 Day 11 can proceed with Day 10 Cloud GPU pages now passing route, sitemap, internal discovery, safety, data validation, lint, and build checks.
+
+---
+
+## 2026-06-03 - Day 10.6 Cloud GPU final integration fix
+
+### Agent
+Codex
+
+### Planned Task
+Fix outdated guide, hub, footer, and Cloud GPU link copy after `/cloud-gpu` and `/cloud-gpu/[slug]` are public.
+
+### Completed
+- [x] Confirmed `/guides/cloud-gpu-vs-local-gpu` no longer says provider pages are future, unpublished, or planned later.
+- [x] Updated the `Test cloud if uncertain` workflow step so `Review Cloud GPU provider profiles` is a safe secondary link to `/cloud-gpu`.
+- [x] Updated guide provider-note copy to say Cloud GPU provider profiles are now available as source-aware planning references.
+- [x] Replaced the simple `/guides` related route link with a visible `Cloud GPU provider profiles` card and description.
+- [x] Kept the footer Explore `Cloud GPU` link to `/cloud-gpu`.
+- [x] Confirmed `/cloud-gpu` use-case counts use clear provider-count labels.
+- [x] Confirmed sitemap still includes `/cloud-gpu` and all 8 provider detail routes.
+
+### Safety Checks
+- [x] No provider ranking was added.
+- [x] No `best`, `cheapest`, `fastest`, or `recommended provider` wording was added.
+- [x] No exact provider price claims were added.
+- [x] No current provider availability claims were added.
+- [x] No affiliate CTA spam was added.
+- [x] No `Product`, `Offer`, `Review`, or `AggregateRating` schema was added.
+- [x] Unknown `affiliateStatus` providers still do not expose affiliate program URLs.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Source scan for outdated Cloud GPU future/unpublished copy
+- [x] Sitemap/output check for `/cloud-gpu` and all provider slugs
+- [x] Footer/output check for `/cloud-gpu`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to Cloud GPU provider pages.
+- Provider pages remain planning profiles, not rankings.
+- Exact prices are not stored unless timestamped/source-backed.
+- Availability is not claimed.
+- Affiliate/referral links are only shown if verified from official source and remain secondary transparency references.
+
+### Files Changed
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Quality Estimate
+- Final Day 10 score: 9.6 / 10.
+
+### Next Step
+Day 11 can proceed with Day 10 Cloud GPU pages live, linked, source-aware, and free of stale future-page copy.

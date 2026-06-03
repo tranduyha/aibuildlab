@@ -84,27 +84,45 @@ export default function GuidesIndexPage() {
             <Link href="/compare">
               Compare GPU options <span>&rarr;</span>
             </Link>
-            <Link href="/cloud-gpu">
-              Review Cloud GPU provider profiles <span>&rarr;</span>
-            </Link>
             <Link href="/builds">
               Open build planning <span>&rarr;</span>
             </Link>
           </div>
         </section>
 
+        <section className="tool-section">
+          <h2>Cloud GPU planning route</h2>
+          <Link
+            className="mt-4 block rounded-lg border border-slate-200 bg-white p-5 text-slate-900 shadow-sm transition hover:border-sky-300 hover:bg-sky-50"
+            href="/cloud-gpu"
+          >
+            <span className="text-xs font-semibold uppercase tracking-wide text-sky-700">
+              Related planning route
+            </span>
+            <strong className="mt-2 block text-xl font-semibold tracking-normal">
+              Cloud GPU provider profiles
+            </strong>
+            <span className="mt-2 block text-sm leading-6 text-slate-700">
+              Review source-aware provider planning profiles after deciding whether cloud testing makes sense.
+            </span>
+            <small className="mt-3 block text-sm font-semibold text-sky-700">
+              Review Cloud GPU provider profiles &rarr;
+            </small>
+          </Link>
+        </section>
+
         <section className="tool-section guide-planned-section">
           <h2>Planned guide topics</h2>
           <p className="guide-section-lead">
-            These topics are planned next and stay intentionally unpublished until the route, data quality, and
-            source-backed scope are ready.
+            These topics remain in the planning backlog until the route, data quality, and source-backed scope are
+            ready.
           </p>
           <div className="guide-planned-grid">
             {plannedGuideTopics.map((topic, index) => (
               <div className="guide-planned-card" key={topic}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <strong>{topic}</strong>
-                <p>Planned only. No public route yet.</p>
+                <p>Planning backlog item.</p>
               </div>
             ))}
           </div>

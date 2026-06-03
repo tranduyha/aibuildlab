@@ -247,27 +247,29 @@ export default async function CloudGpuProviderDetailPage({
           </ol>
         </nav>
 
-        <header className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
-          <div className="flex flex-wrap justify-center gap-2" aria-label="Provider data status">
-            <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
-              {statusLabels[provider.status]}
-            </span>
-            <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-800">
-              {confidenceLabels[dataConfidence]}
-            </span>
-            {provider.needsReview ? (
-              <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800">
-                Needs verification
+        <header className="rounded-lg border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8 sm:py-10">
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+            <div className="flex flex-wrap justify-center gap-2" aria-label="Provider data status">
+              <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
+                {statusLabels[provider.status]}
               </span>
-            ) : null}
-          </div>
+              <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-800">
+                {confidenceLabels[dataConfidence]}
+              </span>
+              {provider.needsReview ? (
+                <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800">
+                  Needs verification
+                </span>
+              ) : null}
+            </div>
 
-          <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-slate-950 sm:text-5xl">
-            {provider.name}
-          </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-700">
-            {provider.shortDescription}
-          </p>
+            <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-normal text-slate-950 sm:text-5xl">
+              {provider.name}
+            </h1>
+            <p className="mt-4 max-w-2xl text-center text-base leading-7 text-slate-700">
+              {provider.shortDescription}
+            </p>
+          </div>
 
           <div className="mt-6 flex flex-col gap-5 text-left">
             <dl className="grid gap-3 text-sm sm:grid-cols-2">
