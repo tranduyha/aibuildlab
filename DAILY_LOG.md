@@ -1742,3 +1742,221 @@ Finish Day 8 safely by validating the Cloud GPU provider data/model/repository/s
 
 ### Next Step
 Day 9 - create the Cloud GPU vs Local GPU guide only after keeping cloud provider data source-aware and non-recommendational.
+
+---
+
+## 2026-06-03 - Day 9 cloud GPU vs local GPU guide
+
+### Agent
+Codex
+
+### Planned Task
+Create a source-aware guide at `/guides/cloud-gpu-vs-local-gpu` without creating `/cloud-gpu` provider pages, provider ranking, affiliate CTAs, or unsupported price and performance claims.
+
+### Completed
+- [x] Read the required project docs, cloud GPU data/model files, build pages, guide index, sitemap, and SEO helper before editing.
+- [x] Added `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx` with one H1, unique metadata, breadcrumb UI, planning notice, quick-answer section, local vs cloud vs SaaS sections, qualitative cost factors, suggested workflow, CTA cards, FAQ, and JSON-LD for `WebPage`, `FAQPage`, and `BreadcrumbList`.
+- [x] Added `components/CloudVsLocalTable.tsx` with a mobile-safe Local GPU vs Cloud GPU planning table covering upfront cost, recurring cost, setup time, privacy/control, scalability, maintenance, VRAM flexibility, availability risk, and best planning use.
+- [x] Added `components/DecisionMatrix.tsx` with six cautious planning scenarios and next-step answers.
+- [x] Updated `app/(frontend)/guides/page.tsx` from a simple placeholder into a guide hub that surfaces published planning guides and keeps internal guide routing consistent.
+- [x] Updated `data/guides.json` so `cloud-gpu-vs-local-gpu` is a published medium-confidence planning guide with related internal routes only.
+- [x] Updated `app/(frontend)/sitemap.ts` to include `/guides/cloud-gpu-vs-local-gpu`.
+- [x] Updated `app/(frontend)/theme.css` to support guide cards, decision cards, factor/workflow lists, and guide-table layout reuse.
+- [x] Kept cloud provider data usage neutral by limiting it to a provider-count note and not rendering provider cards or provider detail links.
+- [x] Confirmed the guide links only to existing routes: `/tools/vram-calculator`, `/gpu`, `/compare`, `/builds`, and `/builds/cloud-vs-local-ai-build-planning`.
+- [x] Confirmed no `/cloud-gpu` route, `/cloud-gpu/[slug]` route, nav entry, or sitemap entry was created.
+- [x] Confirmed no provider ranking, affiliate links, exact pricing claims, availability claims, commission claims, benchmark claims, tokens/s claims, or image-speed claims were added.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/guides/cloud-gpu-vs-local-gpu` as a static route
+- [x] Sitemap update includes `/guides/cloud-gpu-vs-local-gpu` and does not include `/cloud-gpu`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to this guide task.
+- The guide intentionally avoids provider ranking, exact pricing, availability, and buying advice, so Day 10 provider-page work still remains separate.
+
+### Files Changed
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `app/(frontend)/theme.css`
+- `components/CloudVsLocalTable.tsx`
+- `components/DecisionMatrix.tsx`
+- `data/guides.json`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10 - create the Cloud GPU provider index and detail-page skeleton only if the next task explicitly allows public `/cloud-gpu` routes and keeps provider content non-recommendational.
+
+---
+
+## 2026-06-03 - Day 9.1 cloud GPU vs local GPU guide SEO polish
+
+### Agent
+Codex
+
+### Planned Task
+Upgrade `/guides/cloud-gpu-vs-local-gpu` from a correct MVP guide into a stronger SEO pillar page without creating public `/cloud-gpu` routes, provider ranking, affiliate CTAs, or unsupported price and performance claims.
+
+### Completed
+- [x] Re-read the required project docs plus the guide page, guide components, cloud provider data/service, sitemap, SEO helper, and theme styles before editing.
+- [x] Strengthened the hero so the page immediately explains what decision it helps with, who it is for, and why workload frequency, VRAM uncertainty, privacy/control, and setup effort change the answer.
+- [x] Added a `Quick verdict` block near the top covering local GPU planning, cloud GPU testing, and SaaS/API tool paths.
+- [x] Expanded the guide with clearer sections for what the page compares, when local planning may make sense, when cloud testing may make sense, when SaaS/API tools may be simpler, and common mistakes to avoid.
+- [x] Replaced the simple workflow list with a visual 5-step planning workflow linked to `/tools/vram-calculator`, `/gpu`, `/compare`, `/builds`, and `/builds/cloud-vs-local-ai-build-planning`.
+- [x] Strengthened the `Continue planning` CTA section so the VRAM Calculator is the primary next step and the supporting routes are easier to scan.
+- [x] Reworked the cloud provider data note into a trust-focused explanation for why provider ranking is intentionally not public yet.
+- [x] Expanded FAQ answers to 2-3 useful sentences each while keeping all wording cautious and source-aware.
+- [x] Upgraded `components/CloudVsLocalTable.tsx` with clearer intro copy, improved table readability, and an added `Storage and data movement` planning row.
+- [x] Upgraded `components/DecisionMatrix.tsx` so every scenario now includes `Planning direction` and `Next step`, and added the model-validation scenario.
+- [x] Improved guide-related CSS in `app/(frontend)/theme.css` for body-copy readability, section hierarchy, card spacing, responsive CTA layouts, mobile-safe table behavior, and cleaner decision-matrix presentation.
+- [x] Confirmed `/builds/cloud-vs-local-ai-build-planning` exists before linking to it.
+- [x] Confirmed no `/cloud-gpu` route, `/cloud-gpu/[slug]` route, nav entry, or sitemap entry was created.
+- [x] Confirmed no provider ranking, affiliate links, exact pricing claims, availability claims, commission claims, benchmark claims, tokens/s claims, image-speed claims, or provider performance claims were added.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/guides/cloud-gpu-vs-local-gpu`
+- [x] Internal links checked for `/tools/vram-calculator`, `/gpu`, `/compare`, `/builds`, and `/builds/cloud-vs-local-ai-build-planning`
+- [x] Sitemap still includes `/guides/cloud-gpu-vs-local-gpu` and does not include `/cloud-gpu`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to this guide polish task.
+- The guide remains planning guidance only and intentionally does not include provider ranking, exact cost comparisons, availability tracking, or buying advice.
+
+### Files Changed
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `components/CloudVsLocalTable.tsx`
+- `components/DecisionMatrix.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10 can proceed if the next prompt explicitly allows public `/cloud-gpu` route work while keeping provider content source-aware, non-rank-based, and free of unsupported price or performance claims.
+
+---
+
+## 2026-06-03 - Day 9.2 final polish for guides SEO UX
+
+### Agent
+Codex
+
+### Planned Task
+Polish `/guides` and `/guides/cloud-gpu-vs-local-gpu` for final readability, hierarchy, CTA strength, and guide-hub quality before Day 10 without rewriting the guide or creating `/cloud-gpu` pages.
+
+### Completed
+- [x] Re-read the guide hub, guide detail page, cloud-vs-local components, and handoff docs before editing.
+- [x] Increased guide-detail readability with slightly larger copy and more relaxed line-height across hero support text, section leads, table text, decision copy, CTA cards, provider note, and list-based planning content.
+- [x] Strengthened visual hierarchy so `Quick verdict`, `Cloud GPU vs local GPU planning table`, `Decision matrix`, `Suggested planning workflow`, and `Continue planning` feel like primary sections instead of blending with secondary content.
+- [x] Kept secondary sections lighter so the page feels easier to scan and less same-card-heavy.
+- [x] Added a mobile-only stacked-card fallback to `components/CloudVsLocalTable.tsx` so the cloud-vs-local comparison stays readable on small screens without horizontal overflow.
+- [x] Kept the desktop comparison table intact for wider screens.
+- [x] Strengthened the `Continue planning` CTA section so `Use VRAM Calculator` is the clear primary next step while Builds, Compare, and Cloud vs Local build planning stay secondary.
+- [x] Improved `/guides` with a stronger featured published-guide card, category/status labels, and `Read guide →` action text.
+- [x] Added a clearly marked `Planned guide topics` section to `/guides` without creating public routes or fake guide links.
+- [x] Updated guide-related CSS to support featured guide cards, primary-section hierarchy, stronger CTA treatment, planned-topic cards, and the mobile stacked-card comparison layout.
+- [x] Confirmed no `/cloud-gpu` route, `/cloud-gpu/[slug]` route, nav entry, or sitemap entry was created.
+- [x] Confirmed no provider ranking, affiliate links, exact pricing claims, availability claims, commission claims, benchmark claims, tokens/s claims, image-speed claims, or best/cheapest/fastest wording were introduced.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/guides` and `/guides/cloud-gpu-vs-local-gpu`
+- [x] Cloud-vs-local comparison keeps a desktop table and a mobile stacked-card fallback
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to this guide-polish task.
+- The guide and guide hub remain planning-oriented and intentionally avoid provider ranking, exact pricing, availability tracking, affiliate links, or buying advice.
+
+### Files Changed
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `components/CloudVsLocalTable.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10 is in a stronger place now, but public `/cloud-gpu` route work should still only start if the next task explicitly allows source-aware provider pages without ranking, affiliate pressure, or unsupported price and performance claims.
+
+---
+
+## 2026-06-03 - Day 9.2 workflow and CTA alignment polish
+
+### Agent
+Codex
+
+### Planned Task
+Polish the workflow and CTA card alignment on `/guides/cloud-gpu-vs-local-gpu` so the section feels more balanced and premium without changing guide scope or introducing `/cloud-gpu` links.
+
+### Completed
+- [x] Shortened workflow and CTA button labels so the action area feels lighter and more consistent.
+- [x] Updated workflow cards to use consistent bottom-aligned actions with smaller button sizing and balanced card heights.
+- [x] Replaced the empty action area on `Test cloud if uncertain` with a muted non-clickable `Provider pages planned later` label.
+- [x] Kept the build-validation workflow card with a secondary route action while aligning both actions more cleanly.
+- [x] Changed the desktop `Continue planning` card layout to a more balanced 2x2 grid.
+- [x] Kept `Use VRAM Calculator` as the visually strongest CTA and softened the secondary CTA buttons.
+- [x] Confirmed no `/cloud-gpu` links, provider ranking, affiliate links, exact price claims, availability claims, commission claims, benchmark claims, tokens/s claims, or image-speed claims were added.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/guides/cloud-gpu-vs-local-gpu`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to this alignment-polish pass.
+
+### Files Changed
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+The guide UI is now better balanced for Day 10, but public cloud-provider route work should still wait for an explicit task that preserves source-aware and non-rank-based constraints.
+
+---
+
+## 2026-06-03 - Day 9.2 workflow 2-row redesign
+
+### Agent
+Codex
+
+### Planned Task
+Redesign the `Suggested planning workflow` section on `/guides/cloud-gpu-vs-local-gpu` from a cramped 5-card single row into a balanced 2-row responsive workflow layout.
+
+### Completed
+- [x] Confirmed Tailwind utilities are available in the repo through `@import "tailwindcss"` in `app/(frontend)/globals.css`.
+- [x] Reworked the workflow section directly in `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx` using Tailwind utility classes only, without adding CSS files, CSS modules, or inline style blocks.
+- [x] Replaced the previous 5-card horizontal layout with a responsive grid: 1 column on mobile, 2 columns on tablet, and 3 columns on desktop.
+- [x] Added the 6th workflow card: `Recommended next step`.
+- [x] Kept each workflow card as a flex column with bottom-aligned actions for more consistent card height and cleaner scanning.
+- [x] Preserved the no-link cloud-testing card behavior with a muted `Provider pages planned later` label instead of a broken action.
+- [x] Kept both local-build actions only on the build-validation card and preserved the existing route check intent.
+- [x] Confirmed no `/cloud-gpu` route or link was added and no affiliate, ranking, pricing, availability, commission, benchmark, tokens/s, or image-speed claims were introduced.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/guides/cloud-gpu-vs-local-gpu`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to this workflow redesign pass.
+
+### Files Changed
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+The workflow section is now in a stronger desktop/tablet/mobile layout for Day 10, while cloud-provider routing and monetization constraints remain unchanged.

@@ -2867,6 +2867,500 @@ body {
   line-height: 1.58;
 }
 
+.guide-card-grid,
+.decision-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.guide-hero {
+  max-width: 920px;
+}
+
+.guide-hero-summary {
+  display: grid;
+  gap: 18px;
+  max-width: 760px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.78;
+}
+
+.guide-hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.guide-hero-links a,
+.guide-workflow-card a,
+.guide-cta-card a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  min-height: 42px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  padding: 10px 16px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.guide-hero-links a:hover,
+.guide-workflow-card a:hover,
+.guide-cta-card a:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.guide-section-lead {
+  max-width: 860px;
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.guide-section-copy {
+  margin-bottom: 16px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.76;
+}
+
+.guide-primary-section {
+  margin-top: 52px;
+}
+
+.guide-primary-section > h2 {
+  margin-bottom: 16px;
+}
+
+.guide-primary-section > .related-note {
+  margin-bottom: 20px;
+}
+
+.guide-verdict-grid,
+.guide-mode-grid,
+.guide-point-grid,
+.guide-workflow-grid,
+.guide-cta-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.guide-verdict-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.guide-mode-grid,
+.guide-cta-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.guide-point-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.guide-workflow-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.guide-verdict-card,
+.guide-mode-card,
+.guide-point-card,
+.guide-workflow-card,
+.guide-cta-card {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  padding: 20px;
+}
+
+.guide-verdict-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f8fb 100%);
+  box-shadow: 0 16px 34px rgba(15, 70, 109, 0.06);
+}
+
+.guide-verdict-card span,
+.guide-point-card span,
+.guide-workflow-card span {
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.guide-verdict-card h3,
+.guide-mode-card h3,
+.guide-workflow-card h3,
+.guide-cta-card strong {
+  margin: 10px 0 8px;
+  font-size: 19px;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.guide-point-card p,
+.guide-mode-card p,
+.guide-verdict-card p,
+.guide-workflow-card p,
+.guide-cta-card p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.72;
+}
+
+.guide-point-card {
+  display: grid;
+  gap: 12px;
+}
+
+.guide-readability-grid > div {
+  background: var(--surface);
+}
+
+.guide-factor-list,
+.guide-workflow-list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.76;
+}
+
+.guide-factor-list li,
+.guide-workflow-list li {
+  margin-top: 10px;
+}
+
+.guide-factor-list li:first-child,
+.guide-workflow-list li:first-child {
+  margin-top: 0;
+}
+
+.cloud-vs-local-table-block {
+  display: grid;
+  gap: 18px;
+}
+
+.cloud-vs-local-table-intro {
+  max-width: 900px;
+}
+
+.cloud-vs-local-table-intro h3 {
+  font-size: 21px;
+  letter-spacing: -0.02em;
+}
+
+.cloud-vs-local-table-intro p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.74;
+}
+
+.cloud-vs-local-mobile-cards {
+  display: none;
+}
+
+.guide-card,
+.decision-matrix-card,
+.guide-provider-note {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 18px;
+}
+
+.guide-card {
+  display: grid;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.guide-card-featured {
+  gap: 12px;
+  padding: 22px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f9fc 100%);
+}
+
+.guide-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.guide-card-label,
+.guide-card-topic,
+.guide-cta-label {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid #c6dfef;
+  border-radius: 999px;
+  background: #eef7fd;
+  padding: 5px 10px;
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.guide-card-topic {
+  border-color: #d7e3ec;
+  background: #f7fafc;
+  color: var(--foreground);
+}
+
+.guide-card strong,
+.decision-matrix-card h3 {
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  line-height: 1.34;
+}
+
+.guide-card span,
+.decision-matrix-card p,
+.guide-provider-note p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.guide-card-action {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.guide-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 18px 38px rgba(18, 74, 112, 0.1);
+}
+
+.decision-matrix-card span {
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.decision-matrix-card h3 {
+  margin: 8px 0;
+}
+
+.decision-matrix-detail {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.decision-matrix-detail div {
+  display: grid;
+  gap: 5px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-alt);
+  padding: 12px;
+}
+
+.decision-matrix-detail dt {
+  color: var(--foreground);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.decision-matrix-detail dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.68;
+}
+
+.cloud-vs-local-table-wrap .comparison-table {
+  min-width: 0;
+}
+
+.cloud-vs-local-table thead th {
+  font-size: 15px;
+}
+
+.cloud-vs-local-table tbody th,
+.cloud-vs-local-table td {
+  font-size: 16px;
+  line-height: 1.76;
+}
+
+.guide-workflow-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  min-height: 240px;
+}
+
+.guide-workflow-copy {
+  flex: 1;
+}
+
+.guide-workflow-copy p {
+  margin: 0;
+}
+
+.guide-workflow-card a,
+.guide-workflow-muted-label {
+  margin-top: auto;
+}
+
+.guide-workflow-card a,
+.guide-cta-card a {
+  min-height: 0;
+  padding: 7px 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.guide-workflow-secondary-link {
+  border-color: var(--border) !important;
+  color: var(--foreground) !important;
+}
+
+.guide-workflow-muted-label {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border: 1px solid #d7e3ec;
+  border-radius: 999px;
+  background: #f7fafc;
+  padding: 7px 12px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.guide-workflow-secondary-link:hover {
+  border-color: var(--primary) !important;
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+.guide-workflow-card a:hover,
+.guide-workflow-card a:focus-visible {
+  border-color: var(--primary) !important;
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+.guide-cta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  min-height: 220px;
+}
+
+.guide-cta-card strong {
+  margin: 0;
+}
+
+.guide-cta-label {
+  margin-bottom: 2px;
+}
+
+.guide-cta-card p {
+  flex: 1;
+  margin: 0;
+}
+
+.guide-cta-card-primary {
+  background: linear-gradient(180deg, #eef7fd 0%, #ffffff 100%);
+  border-color: #bdd8ea;
+  box-shadow: 0 16px 34px rgba(20, 93, 143, 0.08);
+}
+
+.guide-cta-card-primary a {
+  background: var(--primary);
+  color: white;
+}
+
+.guide-cta-card-primary a:hover {
+  background: var(--primary-dark);
+}
+
+.guide-cta-card-secondary a {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+.guide-cta-card-secondary a:hover {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
+.guide-tradeoff-grid p {
+  font-size: 16px;
+  line-height: 1.74;
+}
+
+.guide-provider-note {
+  display: grid;
+  gap: 14px;
+}
+
+.guide-provider-note p {
+  font-size: 16px;
+  line-height: 1.78;
+}
+
+.guide-planned-section {
+  border-top: 1px solid var(--border);
+  padding-top: 42px;
+}
+
+.guide-planned-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.guide-planned-card {
+  display: grid;
+  gap: 10px;
+  border: 1px dashed #c7d7e3;
+  border-radius: 16px;
+  background: #fbfdff;
+  padding: 18px;
+}
+
+.guide-planned-card span {
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.guide-planned-card strong {
+  font-size: 17px;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.guide-planned-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.cloud-vs-local-table tbody th {
+  width: 180px;
+}
+
 .comparison-group {
   margin-top: 26px;
 }
@@ -3016,6 +3510,14 @@ body {
   .build-checklist-groups,
   .build-cta-block,
   .compare-workflow-grid,
+  .guide-card-grid,
+  .guide-verdict-grid,
+  .guide-mode-grid,
+  .guide-point-grid,
+  .guide-workflow-grid,
+  .guide-cta-grid,
+  .decision-matrix-grid,
+  .guide-planned-grid,
   .comparison-summary-grid,
   .comparison-source-grid,
   .comparison-hero-cards,
@@ -3055,9 +3557,74 @@ body {
   }
 }
 
+@media (min-width: 901px) {
+  .guide-cta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .guide-hero-links,
+  .guide-hero-links a,
+  .guide-workflow-card a,
+  .guide-cta-card a,
+  .guide-workflow-muted-label {
+    width: 100%;
+  }
+
+  .guide-workflow-card,
+  .guide-cta-card,
+  .guide-point-card,
+  .guide-mode-card,
+  .guide-verdict-card {
+    padding: 18px;
+  }
+}
+
 @media (max-width: 700px) {
-  .comparison-table-wrap {
-    overflow-x: visible;
+  .cloud-vs-local-table-wrap {
+    display: none;
+  }
+
+  .cloud-vs-local-mobile-cards {
+    display: grid;
+    gap: 12px;
+  }
+
+  .cloud-vs-local-mobile-card {
+    display: grid;
+    gap: 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: 16px;
+  }
+
+  .cloud-vs-local-mobile-card strong {
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .cloud-vs-local-mobile-card div {
+    display: grid;
+    gap: 5px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-alt);
+    padding: 12px;
+  }
+
+  .cloud-vs-local-mobile-card span {
+    color: var(--foreground);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .cloud-vs-local-mobile-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.66;
   }
 
   .comparison-table,
@@ -3117,5 +3684,19 @@ body {
     color: var(--foreground);
     font-size: 12px;
     font-weight: 700;
+  }
+
+  .cloud-vs-local-table tr {
+    margin-bottom: 14px;
+  }
+
+  .cloud-vs-local-table tbody th {
+    background: linear-gradient(180deg, #f6fbff 0%, #eef5fb 100%);
+    font-size: 15px;
+  }
+
+  .cloud-vs-local-table td {
+    font-size: 15px;
+    line-height: 1.68;
   }
 }

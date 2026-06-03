@@ -56,20 +56,41 @@
   {
     "id": "guide-cloud-gpu-vs-local-gpu",
     "slug": "cloud-gpu-vs-local-gpu",
-    "title": "Cloud GPU vs Local GPU",
-    "shortDescription": "Draft outline for a sourced cost and workflow comparison.",
-    "seoTitle": "Cloud GPU vs Local GPU for AI - Draft Guide",
-    "seoDescription": "Draft comparison guide awaiting verified prices, availability, and workload tests.",
-    "tags": ["cloud-gpu", "local-gpu"],
-    "useCases": ["local-llm", "ai-workstation"],
-    "relatedGpuSlugs": [],
-    "relatedToolPaths": [],
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "title": "Cloud GPU vs Local GPU for AI Workloads",
+    "shortDescription": "Source-aware planning guide for deciding when to test on cloud GPU first and when local GPU planning may make more sense.",
+    "seoTitle": "Cloud GPU vs Local GPU for AI Workloads",
+    "seoDescription": "Compare cloud GPU testing and local GPU workstation planning for AI workloads, including VRAM uncertainty, setup time, privacy, scalability, and cost factors without provider ranking.",
+    "tags": ["cloud-gpu", "local-gpu", "planning"],
+    "useCases": ["local-llm", "ai-workstation", "local-vs-cloud-decision"],
+    "relatedGpuSlugs": ["rtx-4060-ti-16gb", "rtx-4090", "rtx-5090"],
+    "relatedToolPaths": [
+      "/tools/vram-calculator",
+      "/gpu",
+      "/compare",
+      "/builds",
+      "/builds/cloud-vs-local-ai-build-planning"
+    ],
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of existing planning routes",
+        "url": "https://vramforge.com/tools/vram-calculator",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Manual review of cloud vs local build planning route",
+        "url": "https://vramforge.com/builds/cloud-vs-local-ai-build-planning",
+        "type": "manual-check",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Planning guide only. Avoid provider ranking, exact pricing, availability claims, affiliate links, and buying recommendations."
   },
   {
     "id": "guide-rtx-3060-12gb-ai",

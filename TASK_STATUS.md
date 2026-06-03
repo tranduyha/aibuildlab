@@ -57,7 +57,7 @@ Không dùng thư mục `src`.
 - [x] Co GPU profile page (skeleton Day 4).
 - [x] Có comparison page.
 - [x] Có build landing page.
-- [ ] Có guide pages.
+- [x] Có guide pages.
 - [x] Có image manifest.
 - [x] Có Cloudflare Pages preview deploy tại `https://vramforge.pages.dev/`.
 - [x] Có global site shell, brand config và trust/disclosure foundation.
@@ -65,29 +65,36 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 8 - Source-backed Cloud GPU provider data model (2026-06-03).
+Day 9.2 - Final polish for Guides SEO UX (2026-06-03).
 
 ## Today Scope
 
-- Finish Day 8 safely by validating the Cloud GPU provider data/model/repository/service layer.
-- Add `data/cloud-gpu-providers.json` coverage to `npm run data:validate`.
-- Audit safety constraints around pricing, availability, affiliate/referral status, recommendations, routes, nav, and sitemap.
-- Update handoff docs without creating public cloud GPU pages.
+- Final-polish `/guides` and `/guides/cloud-gpu-vs-local-gpu` for readability, hierarchy, CTA strength, and hub quality before Day 10.
+- Improve mobile table UX so cloud-vs-local comparison stays easy to read without overflow.
+- Keep guide content and route structure stable while preserving all safety constraints around provider ranking, affiliate links, exact pricing, availability, benchmarks, tokens/s, and image speed claims.
 
 ## Done Today
 
-- [x] Read `AGENTS.md`, `TASK_STATUS.md`, `DAILY_LOG.md`, `package.json`, `scripts/validate-data.ts`, `data/cloud-gpu-providers.json`, `types/cloud-gpu-provider.ts`, `repositories/cloud-gpu-provider.repository.ts`, `services/cloud-gpu-provider.service.ts`, and `app/(frontend)/sitemap.ts`.
-- [x] Confirmed `data/cloud-gpu-providers.json` exists with 8 provider records.
-- [x] Confirmed `types/cloud-gpu-provider.ts`, `repositories/cloud-gpu-provider.repository.ts`, and `services/cloud-gpu-provider.service.ts` exist.
-- [x] Extended `scripts/validate-data.ts` to validate `data/cloud-gpu-providers.json`.
-- [x] Validator now checks array shape, required fields, unique slug/id, enum values, source completeness, non-empty `sources[].fields`, reviewed/published source and `lastVerifiedAt` rules, unknown affiliate URL rules, numeric commission note sourcing, unsupported exact pricing/availability fields, and unsupported superlative wording.
-- [x] Updated validator source type whitelist to align with cloud GPU source types: `pricing`, `affiliate`, `referral`, and `terms`.
-- [x] Confirmed every reviewed provider has source-backed field mappings and at least 2 mapped core fields.
-- [x] Confirmed unknown affiliate records do not include affiliate URLs.
-- [x] Confirmed no exact hourly price, commission amount, benchmark, availability, image speed, tokens/s, or provider recommendation was added.
+- [x] Read `app/(frontend)/guides/page.tsx`, `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`, `components/CloudVsLocalTable.tsx`, `components/DecisionMatrix.tsx`, `DAILY_LOG.md`, `TASK_STATUS.md`, and guide-related CSS before polishing.
+- [x] Improved guide-detail readability with slightly larger guide copy, looser line-height, and clearer scan patterns for primary sections, table text, decision cards, CTA cards, provider note, and FAQ-adjacent content.
+- [x] Strengthened visual hierarchy in `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx` by marking Quick verdict, Cloud GPU vs Local GPU planning table, Decision matrix, Suggested planning workflow, and Continue planning as clearer primary sections.
+- [x] Strengthened the `Continue planning` CTA area so `Use VRAM Calculator` remains the primary next step and secondary routes are visually distinct but still easy to use.
+- [x] Upgraded `components/CloudVsLocalTable.tsx` with a mobile-only stacked-card fallback to remove cramped table reading on small screens while keeping the desktop table.
+- [x] Improved `/guides` hub card UX in `app/(frontend)/guides/page.tsx` with published/topic labels, stronger guide-card treatment, and `Read guide →` action text.
+- [x] Added a clearly marked `Planned guide topics` section on `/guides` without creating any fake linked routes.
+- [x] Updated `app/(frontend)/theme.css` to support featured guide cards, planned-topic cards, primary-section hierarchy, stronger CTA emphasis, and mobile-safe cloud-vs-local cards.
+- [x] Tightened workflow and CTA action sizing in `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx` and `app/(frontend)/theme.css` so actions align at the bottom, buttons feel lighter, and the cloud-test card uses a muted planned-later label instead of an empty action area.
+- [x] Updated workflow action labels to shorter CTA text: `Open calculator →`, `Review profiles →`, `Compare GPUs →`, `Open builds →`, and `View build route →`.
+- [x] Changed the `Continue planning` desktop CTA layout to a more balanced 2x2 grid and kept `Use VRAM Calculator` as the clear primary CTA.
+- [x] Redesigned `Suggested planning workflow` in `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx` into a balanced 2-row responsive card grid using Tailwind utility classes in JSX instead of the previous 5-card single-row layout.
+- [x] Added a 6th `Recommended next step` workflow card and kept it slightly more prominent without making the section visually heavy.
+- [x] Kept workflow actions bottom-aligned with small utility-styled buttons and preserved the muted non-clickable cloud-provider label.
+- [x] Confirmed `/builds/cloud-vs-local-ai-build-planning` exists before linking to it.
 - [x] Confirmed no `/cloud-gpu` or `/cloud-gpu/[slug]` route exists.
 - [x] Confirmed no `/cloud-gpu` nav link or sitemap entry exists.
-- [x] Ran `npm run data:validate` (0 errors, 51 existing GPU warnings unrelated to cloud providers).
+- [x] Confirmed no provider ranking, affiliate links, exact price claims, availability claims, commission claims, benchmarks, tokens/s, image speed claims, provider performance claims, or `/cloud-gpu` links were added.
+- [x] Confirmed the guide still has one H1, unique metadata, `WebPage` + `FAQPage` + `BreadcrumbList` JSON-LD, and internal links to `/tools/vram-calculator`, `/gpu`, `/compare`, `/builds`, and `/builds/cloud-vs-local-ai-build-planning`.
+- [x] Ran `npm run data:validate` (0 errors, 51 existing GPU warnings unrelated to Day 9).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build`.
 - [x] Updated `DAILY_LOG.md`.
@@ -95,26 +102,28 @@ Day 8 - Source-backed Cloud GPU provider data model (2026-06-03).
 
 ## Last Completed Task
 
-Day 8 source-backed Cloud GPU provider data model with data validation, repository/service layer, safety audit, lint, and build passing.
+Day 9.2 final polish for Guides SEO UX with guide hub upgrade, CTA hierarchy improvements, mobile table fallback, safety audit, and build passing.
 
 ## Open Limitations
 
-- No public cloud GPU pages yet.
-- Exact prices are not stored unless timestamped/source-backed in a future schema.
-- Availability is not claimed unless source-backed.
-- Affiliate status is only verified where an official source exists.
-- No provider recommendations yet.
-- All cloud GPU records still keep `needsReview: true` because pricing scope, GPU availability, and referral terms can change quickly.
-- Existing `npm run data:validate` warnings remain in `data/gpus.json` and are unrelated to cloud GPU providers.
+- No provider ranking yet.
+- No exact price or availability claims.
+- No affiliate links.
+- `/cloud-gpu` provider pages are not created yet.
+- The guide is planning guidance, not buying advice.
+- Existing `npm run data:validate` warnings remain in `data/gpus.json` and are unrelated to Day 9.2.
 
 ## Current Handoff Note
 
-- `data/cloud-gpu-providers.json` is now present and schema-aligned for the 8 planned providers.
-- `repositories/cloud-gpu-provider.repository.ts` and `services/cloud-gpu-provider.service.ts` are available for future cloud GPU pages or validation work.
-- `scripts/validate-data.ts` now validates the cloud GPU provider dataset.
-- Current cloud provider records are cautious planning records with `needsReview: true`; do not turn them into recommendation content without fresh source checks.
-- RunPod, DigitalOcean GPU, and Vultr Cloud GPU have official referral pages linked; other providers remain `affiliateStatus: "unknown"` in this pass.
-- Do not add price snapshots, commission claims, benchmark claims, or buying recommendations without tighter source policy and timestamps.
+- `/guides/cloud-gpu-vs-local-gpu` now has clearer primary-section hierarchy, larger guide copy, and a mobile-safe cloud-vs-local stacked-card fallback under small widths.
+- `/guides` now presents the published guide card as a stronger entry point and includes a clearly marked non-linked planned-topics block.
+- `components/CloudVsLocalTable.tsx` and `components/DecisionMatrix.tsx` remain reusable without introducing `/cloud-gpu` routing or provider ranking behavior.
+- Workflow cards now align their bottom actions consistently, and the no-link cloud-testing card uses a muted planned-later label so the row no longer feels visually broken.
+- The workflow section now uses a 3-column x 2-row desktop layout, 2-column tablet fallback, and 1-column mobile stack through Tailwind utilities in the page file.
+- `Continue planning` now balances better on desktop with a 2x2 card layout and smaller, lighter secondary CTA buttons.
+- The guide still does not link to `/cloud-gpu`, rank providers, or present exact pricing, availability, or affiliate claims.
+- `app/(frontend)/sitemap.ts` still includes `/guides/cloud-gpu-vs-local-gpu` and still does not include `/cloud-gpu`.
+- Keep future Day 10 work separate: do not turn this guide polish into provider ranking, pricing comparison, affiliate CTA content, or public `/cloud-gpu` route work without explicit task approval.
 
 ## Done
 

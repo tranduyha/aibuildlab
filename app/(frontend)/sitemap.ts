@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/compare`, lastModified: new Date() },
     { url: `${SITE_URL}/builds`, lastModified: new Date() },
     { url: `${SITE_URL}/guides`, lastModified: new Date() },
+    { url: `${SITE_URL}/guides/cloud-gpu-vs-local-gpu`, lastModified: new Date() },
     { url: `${SITE_URL}/projects`, lastModified: new Date() },
     { url: `${SITE_URL}/about`, lastModified: new Date() },
     ...projectPages,
