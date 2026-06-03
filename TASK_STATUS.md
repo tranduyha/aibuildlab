@@ -65,13 +65,13 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 9.2 - Final polish for Guides SEO UX (2026-06-03).
+Day 9.3 - Reduce repeated numbered blocks on Cloud GPU vs Local GPU guide (2026-06-03).
 
 ## Today Scope
 
-- Final-polish `/guides` and `/guides/cloud-gpu-vs-local-gpu` for readability, hierarchy, CTA strength, and hub quality before Day 10.
-- Improve mobile table UX so cloud-vs-local comparison stays easy to read without overflow.
-- Keep guide content and route structure stable while preserving all safety constraints around provider ranking, affiliate links, exact pricing, availability, benchmarks, tokens/s, and image speed claims.
+- Reduce repeated numbered-card patterns on `/guides/cloud-gpu-vs-local-gpu` while preserving SEO content.
+- Keep numbering only where it adds value: `Decision matrix` and `Suggested planning workflow`.
+- Preserve all safety constraints around `/cloud-gpu` routes, provider ranking, affiliate links, exact pricing, availability, benchmarks, tokens/s, and image speed claims.
 
 ## Done Today
 
@@ -89,6 +89,10 @@ Day 9.2 - Final polish for Guides SEO UX (2026-06-03).
 - [x] Redesigned `Suggested planning workflow` in `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx` into a balanced 2-row responsive card grid using Tailwind utility classes in JSX instead of the previous 5-card single-row layout.
 - [x] Added a 6th `Recommended next step` workflow card and kept it slightly more prominent without making the section visually heavy.
 - [x] Kept workflow actions bottom-aligned with small utility-styled buttons and preserved the muted non-clickable cloud-provider label.
+- [x] Removed visible 01/02/03 numbering from the `Quick verdict` section and changed it into three compact verdict cards.
+- [x] Changed local GPU and cloud GPU reason sections from 6 numbered cards each into 2-column checklist-style cards with subtle dot markers.
+- [x] Changed `How to think about the tradeoff` from numbered cards into principle cards with subtle bar markers.
+- [x] Confirmed `Decision matrix` and `Suggested planning workflow` remain the only numbered guide sections where numbering supports the user flow.
 - [x] Confirmed `/builds/cloud-vs-local-ai-build-planning` exists before linking to it.
 - [x] Confirmed no `/cloud-gpu` or `/cloud-gpu/[slug]` route exists.
 - [x] Confirmed no `/cloud-gpu` nav link or sitemap entry exists.
@@ -102,7 +106,7 @@ Day 9.2 - Final polish for Guides SEO UX (2026-06-03).
 
 ## Last Completed Task
 
-Day 9.2 final polish for Guides SEO UX with guide hub upgrade, CTA hierarchy improvements, mobile table fallback, safety audit, and build passing.
+Day 9.3 reduced repeated numbered-card patterns on the Cloud GPU vs Local GPU guide while preserving workflow numbering, safety constraints, and build passing.
 
 ## Open Limitations
 
@@ -118,6 +122,7 @@ Day 9.2 final polish for Guides SEO UX with guide hub upgrade, CTA hierarchy imp
 - `/guides/cloud-gpu-vs-local-gpu` now has clearer primary-section hierarchy, larger guide copy, and a mobile-safe cloud-vs-local stacked-card fallback under small widths.
 - `/guides` now presents the published guide card as a stronger entry point and includes a clearly marked non-linked planned-topics block.
 - `components/CloudVsLocalTable.tsx` and `components/DecisionMatrix.tsx` remain reusable without introducing `/cloud-gpu` routing or provider ranking behavior.
+- Quick verdict, local GPU reasons, cloud GPU reasons, and tradeoff principles no longer repeat the same large numbered-card pattern.
 - Workflow cards now align their bottom actions consistently, and the no-link cloud-testing card uses a muted planned-later label so the row no longer feels visually broken.
 - The workflow section now uses a 3-column x 2-row desktop layout, 2-column tablet fallback, and 1-column mobile stack through Tailwind utilities in the page file.
 - `Continue planning` now balances better on desktop with a 2x2 card layout and smaller, lighter secondary CTA buttons.

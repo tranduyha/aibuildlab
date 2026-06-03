@@ -1960,3 +1960,42 @@ Redesign the `Suggested planning workflow` section on `/guides/cloud-gpu-vs-loca
 
 ### Next Step
 The workflow section is now in a stronger desktop/tablet/mobile layout for Day 10, while cloud-provider routing and monetization constraints remain unchanged.
+
+---
+
+## 2026-06-03 - Day 9.3 reduce repeated numbered guide blocks
+
+### Agent
+Codex
+
+### Planned Task
+Polish `/guides/cloud-gpu-vs-local-gpu` so the guide feels less repetitive and more premium by reducing repeated numbered-card patterns while preserving SEO content and safety constraints.
+
+### Completed
+- [x] Removed visible numbering from the `Quick verdict` cards and kept them as three compact verdict cards.
+- [x] Changed the local GPU and cloud GPU reason sections from numbered cards into two-column checklist-style cards with subtle dot markers.
+- [x] Changed `How to think about the tradeoff` from numbered cards into principle cards with subtle visual markers.
+- [x] Kept numbering only where it helps scanning and sequencing: `Decision matrix` and `Suggested planning workflow`.
+- [x] Confirmed `Suggested planning workflow` remains a responsive 6-card layout: 3 columns on desktop, 2 columns on tablet, and 1 column on mobile.
+- [x] Confirmed the cloud-testing workflow card does not link to `/cloud-gpu` and uses the muted `Provider pages planned later` label.
+- [x] Confirmed the cloud-vs-local table uses a desktop table and mobile stacked cards without showing both layouts at the same breakpoint.
+- [x] Confirmed `Continue planning` remains balanced with `Use VRAM Calculator` as the primary CTA and supporting routes as secondary CTAs.
+- [x] Confirmed no `/cloud-gpu` route, `/cloud-gpu` link, provider ranking, affiliate link, exact price claim, availability claim, commission claim, benchmark claim, tokens/s claim, or image-speed claim was added.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Safety scan for `/cloud-gpu` links, provider ranking, affiliate, pricing, availability, commission, benchmark, tokens/s, and image-speed wording
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to Day 9.3.
+- The guide remains planning guidance only and intentionally avoids provider ranking, exact pricing, availability tracking, affiliate links, or buying advice.
+
+### Files Changed
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10 route/provider work should only begin if the next task explicitly allows public `/cloud-gpu` pages and keeps the provider experience source-aware, non-ranking, and free of unsupported pricing or performance claims.

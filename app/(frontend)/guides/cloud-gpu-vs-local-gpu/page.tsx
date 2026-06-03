@@ -49,19 +49,16 @@ const faqItems = [
 
 const quickVerdicts = [
   {
-    number: "01",
     title: "Local GPU planning",
     description:
       "Choose local GPU planning when workloads are repeated, privacy or control matters, and setup effort is acceptable after validation.",
   },
   {
-    number: "02",
     title: "Cloud GPU testing",
     description:
       "Choose cloud GPU testing when VRAM needs are uncertain, high-VRAM needs are temporary, or you want to avoid upfront hardware commitment at the start.",
   },
   {
-    number: "03",
     title: "SaaS or API tools",
     description:
       "Consider SaaS or API tools when you need outputs more than hardware ownership, runtime customization, or low-level infrastructure control.",
@@ -87,21 +84,77 @@ const comparisonModes = [
 ] as const;
 
 const localReasons = [
-  "Repeated usage where the same workflow is likely to run often after validation.",
-  "Privacy, control, or offline access needs that may be harder to satisfy through external services.",
-  "A stable local environment where storage, runtime, and tooling can stay consistent over time.",
-  "Learning the local driver and runtime stack as part of the workflow goal.",
-  "Predictable long-term planning where the workload is already understood well enough to size hardware carefully.",
-  "A workstation path that supports broader local experimentation beyond one short project.",
+  {
+    label: "Repeated usage",
+    description: "The same workflow is likely to run often after validation.",
+  },
+  {
+    label: "Privacy and control",
+    description: "Local control or offline access may matter more than external-service flexibility.",
+  },
+  {
+    label: "Stable local environment",
+    description: "Storage, runtime, and tooling can stay consistent over time.",
+  },
+  {
+    label: "Runtime learning",
+    description: "Learning the local driver and runtime stack is part of the workflow goal.",
+  },
+  {
+    label: "Long-term planning",
+    description: "The workload is understood well enough to size hardware carefully.",
+  },
+  {
+    label: "Local experimentation",
+    description: "A workstation path supports broader experiments beyond one short project.",
+  },
 ] as const;
 
 const cloudReasons = [
-  "Testing before buying hardware when the memory target is still uncertain.",
-  "Temporary high-VRAM work that may not justify local commitment yet.",
-  "Batch or team experiments where short-term flexibility matters more than owning the hardware.",
-  "Avoiding early driver, cooling, and hardware setup while you validate the workload.",
-  "Checking whether a model, runtime, or image workflow behaves as expected before a build decision.",
-  "Validating a local workstation plan before narrowing the final GPU tier.",
+  {
+    label: "Test before buying",
+    description: "The memory target is still uncertain and needs practical validation.",
+  },
+  {
+    label: "Temporary high VRAM",
+    description: "A short project may need more memory than you want to plan locally yet.",
+  },
+  {
+    label: "Batch or team experiments",
+    description: "Short-term flexibility matters more than owning the hardware.",
+  },
+  {
+    label: "Less setup complexity",
+    description: "You want to avoid early driver, cooling, and hardware setup while validating.",
+  },
+  {
+    label: "Runtime behavior",
+    description: "A model, runtime, or image workflow needs to be checked before a build decision.",
+  },
+  {
+    label: "Workstation validation",
+    description: "A local build plan needs evidence before narrowing the final GPU tier.",
+  },
+] as const;
+
+const tradeoffPrinciples = [
+  {
+    title: "Size the workload first",
+    description: "Start with memory planning, then decide whether you are dealing with repeated usage or short tests.",
+  },
+  {
+    title: "Measure effort, not only hardware",
+    description: "Consider setup time, maintenance, and data movement instead of comparing only the GPU tier on paper.",
+  },
+  {
+    title: "Match the path to the workflow",
+    description:
+      "Local may fit stable repeated use, while cloud may fit uncertainty and temporary scale. SaaS may fit output-first teams with less infrastructure interest.",
+  },
+  {
+    title: "Validate before committing",
+    description: "Use the next step that reduces uncertainty rather than forcing an immediate hardware choice.",
+  },
 ] as const;
 
 const saasReasons = [
@@ -301,12 +354,16 @@ export default function CloudGpuVsLocalGpuGuidePage() {
 
           <section className="tool-section guide-primary-section">
             <h2>Quick verdict</h2>
-            <div className="guide-verdict-grid">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {quickVerdicts.map((item) => (
-                <div className="guide-verdict-card" key={item.title}>
-                  <span>{item.number}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                <div
+                  className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5"
+                  key={item.title}
+                >
+                  <h3 className="text-[18px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -335,11 +392,22 @@ export default function CloudGpuVsLocalGpuGuidePage() {
               Local planning may make more sense after workload validation when you expect repeat use and want more
               direct control over the environment.
             </p>
-            <div className="guide-point-grid">
-              {localReasons.map((reason, index) => (
-                <div className="guide-point-card" key={reason}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{reason}</p>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {localReasons.map((reason) => (
+                <div
+                  className="flex gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4"
+                  key={reason.label}
+                >
+                  <span
+                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--primary)]"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="text-[16px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
+                      {reason.label}
+                    </h3>
+                    <p className="mt-1 text-[15px] leading-7 text-[var(--muted)]">{reason.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -351,11 +419,22 @@ export default function CloudGpuVsLocalGpuGuidePage() {
               Cloud testing may make more sense when you still need evidence, when the memory target is unclear, or
               when you want flexibility before a hardware commitment.
             </p>
-            <div className="guide-point-grid">
-              {cloudReasons.map((reason, index) => (
-                <div className="guide-point-card" key={reason}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <p>{reason}</p>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+              {cloudReasons.map((reason) => (
+                <div
+                  className="flex gap-3 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4"
+                  key={reason.label}
+                >
+                  <span
+                    className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--primary)]"
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="text-[16px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
+                      {reason.label}
+                    </h3>
+                    <p className="mt-1 text-[15px] leading-7 text-[var(--muted)]">{reason.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -508,32 +587,19 @@ export default function CloudGpuVsLocalGpuGuidePage() {
               VRAM size matters, but it is only part of the choice. Workload frequency, storage movement, setup time,
               maintenance effort, and privacy needs often shape the decision just as much as the memory tier itself.
             </p>
-            <div className="compare-workflow-grid guide-tradeoff-grid">
-              <div>
-                <span>01</span>
-                <h3>Size the workload first</h3>
-                <p>Start with memory planning, then decide whether you are dealing with repeated usage or short tests.</p>
-              </div>
-              <div>
-                <span>02</span>
-                <h3>Measure the effort, not only the hardware</h3>
-                <p>
-                  Consider setup time, maintenance, and data movement instead of comparing only the GPU tier on paper.
-                </p>
-              </div>
-              <div>
-                <span>03</span>
-                <h3>Match the path to the workflow</h3>
-                <p>
-                  Local may fit stable repeated use, while cloud may fit uncertainty and temporary scale. SaaS may fit
-                  output-first teams with less infrastructure interest.
-                </p>
-              </div>
-              <div>
-                <span>04</span>
-                <h3>Validate before committing</h3>
-                <p>Use the next step that reduces uncertainty rather than forcing an immediate hardware choice.</p>
-              </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {tradeoffPrinciples.map((principle) => (
+                <div
+                  className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5"
+                  key={principle.title}
+                >
+                  <div className="mb-3 h-1.5 w-10 rounded-full bg-[var(--primary)]" aria-hidden="true" />
+                  <h3 className="text-[18px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
+                    {principle.title}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-7 text-[var(--muted)]">{principle.description}</p>
+                </div>
+              ))}
             </div>
           </section>
 
