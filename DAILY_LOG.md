@@ -1999,3 +1999,246 @@ Polish `/guides/cloud-gpu-vs-local-gpu` so the guide feels less repetitive and m
 
 ### Next Step
 Day 10 route/provider work should only begin if the next task explicitly allows public `/cloud-gpu` pages and keeps the provider experience source-aware, non-ranking, and free of unsupported pricing or performance claims.
+
+---
+
+## 2026-06-03 - Day 10.1 Cloud GPU data audit and reusable components
+
+### Agent
+Codex
+
+### Planned Task
+Audit Cloud GPU provider data and create reusable provider UI components for Day 10 pages without creating public Cloud GPU routes yet.
+
+### Completed
+- [x] Read the required project docs, daily data update rules, Cloud GPU data/model/repository/service files, existing component patterns, and `package.json`.
+- [x] Created `CloudGpuProviderCard` for neutral provider summaries using service list items.
+- [x] Created `CloudGpuProviderFacts` for official website, provider type, pricing model, affiliate status, verification date, data confidence, status, and transparent referral reference display.
+- [x] Created `CloudGpuProviderNotice` using the Cloud GPU service warning, affiliate notice, and pricing notice helpers with deduped notices in one calm block.
+- [x] Created `CloudGpuProviderCta` with safe planning links only.
+- [x] Used Tailwind utility classes only in the new components and added no CSS files, CSS modules, styled-components, inline style blocks, logos, or external images.
+- [x] Confirmed no `/cloud-gpu` or `/cloud-gpu/[slug]` route directory was created.
+- [x] Confirmed no provider ranking, exact pricing, availability, commission, benchmark, tokens/s, image-speed, or affiliate-heavy CTA copy was added.
+
+### Data Audit
+- Provider count: 8.
+- Reviewed provider count: 8.
+- Draft provider count: 0.
+- Providers with `official` source entries: 5 (`runpod`, `lambda`, `paperspace`, `digitalocean-gpu`, `vultr-cloud-gpu`).
+- Providers with `affiliateStatus: unknown`: 5 (`vast-ai`, `lambda`, `paperspace`, `modal`, `replicate`).
+- Providers with `referral_verified` or `available_verified`: 3 (`runpod`, `digitalocean-gpu`, `vultr-cloud-gpu`).
+- Providers with missing `lastVerifiedAt`: 0.
+- Providers with `unsafeToPublishFields`: 8.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Brand/domain hardcode scan in `components/`, `app/(frontend)/`, `lib/`, `services/`, and `repositories/`
+- [x] Route audit confirmed no public `/cloud-gpu` route exists yet
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to Day 10.1.
+- Cloud GPU provider pages are still intentionally uncreated; the new components are preparation for Day 10.2.
+
+### Files Changed
+- `components/CloudGpuProviderCard.tsx`
+- `components/CloudGpuProviderFacts.tsx`
+- `components/CloudGpuProviderNotice.tsx`
+- `components/CloudGpuProviderCta.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10.2 - create source-aware Cloud GPU provider pages only when the next prompt explicitly allows `/cloud-gpu` routes, while preserving non-ranking, no-exact-price, no-availability-claim, and non-affiliate-heavy safeguards.
+
+---
+
+## 2026-06-03 - Day 10.2 Cloud GPU provider hub
+
+### Agent
+Codex
+
+### Planned Task
+Create the public `/cloud-gpu` provider hub page using Day 8 provider data and Day 10.1 reusable components without creating provider detail routes.
+
+### Completed
+- [x] Created `app/(frontend)/cloud-gpu/page.tsx`.
+- [x] Used `cloudGpuProviderService.getCloudGpuProviderListItems()` instead of reading JSON directly in the page.
+- [x] Added unique metadata, canonical URL, breadcrumb UI, one H1, source-aware intro, provider count, provider cards, source/data notice, how-to-use cards, neutral use-case categories, CTA section, FAQ, and safe JSON-LD.
+- [x] Rendered 8 provider cards with `CloudGpuProviderCard`.
+- [x] Kept provider profile CTAs as non-links on the hub because `/cloud-gpu/[slug]` is not created yet.
+- [x] Updated `CloudGpuProviderCard` to support both future detail links and current non-link hub rendering.
+- [x] Updated `CloudGpuProviderNotice` to support a hub-level notice list while preserving provider-specific notice behavior.
+- [x] Updated `CloudGpuProviderCta` so the hub can show only the requested external planning links.
+- [x] Added `/cloud-gpu` to the sitemap and did not add provider detail URLs.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/cloud-gpu` as a static route
+- [x] Exported HTML contains all 8 provider names
+- [x] Exported HTML does not include `/cloud-gpu/{slug}` provider detail links
+- [x] Sitemap includes `/cloud-gpu`
+- [x] Confirmed no `/cloud-gpu/[slug]` route directory exists
+- [x] Source scan confirmed no `Product`, `Review`, `Offer`, `AggregateRating`, price, or availability schema was added
+- [x] Brand/domain hardcode scan in `components/`, `app/(frontend)/`, `lib/`, `services/`, and `repositories/`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to Day 10.2.
+- Provider detail pages are intentionally not created yet; hub cards show `View planning profile` as a non-link state until Day 10.3 explicitly creates detail routes.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `components/CloudGpuProviderCard.tsx`
+- `components/CloudGpuProviderNotice.tsx`
+- `components/CloudGpuProviderCta.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10.3 - create source-aware `/cloud-gpu/[slug]` provider detail pages only if explicitly requested, while preserving non-ranking, no exact price, no availability claim, and non-affiliate-heavy safeguards.
+
+---
+
+## 2026-06-03 - Day 10.3 Cloud GPU provider detail pages
+
+### Agent
+Codex
+
+### Planned Task
+Create source-aware Cloud GPU provider planning profiles at `/cloud-gpu/[slug]`.
+
+### Completed
+- [x] Created `app/(frontend)/cloud-gpu/[slug]/page.tsx`.
+- [x] Added `generateStaticParams()` from `cloudGpuProviderRepository.getCloudGpuProviderSlugs()`.
+- [x] Added `generateMetadata()` from provider `seoTitle` and `seoDescription` through `cloudGpuProviderService.getCloudGpuProviderDetail()`.
+- [x] Added `notFound()` handling for invalid provider slugs.
+- [x] Rendered 8 provider detail pages from the existing Cloud GPU provider data.
+- [x] Added hero, planning fit, provider facts, notices, profile scope, sources, CTA, and FAQ sections.
+- [x] Used `CloudGpuProviderFacts`, `CloudGpuProviderNotice`, and `CloudGpuProviderCta`.
+- [x] Updated `CloudGpuProviderFacts` to use safe external links and to avoid repeating planning notices on detail pages.
+- [x] Re-enabled hub card links now that provider detail pages exist.
+- [x] Added all provider detail URLs to `app/(frontend)/sitemap.ts`.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/cloud-gpu/[slug]` with 8 generated paths
+- [x] `/cloud-gpu/runpod`, `/cloud-gpu/vast-ai`, and `/cloud-gpu/lambda` exported successfully
+- [x] Invalid slug lookup returns null and no invalid static export file exists
+- [x] Sitemap includes all 8 provider detail URLs
+- [x] Source scan confirmed no `Product`, `Review`, `Offer`, `AggregateRating`, price, or availability schema was added
+- [x] Brand/domain hardcode scan in `components/`, `app/(frontend)`, `lib`, `services`, and `repositories`
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to Day 10.3.
+- Provider detail pages are planning profiles only; they intentionally avoid ranking, exact cost display, current GPU capacity claims, performance claims, and affiliate-heavy CTAs.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/[slug]/page.tsx`
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `components/CloudGpuProviderFacts.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 10.4 - refine Cloud GPU internal linking and QA only if explicitly requested, while preserving source-aware, non-ranking, no exact price, no availability claim, and non-affiliate-heavy safeguards.
+
+---
+
+## 2026-06-03 - Day 10.4 Cloud GPU final integration and validation
+
+### Agent
+Codex
+
+### Planned Task
+Finish Day 10 safely after the Cloud GPU hub and provider detail pages were created, including sitemap integration, safe internal links, final safety checks, validation, and documentation updates.
+
+### Completed
+- [x] Confirmed `/cloud-gpu` exists as a static/export-compatible Cloud GPU provider hub.
+- [x] Confirmed `/cloud-gpu/[slug]` exists with 8 generated provider planning profiles.
+- [x] Confirmed `generateStaticParams()` uses provider slugs from `cloudGpuProviderRepository`.
+- [x] Confirmed `generateMetadata()` uses provider SEO fields through `cloudGpuProviderService`.
+- [x] Confirmed invalid slug lookup returns null and the dynamic route uses `notFound()`.
+- [x] Confirmed provider cards render from service/repository data.
+- [x] Confirmed provider detail pages show facts, grouped notices, sources, FAQ, and safe related links.
+- [x] Confirmed `app/(frontend)/sitemap.ts` includes `/cloud-gpu` and all provider detail routes from repository slugs.
+- [x] Added one safe `/cloud-gpu` link to `/guides/cloud-gpu-vs-local-gpu` using `Review Cloud GPU provider profiles` wording.
+- [x] Updated the Cloud GPU provider note in the guide so it no longer says provider pages are unpublished.
+- [x] Added `/cloud-gpu` as a related planning route on `/guides` without creating a duplicate guide card.
+- [x] Kept main navigation and footer navigation unchanged because the header is already full and footer links share the same navigation config.
+
+### Provider Page Count
+- Provider count: 8.
+- Generated detail pages: 8 (`runpod`, `vast-ai`, `lambda`, `paperspace`, `digitalocean-gpu`, `vultr-cloud-gpu`, `modal`, `replicate`).
+
+### Components Created
+- `components/CloudGpuProviderCard.tsx`
+- `components/CloudGpuProviderFacts.tsx`
+- `components/CloudGpuProviderNotice.tsx`
+- `components/CloudGpuProviderCta.tsx`
+
+### Data Audit Summary
+- Provider count: 8.
+- Reviewed provider count: 8.
+- Draft provider count: 0.
+- Providers with official source-type coverage: 8.
+- Providers with `affiliateStatus: unknown`: 5.
+- Providers with `referral_verified` or `available_verified`: 3.
+- Providers with missing `lastVerifiedAt`: 0.
+- Providers with `unsafeToPublishFields`: 8.
+
+### Safety Checks
+- [x] No provider ranking was added.
+- [x] No exact provider price claims were added.
+- [x] No current provider availability claims were added.
+- [x] No commission or recurring commission claims were added.
+- [x] No affiliate-heavy CTA copy was added.
+- [x] Unknown `affiliateStatus` providers do not expose affiliate program URLs.
+- [x] Verified referral links remain transparent references, not primary CTA buttons.
+- [x] No benchmark, tokens/s, or image-speed claims were added.
+- [x] No `Product`, `Review`, `Offer`, `AggregateRating`, price, or availability schema was added.
+- [x] Warnings are grouped through `CloudGpuProviderNotice` and not repeated in provider facts on detail pages.
+- [x] Provider sources are shown on detail pages.
+- [x] No current brand/domain hardcode appears in `components/`, `app/(frontend)/`, `lib/`, `services/`, or `repositories/`.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/cloud-gpu`
+- [x] Build output includes `/cloud-gpu/[slug]` with 8 generated paths
+- [x] `/cloud-gpu/runpod`, `/cloud-gpu/vast-ai`, and `/cloud-gpu/lambda` exported successfully
+- [x] Every provider slug has a generated page
+- [x] `/guides/cloud-gpu-vs-local-gpu` exported successfully
+- [x] `/tools/vram-calculator` and `/builds` exported successfully
+- [x] Sitemap output includes `/cloud-gpu` and all 8 provider detail URLs
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and are unrelated to Cloud GPU provider pages.
+- Provider pages are planning profiles, not rankings.
+- Exact prices are not stored unless timestamped/source-backed.
+- Availability is not claimed.
+- Affiliate/referral links are only shown if verified from official source.
+- No provider recommendations are made yet.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `app/(frontend)/cloud-gpu/[slug]/page.tsx`
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `components/CloudGpuProviderCard.tsx`
+- `components/CloudGpuProviderFacts.tsx`
+- `components/CloudGpuProviderNotice.tsx`
+- `components/CloudGpuProviderCta.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 11 can begin from a complete Day 10 Cloud GPU provider-page foundation, with provider pages still source-aware, non-ranking, and free of unsupported pricing, availability, performance, or affiliate claims.

@@ -84,6 +84,9 @@ export default function GuidesIndexPage() {
             <Link href="/compare">
               Compare GPU options <span>&rarr;</span>
             </Link>
+            <Link href="/cloud-gpu">
+              Review Cloud GPU provider profiles <span>&rarr;</span>
+            </Link>
             <Link href="/builds">
               Open build planning <span>&rarr;</span>
             </Link>

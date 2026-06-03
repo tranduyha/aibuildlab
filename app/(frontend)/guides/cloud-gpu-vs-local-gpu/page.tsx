@@ -208,10 +208,10 @@ const workflowSteps = [
     number: "04",
     title: "Test cloud if uncertain",
     description:
-      "If VRAM or workflow fit still feels unclear, consider cloud testing first. The provider directory is not public yet because provider terms and planning details still need careful handling.",
-    ctaLabel: null,
-    href: null,
-    secondaryCtaLabel: "Provider pages planned later",
+      "If VRAM or workflow fit still feels unclear, consider cloud testing first, then review source-aware provider profiles as planning references.",
+    ctaLabel: "Review Cloud GPU provider profiles",
+    href: "/cloud-gpu",
+    secondaryCtaLabel: null,
     secondaryHref: null,
   },
   {
@@ -508,11 +508,6 @@ export default function CloudGpuVsLocalGpuGuidePage() {
                       {step.ctaLabel}
                     </Link>
                   ) : null}
-                  {step.secondaryCtaLabel && !step.secondaryHref ? (
-                    <span className="mt-auto inline-flex w-fit items-center rounded-full border border-[var(--border)] bg-[var(--surface-alt)] px-3 py-1.5 text-sm font-semibold text-[var(--muted)]">
-                      {step.secondaryCtaLabel}
-                    </span>
-                  ) : null}
                   {step.secondaryHref && step.secondaryCtaLabel ? (
                     <div className="mt-auto flex flex-wrap gap-2">
                       <Link
@@ -554,16 +549,15 @@ export default function CloudGpuVsLocalGpuGuidePage() {
           </section>
 
           <section className="tool-section guide-provider-note">
-            <h2>Why this guide does not rank cloud GPU providers yet</h2>
+            <h2>Why this guide does not rank cloud GPU providers</h2>
             <p>
               {settings.name} currently has {providerCount} source-aware cloud GPU provider planning records prepared
-              from Day 8 work, but this guide does not rank providers, recommend one platform over another, or publish
-              a provider directory yet.
+              from Day 8 work, but this guide does not rank providers or point users toward one platform over another.
             </p>
             <p>
-              That is intentional because pricing, availability, billing scope, and referral terms can change. Future
-              provider pages may use source-backed records, but users should still verify official provider pages
-              before making workload or cost decisions.
+              That is intentional because pricing, capacity, billing scope, and referral terms can change. Provider
+              profiles use source-backed records, but users should still verify official provider pages before making
+              workload or cost decisions.
             </p>
           </section>
 
