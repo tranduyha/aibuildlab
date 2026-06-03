@@ -88,6 +88,13 @@ const cannotTellItems = [
   "Whether this provider is the right fit for your situation",
 ] as const;
 
+const profileUseSteps = [
+  "Check whether the provider type matches your workflow.",
+  "Compare the listed use cases with your workload.",
+  "Estimate VRAM before cost planning.",
+  "Verify pricing, capacity, and terms on official sources.",
+] as const;
+
 const faqItems = [
   {
     question: "Is this provider a recommendation?",
@@ -240,8 +247,8 @@ export default async function CloudGpuProviderDetailPage({
           </ol>
         </nav>
 
-        <header className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="flex flex-wrap gap-2" aria-label="Provider data status">
+        <header className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+          <div className="flex flex-wrap justify-center gap-2" aria-label="Provider data status">
             <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
               {statusLabels[provider.status]}
             </span>
@@ -255,14 +262,14 @@ export default async function CloudGpuProviderDetailPage({
             ) : null}
           </div>
 
-          <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-slate-950 sm:text-5xl">
+          <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-normal text-slate-950 sm:text-5xl">
             {provider.name}
           </h1>
-          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-700">
             {provider.shortDescription}
           </p>
 
-          <div className="mt-6 flex flex-col gap-5">
+          <div className="mt-6 flex flex-col gap-5 text-left">
             <dl className="grid gap-3 text-sm sm:grid-cols-2">
               <div className="rounded-md bg-slate-50 p-3">
                 <dt className="font-semibold text-slate-950">Provider type</dt>
@@ -279,6 +286,22 @@ export default async function CloudGpuProviderDetailPage({
             </p>
           </div>
         </header>
+
+        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-use-heading">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            How to use this profile
+          </p>
+          <h2 id="profile-use-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            Use it as a planning checkpoint
+          </h2>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {profileUseSteps.map((step) => (
+              <div key={step} className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-700">
+                {step}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="planning-fit-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">

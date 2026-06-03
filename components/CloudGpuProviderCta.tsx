@@ -2,12 +2,13 @@ import Link from "next/link";
 
 const planningLinks = [
   {
-    href: "/guides/cloud-gpu-vs-local-gpu",
-    label: "Read Cloud GPU vs Local GPU guide",
-  },
-  {
     href: "/tools/vram-calculator",
     label: "Estimate VRAM first",
+    primary: true,
+  },
+  {
+    href: "/guides/cloud-gpu-vs-local-gpu",
+    label: "Read Cloud GPU vs Local GPU guide",
   },
   {
     href: "/builds",
@@ -41,7 +42,11 @@ export default function CloudGpuProviderCta({
         {visibleLinks.map((link) => (
           <Link
             key={link.href}
-            className="inline-flex items-center justify-between rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-white"
+            className={
+              link.primary
+                ? "inline-flex items-center justify-between rounded-md border border-sky-700 bg-sky-700 px-4 py-3 text-sm font-semibold !text-white transition hover:border-sky-800 hover:bg-sky-800 hover:!text-white focus-visible:!text-white"
+                : "inline-flex items-center justify-between rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-white"
+            }
             href={link.href}
           >
             <span>{link.label}</span>

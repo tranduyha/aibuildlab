@@ -70,22 +70,16 @@ export default function CloudGpuProviderCard({
   const { provider, dataConfidence } = item;
   const resolvedProfileHref = profileHref === undefined ? `/cloud-gpu/${provider.slug}` : profileHref;
 
+  const statusText = [
+    statusLabels[provider.status],
+    confidenceLabels[dataConfidence],
+    provider.needsReview ? "Needs verification" : null,
+  ]
+    .filter((value): value is string => Boolean(value))
+    .join(" · ");
+
   return (
     <article className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="mb-4 flex flex-wrap gap-2" aria-label="Provider data status">
-        <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
-          {statusLabels[provider.status]}
-        </span>
-        <span className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-800">
-          {confidenceLabels[dataConfidence]}
-        </span>
-        {provider.needsReview ? (
-          <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800">
-            Needs verification
-          </span>
-        ) : null}
-      </div>
-
       <h2 className="text-xl font-semibold tracking-normal text-slate-950">
         {resolvedProfileHref ? (
           <Link className="hover:text-sky-700" href={resolvedProfileHref}>
@@ -96,6 +90,9 @@ export default function CloudGpuProviderCard({
         )}
       </h2>
       <p className="mt-3 text-sm leading-6 text-slate-700">{provider.shortDescription}</p>
+      <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        {statusText}
+      </p>
 
       <dl className="mt-5 grid gap-3 text-sm">
         <div className="rounded-md bg-slate-50 p-3">

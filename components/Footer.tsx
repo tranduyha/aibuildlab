@@ -2,6 +2,10 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { siteSettingsService } from "@/services/site-settings.service";
 
+const footerExtraLinks = [
+  { label: "Cloud GPU", href: "/cloud-gpu" },
+] as const;
+
 export default function Footer() {
   const settings = siteSettingsService.getSettings();
   const navigation = siteSettingsService
@@ -25,6 +29,11 @@ export default function Footer() {
           <div className="footer-links">
             {navigation.map((item) => (
               <Link key={item.id} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+            {footerExtraLinks.map((item) => (
+              <Link key={item.href} href={item.href}>
                 {item.label}
               </Link>
             ))}

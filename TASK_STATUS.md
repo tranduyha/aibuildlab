@@ -65,34 +65,36 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 10 - Cloud GPU provider pages (2026-06-03).
+Day 10.5 - Cloud GPU page polish and validation (2026-06-03).
 
 ## Today Scope
 
-- Finish Day 10 integration after `/cloud-gpu` and `/cloud-gpu/[slug]` were created.
+- Audit and polish completed Cloud GPU pages without rewriting the Day 10 implementation.
+- Improve hub/provider-detail UX, internal discovery, footer access, CTA hierarchy, and trust-focused copy.
 - Keep Cloud GPU pages static/export compatible and repository/service driven.
-- Add sitemap coverage, safe guide/internal links, validation, and final documentation.
 - Preserve source-aware wording with no provider ranking, unsupported exact price, current availability, commission, benchmark, tokens/s, image-speed, or affiliate-heavy claims.
 
 ## Done Today
 
-- [x] Confirmed reusable Cloud GPU components exist: `CloudGpuProviderCard`, `CloudGpuProviderFacts`, `CloudGpuProviderNotice`, and `CloudGpuProviderCta`.
-- [x] Confirmed `/cloud-gpu` renders 8 provider cards from `cloudGpuProviderService.getCloudGpuProviderListItems()`.
+- [x] Confirmed `/cloud-gpu` renders cleanly with 8 provider cards from `cloudGpuProviderService.getCloudGpuProviderListItems()`.
 - [x] Confirmed `/cloud-gpu/[slug]` renders 8 source-aware provider planning profiles with facts, grouped notices, sources, FAQ, related links, static params, metadata, and invalid-slug `notFound()` handling.
-- [x] Confirmed `app/(frontend)/sitemap.ts` includes `/cloud-gpu` and all provider detail URLs from `cloudGpuProviderRepository.getCloudGpuProviderSlugs()`.
-- [x] Added a safe internal link from `/guides/cloud-gpu-vs-local-gpu` to `/cloud-gpu` with `Review Cloud GPU provider profiles` wording.
-- [x] Updated the guide provider note now that public provider planning profiles exist, while keeping no-ranking and source-verification language.
-- [x] Added `/cloud-gpu` as a related planning route on `/guides` without creating a duplicate guide card.
-- [x] Kept main navigation and footer navigation unchanged because the existing header is already full and footer links come from the same navigation config.
-- [x] Confirmed `/cloud-gpu/runpod`, `/cloud-gpu/vast-ai`, and `/cloud-gpu/lambda` export successfully.
-- [x] Confirmed every provider slug from `data/cloud-gpu-providers.json` has a generated static detail page.
-- [x] Confirmed `/guides/cloud-gpu-vs-local-gpu`, `/tools/vram-calculator`, and `/builds` export successfully.
+- [x] Polished provider cards by replacing heavy status badges with one subtle status/confidence line and keeping CTA buttons aligned at the bottom.
+- [x] Polished `/cloud-gpu` hero copy to explain provider planning, VRAM-first context, no ranking, and no pricing-table intent.
+- [x] Updated use-case count labels from bare numbers to provider-count labels.
+- [x] Updated `CloudGpuProviderCta` so `Estimate VRAM first` is the primary CTA and guide/build links remain secondary.
+- [x] Centered detail-page hero title, summary, and status pills while keeping facts and notices aligned for scanning.
+- [x] Added a concise `How to use this profile` section to provider detail pages.
+- [x] Added a footer Explore link to `/cloud-gpu` without adding Cloud GPU to the main nav.
+- [x] Confirmed `/guides` and `/guides/cloud-gpu-vs-local-gpu` still link safely to `/cloud-gpu`.
 - [x] Confirmed sitemap output includes `/cloud-gpu` and all 8 provider detail URLs.
+- [x] Confirmed every provider slug from `data/cloud-gpu-providers.json` has a generated static detail page.
+- [x] Confirmed `/cloud-gpu/runpod`, `/cloud-gpu/vast-ai`, `/cloud-gpu/lambda`, `/cloud-gpu/modal`, and `/cloud-gpu/replicate` export successfully.
+- [x] Confirmed `/guides`, `/guides/cloud-gpu-vs-local-gpu`, `/tools/vram-calculator`, and `/builds` export successfully.
 - [x] Confirmed unknown `affiliateStatus` providers do not have affiliate program URLs.
 - [x] Confirmed no current brand/domain hardcode appears in `components/`, `app/(frontend)/`, `lib/`, `services/`, or `repositories/`.
 - [x] Confirmed no `Product`, `Review`, `Offer`, `AggregateRating`, price, or availability schema was added.
 - [x] Confirmed no provider ranking, exact price claims, current GPU availability claims, commission or recurring commission claims, affiliate spam, benchmark claims, tokens/s claims, or image-speed claims were added.
-- [x] Ran `npm run data:validate` (0 errors, 51 existing GPU warnings unrelated to Day 10 Cloud GPU provider pages).
+- [x] Ran `npm run data:validate` (0 errors, 51 existing GPU warnings unrelated to Day 10.5 Cloud GPU polish).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build`; build output includes `/cloud-gpu` and `/cloud-gpu/[slug]` with 8 generated paths.
 - [x] Updated `DAILY_LOG.md`.
@@ -126,7 +128,7 @@ Day 10 - Cloud GPU provider pages (2026-06-03).
 
 ## Last Completed Task
 
-Day 10.4 completed Cloud GPU final integration, sitemap coverage, guide/hub internal links, safety audit, validation, lint, build, and documentation updates.
+Day 10.5 polished Cloud GPU hub/detail UX, CTA hierarchy, footer/internal discovery, safety audit, validation, lint, build, and documentation updates.
 
 ## Open Limitations
 
@@ -145,10 +147,10 @@ Day 10.4 completed Cloud GPU final integration, sitemap coverage, guide/hub inte
 - Invalid provider slugs resolve through the service as null and the dynamic page calls `notFound()`.
 - Provider detail pages show facts, grouped notices, sources, FAQ, and safe related planning links.
 - `app/(frontend)/sitemap.ts` includes `/cloud-gpu` and all provider detail URLs from repository slugs.
-- `/guides/cloud-gpu-vs-local-gpu` and `/guides` now link safely to `/cloud-gpu`.
-- Main nav/footer were not changed in Day 10.4.
+- `/guides/cloud-gpu-vs-local-gpu`, `/guides`, and the footer Explore area now link safely to `/cloud-gpu`.
+- Main nav was not changed in Day 10.5.
 - Cloud GPU data audit: 8 providers, 8 reviewed, 0 draft, 8 with official source-type coverage, 5 with `affiliateStatus: unknown`, 3 with `referral_verified` or `available_verified`, 0 missing `lastVerifiedAt`, and 8 with `unsafeToPublishFields`.
-- Day 10.4 checks passed: `npm run data:validate`, `npm run lint`, and `npm run build`. Data validation still reports 51 existing GPU source-field warnings unrelated to Cloud GPU providers.
+- Day 10.5 checks passed: `npm run data:validate`, `npm run lint`, and `npm run build`. Data validation still reports 51 existing GPU source-field warnings unrelated to Cloud GPU providers.
 
 - `/guides/cloud-gpu-vs-local-gpu` now has clearer primary-section hierarchy, larger guide copy, and a mobile-safe cloud-vs-local stacked-card fallback under small widths.
 - `/guides` now presents the published guide card as a stronger entry point and includes a clearly marked non-linked planned-topics block.

@@ -9,7 +9,7 @@ import type { CloudGpuUseCase } from "@/types/cloud-gpu-provider";
 
 const PAGE_TITLE = "Cloud GPU Providers for AI Workload Planning";
 const PAGE_DESCRIPTION =
-  "Review source-aware Cloud GPU provider planning profiles for AI workloads without rankings, pricing tables, or buying recommendations.";
+  "Review source-aware Cloud GPU provider profiles for AI workload planning, including provider type, use cases, pricing model notes, and verification warnings without provider ranking.";
 const PAGE_PATH = "/cloud-gpu";
 
 const sourceNotices = [
@@ -196,7 +196,7 @@ export default function CloudGpuPage() {
               Cloud GPU Providers for AI Workload Planning
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-              Use this page to review source-aware Cloud GPU provider profiles for AI workload planning. These pages are not rankings, pricing tables, or buying recommendations.
+              Review source-aware Cloud GPU provider profiles after estimating VRAM and comparing cloud versus local tradeoffs. This hub is not a ranking page, pricing table, or buying recommendation.
             </p>
           </div>
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
@@ -259,7 +259,7 @@ export default function CloudGpuPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-base font-semibold tracking-normal text-slate-950">{useCase.label}</h3>
                   <span className="shrink-0 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700">
-                    {countProvidersForUseCase(providerItems, useCase.key)}
+                    {countProvidersForUseCase(providerItems, useCase.key)} providers
                   </span>
                 </div>
                 <p className="mt-2 text-sm leading-6 text-slate-700">{useCase.description}</p>
