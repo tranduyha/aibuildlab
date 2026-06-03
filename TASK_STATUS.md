@@ -65,34 +65,29 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Pre-Day 8 - Build UX cleanup (2026-06-03).
+Day 8 - Source-backed Cloud GPU provider data model (2026-06-03).
 
 ## Today Scope
 
-- Polish `/builds` and `/builds/[slug]` UX before starting Day 8.
-- Make build checklist sections easier to scan without removing safety checks.
-- Reduce repeated warning badge weight below the hero.
-- Make GPU planning candidates visually secondary.
-- Add light visual cues to the planning stack.
-- Improve build FAQ uniqueness while keeping source-aware wording.
+- Finish Day 8 safely by validating the Cloud GPU provider data/model/repository/service layer.
+- Add `data/cloud-gpu-providers.json` coverage to `npm run data:validate`.
+- Audit safety constraints around pricing, availability, affiliate/referral status, recommendations, routes, nav, and sitemap.
+- Update handoff docs without creating public cloud GPU pages.
 
 ## Done Today
 
-- [x] Reworked `BuildPlanningChecklist` into compact grouped cards with short summaries and six system-level groups.
-- [x] Kept route-specific priority checks while making checklist content shorter and easier to scan.
-- [x] Replaced repeated lower-page confidence badges in build, GPU, and comparison cards with lighter `Planning confidence` notes.
-- [x] Kept the primary `DataConfidenceBadge` near the build detail hero.
-- [x] Added compact visual markers to `BuildPlanningStack` for Workload, VRAM, GPU, System, and Validation flow.
-- [x] Changed GPU section heading to `GPU planning candidates` and added cautious copy: `These GPUs may fit this planning tier.`
-- [x] Kept GPU options after planning stack, outcome, checklist, and build-specific notes.
-- [x] Added route-aware FAQ sets so each build page has clearer unique intent coverage.
-- [x] Softened build wording away from buy/buying language toward local hardware commitment/decision wording.
-- [x] Improved build card/checklist/stack CSS for compact desktop grids and stacked mobile layout.
-- [x] Ran brand/domain hardcode scan in `app`, `components`, `lib`, `services`, `repositories` (no forbidden literals found).
-- [x] Confirmed forbidden schema types (`Product`, `Review`, `Offer`, `AggregateRating`) are not present in build output.
-- [x] Confirmed static output includes GPU planning candidates, Planning confidence notes, route-specific checklist sections, and Evidence and testing.
-- [x] Confirmed build output does not append `Draft` to build SEO titles.
-- [x] Ran `npm run data:validate` (0 errors, 51 existing warnings from GPU source-field mapping gaps).
+- [x] Read `AGENTS.md`, `TASK_STATUS.md`, `DAILY_LOG.md`, `package.json`, `scripts/validate-data.ts`, `data/cloud-gpu-providers.json`, `types/cloud-gpu-provider.ts`, `repositories/cloud-gpu-provider.repository.ts`, `services/cloud-gpu-provider.service.ts`, and `app/(frontend)/sitemap.ts`.
+- [x] Confirmed `data/cloud-gpu-providers.json` exists with 8 provider records.
+- [x] Confirmed `types/cloud-gpu-provider.ts`, `repositories/cloud-gpu-provider.repository.ts`, and `services/cloud-gpu-provider.service.ts` exist.
+- [x] Extended `scripts/validate-data.ts` to validate `data/cloud-gpu-providers.json`.
+- [x] Validator now checks array shape, required fields, unique slug/id, enum values, source completeness, non-empty `sources[].fields`, reviewed/published source and `lastVerifiedAt` rules, unknown affiliate URL rules, numeric commission note sourcing, unsupported exact pricing/availability fields, and unsupported superlative wording.
+- [x] Updated validator source type whitelist to align with cloud GPU source types: `pricing`, `affiliate`, `referral`, and `terms`.
+- [x] Confirmed every reviewed provider has source-backed field mappings and at least 2 mapped core fields.
+- [x] Confirmed unknown affiliate records do not include affiliate URLs.
+- [x] Confirmed no exact hourly price, commission amount, benchmark, availability, image speed, tokens/s, or provider recommendation was added.
+- [x] Confirmed no `/cloud-gpu` or `/cloud-gpu/[slug]` route exists.
+- [x] Confirmed no `/cloud-gpu` nav link or sitemap entry exists.
+- [x] Ran `npm run data:validate` (0 errors, 51 existing GPU warnings unrelated to cloud providers).
 - [x] Ran `npm run lint`.
 - [x] Ran `npm run build`.
 - [x] Updated `DAILY_LOG.md`.
@@ -100,24 +95,26 @@ Pre-Day 8 - Build UX cleanup (2026-06-03).
 
 ## Last Completed Task
 
-Pre-Day 8 build UX cleanup with passing validation/lint/build.
+Day 8 source-backed Cloud GPU provider data model with data validation, repository/service layer, safety audit, lint, and build passing.
 
 ## Open Limitations
 
-- Build pages remain planning drafts, not benchmark-backed build recommendations.
-- Build pages do not include exact parts, prices, affiliate links, speed claims, availability claims, or buying recommendations.
-- Build pages emphasize system-level planning before GPU candidates.
-- Comparisons remain source-aware planning pages, not benchmark verdicts.
-- RTX 4070 Super remains a planning draft, so unsourced fields still show `Needs verification`.
-- No benchmark, price, availability, image speed, tokens/s, affiliate link, or buying recommendation was added.
-- `npm run data:validate` still reports 51 existing GPU source-field mapping warnings unrelated to this copy cleanup.
+- No public cloud GPU pages yet.
+- Exact prices are not stored unless timestamped/source-backed in a future schema.
+- Availability is not claimed unless source-backed.
+- Affiliate status is only verified where an official source exists.
+- No provider recommendations yet.
+- All cloud GPU records still keep `needsReview: true` because pricing scope, GPU availability, and referral terms can change quickly.
+- Existing `npm run data:validate` warnings remain in `data/gpus.json` and are unrelated to cloud GPU providers.
 
 ## Current Handoff Note
 
-- Ready for Day 8 - Cloud GPU data model.
-- Build pages are already live and polished for Pre-Day 8; do not rebuild Builds from scratch unless a new task explicitly asks for it.
-- Keep Day 8 data as draft/low-confidence seed records until sources are verified.
-- Do not add prices, affiliate links, exact parts, benchmarks, tokens/s, image speed, availability claims, or buying recommendations.
+- `data/cloud-gpu-providers.json` is now present and schema-aligned for the 8 planned providers.
+- `repositories/cloud-gpu-provider.repository.ts` and `services/cloud-gpu-provider.service.ts` are available for future cloud GPU pages or validation work.
+- `scripts/validate-data.ts` now validates the cloud GPU provider dataset.
+- Current cloud provider records are cautious planning records with `needsReview: true`; do not turn them into recommendation content without fresh source checks.
+- RunPod, DigitalOcean GPU, and Vultr Cloud GPU have official referral pages linked; other providers remain `affiliateStatus: "unknown"` in this pass.
+- Do not add price snapshots, commission claims, benchmark claims, or buying recommendations without tighter source policy and timestamps.
 
 ## Done
 

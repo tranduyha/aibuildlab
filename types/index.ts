@@ -5,6 +5,17 @@ export type { AiModel } from "./ai-model";
 export type { Comparison } from "./comparison";
 export type { Build } from "./build";
 export type { Guide } from "./guide";
+export type {
+  CloudGpuAffiliateStatus,
+  CloudGpuDataConfidence,
+  CloudGpuPricingModel,
+  CloudGpuProvider,
+  CloudGpuProviderSource,
+  CloudGpuProviderSourceType,
+  CloudGpuProviderStatus,
+  CloudGpuProviderType,
+  CloudGpuUseCase,
+} from "./cloud-gpu-provider";
 export type { ImageCategory, ImageManifestEntry } from "./image";
 export type { CalculatorAssumption, ContextPresetProfile, QuantizationProfile, RuntimeProfile } from "./calculator-assumption";
 export type { CalculatorValidationSample } from "./calculator-validation";

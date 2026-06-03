@@ -1,0 +1,359 @@
+[
+  {
+    "id": "cloud-gpu-runpod",
+    "slug": "runpod",
+    "name": "RunPod",
+    "shortDescription": "Cloud GPU platform for pods and serverless AI workloads, kept as a planning profile with ongoing review.",
+    "seoTitle": "RunPod Cloud GPU Planning Profile",
+    "seoDescription": "Source-aware RunPod planning profile covering platform type, pricing model, and referral status with cautious review notes.",
+    "officialWebsiteUrl": "https://www.runpod.io/",
+    "providerType": "cloud_gpu_provider",
+    "useCases": [
+      "local_llm_testing",
+      "stable_diffusion",
+      "serverless_inference",
+      "gpu_workstation_alternative"
+    ],
+    "pricingModel": "hourly",
+    "pricingNotes": null,
+    "affiliateStatus": "referral_verified",
+    "affiliateProgramUrl": "https://docs.runpod.io/accounts-billing/referrals",
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "RunPod Pricing",
+        "url": "https://www.runpod.io/pricing/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "RunPod Referral Program",
+        "url": "https://docs.runpod.io/accounts-billing/referrals",
+        "type": "referral",
+        "fields": ["affiliateStatus", "affiliateProgramUrl"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official pricing and referral documentation were available on 2026-06-03. Current GPU SKUs, availability, and referral terms still need ongoing review before any monetized use.",
+    "unsafeToPublishFields": ["pricingNotes", "commissionNotes"]
+  },
+  {
+    "id": "cloud-gpu-vast-ai",
+    "slug": "vast-ai",
+    "name": "Vast.ai",
+    "shortDescription": "GPU marketplace planning profile for variable host-backed cloud capacity and ongoing source review.",
+    "seoTitle": "Vast.ai Cloud GPU Planning Profile",
+    "seoDescription": "Source-aware Vast.ai planning profile covering marketplace positioning and dynamic pricing cautions.",
+    "officialWebsiteUrl": "https://vast.ai/",
+    "providerType": "cloud_gpu_marketplace",
+    "useCases": [
+      "local_llm_testing",
+      "stable_diffusion",
+      "batch_jobs",
+      "gpu_workstation_alternative"
+    ],
+    "pricingModel": "hourly",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Vast.ai Pricing Documentation",
+        "url": "https://docs.vast.ai/guides/instances/pricing",
+        "type": "documentation",
+        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official pricing documentation indicates marketplace-based pricing that changes with host supply. No official affiliate or referral page was confirmed during this check.",
+    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+  },
+  {
+    "id": "cloud-gpu-lambda",
+    "slug": "lambda",
+    "name": "Lambda",
+    "shortDescription": "AI cloud compute planning profile for on-demand GPU workloads with official pricing review and unresolved referral status.",
+    "seoTitle": "Lambda GPU Cloud Planning Profile",
+    "seoDescription": "Source-aware Lambda planning profile covering GPU cloud positioning and official pricing pages without unsupported affiliate claims.",
+    "officialWebsiteUrl": "https://lambda.ai/",
+    "providerType": "cloud_gpu_provider",
+    "useCases": [
+      "local_llm_testing",
+      "fine_tuning",
+      "notebooks",
+      "model_deployment"
+    ],
+    "pricingModel": "hourly",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Lambda Home",
+        "url": "https://lambda.ai/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "providerType", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Lambda AI Cloud Pricing",
+        "url": "https://lambda.ai/service/gpu-cloud/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official site and pricing pages were available on 2026-06-03. Current GPU inventory, billing scope, and any referral program details still need separate confirmation.",
+    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+  },
+  {
+    "id": "cloud-gpu-paperspace",
+    "slug": "paperspace",
+    "name": "Paperspace",
+    "shortDescription": "Legacy Paperspace planning profile maintained with DigitalOcean documentation and transition-aware caution.",
+    "seoTitle": "Paperspace GPU Platform Planning Profile",
+    "seoDescription": "Source-aware Paperspace planning profile based on DigitalOcean-operated pricing documentation and ongoing transition review.",
+    "officialWebsiteUrl": "https://www.paperspace.com/",
+    "providerType": "cloud_compute_provider",
+    "useCases": [
+      "notebooks",
+      "stable_diffusion",
+      "local_llm_testing",
+      "model_deployment"
+    ],
+    "pricingModel": "hourly",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Paperspace Pricing - DigitalOcean Docs",
+        "url": "https://docs.digitalocean.com/products/paperspace/pricing/",
+        "type": "documentation",
+        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Paperspace Is Now DigitalOcean",
+        "url": "https://www.paperspace.com/paperspace-is-now-digitalocean-ai-gpu-cloud-platform",
+        "type": "official",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Paperspace remains relevant for legacy product research, but DigitalOcean now directs new users toward current GPU offerings. Separate affiliate or referral terms for the legacy Paperspace brand were not confirmed.",
+    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+  },
+  {
+    "id": "cloud-gpu-digitalocean-gpu",
+    "slug": "digitalocean-gpu",
+    "name": "DigitalOcean GPU",
+    "shortDescription": "DigitalOcean GPU compute planning profile for current droplet-based AI workloads with official referral verification.",
+    "seoTitle": "DigitalOcean GPU Planning Profile",
+    "seoDescription": "Source-aware DigitalOcean GPU planning profile covering droplet-based GPU compute, pricing model, and referral status.",
+    "officialWebsiteUrl": "https://www.digitalocean.com/products/droplets",
+    "providerType": "cloud_compute_provider",
+    "useCases": [
+      "local_llm_testing",
+      "fine_tuning",
+      "model_deployment",
+      "cloud_vs_local_validation"
+    ],
+    "pricingModel": "hourly",
+    "pricingNotes": null,
+    "affiliateStatus": "referral_verified",
+    "affiliateProgramUrl": "https://www.digitalocean.com/referral-program",
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "DigitalOcean Droplets",
+        "url": "https://www.digitalocean.com/products/droplets",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "providerType", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "DigitalOcean GPU Droplets Announcement",
+        "url": "https://www.digitalocean.com/blog/announcing-gpu-droplets",
+        "type": "official",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "DigitalOcean Referral Program",
+        "url": "https://www.digitalocean.com/referral-program",
+        "type": "referral",
+        "fields": ["affiliateStatus", "affiliateProgramUrl"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Droplet Features - DigitalOcean Docs",
+        "url": "https://docs.digitalocean.com/products/droplets/details/features/",
+        "type": "documentation",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official DigitalOcean pages confirm current GPU droplet positioning and a referral program, but GPU SKU mix, region availability, and exact billing scope remain dynamic.",
+    "unsafeToPublishFields": ["pricingNotes", "commissionNotes"]
+  },
+  {
+    "id": "cloud-gpu-vultr-cloud-gpu",
+    "slug": "vultr-cloud-gpu",
+    "name": "Vultr Cloud GPU",
+    "shortDescription": "Vultr cloud GPU planning profile for on-demand AI workloads with official referral verification and pricing volatility caution.",
+    "seoTitle": "Vultr Cloud GPU Planning Profile",
+    "seoDescription": "Source-aware Vultr Cloud GPU planning profile covering product positioning, pricing model, and referral status.",
+    "officialWebsiteUrl": "https://www.vultr.com/products/cloud-gpu/",
+    "providerType": "cloud_compute_provider",
+    "useCases": [
+      "local_llm_testing",
+      "fine_tuning",
+      "model_deployment",
+      "cloud_vs_local_validation"
+    ],
+    "pricingModel": "hourly",
+    "pricingNotes": null,
+    "affiliateStatus": "referral_verified",
+    "affiliateProgramUrl": "https://www.vultr.com/company/referral-program/",
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Vultr Cloud GPU",
+        "url": "https://www.vultr.com/products/cloud-gpu/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "providerType", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Vultr Pricing",
+        "url": "https://www.vultr.com/pricing/",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Vultr Referral Program",
+        "url": "https://www.vultr.com/company/referral-program/",
+        "type": "referral",
+        "fields": ["affiliateStatus", "affiliateProgramUrl"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official product, pricing, and referral pages were available on 2026-06-03. GPU variants, regional supply, and referral terms should still be re-checked before any public recommendation flow.",
+    "unsafeToPublishFields": ["pricingNotes", "commissionNotes"]
+  },
+  {
+    "id": "cloud-gpu-modal",
+    "slug": "modal",
+    "name": "Modal",
+    "shortDescription": "Serverless GPU planning profile for usage-based AI workloads with no verified referral status in this pass.",
+    "seoTitle": "Modal Serverless GPU Planning Profile",
+    "seoDescription": "Source-aware Modal planning profile covering serverless positioning, usage-based billing, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://modal.com/",
+    "providerType": "serverless_gpu",
+    "useCases": [
+      "batch_jobs",
+      "serverless_inference",
+      "model_deployment"
+    ],
+    "pricingModel": "usage_based",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Modal Billing Docs",
+        "url": "https://modal.com/docs/guide/billing",
+        "type": "documentation",
+        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Modal Pricing",
+        "url": "https://modal.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official documentation supports serverless and usage-based positioning, but no official referral or affiliate page was confirmed during this audit.",
+    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+  },
+  {
+    "id": "cloud-gpu-replicate",
+    "slug": "replicate",
+    "name": "Replicate",
+    "shortDescription": "Inference platform planning profile for hosted model execution with usage-based pricing and unresolved referral status.",
+    "seoTitle": "Replicate AI Inference Planning Profile",
+    "seoDescription": "Source-aware Replicate planning profile covering hosted inference positioning and mixed usage-based pricing without unsupported affiliate claims.",
+    "officialWebsiteUrl": "https://replicate.com/",
+    "providerType": "ai_inference_platform",
+    "useCases": [
+      "serverless_inference",
+      "model_deployment",
+      "stable_diffusion",
+      "batch_jobs"
+    ],
+    "pricingModel": "usage_based",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "commissionNotes": null,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Replicate Pricing",
+        "url": "https://replicate.com/pricing",
+        "type": "pricing",
+        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "How Replicate Works",
+        "url": "https://replicate.com/docs/reference/how-does-replicate-work/",
+        "type": "documentation",
+        "fields": ["providerType", "useCases"],
+        "accessedAt": "2026-06-03"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-03",
+    "notes": "Official pricing and product documentation were available on 2026-06-03. Per-model costs and hardware-backed rates change over time, and no official referral program page was confirmed in this audit.",
+    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+  }
+]

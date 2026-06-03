@@ -33,9 +33,13 @@ const allowedSourceTypes = new Set([
   "documentation",
   "paper",
   "affiliate-api",
+  "affiliate",
   "marketplace-api",
   "manual-check",
   "pricing-page",
+  "pricing",
+  "referral",
+  "terms",
 ]);
 
 const blockedPrimaryDomains = [
@@ -80,6 +84,93 @@ const aiModelSourceRequiredFields = [
   "officialRuntime",
   "quantizationFormats",
   "recommendedUseCases",
+];
+
+const cloudGpuProviderRequiredFields = [
+  "id",
+  "slug",
+  "name",
+  "shortDescription",
+  "seoTitle",
+  "seoDescription",
+  "officialWebsiteUrl",
+  "providerType",
+  "useCases",
+  "pricingModel",
+  "pricingNotes",
+  "affiliateStatus",
+  "affiliateProgramUrl",
+  "commissionNotes",
+  "status",
+  "needsReview",
+  "dataConfidence",
+  "sources",
+  "lastVerifiedAt",
+  "notes",
+  "unsafeToPublishFields",
+];
+
+const cloudGpuProviderSourceBackedFields = [
+  "officialWebsiteUrl",
+  "providerType",
+  "useCases",
+  "pricingModel",
+  "affiliateStatus",
+  "affiliateProgramUrl",
+  "notes",
+];
+
+const cloudGpuAllowedProviderTypes = new Set([
+  "cloud_gpu_marketplace",
+  "cloud_gpu_provider",
+  "cloud_compute_provider",
+  "serverless_gpu",
+  "ai_inference_platform",
+  "unknown",
+]);
+
+const cloudGpuAllowedPricingModels = new Set([
+  "hourly",
+  "per_second",
+  "usage_based",
+  "subscription",
+  "credits",
+  "custom",
+  "unknown",
+]);
+
+const cloudGpuAllowedAffiliateStatuses = new Set([
+  "unknown",
+  "unavailable",
+  "available_unverified",
+  "available_verified",
+  "referral_verified",
+  "not_applicable",
+]);
+
+const cloudGpuAllowedStatuses = new Set(["draft", "reviewed", "published", "archived"]);
+const cloudGpuAllowedDataConfidences = new Set(["low", "medium", "high"]);
+const cloudGpuOfficialSourceTypes = new Set([
+  "official",
+  "documentation",
+  "pricing",
+  "affiliate",
+  "referral",
+  "terms",
+]);
+
+const cloudGpuDisallowedExactPricingFields = [
+  "price",
+  "priceUsd",
+  "hourlyPriceUsd",
+  "minHourlyPriceUsd",
+  "maxHourlyPriceUsd",
+  "monthlyPriceUsd",
+  "currency",
+  "region",
+  "availability",
+  "availableRegions",
+  "gpuAvailability",
 ];
 
 let errors = 0;
@@ -158,6 +249,9 @@ function checkSources(file: string, rec: RecordLike) {
     if (!source.name || !source.url || !source.type || !source.accessedAt) {
       logError(`${file}:${label}: source is missing name/url/type/accessedAt`);
     }
+    if (!Array.isArray(source.fields) || source.fields.length === 0) {
+      logError(`${file}:${label}: source.fields must be a non-empty array`);
+    }
     if (source.type && !allowedSourceTypes.has(source.type)) {
       logError(`${file}:${label}: source type "${source.type}" is not allowed`);
     }
@@ -192,6 +286,135 @@ function checkFile(file: string, sourceFields: string[] = []) {
   if (sourceFields.length > 0) checkFieldSources(file, records, sourceFields);
 }
 
+function checkRequiredFields(file: string, records: RecordLike[], fields: string[]) {
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
+    for (const field of fields) {
+      if (!(field in rec)) {
+        logError(`${file}:${label}: missing required field "${field}"`);
+      }
+    }
+  }
+}
+
+function isNonEmptyStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.length > 0 && value.every((item) => typeof item === "string");
+}
+
+function checkEnumValue(file: string, rec: RecordLike, field: string, allowed: Set<string>) {
+  const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
+  const value = rec[field];
+  if (typeof value !== "string" || !allowed.has(value)) {
+    logError(`${file}:${label}: field "${field}" has unsupported value "${String(value)}"`);
+  }
+}
+
+function checkCloudGpuProviders() {
+  const file = "data/cloud-gpu-providers.json";
+  const data = readJsonMaybe(file);
+  if (!data) return;
+
+  if (!Array.isArray(data)) {
+    logError(`${file}: must be a JSON array`);
+    return;
+  }
+
+  const records = data as RecordLike[];
+  if (records.length === 0) {
+    logWarning(`${file}: no records`);
+    return;
+  }
+
+  checkUniqueSlugs(file, records);
+  checkRequiredFields(file, records, cloudGpuProviderRequiredFields);
+
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
+
+    checkEnumValue(file, rec, "providerType", cloudGpuAllowedProviderTypes);
+    checkEnumValue(file, rec, "pricingModel", cloudGpuAllowedPricingModels);
+    checkEnumValue(file, rec, "affiliateStatus", cloudGpuAllowedAffiliateStatuses);
+    checkEnumValue(file, rec, "status", cloudGpuAllowedStatuses);
+    checkEnumValue(file, rec, "dataConfidence", cloudGpuAllowedDataConfidences);
+    checkSources(file, rec);
+
+    if (!isNonEmptyStringArray(rec.useCases)) {
+      logError(`${file}:${label}: useCases must be a non-empty string array`);
+    }
+
+    if (!Array.isArray(rec.unsafeToPublishFields)) {
+      logError(`${file}:${label}: unsafeToPublishFields must be an array`);
+    }
+
+    if (rec.affiliateStatus === "unknown" && rec.affiliateProgramUrl !== null) {
+      logError(`${file}:${label}: affiliateStatus=unknown must not include affiliateProgramUrl`);
+    }
+
+    if (typeof rec.commissionNotes === "string" && /\d|%|\$/.test(rec.commissionNotes)) {
+      if (!hasSourceForField(rec, "commissionNotes")) {
+        logError(`${file}:${label}: numeric commissionNotes require a source.fields commissionNotes mapping`);
+      }
+    }
+
+    for (const field of cloudGpuDisallowedExactPricingFields) {
+      if (field in rec && rec[field] !== null && rec[field] !== undefined) {
+        logError(`${file}:${label}: exact pricing/availability field "${field}" is not supported by schema`);
+      }
+    }
+
+    const sourceBackedFieldNames = new Set<string>();
+    const sources = Array.isArray(rec.sources) ? rec.sources : [];
+    for (const source of sources) {
+      if (Array.isArray(source.fields)) {
+        for (const field of source.fields) {
+          if (!cloudGpuProviderRequiredFields.includes(field) && !cloudGpuProviderSourceBackedFields.includes(field)) {
+            logError(`${file}:${label}: source.fields entry "${field}" does not map to a cloud provider field`);
+          }
+          if (cloudGpuProviderSourceBackedFields.includes(field)) {
+            sourceBackedFieldNames.add(field);
+          }
+        }
+      }
+    }
+
+    if ((rec.status === "reviewed" || rec.status === "published") && sourceBackedFieldNames.size < 2) {
+      logError(`${file}:${label}: reviewed/published records need at least 2 source-backed core fields`);
+    }
+
+    if (rec.status === "reviewed" || rec.status === "published") {
+      const hasOfficialSource = sources.some(
+        (source) => source.type && cloudGpuOfficialSourceTypes.has(source.type),
+      );
+      if (!hasOfficialSource) {
+        logError(`${file}:${label}: reviewed/published records must include at least one official source`);
+      }
+    }
+
+    const searchableText = [
+      rec.name,
+      rec.shortDescription,
+      rec.seoTitle,
+      rec.seoDescription,
+      rec.notes,
+      rec.pricingNotes,
+      rec.commissionNotes,
+    ]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ")
+      .toLowerCase();
+
+    if (searchableText.includes("best cloud gpu")) {
+      logError(`${file}:${label}: unsupported "best cloud gpu" wording`);
+    }
+    if (searchableText.includes("cheapest")) {
+      logError(`${file}:${label}: unsupported "cheapest" wording`);
+    }
+    if (searchableText.includes("recommended provider")) {
+      logError(`${file}:${label}: unsupported "recommended provider" wording`);
+    }
+  }
+}
+
 checkFile("data/gpus.json", gpuSourceRequiredFields);
 checkFile("data/ai-models.json", aiModelSourceRequiredFields);
 checkFile("data/comparisons.json");
@@ -199,6 +422,7 @@ checkFile("data/builds.json");
 checkFile("data/guides.json");
 checkFile("data/calculator-assumptions.json");
 checkFile("data/calculator-validation.json");
+checkCloudGpuProviders();
 
 console.log(`Data validation completed with ${errors} error(s) and ${warnings} warning(s).`);
 if (errors > 0) process.exit(1);

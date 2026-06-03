@@ -1590,3 +1590,155 @@ Polish `/builds` and `/builds/[slug]` UX before starting Day 8, without rebuildi
 
 ### Next Step
 Day 8 - Cloud GPU data model.
+
+---
+
+## 2026-06-03 - Day 8.3 cloud GPU provider dataset recovery
+
+### Agent
+Codex
+
+### Planned Task
+Safely recover and complete `data/cloud-gpu-providers.json` after the earlier Day 8.3 context interruption, without expanding into routes, UI, or data-layer code.
+
+### Completed
+- [x] Read the required project handoff docs, data policy docs, cloud GPU type file, package scripts, and validation script before editing data.
+- [x] Confirmed `data/cloud-gpu-providers.json` was missing and recreated it at the expected path.
+- [x] Added 8 provider records for `runpod`, `vast-ai`, `lambda`, `paperspace`, `digitalocean-gpu`, `vultr-cloud-gpu`, `modal`, and `replicate`.
+- [x] Aligned every record to the current `CloudGpuProvider` schema, including `officialWebsiteUrl`, `pricingNotes`, `sources`, `lastVerifiedAt`, and `unsafeToPublishFields`.
+- [x] Used cautious copy only and avoided placeholder text, demo text, unsupported superlatives, price snapshots, commission claims, and buying recommendations.
+- [x] Marked unresolved referral states as `affiliateStatus: "unknown"` with null affiliate URL and commission notes.
+- [x] Marked records `reviewed` with `dataConfidence: "medium"` only where official source coverage was enough for basic provider-type/pricing/referral verification.
+- [x] Kept `needsReview: true` on all 8 providers because pricing scope, GPU availability, and program terms can change.
+- [x] Ran a local schema guard for the cloud GPU dataset and confirmed all 8 records parse and match the enum/value expectations.
+
+### Checked
+- [x] Local schema/enum check for `data/cloud-gpu-providers.json` (`records=8`)
+- [x] Prohibited-language scan for placeholder/demo/best/cheapest/fastest/recommended wording
+- [x] `npm run data:validate` (0 errors, 51 existing warnings in `data/gpus.json`; cloud GPU dataset is not yet covered by this validator)
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- `scripts/validate-data.ts` does not yet validate `data/cloud-gpu-providers.json`, so cloud GPU checks currently rely on the local schema guard plus lint/build.
+- Existing 51 warnings remain in `data/gpus.json` and are unrelated to this task.
+- The worktree already contained unrelated pending changes in `types/index.ts` and `types/cloud-gpu-provider.ts`; they were left untouched.
+
+### Files Changed
+- `data/cloud-gpu-providers.json`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 8.4 - add the cloud GPU repository/service layer or validator coverage only if the next task explicitly asks for it.
+
+---
+
+## 2026-06-03 - Day 8.4 cloud GPU provider repository and service
+
+### Agent
+Codex
+
+### Planned Task
+Create the repository and service layer for `data/cloud-gpu-providers.json` without adding public routes, UI components, navigation, or sitemap entries.
+
+### Completed
+- [x] Read `AGENTS.md`, existing repository/service patterns, `types/cloud-gpu-provider.ts`, `data/cloud-gpu-providers.json`, `repositories/build.repository.ts`, and `services/build.service.ts`.
+- [x] Added `repositories/cloud-gpu-provider.repository.ts` with safe shape validation and read-only filter helpers.
+- [x] Added `services/cloud-gpu-provider.service.ts` with neutral list/detail helpers, warning helpers, affiliate notices, pricing notices, data-confidence helper, and build-intent matching.
+- [x] Kept build-intent matching as source-aware discovery only, without ranking providers or creating recommendations.
+- [x] Used required cautious wording for unknown affiliate status, low confidence, unknown pricing model, and missing exact pricing.
+- [x] Avoided route, UI, navigation, and sitemap changes.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- `scripts/validate-data.ts` still does not validate `data/cloud-gpu-providers.json`; no validator changes were made in this scope.
+- Existing pending worktree changes in `data/cloud-gpu-providers.json`, `types/cloud-gpu-provider.ts`, and `types/index.ts` were preserved.
+
+### Files Changed
+- `repositories/cloud-gpu-provider.repository.ts`
+- `services/cloud-gpu-provider.service.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 8.5 - add cloud GPU data validation coverage or create a non-public integration check, depending on the next prompt.
+
+---
+
+## 2026-06-03 - Day 8.5 validate cloud GPU provider data model
+
+### Agent
+Codex
+
+### Planned Task
+Finish Day 8 safely by validating the Cloud GPU provider data/model/repository/service layer and updating handoff docs without creating public cloud GPU pages.
+
+### Day 8 Task Summary
+- Added `data/cloud-gpu-providers.json` with 8 cautious provider records.
+- Added `types/cloud-gpu-provider.ts` and exported the types through `types/index.ts`.
+- Added `repositories/cloud-gpu-provider.repository.ts`.
+- Added `services/cloud-gpu-provider.service.ts`.
+- Added validator coverage for `data/cloud-gpu-providers.json`.
+- No `/cloud-gpu` public pages, nav entries, or sitemap entries were created.
+
+### Completed
+- [x] Read required project docs, package scripts, validator, cloud GPU data, cloud GPU type, repository, service, and sitemap before editing.
+- [x] Extended `scripts/validate-data.ts` to include `data/cloud-gpu-providers.json`.
+- [x] Added cloud provider checks for array shape, required fields, unique slugs, allowed enum values, source completeness, source field mappings, reviewed/published source requirements, unknown affiliate URL safety, commission note sourcing, unsupported exact pricing/availability fields, and unsupported superlative wording.
+- [x] Updated validator source type whitelist for cloud GPU source roles already present in the type model: `pricing`, `affiliate`, `referral`, and `terms`.
+- [x] Confirmed provider seed count: 8.
+- [x] Confirmed provider records with official/source-backed source metadata: 8.
+- [x] Confirmed all 8 reviewed records have `lastVerifiedAt` and at least 2 source-backed core fields mapped in `sources[].fields`.
+- [x] Confirmed unknown affiliate records do not include affiliate links.
+- [x] Confirmed no exact pricing fields, unsupported commission claims, unsupported availability claims, or provider recommendations were added.
+- [x] Confirmed no `/cloud-gpu` route, `/cloud-gpu/[slug]` route, nav link, or sitemap entry exists.
+- [x] Web/source access was available in the environment, but this Day 8.5 pass did not add new facts from the web; it validated the local source metadata recorded in the data file.
+
+### Provider Snapshot
+- Provider seed count: 8.
+- Reviewed/source-backed providers: `runpod`, `vast-ai`, `lambda`, `paperspace`, `digitalocean-gpu`, `vultr-cloud-gpu`, `modal`, `replicate`.
+- Draft providers: none.
+- Referral verified providers: `runpod`, `digitalocean-gpu`, `vultr-cloud-gpu`.
+- Affiliate status unknown providers: `vast-ai`, `lambda`, `paperspace`, `modal`, `replicate`.
+
+### Fields Verified
+- Core fields mapped through `sources[].fields`: `officialWebsiteUrl`, `providerType`, `useCases`, `pricingModel`, `affiliateStatus`, `affiliateProgramUrl`, and selected `notes`.
+- Repository functions added: `getAllCloudGpuProviders`, `getCloudGpuProviderBySlug`, `getCloudGpuProviderSlugs`, `getCloudGpuProvidersByUseCase`, `getCloudGpuProvidersByType`, `getCloudGpuProvidersByAffiliateStatus`, `getDraftCloudGpuProviders`, `getReviewedCloudGpuProviders`, `getPublishedCloudGpuProviders`.
+- Service functions added: `getCloudGpuProviderListItems`, `getCloudGpuProviderDetail`, `getCloudGpuProvidersForUseCase`, `getCloudGpuProviderWarnings`, `getCloudGpuProviderDataConfidence`, `getCloudGpuProviderAffiliateNotice`, `getCloudGpuProviderPricingNotice`, `getCloudGpuProvidersForBuildIntent`.
+
+### Fields Left Unknown
+- Exact prices are not stored.
+- Availability and GPU inventory are not claimed.
+- Commission amounts are not stored.
+- `pricingNotes` remains null for all 8 providers.
+- `commissionNotes` remains null for all 8 providers.
+- `affiliateProgramUrl` remains null where `affiliateStatus` is `unknown`.
+
+### Checked
+- [x] `npm run data:validate` (0 errors, 51 existing GPU source-field mapping warnings unrelated to cloud GPU providers)
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Safety audit for exact pricing, availability, commission, affiliate URL, and superlative/recommendation wording
+- [x] Route/nav/sitemap audit for `/cloud-gpu`
+
+### Data Limitations
+- No public cloud GPU pages exist yet.
+- Exact prices require a future timestamped/source-backed schema before storage.
+- Availability should stay omitted unless tied to a timestamped official source.
+- Affiliate status is only verified where official referral/affiliate sources exist.
+- Provider discovery remains neutral and should not be rendered as ranking or recommendation copy.
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain and are unrelated to Day 8.
+
+### Files Changed
+- `scripts/validate-data.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 9 - create the Cloud GPU vs Local GPU guide only after keeping cloud provider data source-aware and non-recommendational.
