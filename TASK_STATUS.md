@@ -65,17 +65,50 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 10.16 - Footer Explore gap 2 (2026-06-04).
+Day 10.20 - Parent caret hover motion (2026-06-04).
 
 ## Today Scope
 
-- Reduce vertical spacing between `Explore` groups to `gap-2`.
-- Re-check responsive footer behavior after the spacing change.
-- Keep group headings and child links directly underneath.
-- Keep brand/about footer text and transparency/source-aware text unchanged.
-- Re-run lint and build after footer changes.
+- Keep the `GPUs` parent caret as an upward arrow.
+- Remove open-state up/down rotation behavior.
+- Add a subtle hover/focus movement to the parent caret.
+- Re-run lint and build after responsive menu changes.
 
 ## Done Today
+
+- [x] Updated `components/MainNav.tsx` so the parent submenu caret remains an upward arrow.
+- [x] Removed open-state up/down rotation behavior.
+- [x] Added a subtle vertical hover/focus movement on the caret.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Updated `components/MainNav.tsx` so the mobile `GPUs` parent button gets a hover/focus background like other menu items.
+- [x] Updated mobile submenu child links so hover/focus uses the same subtle background instead of staying transparent.
+- [x] Adjusted the parent label/caret layout so the arrow stays vertically centered with the text.
+- [x] Updated hamburger-width `.nav-link` CSS in `app/(frontend)/theme.css` to use flex alignment.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Updated `components/MainNav.tsx` so mobile hamburger menu shows the `GPUs` submenu immediately when the menu opens.
+- [x] Removed the separate mobile submenu toggle behavior from the `GPUs` parent item.
+- [x] Restyled mobile submenu links to match parent menu links more closely without separate background blocks.
+- [x] Re-centered the parent caret vertically by giving it a slightly larger alignment box.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Reset `.nav-link` button styling so the `GPUs` parent button matches normal nav links at desktop and hamburger widths.
+- [x] Reset the open submenu state when the main hamburger menu is closed.
+- [x] Checked later responsive CSS blocks for `.navigation` overrides after the hamburger menu rules.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 - [x] Changed the wrapper between `Plan`, `Hardware`, and `Learn` groups from `gap-3` to `gap-2`.
 - [x] Confirmed footer CSS stacks `footer-grid` to one column below `900px`.
@@ -231,7 +264,7 @@ Day 10.16 - Footer Explore gap 2 (2026-06-04).
 
 ## Last Completed Task
 
-Day 10.16 reduced `Explore` group spacing to `gap-2`, checked footer responsive breakpoints, and re-ran lint/build.
+Day 10.20 kept the `GPUs` parent caret as an upward arrow, added subtle hover/focus motion, and re-ran lint/build.
 
 ## Open Limitations
 
@@ -260,7 +293,11 @@ Day 10.16 reduced `Explore` group spacing to `gap-2`, checked footer responsive 
 - `Explore` groups now stack in a single vertical column instead of three columns.
 - Footer top/bottom padding and `Explore` group gaps are now tighter for a more compact footer.
 - Footer responsive CSS stacks the main footer grid below `900px`; browser screenshot check was not run because Chrome/Edge headless was not available in PATH.
-- Day 10.16 checks passed: `npm run lint` and `npm run build`.
+- Header hamburger menu now resets nested submenu state on close, and `.nav-link` button styling is normalized for responsive menu widths.
+- Mobile hamburger menu now shows the `GPUs` submenu immediately, with child links styled flatter and closer to parent links.
+- Mobile `GPUs` parent and submenu child links now show matching hover/focus backgrounds, and the parent caret is flex-centered with the label.
+- The `GPUs` parent caret remains an upward arrow and uses subtle vertical hover/focus motion instead of open-state rotation.
+- Day 10.20 checks passed: `npm run lint` and `npm run build`.
 
 - `/guides/cloud-gpu-vs-local-gpu` now has clearer primary-section hierarchy, larger guide copy, and a mobile-safe cloud-vs-local stacked-card fallback under small widths.
 - `/guides` now presents the published guide card as a stronger entry point and includes a clearly marked non-linked planned-topics block.

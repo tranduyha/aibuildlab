@@ -38,6 +38,131 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-04 - Day 10.20 Parent caret hover motion
+
+### Agent
+Codex
+
+### Planned Task
+Keep the `GPUs` parent caret as an upward arrow while restoring a subtle hover motion.
+
+### Completed
+- [x] Updated `components/MainNav.tsx` so the parent submenu caret remains an upward arrow.
+- [x] Removed open-state up/down rotation behavior.
+- [x] Added a subtle vertical hover/focus movement on the caret.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Browser screenshot check was not run because Chrome/Edge headless is not available in PATH.
+
+### Files Changed
+- `components/MainNav.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Use a browser screenshot pass if the caret motion needs pixel-level tuning.
+
+---
+
+## 2026-06-04 - Day 10.19 Mobile submenu hover alignment
+
+### Agent
+Codex
+
+### Planned Task
+Polish mobile submenu hover states and align the parent caret with the `GPUs` label.
+
+### Completed
+- [x] Updated `components/MainNav.tsx` so the `GPUs` parent button has a mobile hover/focus background like other menu items.
+- [x] Updated mobile submenu child links so hover/focus shows the same subtle background instead of staying transparent.
+- [x] Adjusted the parent label/caret layout so the arrow stays vertically centered with the text.
+- [x] Updated responsive `.nav-link` CSS to use flex alignment at hamburger widths.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Browser screenshot check was not run because Chrome/Edge headless is not available in PATH.
+
+### Files Changed
+- `components/MainNav.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Use a browser screenshot pass if pixel-level mobile menu alignment needs another visual review.
+
+---
+
+## 2026-06-04 - Day 10.18 Mobile submenu flattening
+
+### Agent
+Codex
+
+### Planned Task
+Adjust the hamburger menu so parent and child navigation items show together on small screens.
+
+### Completed
+- [x] Updated `components/MainNav.tsx` so mobile hamburger menu shows the `GPUs` submenu immediately when the menu opens.
+- [x] Removed the separate mobile submenu toggle behavior from the `GPUs` parent item.
+- [x] Restyled mobile submenu links to match parent menu links more closely without separate background blocks.
+- [x] Re-centered the parent caret vertically by giving it a slightly larger alignment box.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Browser screenshot check was not run because Chrome/Edge headless is not available in PATH.
+
+### Files Changed
+- `components/MainNav.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Use a browser screenshot pass if exact mobile visual alignment still needs confirmation.
+
+---
+
+## 2026-06-04 - Day 10.17 Responsive menu cleanup
+
+### Agent
+Codex
+
+### Planned Task
+Check and clean up responsive header menu behavior at hamburger-menu widths.
+
+### Completed
+- [x] Reset `.nav-link` button styling so the `GPUs` parent button matches normal nav links at desktop and hamburger widths.
+- [x] Reset the open submenu state when the main hamburger menu is closed.
+- [x] Checked later responsive CSS blocks for `.navigation` overrides after the hamburger menu rules.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] CSS breakpoint review for `980px`, `640px`, and `480px`
+
+### Issues
+- Browser screenshot check was not run because Chrome/Edge headless is not available in PATH.
+
+### Files Changed
+- `components/MainNav.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Use browser screenshots if exact tablet/mobile rendering still needs visual confirmation.
+
+---
+
 ## 2026-06-04 - Day 10.16 Footer Explore gap 2
 
 ### Agent

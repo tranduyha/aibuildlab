@@ -862,7 +862,12 @@ body {
 
 .nav-link {
   position: relative;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   padding: 8px 4px;
+  text-align: inherit;
   transition: color 160ms ease;
 }
 
@@ -1638,7 +1643,8 @@ body {
   }
 
   .navigation .nav-link {
-    display: block;
+    display: flex;
+    align-items: center;
     border-radius: 8px;
     padding: 10px 12px;
   }

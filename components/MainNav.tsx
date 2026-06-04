@@ -33,7 +33,15 @@ export default function MainNav({ items }: MainNavProps) {
         aria-controls="primary-navigation"
         aria-expanded={isOpen}
         className="nav-toggle"
-        onClick={() => setIsOpen((current) => !current)}
+        onClick={() => {
+          setIsOpen((current) => {
+            if (current) {
+              setOpenSubmenuId(null);
+            }
+
+            return !current;
+          });
+        }}
         type="button"
       >
         <span aria-hidden="true" className="nav-toggle-lines">
@@ -55,7 +63,7 @@ export default function MainNav({ items }: MainNavProps) {
             activeNestedChildren.length > 0;
 
           if (childItems.length > 0) {
-            const isMobileSubmenuOpen = openSubmenuId === item.id;
+            const isMobileSubmenuOpen = isOpen || openSubmenuId === item.id;
 
             return (
               <div
@@ -65,23 +73,16 @@ export default function MainNav({ items }: MainNavProps) {
                 <button
                   aria-current={isOwnActive ? "page" : undefined}
                   aria-expanded={isMobileSubmenuOpen}
-                  className={`nav-link inline-flex cursor-pointer items-center gap-2 max-[980px]:flex max-[980px]:w-full max-[980px]:items-center max-[980px]:justify-between max-[980px]:text-left${
+                  className={`nav-link inline-flex cursor-pointer items-center gap-2 max-[980px]:flex max-[980px]:w-full max-[980px]:items-center max-[980px]:justify-between max-[980px]:text-left max-[980px]:leading-5 max-[980px]:hover:bg-[var(--surface-alt)] max-[980px]:focus-visible:bg-[var(--surface-alt)]${
                     isActive ? " nav-link-active" : ""
                   }`}
-                  onClick={() => {
-                    if (typeof window !== "undefined" && window.innerWidth <= 980) {
-                      setOpenSubmenuId((current) => (current === item.id ? null : item.id));
-                    }
-                  }}
                   type="button"
                 >
-                  <span>{item.label}</span>
+                  <span className="min-w-0">{item.label}</span>
                   <span
                     aria-hidden="true"
-                    className={`ml-auto flex h-4 w-4 shrink-0 items-center justify-center text-slate-500 transition-transform duration-200 group-hover:text-sky-700 group-focus-within:text-sky-700 ${
-                      isMobileSubmenuOpen
-                        ? "rotate-180 text-sky-700"
-                        : "group-hover:rotate-180 group-focus-within:rotate-180"
+                    className={`ml-auto flex h-5 w-5 shrink-0 items-center justify-center self-center text-slate-500 transition duration-200 group-hover:rotate-180 group-hover:text-sky-700 group-focus-within:rotate-180 group-focus-within:text-sky-700 max-[980px]:my-auto ${
+                      isMobileSubmenuOpen ? "rotate-180 text-sky-700" : ""
                     }`}
                   >
                     <svg
@@ -115,8 +116,8 @@ export default function MainNav({ items }: MainNavProps) {
                       return (
                         <Link
                           aria-current={isChildActive ? "page" : undefined}
-                          className={`block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-100 hover:text-sky-800 focus-visible:bg-sky-100 focus-visible:text-sky-800 max-[980px]:mt-1 max-[980px]:border-l max-[980px]:border-slate-200 max-[980px]:bg-slate-50 max-[980px]:text-slate-700${
-                            isChildActive ? " bg-sky-50 text-sky-700 max-[980px]:border-sky-300" : ""
+                          className={`block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-100 hover:text-sky-800 focus-visible:bg-sky-100 focus-visible:text-sky-800 max-[980px]:mt-1 max-[980px]:border-0 max-[980px]:bg-transparent max-[980px]:px-3 max-[980px]:py-2.5 max-[980px]:text-slate-700 max-[980px]:hover:bg-[var(--surface-alt)] max-[980px]:focus-visible:bg-[var(--surface-alt)]${
+                            isChildActive ? " bg-sky-50 text-sky-700 max-[980px]:bg-[var(--surface-alt)]" : ""
                           }`}
                           href={child.href}
                           key={child.id}
