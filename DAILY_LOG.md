@@ -38,6 +38,78 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-04 - Day 11 AI SaaS / software tool data model
+
+### Agent
+Codex
+
+### Planned Task
+Create a source-aware AI SaaS / software tool data layer for future planning pages without creating public `/ai-tools` routes.
+
+### Completed
+- [x] Created `data/ai-tools.json` with 12 source-aware AI tool records.
+- [x] Added strict TypeScript model definitions in `types/ai-tool.ts` and exported them from `types/index.ts`.
+- [x] Added `repositories/ai-tool.repository.ts` with slug, category, affiliate status, draft, reviewed, published, and category accessors.
+- [x] Added `services/ai-tool.service.ts` with cautious warnings, affiliate notices, pricing notices, placement notices, category labels, pricing labels, list items, and detail models.
+- [x] Updated `scripts/validate-data.ts` to validate AI tool records, enums, source mappings, duplicate slugs, unknown affiliate URL rules, unsafe field arrays, and blocked promotional wording.
+- [x] Kept all affiliate statuses as `unknown` and all `affiliateProgramUrl` values as `null`.
+- [x] Kept exact pricing out of records by leaving `pricingNotes` as `null`.
+- [x] Confirmed no public `/ai-tools` pages, sitemap entries, or navigation links were created.
+
+### AI Tool Seed Summary
+- Seed count: 12.
+- Official source-backed records: 12.
+- Category coverage: `ai_coding` 2, `productivity` 2, `llm_api` 2, `agent_platform` 2, `video_generation` 1, `automation` 1, `vector_database` 2.
+- Pricing model coverage: `freemium` 7, `subscription` 1, `usage_based` 4.
+- Affiliate status summary: `unknown` 12, verified affiliate/referral records 0.
+
+### Fields Verified
+- `officialWebsiteUrl`
+- `category`
+- `shortDescription`
+- `pricingModel`
+- `notes`
+- `sources`
+- `lastVerifiedAt`
+
+### Fields Left Unknown
+- `pricingNotes`
+- `affiliateProgramUrl`
+- exact prices
+- availability
+- commission or referral terms
+- rankings, ratings, benchmarks, or performance claims
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 51 existing unrelated GPU source-field warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Manual repository/service smoke check.
+- [x] Manual scan confirmed no `/ai-tools` route, sitemap entry, or nav link.
+- [x] Safety scan confirmed no affiliate URL, commission claim, exact pricing note, or ranking wording in `data/ai-tools.json`.
+- [x] Brand/domain hardcode scan found no new brand/domain hardcode in code directories; only an unrelated env-var false positive in `scripts/fetch-images.ts`.
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and unrelated to Day 11.
+- AI tool records are planning/reference data only.
+- Affiliate/referral links are not configured yet.
+- No public AI tools pages exist yet.
+
+### Files Changed
+- `data/ai-tools.json`
+- `types/ai-tool.ts`
+- `types/index.ts`
+- `repositories/ai-tool.repository.ts`
+- `services/ai-tool.service.ts`
+- `scripts/validate-data.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 12 - Local AI vs AI SaaS guide.
+
+---
+
 ## 2026-06-04 - Day 10.20 Parent caret hover motion
 
 ### Agent

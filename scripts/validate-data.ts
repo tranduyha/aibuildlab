@@ -39,7 +39,9 @@ const allowedSourceTypes = new Set([
   "pricing-page",
   "pricing",
   "referral",
+  "partner",
   "terms",
+  "help",
 ]);
 
 const blockedPrimaryDomains = [
@@ -172,6 +174,84 @@ const cloudGpuDisallowedExactPricingFields = [
   "availableRegions",
   "gpuAvailability",
 ];
+
+const aiToolRequiredFields = [
+  "id",
+  "slug",
+  "name",
+  "category",
+  "shortDescription",
+  "seoTitle",
+  "seoDescription",
+  "officialWebsiteUrl",
+  "pricingModel",
+  "pricingNotes",
+  "affiliateStatus",
+  "affiliateProgramUrl",
+  "recommendedPlacements",
+  "status",
+  "needsReview",
+  "dataConfidence",
+  "sources",
+  "lastVerifiedAt",
+  "notes",
+  "unsafeToPublishFields",
+];
+
+const aiToolSourceBackedFields = [
+  "officialWebsiteUrl",
+  "category",
+  "shortDescription",
+  "pricingModel",
+  "affiliateStatus",
+  "affiliateProgramUrl",
+  "notes",
+];
+
+const aiToolAllowedCategories = new Set([
+  "ai_coding",
+  "image_generation",
+  "video_generation",
+  "llm_api",
+  "agent_platform",
+  "vector_database",
+  "automation",
+  "seo_ai",
+  "productivity",
+]);
+
+const aiToolAllowedPricingModels = new Set([
+  "free",
+  "freemium",
+  "subscription",
+  "usage_based",
+  "enterprise",
+  "open_source",
+  "unknown",
+]);
+
+const aiToolAllowedAffiliateStatuses = new Set([
+  "unknown",
+  "not_available",
+  "referral_verified",
+  "affiliate_verified",
+  "partner_program_verified",
+  "needs_review",
+]);
+
+const aiToolAllowedStatuses = new Set(["draft", "reviewed", "published"]);
+const aiToolAllowedDataConfidences = new Set(["low", "medium", "high"]);
+const aiToolAllowedSourceTypes = new Set([
+  "official",
+  "documentation",
+  "pricing",
+  "affiliate",
+  "referral",
+  "partner",
+  "terms",
+  "help",
+  "manual-check",
+]);
 
 let errors = 0;
 let warnings = 0;
@@ -415,6 +495,100 @@ function checkCloudGpuProviders() {
   }
 }
 
+function checkAiTools() {
+  const file = "data/ai-tools.json";
+  const data = readJsonMaybe(file);
+  if (!data) return;
+
+  if (!Array.isArray(data)) {
+    logError(`${file}: must be a JSON array`);
+    return;
+  }
+
+  const records = data as RecordLike[];
+  if (records.length === 0) {
+    logWarning(`${file}: no records`);
+    return;
+  }
+
+  checkUniqueSlugs(file, records);
+  checkRequiredFields(file, records, aiToolRequiredFields);
+
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
+
+    checkEnumValue(file, rec, "category", aiToolAllowedCategories);
+    checkEnumValue(file, rec, "pricingModel", aiToolAllowedPricingModels);
+    checkEnumValue(file, rec, "affiliateStatus", aiToolAllowedAffiliateStatuses);
+    checkEnumValue(file, rec, "status", aiToolAllowedStatuses);
+    checkEnumValue(file, rec, "dataConfidence", aiToolAllowedDataConfidences);
+    checkSources(file, rec);
+
+    if (!Array.isArray(rec.unsafeToPublishFields)) {
+      logError(`${file}:${label}: unsafeToPublishFields must be an array`);
+    }
+
+    if (!Array.isArray(rec.recommendedPlacements)) {
+      logError(`${file}:${label}: recommendedPlacements must be an array`);
+    }
+
+    if (rec.affiliateStatus === "unknown" && rec.affiliateProgramUrl !== null) {
+      logError(`${file}:${label}: affiliateStatus=unknown must not include affiliateProgramUrl`);
+    }
+
+    const sources = Array.isArray(rec.sources) ? rec.sources : [];
+    const sourceBackedFieldNames = new Set<string>();
+
+    for (const source of sources) {
+      if (source.type && !aiToolAllowedSourceTypes.has(source.type)) {
+        logError(`${file}:${label}: source type "${source.type}" is not allowed for AI tools`);
+      }
+
+      if (Array.isArray(source.fields)) {
+        for (const field of source.fields) {
+          if (!aiToolRequiredFields.includes(field) && !aiToolSourceBackedFields.includes(field)) {
+            logError(`${file}:${label}: source.fields entry "${field}" does not map to an AI tool field`);
+          }
+          if (aiToolSourceBackedFields.includes(field)) {
+            sourceBackedFieldNames.add(field);
+          }
+        }
+      }
+    }
+
+    if ((rec.status === "reviewed" || rec.status === "published") && sourceBackedFieldNames.size < 2) {
+      logError(`${file}:${label}: reviewed/published records need at least 2 source-backed core fields`);
+    }
+
+    if (rec.status === "reviewed" || rec.status === "published") {
+      const hasOfficialSource = sources.some(
+        (source) => source.type && aiToolAllowedSourceTypes.has(source.type) && source.type !== "manual-check",
+      );
+      if (!hasOfficialSource) {
+        logError(`${file}:${label}: reviewed/published records must include at least one official source`);
+      }
+    }
+
+    const searchableText = [
+      rec.name,
+      rec.shortDescription,
+      rec.seoTitle,
+      rec.seoDescription,
+      rec.notes,
+      rec.pricingNotes,
+    ]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ")
+      .toLowerCase();
+
+    for (const blockedPhrase of ["best ai", "cheapest", "fastest", "top-rated", "recommended tool"]) {
+      if (searchableText.includes(blockedPhrase)) {
+        logError(`${file}:${label}: unsupported "${blockedPhrase}" wording`);
+      }
+    }
+  }
+}
+
 checkFile("data/gpus.json", gpuSourceRequiredFields);
 checkFile("data/ai-models.json", aiModelSourceRequiredFields);
 checkFile("data/comparisons.json");
@@ -423,6 +597,7 @@ checkFile("data/guides.json");
 checkFile("data/calculator-assumptions.json");
 checkFile("data/calculator-validation.json");
 checkCloudGpuProviders();
+checkAiTools();
 
 console.log(`Data validation completed with ${errors} error(s) and ${warnings} warning(s).`);
 if (errors > 0) process.exit(1);

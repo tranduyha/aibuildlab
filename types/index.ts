@@ -16,6 +16,16 @@ export type {
   CloudGpuProviderType,
   CloudGpuUseCase,
 } from "./cloud-gpu-provider";
+export type {
+  AiTool,
+  AiToolAffiliateStatus,
+  AiToolCategory,
+  AiToolDataConfidence,
+  AiToolPricingModel,
+  AiToolSource,
+  AiToolSourceType,
+  AiToolStatus,
+} from "./ai-tool";
 export type { ImageCategory, ImageManifestEntry } from "./image";
 export type { CalculatorAssumption, ContextPresetProfile, QuantizationProfile, RuntimeProfile } from "./calculator-assumption";
 export type { CalculatorValidationSample } from "./calculator-validation";

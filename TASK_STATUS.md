@@ -65,16 +65,33 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 10.20 - Parent caret hover motion (2026-06-04).
+Day 11 - AI SaaS / software tool data model (2026-06-04).
 
 ## Today Scope
 
-- Keep the `GPUs` parent caret as an upward arrow.
-- Remove open-state up/down rotation behavior.
-- Add a subtle hover/focus movement to the parent caret.
-- Re-run lint and build after responsive menu changes.
+- Create source-aware AI SaaS / software tool data, types, repository, and service.
+- Do not create public `/ai-tools` pages, navigation links, or sitemap entries.
+- Keep affiliate status cautious and source-backed.
+- Do not store exact pricing, commission, availability, ranking, benchmark, or recommendation claims.
+- Update data validation for AI tool records.
+- Run data validation, lint, and build.
 
 ## Done Today
+
+- [x] Created `data/ai-tools.json` with 12 source-aware AI tool records.
+- [x] Added strict AI tool types in `types/ai-tool.ts` and exported them from `types/index.ts`.
+- [x] Added `repositories/ai-tool.repository.ts` with all requested repository functions.
+- [x] Added `services/ai-tool.service.ts` with all requested source-aware notice and model functions.
+- [x] Updated `scripts/validate-data.ts` to validate AI tool schema, enums, sources, affiliate URL rules, duplicate slugs, and blocked promotional wording.
+- [x] Confirmed 12/12 records use official source-backed fields and `lastVerifiedAt`.
+- [x] Confirmed 12/12 records keep `affiliateStatus: "unknown"` and `affiliateProgramUrl: null`.
+- [x] Confirmed exact prices, availability, commission terms, rankings, ratings, benchmarks, and recommendations are not stored.
+- [x] Confirmed no public `/ai-tools` route, sitemap entry, or nav link was created.
+- [x] Ran `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 - [x] Updated `components/MainNav.tsx` so the parent submenu caret remains an upward arrow.
 - [x] Removed open-state up/down rotation behavior.
@@ -264,10 +281,15 @@ Day 10.20 - Parent caret hover motion (2026-06-04).
 
 ## Last Completed Task
 
-Day 10.20 kept the `GPUs` parent caret as an upward arrow, added subtle hover/focus motion, and re-ran lint/build.
+Day 11 created the source-aware AI SaaS / software tool data model, repository, service, and validation support, then passed data validation, lint, and build.
 
 ## Open Limitations
 
+- No public `/ai-tools` pages yet.
+- Exact AI tool prices are not stored unless source-backed and intentionally added later.
+- AI tool availability is not claimed.
+- Affiliate/referral links are not configured yet.
+- No AI tool recommendations yet.
 - Provider pages are planning profiles, not rankings.
 - Exact prices are not stored unless timestamped/source-backed.
 - Availability is not claimed.
@@ -278,6 +300,14 @@ Day 10.20 kept the `GPUs` parent caret as an upward arrow, added subtle hover/fo
 ## Current Handoff Note
 
 - Day 10 Cloud GPU provider pages are complete and static/export compatible.
+- Day 11 AI tool data layer is complete with 12 source-aware planning records across AI coding, productivity, LLM API, agent platform, video generation, automation, and vector database categories.
+- `data/ai-tools.json` has 12 reviewed records, all `needsReview: true`, all `dataConfidence: "medium"`, all `affiliateStatus: "unknown"`, and all `affiliateProgramUrl: null`.
+- AI tool exact pricing, availability, commission terms, rankings, ratings, benchmarks, and recommendations are not stored.
+- `repositories/ai-tool.repository.ts` provides all requested accessors, including slug, category, affiliate status, draft/reviewed/published, and category listing.
+- `services/ai-tool.service.ts` provides source-aware warnings, affiliate notices, pricing notices, placement notices, category labels, pricing labels, list items, and detail models.
+- `scripts/validate-data.ts` validates `data/ai-tools.json` schema, required fields, enum values, source field mappings, duplicate slugs, affiliate URL safety, unsafe field arrays, and blocked promotional wording.
+- No `/ai-tools` public route, sitemap entry, or nav link exists yet.
+- Day 11 checks passed: `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings, `npm run lint`, and `npm run build`.
 - `/cloud-gpu` is the provider hub and `/cloud-gpu/[slug]` generates 8 provider planning profiles.
 - `generateStaticParams()` uses provider slugs from the repository, and `generateMetadata()` uses provider SEO fields through the service.
 - Invalid provider slugs resolve through the service as null and the dynamic page calls `notFound()`.

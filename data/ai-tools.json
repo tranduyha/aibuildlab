@@ -1,0 +1,516 @@
+[
+  {
+    "id": "ai-tool-cursor",
+    "slug": "cursor",
+    "name": "Cursor",
+    "category": "ai_coding",
+    "shortDescription": "AI coding environment planning record for code editing, agents, CLI workflows, and team development review.",
+    "seoTitle": "Cursor AI Coding Tool Planning Profile",
+    "seoDescription": "Source-aware Cursor planning record covering official site, pricing model, documentation, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://cursor.com/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["ai-coding-guide", "local-ai-vs-ai-saas-guide", "developer-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Cursor Home",
+        "url": "https://cursor.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Cursor Pricing",
+        "url": "https://cursor.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Cursor Docs",
+        "url": "https://cursor.com/docs",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official homepage, pricing, and documentation were checked. Pricing details and any affiliate or referral status still need official re-check before public monetized placement.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-github-copilot",
+    "slug": "github-copilot",
+    "name": "GitHub Copilot",
+    "category": "ai_coding",
+    "shortDescription": "AI coding assistant planning record for editor, repository, and GitHub workflow contexts.",
+    "seoTitle": "GitHub Copilot Planning Profile",
+    "seoDescription": "Source-aware GitHub Copilot planning record covering official product, plans, documentation, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://github.com/features/copilot",
+    "pricingModel": "subscription",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["ai-coding-guide", "developer-workflow-tools", "local-ai-vs-ai-saas-guide"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "GitHub Copilot Home",
+        "url": "https://github.com/features/copilot",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "GitHub Copilot Plans",
+        "url": "https://github.com/features/copilot/plans",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "GitHub Copilot Docs",
+        "url": "https://docs.github.com/en/copilot",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official GitHub product, plan, and docs pages were checked. Affiliate or referral status was not verified from an official source.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-chatgpt",
+    "slug": "chatgpt",
+    "name": "ChatGPT",
+    "category": "productivity",
+    "shortDescription": "AI assistant planning record for chat, writing, analysis, coding help, and general productivity workflows.",
+    "seoTitle": "ChatGPT Planning Profile",
+    "seoDescription": "Source-aware ChatGPT planning record covering official app, pricing page, help center, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://chatgpt.com/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["local-ai-vs-ai-saas-guide", "productivity-tools", "ai-saas-alternatives"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "ChatGPT App",
+        "url": "https://chatgpt.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "ChatGPT Pricing",
+        "url": "https://chatgpt.com/pricing/",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "ChatGPT Help Center",
+        "url": "https://help.openai.com/en/collections/3742473-chatgpt",
+        "type": "help",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official app, pricing, and help center pages were checked. Plan specifics and availability may change and should not be treated as stored pricing facts.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-openai-api",
+    "slug": "openai-api",
+    "name": "OpenAI API",
+    "category": "llm_api",
+    "shortDescription": "Developer API planning record for building applications with OpenAI models and platform documentation.",
+    "seoTitle": "OpenAI API Planning Profile",
+    "seoDescription": "Source-aware OpenAI API planning record covering official API pricing, docs, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://platform.openai.com/",
+    "pricingModel": "usage_based",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["llm-api-guide", "local-ai-vs-ai-saas-guide", "developer-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "OpenAI Platform",
+        "url": "https://platform.openai.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "OpenAI API Pricing",
+        "url": "https://openai.com/api/pricing/",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "OpenAI API Docs Pricing",
+        "url": "https://developers.openai.com/api/docs/pricing",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official platform and API pricing pages were checked. Exact model prices are intentionally not stored in this record.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-claude",
+    "slug": "claude",
+    "name": "Claude",
+    "category": "productivity",
+    "shortDescription": "AI assistant planning record for chat, analysis, writing, coding support, and team productivity workflows.",
+    "seoTitle": "Claude AI Assistant Planning Profile",
+    "seoDescription": "Source-aware Claude planning record covering official app, pricing page, documentation links, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://claude.ai/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["local-ai-vs-ai-saas-guide", "productivity-tools", "ai-saas-alternatives"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Claude App",
+        "url": "https://claude.ai/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Claude Pricing",
+        "url": "https://claude.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Claude Support Center",
+        "url": "https://support.claude.com/",
+        "type": "help",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official Claude app and pricing pages were checked. Exact subscription details are not stored and affiliate or referral status remains unverified.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-anthropic-api",
+    "slug": "anthropic-api",
+    "name": "Anthropic API",
+    "category": "llm_api",
+    "shortDescription": "Developer API planning record for building with Claude models through Anthropic platform documentation.",
+    "seoTitle": "Anthropic API Planning Profile",
+    "seoDescription": "Source-aware Anthropic API planning record covering official developer docs, pricing, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://platform.claude.com/",
+    "pricingModel": "usage_based",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["llm-api-guide", "local-ai-vs-ai-saas-guide", "developer-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Claude API Docs",
+        "url": "https://platform.claude.com/docs/en/home",
+        "type": "documentation",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Claude Platform Pricing",
+        "url": "https://claude.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official developer documentation and pricing page were checked. Exact model prices are intentionally not stored in this record.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-replicate",
+    "slug": "replicate",
+    "name": "Replicate",
+    "category": "agent_platform",
+    "shortDescription": "Hosted model API planning record for running and deploying AI models through Replicate workflows.",
+    "seoTitle": "Replicate AI Platform Planning Profile",
+    "seoDescription": "Source-aware Replicate planning record covering official product, pricing, docs, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://replicate.com/",
+    "pricingModel": "usage_based",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["cloud-ai-workflow-tools", "image-generation-guide", "llm-api-guide"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Replicate Home",
+        "url": "https://replicate.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Replicate Pricing",
+        "url": "https://replicate.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Replicate Docs",
+        "url": "https://replicate.com/docs",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official product, pricing, and docs pages were checked. Per-model costs are not stored and should be checked against Replicate before cost planning.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-modal",
+    "slug": "modal",
+    "name": "Modal",
+    "category": "agent_platform",
+    "shortDescription": "Serverless AI infrastructure planning record for cloud execution, GPU workloads, and deployment workflows.",
+    "seoTitle": "Modal AI Infrastructure Planning Profile",
+    "seoDescription": "Source-aware Modal planning record covering official product, pricing, billing docs, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://modal.com/",
+    "pricingModel": "usage_based",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["cloud-ai-workflow-tools", "cloud-gpu-guide", "developer-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Modal Home",
+        "url": "https://modal.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Modal Pricing",
+        "url": "https://modal.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Modal Billing Docs",
+        "url": "https://modal.com/docs/guide/billing",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official product, pricing, and billing docs were checked. Exact workload costs and affiliate or referral status are not stored.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-runway",
+    "slug": "runway",
+    "name": "Runway",
+    "category": "video_generation",
+    "shortDescription": "Creative AI video and media generation planning record for hosted generation workflows.",
+    "seoTitle": "Runway AI Video Tool Planning Profile",
+    "seoDescription": "Source-aware Runway planning record covering official site, pricing, help center, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://runwayml.com/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["video-generation-guide", "ai-saas-alternatives", "creator-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Runway Home",
+        "url": "https://runwayml.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Runway Pricing",
+        "url": "https://runwayml.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Runway Help Center",
+        "url": "https://help.runwayml.com/hc/en-us",
+        "type": "help",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official site, pricing, and help center pages were checked. Exact credit values and plan details are not stored.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-zapier",
+    "slug": "zapier",
+    "name": "Zapier",
+    "category": "automation",
+    "shortDescription": "Workflow automation planning record for connecting apps, AI workflows, and team operations.",
+    "seoTitle": "Zapier Automation Tool Planning Profile",
+    "seoDescription": "Source-aware Zapier planning record covering official product, pricing page, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://zapier.com/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["automation-guide", "ai-workflow-tools", "local-ai-vs-ai-saas-guide"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Zapier Home",
+        "url": "https://zapier.com/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Zapier Pricing",
+        "url": "https://zapier.com/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official product and pricing pages were checked. Affiliate or referral status was not verified from an official source.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-pinecone",
+    "slug": "pinecone",
+    "name": "Pinecone",
+    "category": "vector_database",
+    "shortDescription": "Managed vector database planning record for retrieval, memory, and AI application data infrastructure.",
+    "seoTitle": "Pinecone Vector Database Planning Profile",
+    "seoDescription": "Source-aware Pinecone planning record covering official product, pricing, docs, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://www.pinecone.io/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["rag-stack-guide", "vector-database-guide", "developer-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Pinecone Home",
+        "url": "https://www.pinecone.io/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Pinecone Pricing",
+        "url": "https://www.pinecone.io/pricing/",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Pinecone Docs",
+        "url": "https://docs.pinecone.io/",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official product, pricing, and docs pages were checked. Usage amounts, performance claims, and exact cost estimates are not stored.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  },
+  {
+    "id": "ai-tool-weaviate",
+    "slug": "weaviate",
+    "name": "Weaviate",
+    "category": "vector_database",
+    "shortDescription": "AI database planning record for vector search, retrieval, and open-source or hosted deployment evaluation.",
+    "seoTitle": "Weaviate Vector Database Planning Profile",
+    "seoDescription": "Source-aware Weaviate planning record covering official product, pricing, docs, and unresolved affiliate status.",
+    "officialWebsiteUrl": "https://weaviate.io/",
+    "pricingModel": "freemium",
+    "pricingNotes": null,
+    "affiliateStatus": "unknown",
+    "affiliateProgramUrl": null,
+    "recommendedPlacements": ["rag-stack-guide", "vector-database-guide", "developer-workflow-tools"],
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Weaviate Home",
+        "url": "https://weaviate.io/",
+        "type": "official",
+        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Weaviate Pricing",
+        "url": "https://weaviate.io/pricing",
+        "type": "pricing",
+        "fields": ["pricingModel"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Weaviate Docs",
+        "url": "https://docs.weaviate.io/",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Official product, pricing, and docs pages were checked. Exact plan costs and deployment availability are not stored.",
+    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+  }
+]
