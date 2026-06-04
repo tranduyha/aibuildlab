@@ -1,0 +1,191 @@
+[
+  {
+    "id": "placement-vram-calculator-result",
+    "slug": "vram-calculator-result-compare-local-gpus",
+    "placementType": "vram-calculator-result",
+    "title": "Compare local GPU options",
+    "description": "Use this neutral placement after a VRAM estimate to continue into source-aware local GPU planning.",
+    "ctaLabel": "Compare GPUs",
+    "href": "/compare",
+    "tone": "primary",
+    "affiliateConfigured": false,
+    "requiresDisclosure": false,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of comparison route",
+        "url": "https://vramforge.com/compare",
+        "type": "manual-check",
+        "fields": ["href", "placementType", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Internal planning CTA only. No affiliate link, price claim, monetized term, ranking, or recommendation is configured.",
+    "unsafeToPublishFields": ["affiliateConfigured"]
+  },
+  {
+    "id": "placement-gpu-profile-sidebar",
+    "slug": "gpu-profile-sidebar-estimate-vram",
+    "placementType": "gpu-profile-sidebar",
+    "title": "Estimate VRAM before choosing hardware",
+    "description": "Point GPU profile readers back to the calculator before narrowing a local hardware path.",
+    "ctaLabel": "Open VRAM Calculator",
+    "href": "/tools/vram-calculator",
+    "tone": "secondary",
+    "affiliateConfigured": false,
+    "requiresDisclosure": false,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of VRAM calculator route",
+        "url": "https://vramforge.com/tools/vram-calculator",
+        "type": "manual-check",
+        "fields": ["href", "placementType", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Internal planning CTA only. It should not be presented as a hardware recommendation.",
+    "unsafeToPublishFields": ["affiliateConfigured"]
+  },
+  {
+    "id": "placement-comparison-verdict",
+    "slug": "comparison-verdict-review-builds",
+    "placementType": "comparison-verdict",
+    "title": "Move from comparison to build planning",
+    "description": "After comparing GPUs, continue into build planning only after workload and compatibility constraints are clear.",
+    "ctaLabel": "Open build planning",
+    "href": "/builds",
+    "tone": "secondary",
+    "affiliateConfigured": false,
+    "requiresDisclosure": false,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of build planning route",
+        "url": "https://vramforge.com/builds",
+        "type": "manual-check",
+        "fields": ["href", "placementType", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Internal planning CTA only. No component prices or affiliate links are configured.",
+    "unsafeToPublishFields": ["affiliateConfigured"]
+  },
+  {
+    "id": "placement-build-page-components",
+    "slug": "build-page-components-try-cloud-first",
+    "placementType": "build-page-components",
+    "title": "Test cloud GPU before committing locally",
+    "description": "Use this neutral bridge when a build page needs a cautious cloud validation step before local hardware commitment.",
+    "ctaLabel": "Review Cloud GPU options",
+    "href": "/cloud-gpu",
+    "tone": "secondary",
+    "affiliateConfigured": false,
+    "requiresDisclosure": false,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of Cloud GPU provider hub",
+        "url": "https://vramforge.com/cloud-gpu",
+        "type": "manual-check",
+        "fields": ["href", "placementType", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Internal planning CTA only. Provider ranking, exact pricing, availability, and affiliate links are not configured.",
+    "unsafeToPublishFields": ["affiliateConfigured"]
+  },
+  {
+    "id": "placement-cloud-vs-local-guide",
+    "slug": "cloud-vs-local-guide-open-provider-profiles",
+    "placementType": "cloud-vs-local-guide",
+    "title": "Review source-aware provider profiles",
+    "description": "Bridge from the cloud-vs-local guide to provider planning profiles without ranking providers.",
+    "ctaLabel": "Open Cloud GPU profiles",
+    "href": "/cloud-gpu",
+    "tone": "secondary",
+    "affiliateConfigured": false,
+    "requiresDisclosure": false,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of Cloud GPU provider hub",
+        "url": "https://vramforge.com/cloud-gpu",
+        "type": "manual-check",
+        "fields": ["href", "placementType", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Internal planning CTA only. No provider recommendation or affiliate link is configured.",
+    "unsafeToPublishFields": ["affiliateConfigured"]
+  },
+  {
+    "id": "placement-ai-saas-guide",
+    "slug": "ai-saas-guide-estimate-vram-first",
+    "placementType": "ai-saas-guide",
+    "title": "Estimate VRAM before choosing a path",
+    "description": "Bridge AI SaaS guide readers back to workload sizing before comparing local, cloud, and hosted tool paths.",
+    "ctaLabel": "Estimate VRAM",
+    "href": "/tools/vram-calculator",
+    "tone": "primary",
+    "affiliateConfigured": false,
+    "requiresDisclosure": false,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of VRAM calculator route",
+        "url": "https://vramforge.com/tools/vram-calculator",
+        "type": "manual-check",
+        "fields": ["href", "placementType", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Internal planning CTA only. AI tool recommendations and affiliate links are not configured.",
+    "unsafeToPublishFields": ["affiliateConfigured"]
+  },
+  {
+    "id": "placement-footer-disclosure",
+    "slug": "footer-disclosure-source-aware-note",
+    "placementType": "footer-disclosure",
+    "title": "Source-aware disclosure area",
+    "description": "Reserve a disclosure placement for future monetization messaging while current affiliate links remain unconfigured.",
+    "ctaLabel": "Disclosure only",
+    "href": null,
+    "tone": "disclosure",
+    "affiliateConfigured": false,
+    "requiresDisclosure": true,
+    "status": "reviewed",
+    "needsReview": true,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of footer disclosure copy",
+        "url": "https://vramforge.com/",
+        "type": "manual-check",
+        "fields": ["placementType", "requiresDisclosure", "notes"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Disclosure placement only. Future affiliate messaging must remain transparent and source-aware.",
+    "unsafeToPublishFields": ["affiliateConfigured", "href"]
+  }
+]

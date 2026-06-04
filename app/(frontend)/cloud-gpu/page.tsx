@@ -222,7 +222,7 @@ export default function CloudGpuPage() {
             </div>
             <p className="text-sm text-slate-600">{providerCount} providers shown</p>
           </div>
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {providerItems.map((item) => (
               <CloudGpuProviderCard key={item.provider.slug} item={item} />
             ))}

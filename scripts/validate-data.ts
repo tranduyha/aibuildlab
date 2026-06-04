@@ -253,6 +253,48 @@ const aiToolAllowedSourceTypes = new Set([
   "manual-check",
 ]);
 
+const monetizationPlacementRequiredFields = [
+  "id",
+  "slug",
+  "placementType",
+  "title",
+  "description",
+  "ctaLabel",
+  "href",
+  "tone",
+  "affiliateConfigured",
+  "requiresDisclosure",
+  "status",
+  "needsReview",
+  "dataConfidence",
+  "sources",
+  "lastVerifiedAt",
+  "notes",
+  "unsafeToPublishFields",
+];
+
+const monetizationPlacementSourceBackedFields = [
+  "href",
+  "placementType",
+  "requiresDisclosure",
+  "notes",
+];
+
+const monetizationAllowedPlacementTypes = new Set([
+  "vram-calculator-result",
+  "gpu-profile-sidebar",
+  "comparison-verdict",
+  "build-page-components",
+  "cloud-vs-local-guide",
+  "ai-saas-guide",
+  "footer-disclosure",
+]);
+
+const monetizationAllowedTones = new Set(["primary", "secondary", "disclosure", "neutral"]);
+const monetizationAllowedStatuses = new Set(["draft", "reviewed", "published"]);
+const monetizationAllowedDataConfidences = new Set(["low", "medium", "high"]);
+const monetizationAllowedSourceTypes = new Set(["manual-check", "documentation", "official"]);
+
 let errors = 0;
 let warnings = 0;
 
@@ -589,6 +631,115 @@ function checkAiTools() {
   }
 }
 
+function checkMonetizationPlacements() {
+  const file = "data/monetization-placements.json";
+  const data = readJsonMaybe(file);
+  if (!data) return;
+
+  if (!Array.isArray(data)) {
+    logError(`${file}: must be a JSON array`);
+    return;
+  }
+
+  const records = data as RecordLike[];
+  if (records.length === 0) {
+    logWarning(`${file}: no records`);
+    return;
+  }
+
+  checkUniqueSlugs(file, records);
+  checkRequiredFields(file, records, monetizationPlacementRequiredFields);
+
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
+
+    checkEnumValue(file, rec, "placementType", monetizationAllowedPlacementTypes);
+    checkEnumValue(file, rec, "tone", monetizationAllowedTones);
+    checkEnumValue(file, rec, "status", monetizationAllowedStatuses);
+    checkEnumValue(file, rec, "dataConfidence", monetizationAllowedDataConfidences);
+    checkSources(file, rec);
+
+    if (typeof rec.affiliateConfigured !== "boolean") {
+      logError(`${file}:${label}: affiliateConfigured must be a boolean`);
+    }
+
+    if (rec.affiliateConfigured !== false) {
+      logError(`${file}:${label}: affiliateConfigured must remain false until affiliate links are approved`);
+    }
+
+    if (typeof rec.requiresDisclosure !== "boolean") {
+      logError(`${file}:${label}: requiresDisclosure must be a boolean`);
+    }
+
+    if (!(typeof rec.href === "string" || rec.href === null)) {
+      logError(`${file}:${label}: href must be a string or null`);
+    }
+
+    if (typeof rec.href === "string" && !rec.href.startsWith("/")) {
+      logError(`${file}:${label}: href must be an internal route while affiliate links are unconfigured`);
+    }
+
+    if (!Array.isArray(rec.unsafeToPublishFields)) {
+      logError(`${file}:${label}: unsafeToPublishFields must be an array`);
+    }
+
+    const sources = Array.isArray(rec.sources) ? rec.sources : [];
+    const sourceBackedFieldNames = new Set<string>();
+
+    for (const source of sources) {
+      if (source.type && !monetizationAllowedSourceTypes.has(source.type)) {
+        logError(`${file}:${label}: source type "${source.type}" is not allowed for monetization placements`);
+      }
+
+      if (Array.isArray(source.fields)) {
+        for (const field of source.fields) {
+          if (
+            !monetizationPlacementRequiredFields.includes(field) &&
+            !monetizationPlacementSourceBackedFields.includes(field)
+          ) {
+            logError(`${file}:${label}: source.fields entry "${field}" does not map to a monetization placement field`);
+          }
+          if (monetizationPlacementSourceBackedFields.includes(field)) {
+            sourceBackedFieldNames.add(field);
+          }
+        }
+      }
+    }
+
+    if ((rec.status === "reviewed" || rec.status === "published") && sourceBackedFieldNames.size < 2) {
+      logError(`${file}:${label}: reviewed/published records need at least 2 source-backed core fields`);
+    }
+
+    const searchableText = [
+      rec.title,
+      rec.description,
+      rec.ctaLabel,
+      rec.notes,
+    ]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ")
+      .toLowerCase();
+
+    for (const blockedPhrase of [
+      "commission",
+      "cheapest",
+      "fastest",
+      "top-rated",
+      "recommended provider",
+      "recommended tool",
+      "best ai",
+      "best cloud",
+      "product schema",
+      "offer schema",
+      "review schema",
+    ]) {
+      if (searchableText.includes(blockedPhrase)) {
+        logError(`${file}:${label}: unsupported "${blockedPhrase}" wording`);
+      }
+    }
+  }
+}
+
 checkFile("data/gpus.json", gpuSourceRequiredFields);
 checkFile("data/ai-models.json", aiModelSourceRequiredFields);
 checkFile("data/comparisons.json");
@@ -598,6 +749,7 @@ checkFile("data/calculator-assumptions.json");
 checkFile("data/calculator-validation.json");
 checkCloudGpuProviders();
 checkAiTools();
+checkMonetizationPlacements();
 
 console.log(`Data validation completed with ${errors} error(s) and ${warnings} warning(s).`);
 if (errors > 0) process.exit(1);

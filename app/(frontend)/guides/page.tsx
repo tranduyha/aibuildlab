@@ -4,9 +4,21 @@ import { buildMetadata } from "@/lib/seo";
 
 const plannedGuideTopics = [
   "How much VRAM do you need for AI workloads",
-  "Local AI vs SaaS tools for output-first teams",
   "GPU memory planning for Stable Diffusion workflows",
+  "AI workstation software stack planning",
 ] as const;
+
+function getGuideTopicLabel(slug: string): string {
+  if (slug === "cloud-gpu-vs-local-gpu") {
+    return "Cloud vs Local planning";
+  }
+
+  if (slug === "local-ai-vs-ai-saas") {
+    return "Local vs SaaS planning";
+  }
+
+  return "Planning guide";
+}
 
 export const metadata = buildMetadata({
   title: "Local AI Hardware Guides",
@@ -36,7 +48,7 @@ export default function GuidesIndexPage() {
               <Link className="guide-card guide-card-featured" href={`/guides/${guide.slug}`} key={guide.slug}>
                 <div className="guide-card-meta">
                   <span className="guide-card-label">Published guide</span>
-                  <span className="guide-card-topic">Cloud vs Local planning</span>
+                  <span className="guide-card-topic">{getGuideTopicLabel(guide.slug)}</span>
                 </div>
                 <strong>{guide.title}</strong>
                 <span>{guide.shortDescription}</span>

@@ -79,8 +79,8 @@ export default function CloudGpuProviderCard({
     .join(" · ");
 
   return (
-    <article className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 className="text-xl font-semibold tracking-normal text-slate-950">
+    <article className="flex h-full min-w-0 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+      <h2 className="truncate whitespace-nowrap text-xl font-semibold tracking-normal text-slate-950">
         {resolvedProfileHref ? (
           <Link className="hover:text-sky-700" href={resolvedProfileHref}>
             {provider.name}

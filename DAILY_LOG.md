@@ -38,6 +38,162 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-04 - Day 13 Monetization placement audit
+
+### Agent
+Codex
+
+### Planned Task
+Audit the Day 13 monetization placement system only, without adding features or inserting CTA placements into pages.
+
+### Completed
+- [x] Confirmed `data/monetization-placements.json` exists with 7 placement records.
+- [x] Confirmed `types/monetization-placement.ts`, `repositories/monetization-placement.repository.ts`, `services/monetization-placement.service.ts`, and `components/MonetizationCta.tsx` exist.
+- [x] Confirmed placement hrefs are internal only and no `/ai-tools` href is used.
+- [x] Confirmed 0 external affiliate URLs and 0 affiliate-configured placements.
+- [x] Confirmed no aggressive CTA labels, commission claims, price/discount claims, or real affiliate links in placement data.
+- [x] Confirmed `MonetizationCta` is not inserted broadly across pages.
+- [x] Confirmed `scripts/validate-data.ts` validates monetization placements.
+- [x] Confirmed `/guides/local-ai-vs-ai-saas` and `/guides/cloud-gpu-vs-local-gpu` still exist and are included in the build output.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 51 existing unrelated GPU warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Manual Day 13 safety audit.
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and unrelated to Day 13.
+- Placement data remains reviewed/needs-review and is not wired into live pages yet.
+
+### Files Changed
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Day 13 can remain marked complete; future work should only publish or insert placements when disclosure and monetization rules are explicitly defined.
+
+---
+
+## 2026-06-04 - Day 13 Monetization placement system
+
+### Agent
+Codex
+
+### Planned Task
+Create a neutral monetization placement system for future CTA/affiliate management without adding affiliate links or promotional claims.
+
+### Completed
+- [x] Added `data/monetization-placements.json` with 7 reviewed planning placements.
+- [x] Added strict placement types in `types/monetization-placement.ts` and exported them from `types/index.ts`.
+- [x] Added `repositories/monetization-placement.repository.ts`.
+- [x] Added `services/monetization-placement.service.ts`.
+- [x] Added reusable `components/MonetizationCta.tsx`.
+- [x] Updated `scripts/validate-data.ts` to validate placement schema, enums, source mappings, internal-only hrefs, affiliateConfigured safety, unsafe field arrays, and blocked promotional wording.
+- [x] Confirmed placements cover `vram-calculator-result`, `gpu-profile-sidebar`, `comparison-verdict`, `build-page-components`, `cloud-vs-local-guide`, `ai-saas-guide`, and `footer-disclosure`.
+- [x] Kept all placements as internal planning CTAs with `affiliateConfigured: false`.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 51 existing unrelated GPU warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Manual repository/service smoke check.
+- [x] Confirmed 7 placements, 7 reviewed, 0 published, 0 external hrefs, and 0 affiliate-configured placements.
+- [x] Confirmed no public monetization route, nav link, or sitemap entry was created.
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and unrelated to Day 13.
+- Placement system is not wired into live pages yet.
+- Affiliate/referral links remain unconfigured.
+
+### Files Changed
+- `data/monetization-placements.json`
+- `types/monetization-placement.ts`
+- `types/index.ts`
+- `repositories/monetization-placement.repository.ts`
+- `services/monetization-placement.service.ts`
+- `components/MonetizationCta.tsx`
+- `scripts/validate-data.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 14 - SEO QA and internal link audit.
+
+---
+
+## 2026-06-04 - Day 12 Local AI vs AI SaaS guide
+
+### Agent
+Codex
+
+### Planned Task
+Create the first AI software bridge guide connecting local AI hardware planning with AI SaaS/API workflow choices.
+
+### Completed
+- [x] Added `/guides/local-ai-vs-ai-saas`.
+- [x] Added a published guide record for `local-ai-vs-ai-saas` in `data/guides.json`.
+- [x] Added the new guide to `app/(frontend)/sitemap.ts`.
+- [x] Updated the guides hub so published guide topic labels are route-aware.
+- [x] Used the Day 11 AI tool data layer only as source-aware planning context, not as a public `/ai-tools` index.
+- [x] Added WebPage, BreadcrumbList, and FAQPage schema only.
+- [x] Kept content planning-oriented with no affiliate links, commission claims, exact prices, availability claims, rankings, benchmarks, Product schema, Offer schema, Review schema, or recommendations.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 51 existing unrelated GPU warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Build output includes `/guides/local-ai-vs-ai-saas`.
+- [x] Confirmed no `/ai-tools` nav link was added.
+
+### Issues
+- Existing 51 `data/gpus.json` source-field mapping warnings remain unchanged and unrelated to Day 12.
+- Browser screenshot check was not run.
+
+### Files Changed
+- `app/(frontend)/guides/local-ai-vs-ai-saas/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `data/guides.json`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Proceed to Day 13 only because Day 12 validation, lint, and build passed.
+
+---
+
+## 2026-06-04 - Day 11.1 Cloud GPU provider card spacing
+
+### Agent
+Codex
+
+### Planned Task
+Adjust Cloud GPU provider card spacing and keep provider card headers on one line.
+
+### Completed
+- [x] Increased spacing between Cloud GPU provider cards from `gap-5` to `gap-6`.
+- [x] Updated provider card title headers to stay on one line with safe truncation.
+- [x] Added `min-w-0` to provider cards so one-line truncation works inside responsive grids.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- Browser screenshot check was not run.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `components/CloudGpuProviderCard.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Review `/cloud-gpu` visually on mobile and desktop if exact spacing needs more tuning.
+
+---
+
 ## 2026-06-04 - Day 11 AI SaaS / software tool data model
 
 ### Agent

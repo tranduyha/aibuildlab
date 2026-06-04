@@ -26,6 +26,15 @@ export type {
   AiToolSourceType,
   AiToolStatus,
 } from "./ai-tool";
+export type {
+  MonetizationPlacement,
+  MonetizationPlacementDataConfidence,
+  MonetizationPlacementSource,
+  MonetizationPlacementSourceType,
+  MonetizationPlacementStatus,
+  MonetizationPlacementTone,
+  MonetizationPlacementType,
+} from "./monetization-placement";
 export type { ImageCategory, ImageManifestEntry } from "./image";
 export type { CalculatorAssumption, ContextPresetProfile, QuantizationProfile, RuntimeProfile } from "./calculator-assumption";
 export type { CalculatorValidationSample } from "./calculator-validation";

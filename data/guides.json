@@ -90,7 +90,46 @@
       }
     ],
     "lastVerifiedAt": "2026-06-03",
-    "notes": "Planning guide only. Avoid provider ranking, exact pricing, availability claims, affiliate links, and buying recommendations."
+    "notes": "Planning guide only. Avoid provider ranking, exact pricing, availability claims, affiliate links, and buying advice."
+  },
+  {
+    "id": "guide-local-ai-vs-ai-saas",
+    "slug": "local-ai-vs-ai-saas",
+    "title": "Local AI vs AI SaaS for Workflow Planning",
+    "shortDescription": "Source-aware planning guide for deciding when to run AI locally, test cloud GPU, or use AI SaaS/API tools.",
+    "seoTitle": "Local AI vs AI SaaS for Workflow Planning",
+    "seoDescription": "Compare local AI hardware planning with AI SaaS and API tools across cost, privacy, setup time, quality control, reliability, and team workflow without scored lists or pricing claims.",
+    "tags": ["local-ai", "ai-saas", "planning"],
+    "useCases": ["local-llm", "ai-workstation", "ai-saas-decision"],
+    "relatedGpuSlugs": ["rtx-4060-ti-16gb", "rtx-4090", "rtx-5090"],
+    "relatedToolPaths": [
+      "/tools/vram-calculator",
+      "/guides/cloud-gpu-vs-local-gpu",
+      "/gpu",
+      "/cloud-gpu",
+      "/builds"
+    ],
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of AI tool data layer",
+        "url": "https://vramforge.com/guides/local-ai-vs-ai-saas",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "Manual review of cloud GPU vs local GPU guide route",
+        "url": "https://vramforge.com/guides/cloud-gpu-vs-local-gpu",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths"],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Planning guide only. Avoid AI tool scoring, price claims, availability claims, monetized outbound links, payout claims, commerce structured data, tool-evaluation structured data, and buying advice."
   },
   {
     "id": "guide-rtx-3060-12gb-ai",

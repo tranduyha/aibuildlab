@@ -65,18 +65,55 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 11 - AI SaaS / software tool data model (2026-06-04).
+Day 13 - Monetization placement system (2026-06-04).
 
 ## Today Scope
 
-- Create source-aware AI SaaS / software tool data, types, repository, and service.
-- Do not create public `/ai-tools` pages, navigation links, or sitemap entries.
-- Keep affiliate status cautious and source-backed.
-- Do not store exact pricing, commission, availability, ranking, benchmark, or recommendation claims.
-- Update data validation for AI tool records.
-- Run data validation, lint, and build.
+- Create a neutral monetization placement data, repository, service, and reusable CTA component.
+- Keep Day 13 placement work separate from Day 12 guide content.
+- Do not add affiliate links, commission claims, prices, rankings, Product schema, Offer schema, Review schema, or promotional recommendations.
+- Keep all placement hrefs internal while affiliate links are unconfigured.
+- Run `npm run data:validate`, `npm run lint`, and `npm run build`.
 
 ## Done Today
+
+- [x] Added `data/monetization-placements.json` with 7 reviewed planning placements.
+- [x] Added strict placement types in `types/monetization-placement.ts` and exported them from `types/index.ts`.
+- [x] Added `repositories/monetization-placement.repository.ts`.
+- [x] Added `services/monetization-placement.service.ts`.
+- [x] Added reusable `components/MonetizationCta.tsx`.
+- [x] Updated `scripts/validate-data.ts` to validate placement schema, enums, source mappings, internal-only hrefs, affiliateConfigured safety, unsafe field arrays, and blocked promotional wording.
+- [x] Confirmed placements cover all planned placement types: `vram-calculator-result`, `gpu-profile-sidebar`, `comparison-verdict`, `build-page-components`, `cloud-vs-local-guide`, `ai-saas-guide`, and `footer-disclosure`.
+- [x] Confirmed 0 external hrefs and 0 affiliate-configured placements.
+- [x] Confirmed no public monetization route, nav link, or sitemap entry was created.
+- [x] Ran `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+- [x] Audited Day 13 monetization placement scope: 7 placements, internal hrefs only, 0 external affiliate URLs, 0 affiliate-configured placements, no `/ai-tools` href, no broad `MonetizationCta` page insertion, and validator coverage confirmed.
+- [x] Re-ran `npm run data:validate`, `npm run lint`, and `npm run build` for the Day 13 audit.
+
+- [x] Added `app/(frontend)/guides/local-ai-vs-ai-saas/page.tsx`.
+- [x] Added a published guide record for `local-ai-vs-ai-saas` in `data/guides.json`.
+- [x] Added `/guides/local-ai-vs-ai-saas` to `app/(frontend)/sitemap.ts`.
+- [x] Updated the guides hub so published guide topic labels are route-aware.
+- [x] Used the Day 11 AI tool data layer only as source-aware planning context, not as a public `/ai-tools` index.
+- [x] Added WebPage, BreadcrumbList, and FAQPage schema only.
+- [x] Confirmed no `/ai-tools` nav link was added.
+- [x] Ran `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`; build output includes `/guides/local-ai-vs-ai-saas`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Increased Cloud GPU provider card grid spacing from `gap-5` to `gap-6`.
+- [x] Updated provider card title headers to stay on one line with `truncate whitespace-nowrap`.
+- [x] Added `min-w-0` to provider cards so one-line truncation works inside responsive grids.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 - [x] Created `data/ai-tools.json` with 12 source-aware AI tool records.
 - [x] Added strict AI tool types in `types/ai-tool.ts` and exported them from `types/index.ts`.
@@ -281,7 +318,7 @@ Day 11 - AI SaaS / software tool data model (2026-06-04).
 
 ## Last Completed Task
 
-Day 11 created the source-aware AI SaaS / software tool data model, repository, service, and validation support, then passed data validation, lint, and build.
+Day 13 created the neutral monetization placement system and passed data validation, lint, and build.
 
 ## Open Limitations
 
@@ -290,6 +327,8 @@ Day 11 created the source-aware AI SaaS / software tool data model, repository, 
 - AI tool availability is not claimed.
 - Affiliate/referral links are not configured yet.
 - No AI tool recommendations yet.
+- Monetization placements are not wired into live pages yet.
+- Placement hrefs are internal only while affiliate links remain unconfigured.
 - Provider pages are planning profiles, not rankings.
 - Exact prices are not stored unless timestamped/source-backed.
 - Availability is not claimed.
@@ -300,6 +339,14 @@ Day 11 created the source-aware AI SaaS / software tool data model, repository, 
 ## Current Handoff Note
 
 - Day 10 Cloud GPU provider pages are complete and static/export compatible.
+- Day 12 guide `/guides/local-ai-vs-ai-saas` is live in the static build and linked from the guides hub and sitemap.
+- The Day 12 guide compares local AI, cloud GPU validation, and AI SaaS/API tools without affiliate links, commission claims, exact prices, availability claims, rankings, benchmarks, Product schema, Offer schema, Review schema, or recommendations.
+- Day 12 checks passed: `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings, `npm run lint`, and `npm run build`.
+- Day 13 monetization placement system is complete with 7 reviewed internal planning placements and no affiliate-configured placements.
+- `data/monetization-placements.json` covers all planned placement types: `vram-calculator-result`, `gpu-profile-sidebar`, `comparison-verdict`, `build-page-components`, `cloud-vs-local-guide`, `ai-saas-guide`, and `footer-disclosure`.
+- `repositories/monetization-placement.repository.ts`, `services/monetization-placement.service.ts`, and `components/MonetizationCta.tsx` are available for future wiring.
+- `scripts/validate-data.ts` now validates monetization placement schema, enums, source fields, internal hrefs, affiliateConfigured safety, unsafe field arrays, and blocked promotional wording.
+- Day 13 checks passed: `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings, `npm run lint`, and `npm run build`.
 - Day 11 AI tool data layer is complete with 12 source-aware planning records across AI coding, productivity, LLM API, agent platform, video generation, automation, and vector database categories.
 - `data/ai-tools.json` has 12 reviewed records, all `needsReview: true`, all `dataConfidence: "medium"`, all `affiliateStatus: "unknown"`, and all `affiliateProgramUrl: null`.
 - AI tool exact pricing, availability, commission terms, rankings, ratings, benchmarks, and recommendations are not stored.
@@ -308,6 +355,8 @@ Day 11 created the source-aware AI SaaS / software tool data model, repository, 
 - `scripts/validate-data.ts` validates `data/ai-tools.json` schema, required fields, enum values, source field mappings, duplicate slugs, affiliate URL safety, unsafe field arrays, and blocked promotional wording.
 - No `/ai-tools` public route, sitemap entry, or nav link exists yet.
 - Day 11 checks passed: `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings, `npm run lint`, and `npm run build`.
+- Cloud GPU provider cards now use wider `gap-6` spacing and one-line truncated provider name headers.
+- Day 11.1 checks passed: `npm run lint` and `npm run build`.
 - `/cloud-gpu` is the provider hub and `/cloud-gpu/[slug]` generates 8 provider planning profiles.
 - `generateStaticParams()` uses provider slugs from the repository, and `generateMetadata()` uses provider SEO fields through the service.
 - Invalid provider slugs resolve through the service as null and the dynamic page calls `notFound()`.

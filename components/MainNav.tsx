@@ -116,7 +116,7 @@ export default function MainNav({ items }: MainNavProps) {
                       return (
                         <Link
                           aria-current={isChildActive ? "page" : undefined}
-                          className={`block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-100 hover:text-sky-800 focus-visible:bg-sky-100 focus-visible:text-sky-800 max-[980px]:mt-1 max-[980px]:border-0 max-[980px]:bg-transparent max-[980px]:px-3 max-[980px]:py-2.5 max-[980px]:text-slate-700 max-[980px]:hover:bg-[var(--surface-alt)] max-[980px]:focus-visible:bg-[var(--surface-alt)]${
+                          className={`block rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-sky-100 hover:text-sky-800 focus-visible:bg-sky-100 focus-visible:text-sky-800 max-[980px]:mt-1 max-[980px]:border-0 max-[980px]:bg-transparent max-[980px]:px-3 max-[980px]:py-2.5 max-[980px]:font-medium max-[980px]:text-slate-700 max-[980px]:hover:bg-[var(--surface-alt)] max-[980px]:focus-visible:bg-[var(--surface-alt)]${
                             isChildActive ? " bg-sky-50 text-sky-700 max-[980px]:bg-[var(--surface-alt)]" : ""
                           }`}
                           href={child.href}
