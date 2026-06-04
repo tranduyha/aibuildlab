@@ -1150,7 +1150,7 @@ body {
   display: grid;
   grid-template-columns: 1.05fr 0.55fr 1.25fr;
   gap: 48px;
-  padding: 52px 0 36px;
+  padding: 38px 0 28px;
 }
 
 .footer-tagline {
@@ -1188,7 +1188,7 @@ body {
 
 .footer-bottom {
   border-top: 1px solid var(--border);
-  padding: 19px 0 27px;
+  padding: 14px 0 18px;
   color: var(--muted);
   font-size: 13px;
 }

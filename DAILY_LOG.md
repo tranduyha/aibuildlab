@@ -38,6 +38,289 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-04 - Day 10.16 Footer Explore gap 2
+
+### Agent
+Codex
+
+### Planned Task
+Reduce vertical spacing between `Explore` groups to `gap-2` and re-check footer responsiveness.
+
+### Completed
+- [x] Changed the wrapper between `Plan`, `Hardware`, and `Learn` groups from `gap-3` to `gap-2`.
+- [x] Confirmed footer CSS stacks `footer-grid` to one column below `900px`.
+- [x] Confirmed existing link spacing remains compact at `gap-0.5`.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Duplicate `Cloud GPU` footer-link check on homepage export
+- [x] Responsive CSS breakpoint check for desktop, tablet, and mobile footer flow
+
+### Issues
+- Browser screenshot check was not run because Chrome/Edge headless was not available in PATH.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Use a browser screenshot pass if exact visual spacing still needs pixel-level confirmation.
+
+---
+
+## 2026-06-04 - Day 10.15 Footer compact spacing
+
+### Agent
+Codex
+
+### Planned Task
+Reduce footer vertical spacing so the single-column `Explore` layout feels compact.
+
+### Completed
+- [x] Reduced footer grid top/bottom padding in `app/(frontend)/theme.css`.
+- [x] Reduced footer bottom copyright padding in `app/(frontend)/theme.css`.
+- [x] Tightened vertical spacing between `Explore` groups and child links in `components/Footer.tsx`.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `app/(frontend)/theme.css`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Footer can receive a final visual screenshot pass if more pixel-level tuning is needed.
+
+---
+
+## 2026-06-04 - Day 10.14 Footer Explore single column
+
+### Agent
+Codex
+
+### Planned Task
+Change footer `Explore` groups from three columns to one vertical column.
+
+### Completed
+- [x] Changed `Explore` grouped links from a three-column grid to one vertical column.
+- [x] Kept `Plan`, `Hardware`, and `Learn` group headings with child links directly underneath.
+- [x] Kept existing footer link style and navigation targets.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Only refine footer spacing further if the single-column layout needs denser vertical rhythm.
+
+---
+
+## 2026-06-04 - Day 10.13 Footer Explore vertical groups
+
+### Agent
+Codex
+
+### Planned Task
+Move footer submenu links directly under each `Explore` group heading and restore the lighter original footer link style.
+
+### Completed
+- [x] Changed `Explore` groups to vertical blocks: `Plan`, `Hardware`, and `Learn`.
+- [x] Moved each group link list directly under its group heading.
+- [x] Changed `Hardware` link text from `GPUs` to `Browse GPUs` while keeping `/gpu`.
+- [x] Reused the existing `footer-links` style so footer links match the original footer treatment more closely.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Confirmed `Cloud GPU` appears once in the homepage footer export.
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Only continue footer polishing if spacing or column width needs another visual pass.
+
+---
+
+## 2026-06-04 - Day 10.12 Footer Explore spacing refinement
+
+### Agent
+Codex
+
+### Planned Task
+Refine the `Explore` footer section so it aligns better with the rest of the footer in color, spacing, and line flow.
+
+### Completed
+- [x] Adjusted `Explore` group labels to feel closer to the existing footer rhythm.
+- [x] Softened footer link color and spacing so the `Explore` block matches the surrounding footer sections better.
+- [x] Changed the `Learn` group so `About` sits on its own line below `Guides`.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Continue footer polish only if more visual balancing is requested.
+
+---
+
+## 2026-06-04 - Day 10.11 Footer grouped horizontal links
+
+### Agent
+Codex
+
+### Planned Task
+Replace the long footer `Explore` list with compact grouped horizontal footer links.
+
+### Completed
+- [x] Updated `components/Footer.tsx` so `Explore` uses grouped `Plan`, `Hardware`, and `Learn` sections.
+- [x] Changed footer group links to render inline on desktop with clean wrapping behavior.
+- [x] Kept brand/about footer text unchanged.
+- [x] Kept transparency/source-aware text unchanged.
+- [x] Kept `Cloud GPU` discoverable without duplicating the link.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Homepage export footer check
+- [x] `/cloud-gpu` export footer check
+- [x] `/guides` export footer check
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Only refine footer spacing further if a denser or more branded footer direction is requested.
+
+---
+
+## 2026-06-04 - Day 10.10 Footer Explore style alignment
+
+### Agent
+Codex
+
+### Planned Task
+Keep the grouped `Explore` footer layout, but bring its visual style back closer to the original footer treatment.
+
+### Completed
+- [x] Kept grouped footer sections as `Plan`, `Hardware`, and `Learn`.
+- [x] Adjusted `components/Footer.tsx` so grouped links reuse the lighter original footer link treatment instead of heavier custom link styling.
+- [x] Kept link navigation and hover behavior on footer `a` tags.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Continue footer refinement only if a stronger branded treatment is requested.
+
+---
+
+## 2026-06-04 - Day 10.9 Footer grouped layout
+
+### Agent
+Codex
+
+### Planned Task
+Replace the long footer `Explore` list with grouped footer links while keeping `/cloud-gpu` discoverable.
+
+### Completed
+- [x] Replaced the single long footer `Explore` list in `components/Footer.tsx` with grouped `Plan`, `Hardware`, and `Learn` sections.
+- [x] Removed the temporary `footerExtraLinks` pattern because `Cloud GPU` is now part of the grouped footer structure.
+- [x] Kept brand/about footer description unchanged.
+- [x] Kept transparency/source-aware text unchanged.
+- [x] Kept `/cloud-gpu` discoverable without duplicating the footer link.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Exported HTML spot-check for footer groups on `/`, `/cloud-gpu`, and `/guides`
+- [x] Duplicate `Cloud GPU` footer-link check on homepage export
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `components/Footer.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Only refine footer visuals further if a denser or more branded footer treatment is requested.
+
+---
+
+## 2026-06-04 - Day 10.8 Navigation cleanup
+
+### Agent
+Codex
+
+### Planned Task
+Hide `Compare` and `Builds` from the top-level navigation and keep them discoverable under `GPUs`.
+
+### Completed
+- [x] Removed top-level `Compare` and `Builds` items from `data/navigation.json`.
+- [x] Kept `Compare GPUs` and `Local AI Builds` available under the `GPUs` submenu.
+
+### Checked
+- [x] `npm run lint`
+- [x] `npm run build`
+
+### Issues
+- No new issues.
+
+### Files Changed
+- `data/navigation.json`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Continue refining navigation only if more information architecture cleanup is requested.
+
+---
+
 ## 2026-06-04 - Day 10.7 Cloud GPU submenu discovery
 
 ### Agent

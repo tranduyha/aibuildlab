@@ -65,17 +65,93 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 10.7 - Cloud GPU submenu discovery (2026-06-04).
+Day 10.16 - Footer Explore gap 2 (2026-06-04).
 
 ## Today Scope
 
-- Add `Cloud GPU Providers` as a submenu item under `GPUs` without adding a top-level Cloud GPU header link.
-- Keep existing top-level navigation clean and preserve working top-level links.
-- Keep desktop and mobile navigation usable with the existing header pattern.
-- Avoid provider ranking, pricing, affiliate, recommendation, benchmark, tokens/s, image-speed, or availability wording.
-- Re-run lint and build after navigation changes.
+- Reduce vertical spacing between `Explore` groups to `gap-2`.
+- Re-check responsive footer behavior after the spacing change.
+- Keep group headings and child links directly underneath.
+- Keep brand/about footer text and transparency/source-aware text unchanged.
+- Re-run lint and build after footer changes.
 
 ## Done Today
+
+- [x] Changed the wrapper between `Plan`, `Hardware`, and `Learn` groups from `gap-3` to `gap-2`.
+- [x] Confirmed footer CSS stacks `footer-grid` to one column below `900px`.
+- [x] Confirmed existing link spacing remains compact at `gap-0.5`.
+- [x] Confirmed `Cloud GPU` appears once in the homepage footer export.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Reduced footer grid top/bottom padding in `app/(frontend)/theme.css`.
+- [x] Reduced footer bottom copyright padding in `app/(frontend)/theme.css`.
+- [x] Tightened vertical spacing between `Explore` groups and child links in `components/Footer.tsx`.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Changed `Explore` grouped links from a three-column grid to one vertical column.
+- [x] Kept `Plan`, `Hardware`, and `Learn` group headings with child links directly underneath.
+- [x] Kept existing footer link style and navigation targets.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Changed `Explore` groups to vertical blocks: `Plan`, `Hardware`, and `Learn`.
+- [x] Moved each group link list directly under its group heading.
+- [x] Changed `Hardware` link text from `GPUs` to `Browse GPUs` while keeping `/gpu`.
+- [x] Reused the existing `footer-links` style so footer links match the original footer treatment more closely.
+- [x] Confirmed `Cloud GPU` appears once in the homepage footer export.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Adjusted `Explore` group labels, link color, and spacing to feel closer to the surrounding footer sections.
+- [x] Changed the `Learn` group so `About` sits on its own line below `Guides`.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Updated `components/Footer.tsx` so `Explore` uses grouped `Plan`, `Hardware`, and `Learn` sections with inline desktop links.
+- [x] Kept grouped footer links compact on desktop and wrapping cleanly on smaller screens.
+- [x] Kept brand/about footer text and transparency/source-aware text unchanged.
+- [x] Confirmed `Cloud GPU` remains present once in the footer link groups.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Kept footer groups as `Plan`, `Hardware`, and `Learn`.
+- [x] Adjusted `components/Footer.tsx` so grouped links use a lighter, more original-looking footer link treatment.
+- [x] Kept link navigation and hover behavior on footer `a` tags.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Replaced the single long footer `Explore` list in `components/Footer.tsx` with grouped `Plan`, `Hardware`, and `Learn` sections.
+- [x] Removed the temporary `footerExtraLinks` pattern because `Cloud GPU` is now part of the grouped footer.
+- [x] Kept brand/about footer description unchanged.
+- [x] Kept transparency/source-aware text unchanged.
+- [x] Confirmed `Cloud GPU` appears once in the homepage footer export.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
+
+- [x] Removed top-level `Compare` and `Builds` from `data/navigation.json`.
+- [x] Kept `Compare GPUs` and `Local AI Builds` under the `GPUs` submenu.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 - [x] Read `AGENTS.md`, `TASK_STATUS.md`, `DAILY_LOG.md`, `docs/ROADMAP_THANG_1_2.md`, `components/Header.tsx`, `components/MainNav.tsx`, `data/navigation.json`, `/cloud-gpu`, `/gpu`, `/compare`, and `/builds` route files before editing.
 - [x] Added nested `children` support to `NavigationItem`.
@@ -155,7 +231,7 @@ Day 10.7 - Cloud GPU submenu discovery (2026-06-04).
 
 ## Last Completed Task
 
-Day 10.7 added `Cloud GPU Providers` as a submenu item under `GPUs`, kept Cloud GPU out of the top-level header nav, and re-ran lint/build.
+Day 10.16 reduced `Explore` group spacing to `gap-2`, checked footer responsive breakpoints, and re-ran lint/build.
 
 ## Open Limitations
 
@@ -174,11 +250,17 @@ Day 10.7 added `Cloud GPU Providers` as a submenu item under `GPUs`, kept Cloud 
 - Invalid provider slugs resolve through the service as null and the dynamic page calls `notFound()`.
 - Provider detail pages show facts, grouped notices, sources, FAQ, and safe related planning links.
 - `app/(frontend)/sitemap.ts` includes `/cloud-gpu` and all provider detail URLs from repository slugs.
-- `/guides/cloud-gpu-vs-local-gpu`, `/guides`, and the footer Explore area link safely to `/cloud-gpu`.
-- Main nav now has a `GPUs` submenu with `Browse GPUs`, `Compare GPUs`, `Cloud GPU Providers`, and `Local AI Builds`; `Cloud GPU Providers` is not a separate top-level header item.
+- `/guides/cloud-gpu-vs-local-gpu`, `/guides`, and the grouped footer Explore area link safely to `/cloud-gpu`.
+- Main nav now has a `GPUs` submenu with `Browse GPUs`, `Compare GPUs`, `Cloud GPU Providers`, and `Local AI Builds`; `Compare` and `Builds` are no longer separate top-level navigation items.
 - Desktop submenu opens on hover/focus; mobile menu shows submenu links inline under `GPUs`.
 - Cloud GPU data audit: 8 providers, 8 reviewed, 0 draft, 8 with official source-type coverage, 5 with `affiliateStatus: unknown`, 3 with `referral_verified` or `available_verified`, 0 missing `lastVerifiedAt`, and 8 with `unsafeToPublishFields`.
-- Day 10.7 checks passed: `npm run lint` and `npm run build`.
+- Footer Explore now uses grouped `Plan`, `Hardware`, and `Learn` sections instead of a single long list.
+- Footer Explore now renders links inline on desktop within each group and wraps cleanly on smaller widths, with hover retained on footer links.
+- `Explore` now uses vertical group blocks with links directly under `Plan`, `Hardware`, and `Learn`; `Hardware` uses `Browse GPUs` for `/gpu`.
+- `Explore` groups now stack in a single vertical column instead of three columns.
+- Footer top/bottom padding and `Explore` group gaps are now tighter for a more compact footer.
+- Footer responsive CSS stacks the main footer grid below `900px`; browser screenshot check was not run because Chrome/Edge headless was not available in PATH.
+- Day 10.16 checks passed: `npm run lint` and `npm run build`.
 
 - `/guides/cloud-gpu-vs-local-gpu` now has clearer primary-section hierarchy, larger guide copy, and a mobile-safe cloud-vs-local stacked-card fallback under small widths.
 - `/guides` now presents the published guide card as a stronger entry point and includes a clearly marked non-linked planned-topics block.

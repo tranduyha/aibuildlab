@@ -12,8 +12,6 @@
       { "id": 34, "label": "Local AI Builds", "href": "/builds" }
     ]
   },
-  { "id": 4, "label": "Compare", "href": "/compare" },
-  { "id": 5, "label": "Builds", "href": "/builds" },
   { "id": 6, "label": "Guides", "href": "/guides" },
   { "id": 7, "label": "About", "href": "/about" }
 ]
