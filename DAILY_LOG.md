@@ -38,6 +38,46 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-04 - Day 10.7 Cloud GPU submenu discovery
+
+### Agent
+Codex
+
+### Planned Task
+Add Cloud GPU Providers as a submenu item under GPUs without adding another top-level header item.
+
+### Completed
+- [x] Added nested navigation support to `NavigationItem`.
+- [x] Added a `GPUs` submenu in `data/navigation.json` with `Browse GPUs`, `Compare GPUs`, `Cloud GPU Providers`, and `Local AI Builds`.
+- [x] Updated `MainNav` to render a desktop hover/focus submenu and mobile inline submenu using Tailwind utility classes.
+- [x] Kept `Cloud GPU Providers` off the top-level header navigation.
+- [x] Kept existing top-level `Compare`, `Builds`, `Guides`, and other working links.
+- [x] Avoided pricing, ranking, affiliate, recommendation, benchmark, or provider-performance wording.
+
+### Checked
+- [x] Desktop header keeps the same top-level navigation structure.
+- [x] GPU submenu opens on hover/focus on desktop.
+- [x] Mobile menu shows submenu links inline under GPUs when the menu is expanded.
+- [x] `/cloud-gpu` link is present in the exported navigation payload.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Brand/domain hardcode scan in code directories.
+
+### Issues
+- No new issues. Existing Cloud GPU pages remain planning profiles, not rankings or recommendations.
+
+### Files Changed
+- `components/MainNav.tsx`
+- `data/navigation.json`
+- `types/site-settings.type.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Continue with Day 11 or a broader navigation QA pass if more submenu groups are needed.
+
+---
+
 ## 2026-05-26
 
 ### Agent

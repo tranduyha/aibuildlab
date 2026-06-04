@@ -1,7 +1,17 @@
 [
   { "id": 1, "label": "Home", "href": "/" },
   { "id": 2, "label": "Tools", "href": "/tools/vram-calculator" },
-  { "id": 3, "label": "GPUs", "href": "/gpu" },
+  {
+    "id": 3,
+    "label": "GPUs",
+    "href": "/gpu",
+    "children": [
+      { "id": 31, "label": "Browse GPUs", "href": "/gpu" },
+      { "id": 32, "label": "Compare GPUs", "href": "/compare" },
+      { "id": 33, "label": "Cloud GPU Providers", "href": "/cloud-gpu" },
+      { "id": 34, "label": "Local AI Builds", "href": "/builds" }
+    ]
+  },
   { "id": 4, "label": "Compare", "href": "/compare" },
   { "id": 5, "label": "Builds", "href": "/builds" },
   { "id": 6, "label": "Guides", "href": "/guides" },

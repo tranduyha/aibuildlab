@@ -65,15 +65,30 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 10.6 - Cloud GPU final integration fix (2026-06-03).
+Day 10.7 - Cloud GPU submenu discovery (2026-06-04).
 
 ## Today Scope
 
-- Fix outdated Cloud GPU guide/hub/footer copy after `/cloud-gpu` and `/cloud-gpu/[slug]` are public.
-- Keep Cloud GPU links source-aware and avoid provider ranking, unsupported exact price, current availability, commission, benchmark, tokens/s, image-speed, or affiliate-heavy claims.
-- Re-run data validation, lint, and build after final integration fixes.
+- Add `Cloud GPU Providers` as a submenu item under `GPUs` without adding a top-level Cloud GPU header link.
+- Keep existing top-level navigation clean and preserve working top-level links.
+- Keep desktop and mobile navigation usable with the existing header pattern.
+- Avoid provider ranking, pricing, affiliate, recommendation, benchmark, tokens/s, image-speed, or availability wording.
+- Re-run lint and build after navigation changes.
 
 ## Done Today
+
+- [x] Read `AGENTS.md`, `TASK_STATUS.md`, `DAILY_LOG.md`, `docs/ROADMAP_THANG_1_2.md`, `components/Header.tsx`, `components/MainNav.tsx`, `data/navigation.json`, `/cloud-gpu`, `/gpu`, `/compare`, and `/builds` route files before editing.
+- [x] Added nested `children` support to `NavigationItem`.
+- [x] Added the recommended `GPUs` submenu in `data/navigation.json`: `Browse GPUs` to `/gpu`, `Compare GPUs` to `/compare`, `Cloud GPU Providers` to `/cloud-gpu`, and `Local AI Builds` to `/builds`.
+- [x] Updated `MainNav` to render a desktop hover/focus submenu and mobile inline submenu using Tailwind utility classes only for the new submenu treatment.
+- [x] Kept `Cloud GPU Providers` out of the top-level header navigation.
+- [x] Preserved existing top-level links for Home, Tools, GPUs, Compare, Builds, Guides, and About.
+- [x] Confirmed `/cloud-gpu` remains present in the static build output.
+- [x] Confirmed no current brand/domain hardcode appears in `components/`, `app/(frontend)/`, `lib/`, `services/`, or `repositories/`.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`; build output includes `/cloud-gpu` and `/cloud-gpu/[slug]` with 8 generated paths.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 - [x] Confirmed `/cloud-gpu` renders cleanly with 8 provider cards from `cloudGpuProviderService.getCloudGpuProviderListItems()`.
 - [x] Confirmed `/cloud-gpu/[slug]` renders 8 source-aware provider planning profiles with facts, grouped notices, sources, FAQ, related links, static params, metadata, and invalid-slug `notFound()` handling.
@@ -140,7 +155,7 @@ Day 10.6 - Cloud GPU final integration fix (2026-06-03).
 
 ## Last Completed Task
 
-Day 10.6 fixed final outdated Cloud GPU guide/hub/footer integration copy and re-ran data validation, lint, and build.
+Day 10.7 added `Cloud GPU Providers` as a submenu item under `GPUs`, kept Cloud GPU out of the top-level header nav, and re-ran lint/build.
 
 ## Open Limitations
 
@@ -160,9 +175,10 @@ Day 10.6 fixed final outdated Cloud GPU guide/hub/footer integration copy and re
 - Provider detail pages show facts, grouped notices, sources, FAQ, and safe related planning links.
 - `app/(frontend)/sitemap.ts` includes `/cloud-gpu` and all provider detail URLs from repository slugs.
 - `/guides/cloud-gpu-vs-local-gpu`, `/guides`, and the footer Explore area link safely to `/cloud-gpu`.
-- Main nav was not changed in Day 10.6.
+- Main nav now has a `GPUs` submenu with `Browse GPUs`, `Compare GPUs`, `Cloud GPU Providers`, and `Local AI Builds`; `Cloud GPU Providers` is not a separate top-level header item.
+- Desktop submenu opens on hover/focus; mobile menu shows submenu links inline under `GPUs`.
 - Cloud GPU data audit: 8 providers, 8 reviewed, 0 draft, 8 with official source-type coverage, 5 with `affiliateStatus: unknown`, 3 with `referral_verified` or `available_verified`, 0 missing `lastVerifiedAt`, and 8 with `unsafeToPublishFields`.
-- Day 10.6 checks passed: `npm run data:validate`, `npm run lint`, and `npm run build`. Data validation still reports 51 existing GPU source-field warnings unrelated to Cloud GPU providers.
+- Day 10.7 checks passed: `npm run lint` and `npm run build`.
 
 - `/guides/cloud-gpu-vs-local-gpu` now has clearer primary-section hierarchy, larger guide copy, and a mobile-safe cloud-vs-local stacked-card fallback under small widths.
 - `/guides` now presents the published guide card as a stronger entry point and includes a clearly marked non-linked planned-topics block.
