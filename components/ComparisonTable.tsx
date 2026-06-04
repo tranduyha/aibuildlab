@@ -188,7 +188,7 @@ function buildSections(gpus: Gpu[]): TableSection[] {
           noteFields: repeatedField(gpus, "powerConnectors"),
         },
         {
-          label: "Recommended PSU",
+          label: "PSU guidance",
           values: gpus.map((gpu) => getFieldValue(gpu, "recommendedPsuWatts", " W")),
           noteFields: repeatedField(gpus, "recommendedPsuWatts"),
         },

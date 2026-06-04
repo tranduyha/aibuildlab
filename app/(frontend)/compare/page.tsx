@@ -28,7 +28,7 @@ export default function CompareIndexPage() {
           <h1>GPU comparisons for local AI planning</h1>
           <p className="tool-lead">
             Use these source-aware comparisons to plan local AI hardware research. Treat verdicts as planning
-            guidance, not benchmark-backed buying recommendations.
+            guidance, not benchmark-backed buying advice.
           </p>
         </header>
 

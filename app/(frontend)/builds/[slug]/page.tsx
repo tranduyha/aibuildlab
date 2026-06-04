@@ -81,7 +81,7 @@ function getBuildSpecificNotes(slug: string): { title: string; body: string }[] 
         {
           title: "Decision framework, not a GPU shortlist",
           body:
-            "This route helps decide whether cloud testing should happen before local hardware planning. It does not include provider pricing or provider recommendations.",
+            "This route helps decide whether cloud testing should happen before local hardware planning. It does not include provider pricing or provider selection advice.",
         },
         {
           title: "Local hardware only after risk checks",

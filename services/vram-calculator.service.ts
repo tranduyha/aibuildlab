@@ -134,7 +134,7 @@ export function calculateEstimatedVram(input: VramCalculatorInput): VramEstimate
     needsReview: true,
     notes: [
       assumptions.purpose,
-      "GPU matches are planning candidates only and are not benchmark-based recommendations.",
+      "GPU matches are planning candidates only and are not benchmark-based buying advice.",
       "Observed validation samples are tracked separately and are currently estimate-only unless sourced.",
     ],
     assumptionsUsed: {

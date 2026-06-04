@@ -226,9 +226,9 @@ const workflowSteps = [
   },
 ] as const;
 
-const recommendedWorkflowStep = {
+const suggestedWorkflowStep = {
   number: "06",
-  title: "Recommended next step",
+  title: "Suggested next step",
   description:
     "If you are unsure where to start, estimate VRAM first. If the estimate is close to a local GPU tier, compare GPUs or test cloud before committing to hardware.",
   ctaLabel: "Start with VRAM Calculator",
@@ -530,21 +530,21 @@ export default function CloudGpuVsLocalGpuGuidePage() {
               ))}
               <div className="flex h-full min-h-[232px] flex-col rounded-2xl border border-[#bdd8ea] bg-[#f4fafe] p-5 shadow-[0_16px_34px_rgba(20,93,143,0.08)]">
                 <span className="font-mono text-xs font-extrabold text-[var(--primary)]">
-                  {recommendedWorkflowStep.number}
+                  {suggestedWorkflowStep.number}
                 </span>
                 <h3 className="mt-2 text-[18px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
-                  {recommendedWorkflowStep.title}
+                  {suggestedWorkflowStep.title}
                 </h3>
                 <div className="flex-1 pt-2">
                   <p className="text-[15px] leading-7 text-[var(--muted)]">
-                    {recommendedWorkflowStep.description}
+                    {suggestedWorkflowStep.description}
                   </p>
                 </div>
                 <Link
                   className="mt-auto inline-flex w-fit items-center rounded-full border border-[var(--primary)] bg-[var(--primary)] px-3 py-1.5 text-sm font-semibold !text-white transition-colors hover:!bg-[var(--primary-dark)] hover:!text-white focus-visible:!text-white"
-                  href={recommendedWorkflowStep.href}
+                  href={suggestedWorkflowStep.href}
                 >
-                  {recommendedWorkflowStep.ctaLabel}
+                  {suggestedWorkflowStep.ctaLabel}
                 </Link>
               </div>
             </div>

@@ -18,8 +18,9 @@
   "trust": {
     "editorialNote": "VRAM Forge focuses on transparent estimates, source-aware hardware data, and practical planning tools for local and cloud AI workflows.",
     "dataDisclaimer": "Hardware requirements and VRAM estimates are for educational planning only. Verify specs, prices, compatibility, availability, and provider terms before purchasing hardware or renting cloud GPUs.",
+    "affiliateDisclosureEnabled": false,
     "affiliateDisclosure": "VRAM Forge may earn a commission when you buy or sign up through links on this site. This does not affect the price you pay.",
-    "planningNote": "Estimates are transparent, source-aware, and designed for planning - not inflated affiliate claims.",
+    "planningNote": "Estimates are transparent, source-aware, and designed for planning - not inflated monetized claims.",
     "purchaseReminder": "Always verify compatibility, prices, availability, and power requirements before purchasing hardware."
   },
   "defaultOgImage": null,

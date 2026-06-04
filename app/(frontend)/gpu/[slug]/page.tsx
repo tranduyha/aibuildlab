@@ -94,7 +94,7 @@ function getVramClassNote(vramGb: number | null): { title: string; body: string 
   if (vramGb === 32) {
     return {
       title: "32GB planning note",
-      body: "32GB class cards may be researched for larger-memory planning scenarios, but this page is still not a benchmark or buying recommendation.",
+      body: "32GB class cards may be researched for larger-memory planning scenarios, but this page is still not a benchmark or buying advice.",
     };
   }
 
@@ -257,7 +257,7 @@ export default async function GpuProfilePage({ params }: GpuProfilePageProps) {
 
           <section className="tool-section explanation-grid">
             <div>
-              <h2>Best for planning fit</h2>
+              <h2>Planning fit</h2>
               <p>
                 This GPU may be researched for {gpu.useCases.length > 0 ? gpu.useCases.join(", ") : "local AI workflows"}. Final fit depends on your exact model, quantization, runtime, and context strategy.
               </p>

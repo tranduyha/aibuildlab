@@ -259,21 +259,74 @@
     "memoryType": "GDDR6X",
     "memoryBusBit": 192,
     "cudaCores": 7168,
-    "streamProcessors": 7168,
-    "computeUnits": 56,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 220,
-    "tbpWatts": 220,
+    "tbpWatts": null,
     "architecture": "Ada Lovelace",
     "launchYear": 2024,
     "aiTops": 568,
-    "benchmark": 29954,
+    "benchmark": null,
     "tokensPerSecond": null,
-    "status": "draft",
-    "needsReview": true,
-    "dataConfidence": "low",
-    "sources": [],
-    "lastVerifiedAt": null,
-    "notes": "Needs verification before publishing."
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 4070 Family",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "launchYear",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "cardDimensionsMm",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4070 SUPER Quick Start Guide",
+        "url": "https://www.nvidia.com/content/geforce-gtx/GEFORCE_RTX_4070_SUPER_User_Guide_Rev1.pdf",
+        "type": "documentation",
+        "fields": [
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "cardDimensionsMm"
+        ],
+        "accessedAt": "2026-06-04",
+        "scope": "general"
+      },
+      {
+        "name": "TechSpot NVIDIA GeForce RTX 4070 Super specs",
+        "url": "https://www.techspot.com/specs/gpu/289555-nvidia-geforce-rtx-4070-super.html",
+        "type": "database",
+        "fields": [
+          "memoryBandwidthGbps",
+          "memorySpeedGbps"
+        ],
+        "accessedAt": "2026-06-04"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-04",
+    "notes": "Core reference specs are from NVIDIA official RTX 4070 family specs and the RTX 4070 SUPER quick start guide. Memory bandwidth and memory speed are database cross-check fields because the NVIDIA public family spec table does not list those values directly. Power connector and dimensions describe NVIDIA Founders Edition/reference guidance; add-in-card manufacturer models can vary, so AIB-specific board details should be verified per exact SKU.",
+    "memoryBandwidthGbps": 504,
+    "baseClockGhz": 1.98,
+    "boostClockGhz": 2.48,
+    "memorySpeedGbps": 21,
+    "recommendedPsuWatts": 650,
+    "powerConnectors": "2 x PCIe 8-pin cables via adapter or 1 x 300W+ PCIe Gen 5 16-pin cable",
+    "cardDimensionsMm": "244 x 112 x 41",
+    "displayOutputs": "HDMI, 3 x DisplayPort"
   },
   {
     "id": "gpu-rtx-4070-ti-super",

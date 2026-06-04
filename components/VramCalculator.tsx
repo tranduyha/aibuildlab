@@ -156,7 +156,7 @@ export default function VramCalculator() {
         </div>
         <p className="estimate-value">{result.estimatedVramGb.toFixed(1)} GB</p>
         <p className="estimate-minimum">
-          Recommended planning minimum: <strong>{result.recommendedMinimumVramGb} GB VRAM</strong>
+          Planning minimum: <strong>{result.recommendedMinimumVramGb} GB VRAM</strong>
         </p>
         <dl className="estimate-details">
           <div>

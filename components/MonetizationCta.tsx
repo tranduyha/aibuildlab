@@ -1,5 +1,9 @@
 import Link from "next/link";
-import type { MonetizationPlacementListItem } from "@/services/monetization-placement.service";
+import {
+  getPlacementCtaModel,
+  isPlacementSafeToRender,
+  type MonetizationPlacementListItem,
+} from "@/services/monetization-placement.service";
 
 interface MonetizationCtaProps {
   item: MonetizationPlacementListItem;
@@ -14,25 +18,25 @@ const toneClasses = {
 
 export default function MonetizationCta({ item }: MonetizationCtaProps) {
   const { placement, disclosure } = item;
+  const ctaModel = getPlacementCtaModel(placement);
+
+  if (!isPlacementSafeToRender(placement) || !ctaModel) {
+    return null;
+  }
+
   const toneClass = toneClasses[placement.tone];
 
   return (
     <aside className={`rounded-lg border p-5 shadow-sm ${toneClass}`} aria-label={placement.title}>
       <p className="text-xs font-semibold uppercase tracking-wide opacity-80">Planning CTA</p>
-      <h2 className="mt-2 text-lg font-semibold tracking-normal">{placement.title}</h2>
-      <p className="mt-2 text-sm leading-6 opacity-85">{placement.description}</p>
-      {placement.href ? (
-        <Link
-          className="mt-4 inline-flex w-fit items-center rounded-md border border-current px-3 py-2 text-sm font-semibold transition hover:opacity-80"
-          href={placement.href}
-        >
-          {placement.ctaLabel} <span className="ml-2" aria-hidden="true">-&gt;</span>
-        </Link>
-      ) : (
-        <span className="mt-4 inline-flex w-fit items-center rounded-md border border-current px-3 py-2 text-sm font-semibold opacity-80">
-          {placement.ctaLabel}
-        </span>
-      )}
+      <h2 className="mt-2 text-lg font-semibold tracking-normal">{ctaModel.title}</h2>
+      <p className="mt-2 text-sm leading-6 opacity-85">{ctaModel.description}</p>
+      <Link
+        className="mt-4 inline-flex w-fit items-center rounded-md border border-current px-3 py-2 text-sm font-semibold transition hover:opacity-80"
+        href={ctaModel.href}
+      >
+        {ctaModel.ctaLabel} <span className="ml-2" aria-hidden="true">-&gt;</span>
+      </Link>
       <p className="mt-3 text-xs leading-5 opacity-75">{disclosure}</p>
     </aside>
   );

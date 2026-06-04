@@ -45,7 +45,7 @@ const rows = [
     cloud: "Capacity, regions, and billing terms can change, so verify before relying on a workflow.",
   },
   {
-    label: "Best planning use",
+    label: "Planning use",
     local: "Frequent workloads, privacy-sensitive testing, and long-term local workflow planning.",
     cloud: "Uncertain VRAM needs, temporary high-memory tests, or validation before local hardware.",
   },

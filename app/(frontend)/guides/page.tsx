@@ -8,6 +8,29 @@ const plannedGuideTopics = [
   "AI workstation software stack planning",
 ] as const;
 
+const hubSteps = [
+  {
+    label: "Size",
+    title: "Estimate workload size",
+    description: "Start with VRAM planning before assuming a local or cloud route will fit.",
+  },
+  {
+    label: "Context",
+    title: "Review hardware context",
+    description: "Check GPU profiles, build routes, and comparisons before narrowing an option set.",
+  },
+  {
+    label: "Tradeoffs",
+    title: "Use guides for tradeoffs",
+    description: "Guide pages help compare control, setup effort, and workflow direction without provider ranking.",
+  },
+  {
+    label: "Verify",
+    title: "Verify the exact path",
+    description: "Validate your runtime, storage, privacy, and operational requirements before committing.",
+  },
+] as const;
+
 function getGuideTopicLabel(slug: string): string {
   if (slug === "cloud-gpu-vs-local-gpu") {
     return "Cloud vs Local planning";
@@ -60,27 +83,24 @@ export default function GuidesIndexPage() {
 
         <section className="tool-section">
           <h2>How to use the guide hub</h2>
-          <div className="compare-workflow-grid">
-            <div>
-              <span>01</span>
-              <h3>Estimate workload size</h3>
-              <p>Start with VRAM planning before assuming a local or cloud route will fit.</p>
-            </div>
-            <div>
-              <span>02</span>
-              <h3>Review hardware context</h3>
-              <p>Check GPU profiles, build routes, and comparisons before narrowing an option set.</p>
-            </div>
-            <div>
-              <span>03</span>
-              <h3>Use guides for tradeoffs</h3>
-              <p>Guide pages help compare control, setup effort, and workflow direction without provider ranking.</p>
-            </div>
-            <div>
-              <span>04</span>
-              <h3>Verify the exact path</h3>
-              <p>Validate your runtime, storage, privacy, and operational requirements before committing.</p>
-            </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {hubSteps.map((step) => (
+              <div
+                className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5"
+                key={step.title}
+              >
+                <div className="mb-4 flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[var(--primary)]" aria-hidden="true" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--primary)]">
+                    {step.label}
+                  </span>
+                </div>
+                <h3 className="text-[18px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-[15px] leading-7 text-[var(--muted)]">{step.description}</p>
+              </div>
+            ))}
           </div>
         </section>
 

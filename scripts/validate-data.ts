@@ -261,6 +261,7 @@ const monetizationPlacementRequiredFields = [
   "description",
   "ctaLabel",
   "href",
+  "intent",
   "tone",
   "affiliateConfigured",
   "requiresDisclosure",
@@ -275,6 +276,7 @@ const monetizationPlacementRequiredFields = [
 
 const monetizationPlacementSourceBackedFields = [
   "href",
+  "intent",
   "placementType",
   "requiresDisclosure",
   "notes",
@@ -291,9 +293,19 @@ const monetizationAllowedPlacementTypes = new Set([
 ]);
 
 const monetizationAllowedTones = new Set(["primary", "secondary", "disclosure", "neutral"]);
-const monetizationAllowedStatuses = new Set(["draft", "reviewed", "published"]);
+const monetizationAllowedStatuses = new Set(["draft", "reviewed", "published", "disabled"]);
 const monetizationAllowedDataConfidences = new Set(["low", "medium", "high"]);
 const monetizationAllowedSourceTypes = new Set(["manual-check", "documentation", "official"]);
+const monetizationAllowedIntents = new Set(["planning", "disclosure", "internal-link"]);
+const forbiddenMonetizationCtaLabels = [
+  "buy now",
+  "sign up now",
+  "get deal",
+  "claim deal",
+  "best offer",
+  "cheapest",
+  "recommended",
+];
 
 let errors = 0;
 let warnings = 0;
@@ -340,6 +352,19 @@ function checkUniqueSlugs(file: string, records: RecordLike[]) {
     }
     if (seen.has(slug)) logError(`${file}: duplicate slug/id "${slug}"`);
     seen.add(slug);
+  }
+}
+
+function checkUniqueField(file: string, records: RecordLike[], field: string) {
+  const seen = new Set<string>();
+  for (const rec of records) {
+    const value = rec[field];
+    if (typeof value !== "string" || value.length === 0) {
+      logWarning(`${file}: record missing ${field} (${rec.name || rec.title || rec.slug || "unknown"})`);
+      continue;
+    }
+    if (seen.has(value)) logError(`${file}: duplicate ${field} "${value}"`);
+    seen.add(value);
   }
 }
 
@@ -648,12 +673,15 @@ function checkMonetizationPlacements() {
   }
 
   checkUniqueSlugs(file, records);
+  checkUniqueField(file, records, "id");
+  checkUniqueField(file, records, "slug");
   checkRequiredFields(file, records, monetizationPlacementRequiredFields);
 
   for (const rec of records) {
     const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
 
     checkEnumValue(file, rec, "placementType", monetizationAllowedPlacementTypes);
+    checkEnumValue(file, rec, "intent", monetizationAllowedIntents);
     checkEnumValue(file, rec, "tone", monetizationAllowedTones);
     checkEnumValue(file, rec, "status", monetizationAllowedStatuses);
     checkEnumValue(file, rec, "dataConfidence", monetizationAllowedDataConfidences);
@@ -677,6 +705,10 @@ function checkMonetizationPlacements() {
 
     if (typeof rec.href === "string" && !rec.href.startsWith("/")) {
       logError(`${file}:${label}: href must be an internal route while affiliate links are unconfigured`);
+    }
+
+    if (typeof rec.href === "string" && rec.href === "/ai-tools" && !fs.existsSync(path.join(root, "app/(frontend)/ai-tools"))) {
+      logError(`${file}:${label}: /ai-tools href is not allowed until the /ai-tools route exists`);
     }
 
     if (!Array.isArray(rec.unsafeToPublishFields)) {
@@ -722,9 +754,16 @@ function checkMonetizationPlacements() {
 
     for (const blockedPhrase of [
       "commission",
+      "discount",
+      "buy now",
+      "sign up now",
+      "get deal",
+      "claim deal",
+      "best offer",
       "cheapest",
       "fastest",
       "top-rated",
+      "recommended",
       "recommended provider",
       "recommended tool",
       "best ai",
@@ -736,6 +775,19 @@ function checkMonetizationPlacements() {
       if (searchableText.includes(blockedPhrase)) {
         logError(`${file}:${label}: unsupported "${blockedPhrase}" wording`);
       }
+    }
+
+    if (typeof rec.ctaLabel === "string") {
+      const ctaLabel = rec.ctaLabel.toLowerCase();
+      for (const blockedLabel of forbiddenMonetizationCtaLabels) {
+        if (ctaLabel.includes(blockedLabel)) {
+          logError(`${file}:${label}: forbidden CTA label wording "${blockedLabel}"`);
+        }
+      }
+    }
+
+    if (rec.affiliateConfigured === false && searchableText.includes("commission")) {
+      logError(`${file}:${label}: affiliateConfigured=false must not include commission copy`);
     }
   }
 }

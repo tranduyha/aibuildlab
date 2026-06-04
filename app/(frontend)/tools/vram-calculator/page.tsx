@@ -55,11 +55,6 @@ export default function VramCalculatorPage() {
       url: pageUrl,
       applicationCategory: "UtilityApplication",
       operatingSystem: "Web",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-      },
     },
     {
       "@context": "https://schema.org",
@@ -148,7 +143,7 @@ export default function VramCalculatorPage() {
               </p>
               <p>
                 Choose a model size, a rough quantization level, and the context
-                preset that best represents your intended workload. The output is
+                preset that most closely represents your intended workload. The output is
                 meant for early GPU memory planning: exploring local LLM GPU memory,
                 evaluating whether a build should target a larger VRAM tier, or
                 deciding where further benchmarking is necessary. The same caution
@@ -213,7 +208,7 @@ export default function VramCalculatorPage() {
               </p>
             </div>
             <div>
-              <h2>Recommended GPU VRAM tiers</h2>
+              <h2>GPU VRAM planning tiers</h2>
               <p>
                 Results are grouped into planning tiers such as 8 GB, 12 GB, 16 GB,
                 or 24 GB and above. A tier is not a GPU endorsement. GPU records and
@@ -263,7 +258,7 @@ export default function VramCalculatorPage() {
             <h2>Related AI hardware guides</h2>
             <p className="related-note">
               These planned guides remain draft until their hardware data and
-              recommendations are verified for publication by {settings.name}.
+              guidance scope is verified for publication by {settings.name}.
             </p>
             <div className="related-links">
               {relatedLinks.map((link) => (

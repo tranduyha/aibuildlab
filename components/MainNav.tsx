@@ -25,6 +25,8 @@ export default function MainNav({ items }: MainNavProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [openSubmenuId, setOpenSubmenuId] = useState<number | null>(null);
+  const [hoveredSubmenuId, setHoveredSubmenuId] = useState<number | null>(null);
+  const [dismissedSubmenuId, setDismissedSubmenuId] = useState<number | null>(null);
   const topLevelHrefs = new Set(items.map((item) => item.href));
 
   return (
@@ -37,6 +39,8 @@ export default function MainNav({ items }: MainNavProps) {
           setIsOpen((current) => {
             if (current) {
               setOpenSubmenuId(null);
+            } else {
+              setOpenSubmenuId(items.find((item) => item.children?.length)?.id ?? null);
             }
 
             return !current;
@@ -63,12 +67,24 @@ export default function MainNav({ items }: MainNavProps) {
             activeNestedChildren.length > 0;
 
           if (childItems.length > 0) {
-            const isMobileSubmenuOpen = isOpen || openSubmenuId === item.id;
+            const isMobileSubmenuOpen = isOpen && openSubmenuId === item.id;
+            const isDesktopSubmenuDismissed = dismissedSubmenuId === item.id;
+            const isDesktopSubmenuOpen =
+              hoveredSubmenuId === item.id && !isDesktopSubmenuDismissed;
 
             return (
               <div
-                className="group relative max-[980px]:rounded-lg"
+                className="relative max-[980px]:rounded-lg"
                 key={item.id}
+                onMouseEnter={() => {
+                  if (!isDesktopSubmenuDismissed) {
+                    setHoveredSubmenuId(item.id);
+                  }
+                }}
+                onMouseLeave={() => {
+                  setHoveredSubmenuId(null);
+                  setDismissedSubmenuId(null);
+                }}
               >
                 <button
                   aria-current={isOwnActive ? "page" : undefined}
@@ -76,13 +92,17 @@ export default function MainNav({ items }: MainNavProps) {
                   className={`nav-link inline-flex cursor-pointer items-center gap-2 max-[980px]:flex max-[980px]:w-full max-[980px]:items-center max-[980px]:justify-between max-[980px]:text-left max-[980px]:leading-5 max-[980px]:hover:bg-[var(--surface-alt)] max-[980px]:focus-visible:bg-[var(--surface-alt)]${
                     isActive ? " nav-link-active" : ""
                   }`}
+                  onClick={() => {
+                    setDismissedSubmenuId(null);
+                    setOpenSubmenuId((current) => (current === item.id ? null : item.id));
+                  }}
                   type="button"
                 >
                   <span className="min-w-0">{item.label}</span>
                   <span
                     aria-hidden="true"
-                    className={`ml-auto flex h-5 w-5 shrink-0 items-center justify-center self-center text-slate-500 transition duration-200 group-hover:rotate-180 group-hover:text-sky-700 group-focus-within:rotate-180 group-focus-within:text-sky-700 max-[980px]:my-auto ${
-                      isMobileSubmenuOpen ? "rotate-180 text-sky-700" : ""
+                    className={`ml-auto flex h-5 w-5 shrink-0 items-center justify-center self-center text-slate-500 transition duration-200 max-[980px]:my-auto ${
+                      isMobileSubmenuOpen || isDesktopSubmenuOpen ? "rotate-180 text-sky-700" : ""
                     }`}
                   >
                     <svg
@@ -102,7 +122,11 @@ export default function MainNav({ items }: MainNavProps) {
                   </span>
                 </button>
                 <div
-                  className={`pointer-events-none absolute left-1/2 top-full z-20 hidden w-56 -translate-x-1/2 pt-3 opacity-0 transition group-hover:block group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:block group-focus-within:pointer-events-auto group-focus-within:opacity-100 max-[980px]:static max-[980px]:w-full max-[980px]:translate-x-0 max-[980px]:pt-1 ${
+                  className={`absolute left-1/2 top-full z-20 w-56 -translate-x-1/2 pt-3 transition max-[980px]:static max-[980px]:w-full max-[980px]:translate-x-0 max-[980px]:pt-1 ${
+                    isDesktopSubmenuOpen
+                      ? "pointer-events-auto block opacity-100"
+                      : "pointer-events-none hidden opacity-0"
+                  } ${
                     isMobileSubmenuOpen
                       ? "max-[980px]:pointer-events-auto max-[980px]:block max-[980px]:opacity-100"
                       : "max-[980px]:pointer-events-none max-[980px]:hidden max-[980px]:opacity-0"
@@ -122,6 +146,8 @@ export default function MainNav({ items }: MainNavProps) {
                           href={child.href}
                           key={child.id}
                           onClick={() => {
+                            setDismissedSubmenuId(item.id);
+                            setHoveredSubmenuId(null);
                             setIsOpen(false);
                             setOpenSubmenuId(null);
                           }}

@@ -15,7 +15,7 @@ const PAGE_PATH = "/cloud-gpu";
 const sourceNotices = [
   "Cloud GPU provider pricing and capacity can change, so cost planning should be checked against official provider pages.",
   "Provider terms, referral policies, and billing details should be verified on official pages before use.",
-  "These provider records are planning references, not rankings, pricing tables, or buying recommendations.",
+  "These provider records are planning references, not rankings, pricing tables, or buying advice.",
   "No provider ranking is provided on this page.",
 ];
 
@@ -196,7 +196,7 @@ export default function CloudGpuPage() {
               Cloud GPU Providers for AI Workload Planning
             </h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-              Review source-aware Cloud GPU provider profiles after estimating VRAM and comparing cloud versus local tradeoffs. This hub is not a ranking page, pricing table, or buying recommendation.
+              Review source-aware Cloud GPU provider profiles after estimating VRAM and comparing cloud versus local tradeoffs. This hub is not a ranking page, pricing table, or buying advice.
             </p>
           </div>
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">

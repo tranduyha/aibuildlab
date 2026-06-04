@@ -59,7 +59,7 @@ const helpTopics = [
 const trustChips = [
   "Transparent VRAM estimates",
   "Source-aware hardware data",
-  "No inflated affiliate claims",
+  "No inflated monetized claims",
   "Built for local AI planning",
 ];
 
@@ -248,7 +248,9 @@ export default function HomePage() {
           <div className="trust-grid">
             <p>{settings.trust.editorialNote}</p>
             <p>{settings.trust.dataDisclaimer}</p>
-            <p>{settings.trust.affiliateDisclosure}</p>
+            {settings.trust.affiliateDisclosureEnabled ? (
+              <p>{settings.trust.affiliateDisclosure}</p>
+            ) : null}
           </div>
         </div>
       </section>

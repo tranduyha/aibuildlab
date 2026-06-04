@@ -294,7 +294,7 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
 
           <section className="comparison-cta-block" aria-label="Estimate your model before deciding">
             <div>
-              <p className="eyebrow">RECOMMENDED NEXT STEP</p>
+              <p className="eyebrow">PLANNING NEXT STEP</p>
               <h2>Check model memory before choosing between these GPUs</h2>
               <p>
                 Run your model assumptions through the VRAM Calculator, then return to GPU profiles for source

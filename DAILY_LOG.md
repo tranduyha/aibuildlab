@@ -38,6 +38,74 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-04 - Day 14 SEO QA, disclosure cleanup, guide hub polish, and monetization hardening
+
+### Agent
+Codex
+
+### Planned Task
+Complete Day 14 foundation audit before Month 2 scaling without creating new content pages or wiring monetization broadly.
+
+### Completed
+- [x] Confirmed `affiliateDisclosureEnabled` remains `false` and affiliate disclosure text remains stored in `data/site-settings.json`.
+- [x] Confirmed footer and homepage only render `affiliateDisclosure` when `settings.trust.affiliateDisclosureEnabled === true`.
+- [x] Changed visible planning copy away from affiliate/commission wording while keeping source-aware planning disclaimers visible.
+- [x] Polished `/guides` hub by replacing the numbered 01/02/03/04 blocks with non-numbered dot/label planning cards.
+- [x] Hardened monetization placement types with `intent` and `disabled` status support.
+- [x] Added repository helpers: `getMonetizationPlacementById`, `getSafePlacementsForRoute`, and `getEnabledPlacementForRoute`.
+- [x] Added service helpers: `isPlacementSafeToRender`, `getPlacementCtaModel`, `getSafePlacementsForRoute`, and `getPlacementTypeLabel`.
+- [x] Updated `MonetizationCta` so unsafe, draft, reviewed, needs-review, disclosure-required, affiliate-configured, external, or missing-route placements return `null`.
+- [x] Hardened `scripts/validate-data.ts` for monetization placement `intent`, disabled status, unique ids/slugs, internal hrefs, `/ai-tools` guards, forbidden CTA labels, and commission-copy checks.
+- [x] Removed `Offer` schema and price `0` from the VRAM Calculator WebApplication schema.
+- [x] Audited sitemap, robots, nav, footer, metadata/H1 signals, schema types, public wording, and monetization placement safety.
+- [x] Confirmed no `/ai-tools` route, nav link, sitemap entry, or placement href was added.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 51 existing GPU source-field mapping warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Manual audit script for sitemap, robots, nav/footer, H1 signals, schema, disclosure visibility, and placement safety.
+- [x] Monetization route-safe helper smoke test returned 0 renderable CTA models for current reviewed/needs-review placements.
+
+### Issues
+- Blocking: none found.
+- Safe to backlog: no live monetization placements render yet because all 7 placements remain `reviewed` and `needsReview: true`.
+- Unrelated legacy warnings: 51 `data/gpus.json` source-field mapping warnings remain unchanged.
+- Browser viewport screenshots were not run; responsive review was conceptual from current responsive classes and build output.
+
+### Files Changed
+- `app/(frontend)/page.tsx`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `app/(frontend)/compare/page.tsx`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `app/(frontend)/cloud-gpu/[slug]/page.tsx`
+- `components/CloudVsLocalTable.tsx`
+- `components/ComparisonTable.tsx`
+- `components/GpuSpecTable.tsx`
+- `components/MonetizationCta.tsx`
+- `components/VramCalculator.tsx`
+- `data/monetization-placements.json`
+- `data/site-settings.json`
+- `repositories/monetization-placement.repository.ts`
+- `services/ai-tool.service.ts`
+- `services/gpu.service.ts`
+- `services/monetization-placement.service.ts`
+- `services/vram-calculator.service.ts`
+- `scripts/validate-data.ts`
+- `types/monetization-placement.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Day 15 - Start Month 2 readiness cleanup with GPU source-field mapping backlog, then choose one cluster to expand only after data quality is ready.
+
+---
+
 ## 2026-06-04 - Day 13 Monetization placement audit
 
 ### Agent

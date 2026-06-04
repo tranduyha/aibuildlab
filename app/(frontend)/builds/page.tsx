@@ -4,6 +4,15 @@ import BuildCta from "@/components/BuildCta";
 import { buildMetadata } from "@/lib/seo";
 import { buildService } from "@/services/build.service";
 
+const relatedPlanningTools = [
+  { label: "Estimate VRAM first", href: "/tools/vram-calculator" },
+  { label: "View matching GPU profiles", href: "/gpu" },
+  { label: "Compare GPUs", href: "/compare" },
+  { label: "Read practical guides", href: "/guides" },
+  { label: "Review Cloud GPU profiles", href: "/cloud-gpu" },
+  { label: "Review local AI builds", href: "#build-planning-routes" },
+] as const;
+
 export const metadata = buildMetadata({
   title: "Local AI Workstation Build Planning",
   description:
@@ -64,7 +73,7 @@ export default function BuildsIndexPage() {
           </div>
         </section>
 
-        <section className="tool-section">
+        <section className="tool-section" id="build-planning-routes">
           <h2>Build planning routes</h2>
           <div className="build-card-grid">
             {buildItems.map((item) => (
@@ -101,19 +110,19 @@ export default function BuildsIndexPage() {
 
         <section className="tool-section related-section">
           <h2>Related planning tools</h2>
-          <div className="related-links">
-            <Link href="/tools/vram-calculator">
-              Estimate VRAM first <span>&rarr;</span>
-            </Link>
-            <Link href="/gpu">
-              View matching GPU profiles <span>&rarr;</span>
-            </Link>
-            <Link href="/compare">
-              Compare source-backed GPU planning profiles <span>&rarr;</span>
-            </Link>
-            <Link href="/guides">
-              Read practical guides <span>&rarr;</span>
-            </Link>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            {relatedPlanningTools.map((item) => (
+              <Link
+                className="flex min-h-16 items-center justify-between gap-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm font-semibold text-[var(--foreground)] transition hover:border-[var(--primary)] hover:bg-[var(--surface-alt)] hover:text-[var(--primary)]"
+                href={item.href}
+                key={item.href}
+              >
+                <span>{item.label}</span>
+                <span className="shrink-0" aria-hidden="true">
+                  -&gt;
+                </span>
+              </Link>
+            ))}
           </div>
         </section>
 

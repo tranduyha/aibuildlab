@@ -25,6 +25,7 @@ export interface SiteSettings {
   trust: {
     editorialNote: string;
     dataDisclaimer: string;
+    affiliateDisclosureEnabled: boolean;
     affiliateDisclosure: string;
     planningNote: string;
     purchaseReminder: string;

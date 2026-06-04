@@ -97,7 +97,7 @@ export default function GpuSpecTable({ gpu }: GpuSpecTableProps) {
     ...getVendorPowerRows(gpu),
     buildRow(gpu, "Power consumption", "powerConsumptionWatts", gpu.powerConsumptionWatts ?? null, "W"),
     buildRow(gpu, "Power connectors", "powerConnectors", gpu.powerConnectors ?? null),
-    buildRow(gpu, "Recommended PSU", "recommendedPsuWatts", gpu.recommendedPsuWatts ?? null, "W"),
+    buildRow(gpu, "PSU guidance", "recommendedPsuWatts", gpu.recommendedPsuWatts ?? null, "W"),
     buildRow(gpu, "Card dimensions", "cardDimensionsMm", gpu.cardDimensionsMm ?? null),
     buildRow(gpu, "Display outputs", "displayOutputs", gpu.displayOutputs ?? null),
     buildRow(gpu, "Launch date", "launchDate", gpu.launchDate ?? null),

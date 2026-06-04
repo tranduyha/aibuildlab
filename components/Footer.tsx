@@ -87,7 +87,9 @@ export default function Footer() {
         </nav>
         <div className="footer-trust">
           <h2>Transparency</h2>
-          <p>{settings.trust.affiliateDisclosure}</p>
+          {settings.trust.affiliateDisclosureEnabled ? (
+            <p>{settings.trust.affiliateDisclosure}</p>
+          ) : null}
           <p>{settings.trust.dataDisclaimer}</p>
         </div>
       </div>

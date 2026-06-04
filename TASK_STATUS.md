@@ -65,17 +65,58 @@ Không dùng thư mục `src`.
 
 ## Current Day
 
-Day 13 - Monetization placement system (2026-06-04).
+Day 14 - SEO QA, disclosure cleanup, guide hub polish, and monetization helper hardening (2026-06-04).
 
 ## Today Scope
 
-- Create a neutral monetization placement data, repository, service, and reusable CTA component.
-- Keep Day 13 placement work separate from Day 12 guide content.
-- Do not add affiliate links, commission claims, prices, rankings, Product schema, Offer schema, Review schema, or promotional recommendations.
-- Keep all placement hrefs internal while affiliate links are unconfigured.
+- Finish the Day 14 foundation audit before Month 2 scaling.
+- Do not create `/ai-tools` or any new SEO pages.
+- Keep affiliate disclosure hidden while `affiliateDisclosureEnabled` is false.
+- Polish `/guides` hub without changing published guide cards.
+- Harden monetization placement helpers so unsafe placements cannot render.
+- Keep sitemap, robots, navigation, footer, metadata, H1, schema, and source-claim safety clean.
 - Run `npm run data:validate`, `npm run lint`, and `npm run build`.
 
+## Month 2 Readiness
+
+Cluster A - Hardware / GPU / VRAM:
+- Data/source cleanup should start with the 51 existing GPU source-field mapping warnings.
+- Model VRAM page candidates should wait for source-backed calculator/model data quality.
+- GPU, comparison, and build expansion candidates should be chosen from verified source coverage first.
+
+Cluster B - Cloud GPU / AI infra:
+- Cloud GPU guide candidates can expand only after provider data review.
+- Provider records need recurring verification for terms, billing model notes, referral status, and source field coverage.
+
+Cluster C - AI SaaS / software bridge:
+- AI tool data should be reviewed before any public `/ai-tools` route exists.
+- `/ai-tools` should only be created after data and guide readiness are clear.
+- AI workstation software stack guide is a candidate, but should remain planning-oriented and source-aware.
+
 ## Done Today
+
+- [x] Confirmed `affiliateDisclosureEnabled` remains `false` and `affiliateDisclosure` text is retained in config.
+- [x] Confirmed footer and homepage only render affiliate disclosure when `settings.trust.affiliateDisclosureEnabled === true`.
+- [x] Polished `/guides` hub by replacing numbered guide-hub blocks with dot/label planning cards.
+- [x] Added monetization placement `intent` and `disabled` status support.
+- [x] Added `getMonetizationPlacementById`, `getSafePlacementsForRoute`, and `getEnabledPlacementForRoute` to the monetization placement repository.
+- [x] Added `isPlacementSafeToRender`, `getPlacementCtaModel`, `getSafePlacementsForRoute`, and `getPlacementTypeLabel` to the monetization placement service.
+- [x] Updated `MonetizationCta` to return `null` for unsafe placements.
+- [x] Hardened `scripts/validate-data.ts` for monetization placement intent/status/href/CTA safety.
+- [x] Removed `Offer` schema and price `0` from the VRAM Calculator schema.
+- [x] Confirmed sitemap includes `/guides/local-ai-vs-ai-saas`, `/cloud-gpu`, and provider detail route generation.
+- [x] Confirmed sitemap does not include `/ai-tools` and robots allows public routes.
+- [x] Confirmed header top-level nav has no separate `Compare` or `Builds`; both remain under the `GPUs` submenu.
+- [x] Confirmed Cloud GPU remains discoverable through header submenu and footer.
+- [x] Confirmed footer keeps grouped `Plan`, `Hardware`, and `Learn` layout.
+- [x] Confirmed key route templates have one H1 signal.
+- [x] Confirmed no Product, Offer, Review, or AggregateRating schema remains in app/components/lib/services/repositories.
+- [x] Confirmed current monetization helpers return 0 safe live CTA models because all placements remain reviewed/needs-review.
+- [x] Ran `npm run data:validate` with 0 errors and 51 existing unrelated GPU warnings.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Updated `DAILY_LOG.md`.
+- [x] Updated `TASK_STATUS.md`.
 
 - [x] Added `data/monetization-placements.json` with 7 reviewed planning placements.
 - [x] Added strict placement types in `types/monetization-placement.ts` and exported them from `types/index.ts`.

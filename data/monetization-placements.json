@@ -7,6 +7,7 @@
     "description": "Use this neutral placement after a VRAM estimate to continue into source-aware local GPU planning.",
     "ctaLabel": "Compare GPUs",
     "href": "/compare",
+    "intent": "internal-link",
     "tone": "primary",
     "affiliateConfigured": false,
     "requiresDisclosure": false,
@@ -23,7 +24,7 @@
       }
     ],
     "lastVerifiedAt": "2026-06-04",
-    "notes": "Internal planning CTA only. No affiliate link, price claim, monetized term, ranking, or recommendation is configured.",
+    "notes": "Internal planning CTA only. No outbound monetized link, price claim, promotional term, ranking, or selection advice is configured.",
     "unsafeToPublishFields": ["affiliateConfigured"]
   },
   {
@@ -34,6 +35,7 @@
     "description": "Point GPU profile readers back to the calculator before narrowing a local hardware path.",
     "ctaLabel": "Open VRAM Calculator",
     "href": "/tools/vram-calculator",
+    "intent": "planning",
     "tone": "secondary",
     "affiliateConfigured": false,
     "requiresDisclosure": false,
@@ -50,7 +52,7 @@
       }
     ],
     "lastVerifiedAt": "2026-06-04",
-    "notes": "Internal planning CTA only. It should not be presented as a hardware recommendation.",
+    "notes": "Internal planning CTA only. It should not be presented as hardware selection advice.",
     "unsafeToPublishFields": ["affiliateConfigured"]
   },
   {
@@ -61,6 +63,7 @@
     "description": "After comparing GPUs, continue into build planning only after workload and compatibility constraints are clear.",
     "ctaLabel": "Open build planning",
     "href": "/builds",
+    "intent": "planning",
     "tone": "secondary",
     "affiliateConfigured": false,
     "requiresDisclosure": false,
@@ -88,6 +91,7 @@
     "description": "Use this neutral bridge when a build page needs a cautious cloud validation step before local hardware commitment.",
     "ctaLabel": "Review Cloud GPU options",
     "href": "/cloud-gpu",
+    "intent": "planning",
     "tone": "secondary",
     "affiliateConfigured": false,
     "requiresDisclosure": false,
@@ -115,6 +119,7 @@
     "description": "Bridge from the cloud-vs-local guide to provider planning profiles without ranking providers.",
     "ctaLabel": "Open Cloud GPU profiles",
     "href": "/cloud-gpu",
+    "intent": "planning",
     "tone": "secondary",
     "affiliateConfigured": false,
     "requiresDisclosure": false,
@@ -131,7 +136,7 @@
       }
     ],
     "lastVerifiedAt": "2026-06-04",
-    "notes": "Internal planning CTA only. No provider recommendation or affiliate link is configured.",
+    "notes": "Internal planning CTA only. No provider selection advice or outbound monetized link is configured.",
     "unsafeToPublishFields": ["affiliateConfigured"]
   },
   {
@@ -142,6 +147,7 @@
     "description": "Bridge AI SaaS guide readers back to workload sizing before comparing local, cloud, and hosted tool paths.",
     "ctaLabel": "Estimate VRAM",
     "href": "/tools/vram-calculator",
+    "intent": "planning",
     "tone": "primary",
     "affiliateConfigured": false,
     "requiresDisclosure": false,
@@ -158,7 +164,7 @@
       }
     ],
     "lastVerifiedAt": "2026-06-04",
-    "notes": "Internal planning CTA only. AI tool recommendations and affiliate links are not configured.",
+    "notes": "Internal planning CTA only. AI tool selection advice and outbound monetized links are not configured.",
     "unsafeToPublishFields": ["affiliateConfigured"]
   },
   {
@@ -169,6 +175,7 @@
     "description": "Reserve a disclosure placement for future monetization messaging while current affiliate links remain unconfigured.",
     "ctaLabel": "Disclosure only",
     "href": null,
+    "intent": "disclosure",
     "tone": "disclosure",
     "affiliateConfigured": false,
     "requiresDisclosure": true,
@@ -185,7 +192,7 @@
       }
     ],
     "lastVerifiedAt": "2026-06-04",
-    "notes": "Disclosure placement only. Future affiliate messaging must remain transparent and source-aware.",
+    "notes": "Disclosure placement only. Future monetized messaging must remain transparent and source-aware.",
     "unsafeToPublishFields": ["affiliateConfigured", "href"]
   }
 ]

@@ -9,11 +9,13 @@ export type MonetizationPlacementType =
 
 export type MonetizationPlacementTone = "primary" | "secondary" | "disclosure" | "neutral";
 
-export type MonetizationPlacementStatus = "draft" | "reviewed" | "published";
+export type MonetizationPlacementStatus = "draft" | "reviewed" | "published" | "disabled";
 
 export type MonetizationPlacementDataConfidence = "low" | "medium" | "high";
 
 export type MonetizationPlacementSourceType = "manual-check" | "documentation" | "official";
+
+export type MonetizationPlacementIntent = "planning" | "disclosure" | "internal-link";
 
 export interface MonetizationPlacementSource {
   name: string;
@@ -31,6 +33,7 @@ export interface MonetizationPlacement {
   description: string;
   ctaLabel: string;
   href: string | null;
+  intent: MonetizationPlacementIntent;
   tone: MonetizationPlacementTone;
   affiliateConfigured: boolean;
   requiresDisclosure: boolean;

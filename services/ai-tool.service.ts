@@ -124,7 +124,7 @@ export function getAiToolPlacementNotice(tool: AiTool): string {
     return "No editorial placement has been assigned for this planning record yet.";
   }
 
-  return "Placement labels are internal planning hints only, not tool recommendations or rankings.";
+  return "Placement labels are internal planning hints only, not tool selection advice or rankings.";
 }
 
 export function getAiToolCategoryLabel(category: AiToolCategory): string {

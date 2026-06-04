@@ -97,7 +97,7 @@ const profileUseSteps = [
 
 const faqItems = [
   {
-    question: "Is this provider a recommendation?",
+    question: "Does this profile choose a provider?",
     answer:
       "No. This profile is a planning reference based on the current provider record and its listed sources. It does not rank providers or tell you which provider to choose.",
   },
