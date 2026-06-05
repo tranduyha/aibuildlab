@@ -7,7 +7,7 @@
   "tagline": "Plan GPU memory, hardware, and tools for local AI workloads.",
   "logo": {
     "type": "text",
-    "text": "VRAM Forge",
+    "text": "VRAMForge",
     "shortText": "VF"
   },
   "theme": {
