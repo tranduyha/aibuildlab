@@ -1,5 +1,6 @@
 export type { Project, ProjectStatus } from "./project.type";
 export type { NavigationItem, SiteSettings } from "./site-settings.type";
+export type { AffiliateCtaModel, AffiliateLinkConfig } from "./affiliate";
 export type { ContentStatus, DataConfidence, DataSource, Gpu } from "./gpu";
 export type { AiModel } from "./ai-model";
 export type { Comparison } from "./comparison";

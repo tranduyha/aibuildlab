@@ -95,6 +95,30 @@ Cluster C - AI SaaS / software bridge:
 
 ## Done Today
 
+- [x] Created branch `affiliate-inline-fields` from `dev`.
+- [x] Chose inline affiliate schema: `affiliate: { "url": null }`.
+- [x] Added inline affiliate objects to `data/gpus.json`, `data/cloud-gpu-providers.json`, and `data/ai-tools.json`.
+- [x] Kept all inline affiliate URLs as `null`; no live affiliate URL was added.
+- [x] Used `siteSettings.trust.affiliateDisclosureEnabled` as the global affiliate display toggle.
+- [x] Added `types/affiliate.ts` and exported the shared affiliate types.
+- [x] Added `services/affiliate.service.ts` with disclosure + URL render guards.
+- [x] Added reusable `components/AffiliateCta.tsx` with neutral CTA copy and configured disclosure text.
+- [x] Added full/compact affiliate CTA variants with stable `data-affiliate-*` tracking attributes.
+- [x] Wired affiliate CTA into GPU and Cloud GPU detail pages; it returns `null` while disclosure is off or URL is null.
+- [x] Added conditional affiliate CTA placements to comparison and build detail pages using resolved GPU records.
+- [x] Kept affiliate CTAs off homepage, index pages, nav, footer navigation, breadcrumbs, source lists, and calculator results.
+- [x] Polished affiliate CTA spacing, button contrast, vertical rhythm, and visual treatment with dedicated theme classes.
+- [x] Restored affiliate CTA grids on comparison/build pages to a responsive card layout with three cards per row on desktop instead of full-width stacked cards.
+- [x] Rechecked `/cloud-gpu` and `/cloud-gpu/[slug]` rounded borders; the `/cloud-gpu` hero and source-aware notice keep their original radius, remaining cloud cards/panels match the affiliate CTA 16px radius, and CTA buttons stay at 10px.
+- [x] Updated repository guards for Cloud GPU providers and AI tools to require inline affiliate config.
+- [x] Updated `scripts/validate-data.ts` for inline affiliate shape, valid URL checks, and official/program URL separation.
+- [x] Ran `npm run data:validate` with 0 errors and 41 existing unrelated GPU warnings.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Confirmed static output does not render affiliate CTA copy or `data-affiliate-*` attributes while URLs are null and disclosure is disabled.
+- [x] Re-ran `npm run lint` and `npm run build` after CTA visual polish.
+- [x] Re-ran `npm run lint` and `npm run build` after rounded-border alignment.
+
 - [x] Confirmed `affiliateDisclosureEnabled` remains `false` and `affiliateDisclosure` text is retained in config.
 - [x] Confirmed footer and homepage only render affiliate disclosure when `settings.trust.affiliateDisclosureEnabled === true`.
 - [x] Polished `/guides` hub by replacing numbered guide-hub blocks with dot/label planning cards.

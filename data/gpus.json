@@ -85,7 +85,10 @@
     "baseClockGhz": 1.32,
     "memorySpeedGbps": 15,
     "powerConsumptionWatts": 170,
-    "powerConnectors": "1 x 8-pin"
+    "powerConnectors": "1 x 8-pin",
+    "affiliate": {
+      "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-3060ti/"
+    }
   },
   {
     "id": "gpu-rtx-4060-ti-16gb",
@@ -154,7 +157,10 @@
     "baseClockGhz": 2.31,
     "boostClockGhz": 2.54,
     "memorySpeedGbps": 18,
-    "powerConsumptionWatts": 165
+    "powerConsumptionWatts": 165,
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-rtx-4070",
@@ -235,7 +241,10 @@
     "memoryBandwidthGbps": 504,
     "baseClockGhz": 1.92,
     "memorySpeedGbps": 21,
-    "powerConsumptionWatts": 200
+    "powerConsumptionWatts": 200,
+    "affiliate": {
+      "url": "https://us.msi.com/Graphics-Card/GeForce-RTX-4070-VENTUS-3X-12G-OC/Specification"
+    }
   },
   {
     "id": "gpu-rtx-4070-super",
@@ -326,7 +335,10 @@
     "recommendedPsuWatts": 650,
     "powerConnectors": "2 x PCIe 8-pin cables via adapter or 1 x 300W+ PCIe Gen 5 16-pin cable",
     "cardDimensionsMm": "244 x 112 x 41",
-    "displayOutputs": "HDMI, 3 x DisplayPort"
+    "displayOutputs": "HDMI, 3 x DisplayPort",
+    "affiliate": {
+      "url": "https://www.techspot.com/specs/gpu/289555-nvidia-geforce-rtx-4070-super.html"
+    }
   },
   {
     "id": "gpu-rtx-4070-ti-super",
@@ -410,7 +422,10 @@
     "baseClockGhz": 2.34,
     "memorySpeedGbps": 21,
     "powerConsumptionWatts": 285,
-    "powerConnectors": "1 x 16-pin"
+    "powerConnectors": "1 x 16-pin",
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-rtx-4080-super",
@@ -488,7 +503,10 @@
     "baseClockGhz": 2.29,
     "boostClockGhz": 2.55,
     "powerConsumptionWatts": 320,
-    "powerConnectors": "1 x 16-pin"
+    "powerConnectors": "1 x 16-pin",
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-rtx-4090",
@@ -560,7 +578,10 @@
     "baseClockGhz": 2.23,
     "boostClockGhz": 2.52,
     "powerConsumptionWatts": 450,
-    "powerConnectors": "1 x PCIe Gen5 (or 3 x 8-pin adapter)"
+    "powerConnectors": "1 x PCIe Gen5 (or 3 x 8-pin adapter)",
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-rtx-3090",
@@ -648,7 +669,10 @@
     "boostClockGhz": 1.7,
     "powerConsumptionWatts": 350,
     "memorySpeedGbps": 19.5,
-    "powerConnectors": "1 x 12-pin (reference)"
+    "powerConnectors": "1 x 12-pin (reference)",
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-rx-7900-xtx",
@@ -731,7 +755,10 @@
     "baseClockGhz": 1.9,
     "boostClockGhz": 2.5,
     "memorySpeedGbps": 20,
-    "powerConnectors": "2 x 8-pin"
+    "powerConnectors": "2 x 8-pin",
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-rtx-5090",
@@ -814,7 +841,10 @@
     "baseClockGhz": 2.01,
     "boostClockGhz": 2.41,
     "memorySpeedGbps": 28,
-    "powerConnectors": "1 x 16-pin"
+    "powerConnectors": "1 x 16-pin",
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "gpu-intel-arc-a770-16gb",
@@ -898,6 +928,9 @@
     "boostClockGhz": 2.4,
     "memorySpeedGbps": 17.5,
     "powerConnectors": "1 x 8-pin",
-    "powerConsumptionWatts": 225
+    "powerConsumptionWatts": 225,
+    "affiliate": {
+      "url": null
+    }
   }
 ]

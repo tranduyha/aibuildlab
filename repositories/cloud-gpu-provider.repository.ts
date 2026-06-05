@@ -37,6 +37,15 @@ function isSource(value: unknown): value is CloudGpuProviderSource {
   );
 }
 
+function isAffiliateConfig(value: unknown): value is CloudGpuProvider["affiliate"] {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const affiliate = value as Partial<CloudGpuProvider["affiliate"]>;
+  return typeof affiliate.url === "string" || affiliate.url === null;
+}
+
 function isCloudGpuProvider(value: unknown): value is CloudGpuProvider {
   if (!value || typeof value !== "object") {
     return false;
@@ -57,6 +66,7 @@ function isCloudGpuProvider(value: unknown): value is CloudGpuProvider {
     (typeof provider.pricingNotes === "string" || provider.pricingNotes === null) &&
     typeof provider.affiliateStatus === "string" &&
     (typeof provider.affiliateProgramUrl === "string" || provider.affiliateProgramUrl === null) &&
+    isAffiliateConfig(provider.affiliate) &&
     (typeof provider.commissionNotes === "string" || provider.commissionNotes === null) &&
     typeof provider.status === "string" &&
     providerStatuses.includes(provider.status as CloudGpuProviderStatus) &&

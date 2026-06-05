@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AffiliateCta from "@/components/AffiliateCta";
 import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import GpuSpecTable from "@/components/GpuSpecTable";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
@@ -304,6 +305,16 @@ export default async function GpuProfilePage({ params }: GpuProfilePageProps) {
             </ul>
           </section>
 
+          <AffiliateCta
+            affiliate={gpu.affiliate}
+            ctaLabel="View partner hardware options"
+            entitySlug={gpu.slug}
+            entityType="gpu"
+            merchant={gpu.name}
+            placement="gpu-detail-after-checklist"
+            settings={settings}
+          />
+
           <section className="tool-section">
             <h2>Sources and data confidence</h2>
             <p className="related-note">
@@ -400,6 +411,17 @@ export default async function GpuProfilePage({ params }: GpuProfilePageProps) {
               )}
             </div>
           </section>
+
+          <AffiliateCta
+            affiliate={gpu.affiliate}
+            ctaLabel="View partner hardware options"
+            entitySlug={gpu.slug}
+            entityType="gpu"
+            merchant={gpu.name}
+            placement="gpu-detail-bottom"
+            settings={settings}
+            variant="compact"
+          />
 
           <section className="tool-section related-section">
             <p className="eyebrow">Related planning routes</p>

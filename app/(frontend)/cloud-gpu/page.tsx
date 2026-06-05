@@ -229,7 +229,7 @@ export default function CloudGpuPage() {
           </div>
         </section>
 
-        <section aria-labelledby="how-to-use-heading" className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <section aria-labelledby="how-to-use-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             How to use this page
           </p>
@@ -238,7 +238,7 @@ export default function CloudGpuPage() {
           </h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {planningSteps.map((step) => (
-              <article key={step.title} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <article key={step.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <h3 className="text-base font-semibold tracking-normal text-slate-950">{step.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-700">{step.description}</p>
               </article>
@@ -246,7 +246,7 @@ export default function CloudGpuPage() {
           </div>
         </section>
 
-        <section aria-labelledby="cloud-gpu-use-cases-heading" className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <section aria-labelledby="cloud-gpu-use-cases-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Neutral use cases
           </p>
@@ -255,7 +255,7 @@ export default function CloudGpuPage() {
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {useCaseOrder.map((useCase) => (
-              <article key={useCase.key} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <article key={useCase.key} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="text-base font-semibold tracking-normal text-slate-950">{useCase.label}</h3>
                   <span className="shrink-0 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-700">
@@ -270,7 +270,7 @@ export default function CloudGpuPage() {
 
         <CloudGpuProviderCta includeBackLink={false} />
 
-        <section aria-labelledby="cloud-gpu-faq-heading" className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <section aria-labelledby="cloud-gpu-faq-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             FAQ
           </p>
@@ -279,7 +279,7 @@ export default function CloudGpuPage() {
           </h2>
           <div className="mt-5 grid gap-4">
             {faqItems.map((item) => (
-              <article key={item.question} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <article key={item.question} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <h3 className="text-base font-semibold tracking-normal text-slate-950">{item.question}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-700">{item.answer}</p>
               </article>

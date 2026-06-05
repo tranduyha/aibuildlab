@@ -1,3 +1,5 @@
+import type { AffiliateLinkConfig } from "./affiliate";
+
 export type CloudGpuProviderType =
   | "cloud_gpu_marketplace"
   | "cloud_gpu_provider"
@@ -70,6 +72,7 @@ export interface CloudGpuProvider {
   pricingNotes: string | null;
   affiliateStatus: CloudGpuAffiliateStatus;
   affiliateProgramUrl: string | null;
+  affiliate: AffiliateLinkConfig;
   commissionNotes: string | null;
   status: CloudGpuProviderStatus;
   needsReview: boolean;

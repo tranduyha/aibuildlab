@@ -102,6 +102,7 @@ const cloudGpuProviderRequiredFields = [
   "pricingNotes",
   "affiliateStatus",
   "affiliateProgramUrl",
+  "affiliate",
   "commissionNotes",
   "status",
   "needsReview",
@@ -188,6 +189,7 @@ const aiToolRequiredFields = [
   "pricingNotes",
   "affiliateStatus",
   "affiliateProgramUrl",
+  "affiliate",
   "recommendedPlacements",
   "status",
   "needsReview",
@@ -456,6 +458,65 @@ function checkEnumValue(file: string, rec: RecordLike, field: string, allowed: S
   }
 }
 
+function isHttpUrl(value: string): boolean {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+function getAffiliateUrl(rec: RecordLike): string | null | undefined {
+  const affiliate = rec.affiliate;
+
+  if (!affiliate || typeof affiliate !== "object" || Array.isArray(affiliate)) {
+    return undefined;
+  }
+
+  const url = (affiliate as { url?: unknown }).url;
+  if (url === null || typeof url === "string") {
+    return url;
+  }
+
+  return undefined;
+}
+
+function checkInlineAffiliate(file: string, rec: RecordLike, cleanUrls: Array<unknown> = []) {
+  const label = rec.slug || rec.id || rec.name || rec.title || "unknown";
+  const affiliate = rec.affiliate;
+
+  if (!affiliate || typeof affiliate !== "object" || Array.isArray(affiliate)) {
+    logError(`${file}:${label}: affiliate must be an object with url`);
+    return;
+  }
+
+  if (!("url" in affiliate)) {
+    logError(`${file}:${label}: affiliate.url is required`);
+    return;
+  }
+
+  const affiliateUrl = getAffiliateUrl(rec);
+  if (affiliateUrl === undefined) {
+    logError(`${file}:${label}: affiliate.url must be a string URL or null`);
+    return;
+  }
+
+  if (affiliateUrl === null) {
+    return;
+  }
+
+  if (affiliateUrl.length === 0 || !isHttpUrl(affiliateUrl)) {
+    logError(`${file}:${label}: affiliate.url must be a valid http(s) URL or null`);
+  }
+
+  for (const cleanUrl of cleanUrls) {
+    if (typeof cleanUrl === "string" && cleanUrl.length > 0 && affiliateUrl === cleanUrl) {
+      logError(`${file}:${label}: affiliate.url must not equal official or program source URLs`);
+    }
+  }
+}
+
 function checkCloudGpuProviders() {
   const file = "data/cloud-gpu-providers.json";
   const data = readJsonMaybe(file);
@@ -484,6 +545,7 @@ function checkCloudGpuProviders() {
     checkEnumValue(file, rec, "status", cloudGpuAllowedStatuses);
     checkEnumValue(file, rec, "dataConfidence", cloudGpuAllowedDataConfidences);
     checkSources(file, rec);
+    checkInlineAffiliate(file, rec, [rec.officialWebsiteUrl, rec.affiliateProgramUrl]);
 
     if (!isNonEmptyStringArray(rec.useCases)) {
       logError(`${file}:${label}: useCases must be a non-empty string array`);
@@ -590,6 +652,7 @@ function checkAiTools() {
     checkEnumValue(file, rec, "status", aiToolAllowedStatuses);
     checkEnumValue(file, rec, "dataConfidence", aiToolAllowedDataConfidences);
     checkSources(file, rec);
+    checkInlineAffiliate(file, rec, [rec.officialWebsiteUrl, rec.affiliateProgramUrl]);
 
     if (!Array.isArray(rec.unsafeToPublishFields)) {
       logError(`${file}:${label}: unsafeToPublishFields must be an array`);
@@ -793,6 +856,9 @@ function checkMonetizationPlacements() {
 }
 
 checkFile("data/gpus.json", gpuSourceRequiredFields);
+for (const rec of asRecords(readJsonMaybe("data/gpus.json"))) {
+  checkInlineAffiliate("data/gpus.json", rec);
+}
 checkFile("data/ai-models.json", aiModelSourceRequiredFields);
 checkFile("data/comparisons.json");
 checkFile("data/builds.json");

@@ -60,6 +60,15 @@ function isSource(value: unknown): value is AiToolSource {
   );
 }
 
+function isAffiliateConfig(value: unknown): value is AiTool["affiliate"] {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const affiliate = value as Partial<AiTool["affiliate"]>;
+  return typeof affiliate.url === "string" || affiliate.url === null;
+}
+
 function isAiTool(value: unknown): value is AiTool {
   if (!value || typeof value !== "object") {
     return false;
@@ -82,6 +91,7 @@ function isAiTool(value: unknown): value is AiTool {
     typeof tool.affiliateStatus === "string" &&
     allowedAffiliateStatuses.includes(tool.affiliateStatus as AiToolAffiliateStatus) &&
     (typeof tool.affiliateProgramUrl === "string" || tool.affiliateProgramUrl === null) &&
+    isAffiliateConfig(tool.affiliate) &&
     isStringArray(tool.recommendedPlacements) &&
     typeof tool.status === "string" &&
     allowedStatuses.includes(tool.status as AiToolStatus) &&

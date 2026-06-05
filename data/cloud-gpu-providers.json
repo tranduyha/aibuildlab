@@ -27,20 +27,34 @@
         "name": "RunPod Pricing",
         "url": "https://www.runpod.io/pricing/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "pricingModel",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "RunPod Referral Program",
         "url": "https://docs.runpod.io/accounts-billing/referrals",
         "type": "referral",
-        "fields": ["affiliateStatus", "affiliateProgramUrl"],
+        "fields": [
+          "affiliateStatus",
+          "affiliateProgramUrl"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official pricing and referral documentation were available on 2026-06-03. Current GPU SKUs, availability, and referral terms still need ongoing review before any monetized use.",
-    "unsafeToPublishFields": ["pricingNotes", "commissionNotes"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "commissionNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "cloud-gpu-vast-ai",
@@ -70,13 +84,25 @@
         "name": "Vast.ai Pricing Documentation",
         "url": "https://docs.vast.ai/guides/instances/pricing",
         "type": "documentation",
-        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "pricingModel",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official pricing documentation indicates marketplace-based pricing that changes with host supply. No official affiliate or referral page was confirmed during this check.",
-    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+    "unsafeToPublishFields": [
+      "affiliateProgramUrl",
+      "commissionNotes",
+      "pricingNotes"
+    ],
+    "affiliate": {
+      "url": "https://vast.ai/"
+    }
   },
   {
     "id": "cloud-gpu-lambda",
@@ -106,20 +132,33 @@
         "name": "Lambda Home",
         "url": "https://lambda.ai/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "providerType", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "Lambda AI Cloud Pricing",
         "url": "https://lambda.ai/service/gpu-cloud/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official site and pricing pages were available on 2026-06-03. Current GPU inventory, billing scope, and any referral program details still need separate confirmation.",
-    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+    "unsafeToPublishFields": [
+      "affiliateProgramUrl",
+      "commissionNotes",
+      "pricingNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "cloud-gpu-paperspace",
@@ -149,20 +188,34 @@
         "name": "Paperspace Pricing - DigitalOcean Docs",
         "url": "https://docs.digitalocean.com/products/paperspace/pricing/",
         "type": "documentation",
-        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "pricingModel",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "Paperspace Is Now DigitalOcean",
         "url": "https://www.paperspace.com/paperspace-is-now-digitalocean-ai-gpu-cloud-platform",
         "type": "official",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Paperspace remains relevant for legacy product research, but DigitalOcean now directs new users toward current GPU offerings. Separate affiliate or referral terms for the legacy Paperspace brand were not confirmed.",
-    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+    "unsafeToPublishFields": [
+      "affiliateProgramUrl",
+      "commissionNotes",
+      "pricingNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "cloud-gpu-digitalocean-gpu",
@@ -192,34 +245,51 @@
         "name": "DigitalOcean Droplets",
         "url": "https://www.digitalocean.com/products/droplets",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "providerType", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "DigitalOcean GPU Droplets Announcement",
         "url": "https://www.digitalocean.com/blog/announcing-gpu-droplets",
         "type": "official",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "DigitalOcean Referral Program",
         "url": "https://www.digitalocean.com/referral-program",
         "type": "referral",
-        "fields": ["affiliateStatus", "affiliateProgramUrl"],
+        "fields": [
+          "affiliateStatus",
+          "affiliateProgramUrl"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "Droplet Features - DigitalOcean Docs",
         "url": "https://docs.digitalocean.com/products/droplets/details/features/",
         "type": "documentation",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official DigitalOcean pages confirm current GPU droplet positioning and a referral program, but GPU SKU mix, region availability, and exact billing scope remain dynamic.",
-    "unsafeToPublishFields": ["pricingNotes", "commissionNotes"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "commissionNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "cloud-gpu-vultr-cloud-gpu",
@@ -249,27 +319,42 @@
         "name": "Vultr Cloud GPU",
         "url": "https://www.vultr.com/products/cloud-gpu/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "providerType", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "Vultr Pricing",
         "url": "https://www.vultr.com/pricing/",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "Vultr Referral Program",
         "url": "https://www.vultr.com/company/referral-program/",
         "type": "referral",
-        "fields": ["affiliateStatus", "affiliateProgramUrl"],
+        "fields": [
+          "affiliateStatus",
+          "affiliateProgramUrl"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official product, pricing, and referral pages were available on 2026-06-03. GPU variants, regional supply, and referral terms should still be re-checked before any public recommendation flow.",
-    "unsafeToPublishFields": ["pricingNotes", "commissionNotes"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "commissionNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "cloud-gpu-modal",
@@ -298,20 +383,34 @@
         "name": "Modal Billing Docs",
         "url": "https://modal.com/docs/guide/billing",
         "type": "documentation",
-        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "pricingModel",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "Modal Pricing",
         "url": "https://modal.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official documentation supports serverless and usage-based positioning, but no official referral or affiliate page was confirmed during this audit.",
-    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+    "unsafeToPublishFields": [
+      "affiliateProgramUrl",
+      "commissionNotes",
+      "pricingNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "cloud-gpu-replicate",
@@ -341,19 +440,34 @@
         "name": "Replicate Pricing",
         "url": "https://replicate.com/pricing",
         "type": "pricing",
-        "fields": ["officialWebsiteUrl", "providerType", "pricingModel", "useCases"],
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "pricingModel",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       },
       {
         "name": "How Replicate Works",
         "url": "https://replicate.com/docs/reference/how-does-replicate-work/",
         "type": "documentation",
-        "fields": ["providerType", "useCases"],
+        "fields": [
+          "providerType",
+          "useCases"
+        ],
         "accessedAt": "2026-06-03"
       }
     ],
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official pricing and product documentation were available on 2026-06-03. Per-model costs and hardware-backed rates change over time, and no official referral program page was confirmed in this audit.",
-    "unsafeToPublishFields": ["affiliateProgramUrl", "commissionNotes", "pricingNotes"]
+    "unsafeToPublishFields": [
+      "affiliateProgramUrl",
+      "commissionNotes",
+      "pricingNotes"
+    ],
+    "affiliate": {
+      "url": null
+    }
   }
 ]

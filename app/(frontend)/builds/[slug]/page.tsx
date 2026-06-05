@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AffiliateCta from "@/components/AffiliateCta";
 import BuildCta from "@/components/BuildCta";
 import BuildGpuOptions from "@/components/BuildGpuOptions";
 import BuildPlanningChecklist from "@/components/BuildPlanningChecklist";
@@ -8,6 +9,7 @@ import BuildPlanningStack from "@/components/BuildPlanningStack";
 import BuildRelatedComparisons from "@/components/BuildRelatedComparisons";
 import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
+import { canRenderAffiliateUrl } from "@/services/affiliate.service";
 import { buildService } from "@/services/build.service";
 
 interface BuildDetailPageProps {
@@ -241,6 +243,7 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
   const buildSpecificNotes = getBuildSpecificNotes(build.slug);
   const isCloudVsLocal = isCloudVsLocalBuild(build.slug);
   const faqItems = getBuildFaqItems(build);
+  const affiliateGpus = gpus.filter((gpu) => canRenderAffiliateUrl(gpu.affiliate, settings));
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -422,6 +425,23 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
               exact variants, runtime support, and benchmark evidence before hardware decisions.
             </p>
             <BuildGpuOptions gpus={gpus} missingGpuSlugs={missingGpuSlugs} />
+            {affiliateGpus.length > 0 ? (
+              <div className={affiliateGpus.length >= 2 ? "affiliate-product-grid affiliate-product-grid-two mt-5" : "affiliate-product-grid mt-5"}>
+                {affiliateGpus.map((gpu) => (
+                  <AffiliateCta
+                    affiliate={gpu.affiliate}
+                    ctaLabel={`View ${gpu.name} partner options`}
+                    entitySlug={gpu.slug}
+                    entityType="build-gpu-candidate"
+                    key={gpu.slug}
+                    merchant={gpu.name}
+                    placement="build-gpu-candidate-list"
+                    settings={settings}
+                    variant="compact"
+                  />
+                ))}
+              </div>
+            ) : null}
           </section>
 
           <section className="tool-section">

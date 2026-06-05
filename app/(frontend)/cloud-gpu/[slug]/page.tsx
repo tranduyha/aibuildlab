@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AffiliateCta from "@/components/AffiliateCta";
 import CloudGpuProviderCta from "@/components/CloudGpuProviderCta";
 import CloudGpuProviderFacts from "@/components/CloudGpuProviderFacts";
 import CloudGpuProviderNotice from "@/components/CloudGpuProviderNotice";
@@ -247,7 +248,7 @@ export default async function CloudGpuProviderDetailPage({
           </ol>
         </nav>
 
-        <header className="rounded-lg border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8 sm:py-10">
+        <header className="rounded-2xl border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8 sm:py-10">
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
             <div className="flex flex-wrap justify-center gap-2" aria-label="Provider data status">
               <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
@@ -289,7 +290,7 @@ export default async function CloudGpuProviderDetailPage({
           </div>
         </header>
 
-        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-use-heading">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-use-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             How to use this profile
           </p>
@@ -298,14 +299,14 @@ export default async function CloudGpuProviderDetailPage({
           </h2>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {profileUseSteps.map((step) => (
-              <div key={step} className="rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-700">
+              <div key={step} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-700">
                 {step}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="planning-fit-heading">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="planning-fit-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Planning fit
           </p>
@@ -314,7 +315,7 @@ export default async function CloudGpuProviderDetailPage({
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {provider.useCases.map((useCase) => (
-              <article key={useCase} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <article key={useCase} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <h3 className="text-base font-semibold tracking-normal text-slate-950">
                   {useCaseLabels[useCase]}
                 </h3>
@@ -329,7 +330,7 @@ export default async function CloudGpuProviderDetailPage({
         <CloudGpuProviderFacts provider={provider} showPlanningNotices={false} />
         <CloudGpuProviderNotice provider={provider} />
 
-        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-scope-heading">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-scope-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Profile scope
           </p>
@@ -337,7 +338,7 @@ export default async function CloudGpuProviderDetailPage({
             What this profile can and cannot tell you
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4">
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
               <h3 className="text-base font-semibold tracking-normal text-emerald-950">Can tell you</h3>
               <ul className="mt-3 space-y-2 text-sm leading-6 text-emerald-950">
                 {canTellItems.map((item) => (
@@ -348,7 +349,7 @@ export default async function CloudGpuProviderDetailPage({
                 ))}
               </ul>
             </div>
-            <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
               <h3 className="text-base font-semibold tracking-normal text-slate-950">Cannot tell you</h3>
               <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
                 {cannotTellItems.map((item) => (
@@ -362,7 +363,16 @@ export default async function CloudGpuProviderDetailPage({
           </div>
         </section>
 
-        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-sources-heading">
+        <AffiliateCta
+          affiliate={provider.affiliate}
+          entitySlug={provider.slug}
+          entityType="cloud-gpu-provider"
+          merchant={provider.name}
+          placement="cloud-provider-after-profile-scope"
+          settings={siteSettings}
+        />
+
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-sources-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Sources
           </p>
@@ -371,7 +381,7 @@ export default async function CloudGpuProviderDetailPage({
           </h2>
           <div className="mt-5 grid gap-4">
             {provider.sources.map((source) => (
-              <article key={`${source.name}-${source.url}`} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <article key={`${source.name}-${source.url}`} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="text-base font-semibold tracking-normal text-slate-950">
@@ -397,7 +407,7 @@ export default async function CloudGpuProviderDetailPage({
               </article>
             ))}
             {provider.affiliateProgramUrl && hasVerifiedReferral(provider) ? (
-              <p className="rounded-md border border-sky-200 bg-sky-50 p-3 text-sm leading-6 text-sky-950">
+              <p className="rounded-2xl border border-sky-200 bg-sky-50 p-3 text-sm leading-6 text-sky-950">
                 Referral reference is present in the provider facts and source list when official data supports it. Treat it as a transparency reference, not a primary action.
               </p>
             ) : null}
@@ -405,8 +415,17 @@ export default async function CloudGpuProviderDetailPage({
         </section>
 
         <CloudGpuProviderCta />
+        <AffiliateCta
+          affiliate={provider.affiliate}
+          entitySlug={provider.slug}
+          entityType="cloud-gpu-provider"
+          merchant={provider.name}
+          placement="cloud-provider-before-faq"
+          settings={siteSettings}
+          variant="compact"
+        />
 
-        <section className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-faq-heading">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-faq-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             FAQ
           </p>
@@ -415,7 +434,7 @@ export default async function CloudGpuProviderDetailPage({
           </h2>
           <div className="mt-5 grid gap-4">
             {faqItems.map((item) => (
-              <article key={item.question} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <article key={item.question} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <h3 className="text-base font-semibold tracking-normal text-slate-950">{item.question}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-700">{item.answer}</p>
               </article>

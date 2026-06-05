@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AffiliateCta from "@/components/AffiliateCta";
 import ComparisonCta from "@/components/ComparisonCta";
 import ComparisonHeroVisual from "@/components/ComparisonHeroVisual";
 import ComparisonSourceNotice from "@/components/ComparisonSourceNotice";
@@ -8,6 +9,7 @@ import ComparisonTable from "@/components/ComparisonTable";
 import ComparisonVerdict from "@/components/ComparisonVerdict";
 import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
+import { canRenderAffiliateUrl } from "@/services/affiliate.service";
 import { comparisonService } from "@/services/comparison.service";
 import type { Gpu } from "@/types";
 
@@ -145,6 +147,7 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
   const pairSpecificFaq = getPairSpecificFaq(comparison.slug, gpus);
   const comparisonIntent = comparisonService.getComparisonIntent(comparison, gpus);
   const seoTitle = cleanComparisonSeoTitle(comparison.seoTitle);
+  const affiliateGpus = gpus.filter((gpu) => canRenderAffiliateUrl(gpu.affiliate, settings));
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -277,6 +280,31 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
           </section>
 
           <ComparisonVerdict comparison={comparison} gpus={gpus} />
+
+          {affiliateGpus.length > 0 ? (
+            <section className="tool-section" aria-labelledby="comparison-affiliate-heading">
+              <p className="eyebrow">Partner hardware options</p>
+              <h2 id="comparison-affiliate-heading">Check partner options after comparing</h2>
+              <p className="related-note">
+                These links appear only for GPU records with an affiliate URL and site disclosure enabled. Verify exact card variant, seller, price, and availability before purchase.
+              </p>
+              <div className={affiliateGpus.length >= 2 ? "affiliate-product-grid affiliate-product-grid-two" : "affiliate-product-grid"}>
+                {affiliateGpus.map((gpu) => (
+                  <AffiliateCta
+                    affiliate={gpu.affiliate}
+                    ctaLabel={`View ${gpu.name} partner options`}
+                    entitySlug={gpu.slug}
+                    entityType="comparison-gpu"
+                    key={gpu.slug}
+                    merchant={gpu.name}
+                    placement="comparison-after-verdict"
+                    settings={settings}
+                    variant="compact"
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="tool-section">
             <h2>How to interpret this comparison</h2>

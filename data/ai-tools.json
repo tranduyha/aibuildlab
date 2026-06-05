@@ -12,7 +12,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["ai-coding-guide", "local-ai-vs-ai-saas-guide", "developer-workflow-tools"],
+    "recommendedPlacements": [
+      "ai-coding-guide",
+      "local-ai-vs-ai-saas-guide",
+      "developer-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -21,27 +25,41 @@
         "name": "Cursor Home",
         "url": "https://cursor.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Cursor Pricing",
         "url": "https://cursor.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Cursor Docs",
         "url": "https://cursor.com/docs",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official homepage, pricing, and documentation were checked. Pricing details and any affiliate or referral status still need official re-check before public monetized placement.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-github-copilot",
@@ -56,7 +74,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["ai-coding-guide", "developer-workflow-tools", "local-ai-vs-ai-saas-guide"],
+    "recommendedPlacements": [
+      "ai-coding-guide",
+      "developer-workflow-tools",
+      "local-ai-vs-ai-saas-guide"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -65,27 +87,41 @@
         "name": "GitHub Copilot Home",
         "url": "https://github.com/features/copilot",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "GitHub Copilot Plans",
         "url": "https://github.com/features/copilot/plans",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "GitHub Copilot Docs",
         "url": "https://docs.github.com/en/copilot",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official GitHub product, plan, and docs pages were checked. Affiliate or referral status was not verified from an official source.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-chatgpt",
@@ -100,7 +136,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["local-ai-vs-ai-saas-guide", "productivity-tools", "ai-saas-alternatives"],
+    "recommendedPlacements": [
+      "local-ai-vs-ai-saas-guide",
+      "productivity-tools",
+      "ai-saas-alternatives"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -109,27 +149,41 @@
         "name": "ChatGPT App",
         "url": "https://chatgpt.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "ChatGPT Pricing",
         "url": "https://chatgpt.com/pricing/",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "ChatGPT Help Center",
         "url": "https://help.openai.com/en/collections/3742473-chatgpt",
         "type": "help",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official app, pricing, and help center pages were checked. Plan specifics and availability may change and should not be treated as stored pricing facts.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-openai-api",
@@ -144,7 +198,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["llm-api-guide", "local-ai-vs-ai-saas-guide", "developer-workflow-tools"],
+    "recommendedPlacements": [
+      "llm-api-guide",
+      "local-ai-vs-ai-saas-guide",
+      "developer-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -153,27 +211,41 @@
         "name": "OpenAI Platform",
         "url": "https://platform.openai.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "OpenAI API Pricing",
         "url": "https://openai.com/api/pricing/",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "OpenAI API Docs Pricing",
         "url": "https://developers.openai.com/api/docs/pricing",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official platform and API pricing pages were checked. Exact model prices are intentionally not stored in this record.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-claude",
@@ -188,7 +260,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["local-ai-vs-ai-saas-guide", "productivity-tools", "ai-saas-alternatives"],
+    "recommendedPlacements": [
+      "local-ai-vs-ai-saas-guide",
+      "productivity-tools",
+      "ai-saas-alternatives"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -197,27 +273,41 @@
         "name": "Claude App",
         "url": "https://claude.ai/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Claude Pricing",
         "url": "https://claude.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Claude Support Center",
         "url": "https://support.claude.com/",
         "type": "help",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official Claude app and pricing pages were checked. Exact subscription details are not stored and affiliate or referral status remains unverified.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-anthropic-api",
@@ -232,7 +322,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["llm-api-guide", "local-ai-vs-ai-saas-guide", "developer-workflow-tools"],
+    "recommendedPlacements": [
+      "llm-api-guide",
+      "local-ai-vs-ai-saas-guide",
+      "developer-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -241,20 +335,32 @@
         "name": "Claude API Docs",
         "url": "https://platform.claude.com/docs/en/home",
         "type": "documentation",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Claude Platform Pricing",
         "url": "https://claude.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official developer documentation and pricing page were checked. Exact model prices are intentionally not stored in this record.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-replicate",
@@ -269,7 +375,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["cloud-ai-workflow-tools", "image-generation-guide", "llm-api-guide"],
+    "recommendedPlacements": [
+      "cloud-ai-workflow-tools",
+      "image-generation-guide",
+      "llm-api-guide"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -278,27 +388,41 @@
         "name": "Replicate Home",
         "url": "https://replicate.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Replicate Pricing",
         "url": "https://replicate.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Replicate Docs",
         "url": "https://replicate.com/docs",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official product, pricing, and docs pages were checked. Per-model costs are not stored and should be checked against Replicate before cost planning.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-modal",
@@ -313,7 +437,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["cloud-ai-workflow-tools", "cloud-gpu-guide", "developer-workflow-tools"],
+    "recommendedPlacements": [
+      "cloud-ai-workflow-tools",
+      "cloud-gpu-guide",
+      "developer-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -322,27 +450,41 @@
         "name": "Modal Home",
         "url": "https://modal.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Modal Pricing",
         "url": "https://modal.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Modal Billing Docs",
         "url": "https://modal.com/docs/guide/billing",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official product, pricing, and billing docs were checked. Exact workload costs and affiliate or referral status are not stored.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-runway",
@@ -357,7 +499,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["video-generation-guide", "ai-saas-alternatives", "creator-workflow-tools"],
+    "recommendedPlacements": [
+      "video-generation-guide",
+      "ai-saas-alternatives",
+      "creator-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -366,27 +512,41 @@
         "name": "Runway Home",
         "url": "https://runwayml.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Runway Pricing",
         "url": "https://runwayml.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Runway Help Center",
         "url": "https://help.runwayml.com/hc/en-us",
         "type": "help",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official site, pricing, and help center pages were checked. Exact credit values and plan details are not stored.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-zapier",
@@ -401,7 +561,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["automation-guide", "ai-workflow-tools", "local-ai-vs-ai-saas-guide"],
+    "recommendedPlacements": [
+      "automation-guide",
+      "ai-workflow-tools",
+      "local-ai-vs-ai-saas-guide"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -410,20 +574,32 @@
         "name": "Zapier Home",
         "url": "https://zapier.com/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Zapier Pricing",
         "url": "https://zapier.com/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official product and pricing pages were checked. Affiliate or referral status was not verified from an official source.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-pinecone",
@@ -438,7 +614,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["rag-stack-guide", "vector-database-guide", "developer-workflow-tools"],
+    "recommendedPlacements": [
+      "rag-stack-guide",
+      "vector-database-guide",
+      "developer-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -447,27 +627,41 @@
         "name": "Pinecone Home",
         "url": "https://www.pinecone.io/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Pinecone Pricing",
         "url": "https://www.pinecone.io/pricing/",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Pinecone Docs",
         "url": "https://docs.pinecone.io/",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official product, pricing, and docs pages were checked. Usage amounts, performance claims, and exact cost estimates are not stored.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   },
   {
     "id": "ai-tool-weaviate",
@@ -482,7 +676,11 @@
     "pricingNotes": null,
     "affiliateStatus": "unknown",
     "affiliateProgramUrl": null,
-    "recommendedPlacements": ["rag-stack-guide", "vector-database-guide", "developer-workflow-tools"],
+    "recommendedPlacements": [
+      "rag-stack-guide",
+      "vector-database-guide",
+      "developer-workflow-tools"
+    ],
     "status": "reviewed",
     "needsReview": true,
     "dataConfidence": "medium",
@@ -491,26 +689,40 @@
         "name": "Weaviate Home",
         "url": "https://weaviate.io/",
         "type": "official",
-        "fields": ["officialWebsiteUrl", "category", "shortDescription"],
+        "fields": [
+          "officialWebsiteUrl",
+          "category",
+          "shortDescription"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Weaviate Pricing",
         "url": "https://weaviate.io/pricing",
         "type": "pricing",
-        "fields": ["pricingModel"],
+        "fields": [
+          "pricingModel"
+        ],
         "accessedAt": "2026-06-04"
       },
       {
         "name": "Weaviate Docs",
         "url": "https://docs.weaviate.io/",
         "type": "documentation",
-        "fields": ["notes"],
+        "fields": [
+          "notes"
+        ],
         "accessedAt": "2026-06-04"
       }
     ],
     "lastVerifiedAt": "2026-06-04",
     "notes": "Official product, pricing, and docs pages were checked. Exact plan costs and deployment availability are not stored.",
-    "unsafeToPublishFields": ["pricingNotes", "affiliateProgramUrl"]
+    "unsafeToPublishFields": [
+      "pricingNotes",
+      "affiliateProgramUrl"
+    ],
+    "affiliate": {
+      "url": null
+    }
   }
 ]

@@ -46,13 +46,13 @@ export default function CloudGpuProviderFacts({
     provider.affiliateStatus === "available_verified";
 
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="provider-facts-heading">
+    <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="provider-facts-heading">
       <h2 id="provider-facts-heading" className="text-lg font-semibold tracking-normal text-slate-950">
         Provider facts
       </h2>
 
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Official website</dt>
           <dd className="mt-1 break-words text-slate-700">
             <a
@@ -65,27 +65,27 @@ export default function CloudGpuProviderFacts({
             </a>
           </dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Provider type</dt>
           <dd className="mt-1 text-slate-700">{providerTypeLabels[provider.providerType]}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Pricing model</dt>
           <dd className="mt-1 text-slate-700">{pricingModelLabels[provider.pricingModel]}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Affiliate status</dt>
           <dd className="mt-1 text-slate-700">{affiliateStatusLabels[provider.affiliateStatus]}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Last verified</dt>
           <dd className="mt-1 text-slate-700">{formatValue(provider.lastVerifiedAt)}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Data confidence</dt>
           <dd className="mt-1 capitalize text-slate-700">{provider.dataConfidence}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3 sm:col-span-2">
+        <div className="rounded-2xl bg-slate-50 p-3 sm:col-span-2">
           <dt className="font-semibold text-slate-950">Status</dt>
           <dd className="mt-1 capitalize text-slate-700">{provider.status}</dd>
         </div>
@@ -93,17 +93,17 @@ export default function CloudGpuProviderFacts({
 
       <div className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
         {showPlanningNotices && provider.pricingNotes === null ? (
-          <p className="rounded-md border border-amber-200 bg-amber-50 p-3 text-amber-900">
+          <p className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-amber-900">
             Exact pricing is not stored. Check the official provider pricing page before cost planning.
           </p>
         ) : null}
         {showPlanningNotices && provider.affiliateStatus === "unknown" ? (
-          <p className="rounded-md border border-amber-200 bg-amber-50 p-3 text-amber-900">
+          <p className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-amber-900">
             Affiliate or referral status has not been verified from an official source.
           </p>
         ) : null}
         {showPlanningNotices && hasVerifiedReferral ? (
-          <p className="rounded-md border border-sky-200 bg-sky-50 p-3 text-sky-900">
+          <p className="rounded-2xl border border-sky-200 bg-sky-50 p-3 text-sky-900">
             Referral or affiliate status is linked to an official source, but terms should be rechecked before use.
           </p>
         ) : null}

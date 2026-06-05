@@ -1,3 +1,5 @@
+import type { AffiliateLinkConfig } from "./affiliate";
+
 export type AiToolCategory =
   | "ai_coding"
   | "image_generation"
@@ -62,6 +64,7 @@ export interface AiTool {
   pricingNotes: string | null;
   affiliateStatus: AiToolAffiliateStatus;
   affiliateProgramUrl: string | null;
+  affiliate: AffiliateLinkConfig;
   recommendedPlacements: string[];
   status: AiToolStatus;
   needsReview: boolean;

@@ -79,7 +79,7 @@ export default function CloudGpuProviderCard({
     .join(" · ");
 
   return (
-    <article className="flex h-full min-w-0 flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <article className="flex h-full min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
       <h2 className="truncate whitespace-nowrap text-xl font-semibold tracking-normal text-slate-950">
         {resolvedProfileHref ? (
           <Link className="hover:text-sky-700" href={resolvedProfileHref}>
@@ -95,15 +95,15 @@ export default function CloudGpuProviderCard({
       </p>
 
       <dl className="mt-5 grid gap-3 text-sm">
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Provider type</dt>
           <dd className="mt-1 text-slate-700">{providerTypeLabels[provider.providerType]}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Use cases</dt>
           <dd className="mt-1 text-slate-700">{formatUseCases(provider)}</dd>
         </div>
-        <div className="rounded-md bg-slate-50 p-3">
+        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Pricing model</dt>
           <dd className="mt-1 text-slate-700">{pricingModelLabels[provider.pricingModel]}</dd>
         </div>
@@ -112,13 +112,13 @@ export default function CloudGpuProviderCard({
       <div className="mt-auto pt-5">
         {resolvedProfileHref ? (
           <Link
-            className="inline-flex w-fit items-center rounded-md border border-sky-700 bg-sky-700 px-4 py-2 text-sm font-semibold !text-white transition hover:border-sky-800 hover:bg-sky-800 hover:!text-white focus-visible:!text-white"
+            className="inline-flex w-fit items-center rounded-[10px] border border-sky-700 bg-sky-700 px-4 py-2 text-sm font-semibold !text-white transition hover:border-sky-800 hover:bg-sky-800 hover:!text-white focus-visible:!text-white"
             href={resolvedProfileHref}
           >
             View planning profile <span className="ml-2" aria-hidden="true">-&gt;</span>
           </Link>
         ) : (
-          <span className="inline-flex w-fit items-center rounded-md border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600">
+          <span className="inline-flex w-fit items-center rounded-[10px] border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-600">
             View planning profile
           </span>
         )}

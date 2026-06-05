@@ -1,3 +1,5 @@
+import type { AffiliateLinkConfig } from "./affiliate";
+
 export type ContentStatus = "draft" | "published" | "reviewed";
 export type DataConfidence = "low" | "medium" | "high";
 
@@ -31,6 +33,7 @@ export interface Gpu {
   tags: string[];
   useCases: string[];
   featured: boolean;
+  affiliate: AffiliateLinkConfig;
   vendor: string;
   vramGb: number | null;
   memoryType: string | null;

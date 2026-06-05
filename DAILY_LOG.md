@@ -38,6 +38,68 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-05 - Inline affiliate URL fields
+
+### Agent
+Codex
+
+### Planned Task
+Add simple inline affiliate URL support without creating a separate affiliate link JSON dataset.
+
+### Completed
+- [x] Created branch `affiliate-inline-fields` from `dev`.
+- [x] Added shared inline affiliate type with `affiliate.url`.
+- [x] Added `affiliate: { "url": null }` to GPU, Cloud GPU provider, and AI tool records.
+- [x] Added a small affiliate service that renders only when `siteSettings.trust.affiliateDisclosureEnabled` is true and `affiliate.url` is a valid URL.
+- [x] Added reusable `AffiliateCta` with neutral copy, sponsored/nofollow rel, and disclosure text from site settings.
+- [x] Wired the CTA into GPU and Cloud GPU detail pages as a no-op while disclosure is disabled and URLs are null.
+- [x] Added full/compact affiliate CTA variants with stable `data-affiliate-*` tracking attributes.
+- [x] Added high-intent placements for GPU detail, Cloud GPU provider detail, comparison detail, and build detail pages.
+- [x] Kept affiliate CTAs off homepage, index pages, nav, footer navigation, breadcrumbs, source lists, and calculator results.
+- [x] Polished affiliate CTA spacing, button contrast, vertical rhythm, and visual treatment with dedicated theme classes.
+- [x] Restored affiliate CTA grids on comparison/build pages to a responsive card layout with three cards per row on desktop instead of full-width stacked cards.
+- [x] Rechecked `/cloud-gpu` and `/cloud-gpu/[slug]` rounded borders; kept the `/cloud-gpu` hero and source-aware notice at their original radius, aligned the remaining cloud cards/panels to the affiliate CTA 16px radius, and kept CTA buttons at 10px.
+- [x] Updated data validation for inline affiliate object shape and URL separation from official/program URLs.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 41 existing GPU source-field mapping warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Confirmed static output does not render affiliate CTA copy or `data-affiliate-*` attributes while URLs are null and disclosure is disabled.
+- [x] Re-ran `npm run lint` and `npm run build` after CTA visual polish.
+- [x] Re-ran `npm run lint` and `npm run build` after rounded-border alignment.
+
+### Issues
+- Existing GPU source-field mapping warnings remain unrelated to this inline affiliate task.
+- No live affiliate CTA renders yet because every `affiliate.url` is `null` and `affiliateDisclosureEnabled` remains false.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/[slug]/page.tsx`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `components/AffiliateCta.tsx`
+- `data/ai-tools.json`
+- `data/cloud-gpu-providers.json`
+- `data/gpus.json`
+- `repositories/ai-tool.repository.ts`
+- `repositories/cloud-gpu-provider.repository.ts`
+- `scripts/validate-data.ts`
+- `services/affiliate.service.ts`
+- `types/affiliate.ts`
+- `types/ai-tool.ts`
+- `types/cloud-gpu-provider.ts`
+- `types/gpu.ts`
+- `types/index.ts`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+When ready, add real affiliate URLs into `affiliate.url` and enable disclosure in site settings; records without URLs will remain hidden.
+
+---
+
 ## 2026-06-04 - Day 14 SEO QA, disclosure cleanup, guide hub polish, and monetization hardening
 
 ### Agent
