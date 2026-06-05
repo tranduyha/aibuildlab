@@ -492,6 +492,10 @@ body {
   margin-top: 42px;
 }
 
+.about-first-section {
+  margin-top: 16px;
+}
+
 .tool-section h2 {
   margin-bottom: 21px;
   font-size: clamp(26px, 3vw, 32px);

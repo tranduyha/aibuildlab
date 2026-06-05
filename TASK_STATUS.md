@@ -97,6 +97,8 @@ Cluster C - AI SaaS / software bridge:
 
 - [x] Rebuilt `/about` as a trust-focused About page using the configured site name from `data/site-settings.json`.
 - [x] Added About sections for mission, audience, coverage, data sourcing, editorial standards, affiliate/referral transparency, AI-assisted workflow, corrections, and limitations.
+- [x] Strengthened `/about` E-E-A-T with why the site exists, GPU data evaluation factors, source-first review workflow, independence, and what the site does not do.
+- [x] Standardized the configured public brand from `VRAM Forge` to `VRAMForge` in `data/site-settings.json`.
 - [x] Kept existing About links in header/footer unchanged.
 - [x] Confirmed no email address, personal name, fake company details, affiliate link, or affiliate CTA was added to `/about`.
 - [x] Ran `npm run data:validate` with 0 errors and 41 existing unrelated GPU warnings.

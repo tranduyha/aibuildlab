@@ -49,6 +49,8 @@ Replace the placeholder About page with a professional SEO and trust-focused Abo
 ### Completed
 - [x] Rebuilt `/about` as a trust-focused About page using the configured site name.
 - [x] Added sections for mission, audience, coverage, data sourcing, editorial standards, affiliate/referral transparency, AI-assisted workflow, corrections, and limitations.
+- [x] Strengthened E-E-A-T with sections for why the site exists, GPU data evaluation factors, review workflow, independence, and what the site does not do.
+- [x] Standardized the configured public brand from `VRAM Forge` to `VRAMForge` in `data/site-settings.json`.
 - [x] Added internal links to GPU profiles, comparisons, VRAM calculator, local AI builds, Cloud GPU profiles, and guides.
 - [x] Kept existing header/footer navigation unchanged because `/about` was already linked.
 - [x] Avoided email addresses, personal names, fake company details, fake credentials, affiliate links, and affiliate CTA rendering.
@@ -65,6 +67,7 @@ Replace the placeholder About page with a professional SEO and trust-focused Abo
 
 ### Files Changed
 - `app/(frontend)/about/page.tsx`
+- `data/site-settings.json`
 - `TASK_STATUS.md`
 - `DAILY_LOG.md`
 

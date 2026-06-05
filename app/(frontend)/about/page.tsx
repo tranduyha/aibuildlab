@@ -1,13 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { buildMetadata, getSiteSettings } from "@/lib/seo";
+import { buildCanonicalUrl, getSiteSettings } from "@/lib/seo";
 
 const settings = getSiteSettings();
 
-export const metadata = buildMetadata({
-  title: "About | GPU, VRAM, and AI Hardware Planning",
+export const metadata: Metadata = {
+  title: {
+    absolute: `About ${settings.name} | GPU, VRAM, and AI Hardware Planning`,
+  },
   description: `Learn how ${settings.name} sources GPU, VRAM, cloud GPU, and local AI build data, including editorial standards, affiliate transparency, AI-assisted workflows, and correction policy.`,
-  path: "/about",
-});
+  alternates: {
+    canonical: buildCanonicalUrl("/about"),
+  },
+  openGraph: {
+    title: `About ${settings.name} | GPU, VRAM, and AI Hardware Planning`,
+    description: `Learn how ${settings.name} sources GPU, VRAM, cloud GPU, and local AI build data, including editorial standards, affiliate transparency, AI-assisted workflows, and correction policy.`,
+    type: "website",
+    url: buildCanonicalUrl("/about"),
+    siteName: settings.name,
+  },
+};
 
 const audienceCards = [
   {
@@ -46,12 +58,43 @@ const coverageItems = [
   { label: "AI hardware and software planning guides", href: "/guides" },
 ];
 
+const evaluationFactors = [
+  "VRAM capacity",
+  "Memory bandwidth",
+  "GPU generation",
+  "Local AI compatibility",
+  "Cloud GPU availability",
+  "Model size",
+  "Quantization",
+  "Context length",
+  "Batch size",
+  "Framework overhead",
+  "Inference workloads",
+  "Image, video, and experimentation use cases",
+];
+
+const reviewWorkflowItems = [
+  "Start with official manufacturer pages, provider documentation, pricing pages, product specifications, and provider terms.",
+  "Keep source trails visible where pages rely on specific data points.",
+  "Use verification dates and review flags when fields are incomplete, uncertain, or likely to change.",
+  "Avoid turning estimates, draft records, or incomplete sources into confirmed buying claims.",
+];
+
 const editorialStandards = [
   "Official website links, source links, and affiliate or referral links are treated as separate link types.",
   "Official links must not be replaced with monetized links.",
   "Source trails should remain non-affiliate.",
   "Unsupported claims such as best, cheapest, guaranteed, or recommended are avoided unless the context and source support the statement.",
   "Assumptions should be explained where they affect planning guidance.",
+];
+
+const boundaries = [
+  "No guaranteed pricing.",
+  "No guaranteed availability.",
+  "No guaranteed benchmark results.",
+  "No guaranteed model compatibility.",
+  "Not financial, legal, or procurement advice.",
+  "Important decisions should be verified with official vendor documentation, product pages, and provider terms.",
 ];
 
 export default function AboutPage() {
@@ -78,18 +121,18 @@ export default function AboutPage() {
           </p>
         </header>
 
-        <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="eyebrow">Mission</p>
-          <h2>Practical planning before hardware decisions</h2>
+        <section className="about-first-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="eyebrow">Purpose</p>
+          <h2>Why {siteName} exists</h2>
           <div className="intro-copy">
             <p>
-              {siteName} helps users make practical GPU and VRAM decisions without relying only on
-              marketing names, benchmark headlines, or unsupported claims.
+              GPU selection for AI workloads can be confusing because raw specifications do not always
+              show practical limits. VRAM, model size, software support, cloud cost, and deployment
+              constraints can matter as much as the product name.
             </p>
             <p>
-              The goal is to make trade-offs easier to understand: VRAM requirements, GPU comparisons,
-              local AI builds, cloud GPU options, AI workload planning, and the constraints that affect
-              real-world fit.
+              {siteName} helps users make practical GPU and VRAM decisions without relying only on
+              marketing labels, benchmark headlines, or unsupported claims.
             </p>
           </div>
         </section>
@@ -129,20 +172,36 @@ export default function AboutPage() {
         </section>
 
         <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <p className="eyebrow">Data sources</p>
-          <h2>How data is sourced</h2>
-          <div className="intro-copy">
-            <p>
-              {siteName} prioritizes official manufacturer pages, provider documentation, pricing pages,
-              product specifications, and clearly marked references. When possible, data-backed pages
-              include source trails, verification dates, and review notes.
-            </p>
-            <p>
-              Fields that are uncertain, incomplete, or under review should be marked clearly instead of
-              presented as confirmed. Data can change over time, especially prices, availability, driver
-              support, provider regions, and AI model requirements.
-            </p>
+          <p className="eyebrow">Evaluation</p>
+          <h2>How {siteName} evaluates GPU data</h2>
+          <p className="max-w-3xl text-base leading-7 text-slate-700">
+            {siteName} looks at practical AI and hardware planning factors rather than treating a GPU
+            name as a complete answer. The useful signals can change by workload, runtime, and software
+            configuration.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {evaluationFactors.map((factor) => (
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold text-slate-800" key={factor}>
+                {factor}
+              </div>
+            ))}
           </div>
+        </section>
+
+        <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="eyebrow">Review workflow</p>
+          <h2>Source-first review workflow</h2>
+          <p className="max-w-3xl text-base leading-7 text-slate-700">
+            {siteName} prioritizes source-backed planning. Data can change over time, especially
+            prices, availability, driver support, provider regions, and AI model requirements.
+          </p>
+          <ol className="mt-5 grid gap-3 text-sm leading-6 text-slate-700 md:grid-cols-2">
+            {reviewWorkflowItems.map((item) => (
+              <li className="rounded-2xl border border-slate-200 bg-slate-50 p-4" key={item}>
+                {item}
+              </li>
+            ))}
+          </ol>
         </section>
 
         <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -164,6 +223,15 @@ export default function AboutPage() {
 
         <section className="tool-section grid gap-5 lg:grid-cols-2">
           <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="eyebrow">Independence</p>
+            <h2>Independently maintained</h2>
+            <p className="text-base leading-7 text-slate-700">
+              {siteName} is independently maintained and is not owned by a GPU manufacturer, cloud GPU
+              provider, hardware retailer, or affiliate network.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <p className="eyebrow">Transparency</p>
             <h2>Affiliate and referral links</h2>
             <p className="text-base leading-7 text-slate-700">
@@ -172,7 +240,9 @@ export default function AboutPage() {
               {` ${siteName}'s `}source policy, official links, or editorial explanations.
             </p>
           </article>
+        </section>
 
+        <section className="tool-section grid gap-5 lg:grid-cols-2">
           <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <p className="eyebrow">Workflow</p>
             <h2>AI-assisted workflow</h2>
@@ -181,6 +251,16 @@ export default function AboutPage() {
               summaries, or check consistency. Important technical claims should be reviewed against
               source material before publication.
             </p>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="eyebrow">Boundaries</p>
+            <h2>What {siteName} does not do</h2>
+            <ul className="space-y-2 text-sm leading-6 text-slate-700">
+              {boundaries.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </article>
         </section>
 
