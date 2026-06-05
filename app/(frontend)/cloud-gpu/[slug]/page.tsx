@@ -152,13 +152,6 @@ export async function generateMetadata({
   });
 }
 
-function hasVerifiedReferral(provider: CloudGpuProvider): boolean {
-  return (
-    provider.affiliateStatus === "referral_verified" ||
-    provider.affiliateStatus === "available_verified"
-  );
-}
-
 export default async function CloudGpuProviderDetailPage({
   params,
 }: CloudGpuProviderDetailPageProps) {
@@ -406,11 +399,6 @@ export default async function CloudGpuProviderDetailPage({
                 ) : null}
               </article>
             ))}
-            {provider.affiliateProgramUrl && hasVerifiedReferral(provider) ? (
-              <p className="rounded-2xl border border-sky-200 bg-sky-50 p-3 text-sm leading-6 text-sky-950">
-                Referral reference is present in the provider facts and source list when official data supports it. Treat it as a transparency reference, not a primary action.
-              </p>
-            ) : null}
           </div>
         </section>
 

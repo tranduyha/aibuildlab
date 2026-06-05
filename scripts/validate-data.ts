@@ -100,8 +100,6 @@ const cloudGpuProviderRequiredFields = [
   "useCases",
   "pricingModel",
   "pricingNotes",
-  "affiliateStatus",
-  "affiliateProgramUrl",
   "affiliate",
   "commissionNotes",
   "status",
@@ -118,8 +116,6 @@ const cloudGpuProviderSourceBackedFields = [
   "providerType",
   "useCases",
   "pricingModel",
-  "affiliateStatus",
-  "affiliateProgramUrl",
   "notes",
 ];
 
@@ -140,15 +136,6 @@ const cloudGpuAllowedPricingModels = new Set([
   "credits",
   "custom",
   "unknown",
-]);
-
-const cloudGpuAllowedAffiliateStatuses = new Set([
-  "unknown",
-  "unavailable",
-  "available_unverified",
-  "available_verified",
-  "referral_verified",
-  "not_applicable",
 ]);
 
 const cloudGpuAllowedStatuses = new Set(["draft", "reviewed", "published", "archived"]);
@@ -541,11 +528,10 @@ function checkCloudGpuProviders() {
 
     checkEnumValue(file, rec, "providerType", cloudGpuAllowedProviderTypes);
     checkEnumValue(file, rec, "pricingModel", cloudGpuAllowedPricingModels);
-    checkEnumValue(file, rec, "affiliateStatus", cloudGpuAllowedAffiliateStatuses);
     checkEnumValue(file, rec, "status", cloudGpuAllowedStatuses);
     checkEnumValue(file, rec, "dataConfidence", cloudGpuAllowedDataConfidences);
     checkSources(file, rec);
-    checkInlineAffiliate(file, rec, [rec.officialWebsiteUrl, rec.affiliateProgramUrl]);
+    checkInlineAffiliate(file, rec, [rec.officialWebsiteUrl]);
 
     if (!isNonEmptyStringArray(rec.useCases)) {
       logError(`${file}:${label}: useCases must be a non-empty string array`);
@@ -553,10 +539,6 @@ function checkCloudGpuProviders() {
 
     if (!Array.isArray(rec.unsafeToPublishFields)) {
       logError(`${file}:${label}: unsafeToPublishFields must be an array`);
-    }
-
-    if (rec.affiliateStatus === "unknown" && rec.affiliateProgramUrl !== null) {
-      logError(`${file}:${label}: affiliateStatus=unknown must not include affiliateProgramUrl`);
     }
 
     if (typeof rec.commissionNotes === "string" && /\d|%|\$/.test(rec.commissionNotes)) {

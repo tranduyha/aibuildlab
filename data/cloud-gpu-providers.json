@@ -16,8 +16,6 @@
     ],
     "pricingModel": "hourly",
     "pricingNotes": null,
-    "affiliateStatus": "referral_verified",
-    "affiliateProgramUrl": "https://docs.runpod.io/accounts-billing/referrals",
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -32,16 +30,6 @@
           "providerType",
           "pricingModel",
           "useCases"
-        ],
-        "accessedAt": "2026-06-03"
-      },
-      {
-        "name": "RunPod Referral Program",
-        "url": "https://docs.runpod.io/accounts-billing/referrals",
-        "type": "referral",
-        "fields": [
-          "affiliateStatus",
-          "affiliateProgramUrl"
         ],
         "accessedAt": "2026-06-03"
       }
@@ -73,8 +61,6 @@
     ],
     "pricingModel": "hourly",
     "pricingNotes": null,
-    "affiliateStatus": "unknown",
-    "affiliateProgramUrl": null,
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -96,12 +82,11 @@
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official pricing documentation indicates marketplace-based pricing that changes with host supply. No official affiliate or referral page was confirmed during this check.",
     "unsafeToPublishFields": [
-      "affiliateProgramUrl",
       "commissionNotes",
       "pricingNotes"
     ],
     "affiliate": {
-      "url": "https://vast.ai/"
+      "url": null
     }
   },
   {
@@ -121,8 +106,6 @@
     ],
     "pricingModel": "hourly",
     "pricingNotes": null,
-    "affiliateStatus": "unknown",
-    "affiliateProgramUrl": null,
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -152,7 +135,6 @@
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official site and pricing pages were available on 2026-06-03. Current GPU inventory, billing scope, and any referral program details still need separate confirmation.",
     "unsafeToPublishFields": [
-      "affiliateProgramUrl",
       "commissionNotes",
       "pricingNotes"
     ],
@@ -177,8 +159,6 @@
     ],
     "pricingModel": "hourly",
     "pricingNotes": null,
-    "affiliateStatus": "unknown",
-    "affiliateProgramUrl": null,
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -209,7 +189,6 @@
     "lastVerifiedAt": "2026-06-03",
     "notes": "Paperspace remains relevant for legacy product research, but DigitalOcean now directs new users toward current GPU offerings. Separate affiliate or referral terms for the legacy Paperspace brand were not confirmed.",
     "unsafeToPublishFields": [
-      "affiliateProgramUrl",
       "commissionNotes",
       "pricingNotes"
     ],
@@ -234,8 +213,6 @@
     ],
     "pricingModel": "hourly",
     "pricingNotes": null,
-    "affiliateStatus": "referral_verified",
-    "affiliateProgramUrl": "https://www.digitalocean.com/referral-program",
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -258,16 +235,6 @@
         "type": "official",
         "fields": [
           "notes"
-        ],
-        "accessedAt": "2026-06-03"
-      },
-      {
-        "name": "DigitalOcean Referral Program",
-        "url": "https://www.digitalocean.com/referral-program",
-        "type": "referral",
-        "fields": [
-          "affiliateStatus",
-          "affiliateProgramUrl"
         ],
         "accessedAt": "2026-06-03"
       },
@@ -308,8 +275,6 @@
     ],
     "pricingModel": "hourly",
     "pricingNotes": null,
-    "affiliateStatus": "referral_verified",
-    "affiliateProgramUrl": "https://www.vultr.com/company/referral-program/",
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -332,16 +297,6 @@
         "type": "pricing",
         "fields": [
           "pricingModel"
-        ],
-        "accessedAt": "2026-06-03"
-      },
-      {
-        "name": "Vultr Referral Program",
-        "url": "https://www.vultr.com/company/referral-program/",
-        "type": "referral",
-        "fields": [
-          "affiliateStatus",
-          "affiliateProgramUrl"
         ],
         "accessedAt": "2026-06-03"
       }
@@ -372,8 +327,6 @@
     ],
     "pricingModel": "usage_based",
     "pricingNotes": null,
-    "affiliateStatus": "unknown",
-    "affiliateProgramUrl": null,
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -404,7 +357,6 @@
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official documentation supports serverless and usage-based positioning, but no official referral or affiliate page was confirmed during this audit.",
     "unsafeToPublishFields": [
-      "affiliateProgramUrl",
       "commissionNotes",
       "pricingNotes"
     ],
@@ -429,8 +381,6 @@
     ],
     "pricingModel": "usage_based",
     "pricingNotes": null,
-    "affiliateStatus": "unknown",
-    "affiliateProgramUrl": null,
     "commissionNotes": null,
     "status": "reviewed",
     "needsReview": true,
@@ -462,7 +412,6 @@
     "lastVerifiedAt": "2026-06-03",
     "notes": "Official pricing and product documentation were available on 2026-06-03. Per-model costs and hardware-backed rates change over time, and no official referral program page was confirmed in this audit.",
     "unsafeToPublishFields": [
-      "affiliateProgramUrl",
       "commissionNotes",
       "pricingNotes"
     ],

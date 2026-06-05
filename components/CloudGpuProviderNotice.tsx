@@ -1,5 +1,4 @@
 import {
-  getCloudGpuProviderAffiliateNotice,
   getCloudGpuProviderPricingNotice,
   getCloudGpuProviderWarnings,
 } from "@/services/cloud-gpu-provider.service";
@@ -20,7 +19,6 @@ export default function CloudGpuProviderNotice({
         (provider
           ? [
               ...getCloudGpuProviderWarnings(provider),
-              getCloudGpuProviderAffiliateNotice(provider),
               getCloudGpuProviderPricingNotice(provider),
             ].filter((notice): notice is string => Boolean(notice))
           : []),

@@ -28,14 +28,6 @@ export type CloudGpuPricingModel =
   | "custom"
   | "unknown";
 
-export type CloudGpuAffiliateStatus =
-  | "unknown"
-  | "unavailable"
-  | "available_unverified"
-  | "available_verified"
-  | "referral_verified"
-  | "not_applicable";
-
 export type CloudGpuProviderStatus = "draft" | "reviewed" | "published" | "archived";
 
 export type CloudGpuDataConfidence = "low" | "medium" | "high";
@@ -70,8 +62,6 @@ export interface CloudGpuProvider {
   useCases: CloudGpuUseCase[];
   pricingModel: CloudGpuPricingModel;
   pricingNotes: string | null;
-  affiliateStatus: CloudGpuAffiliateStatus;
-  affiliateProgramUrl: string | null;
   affiliate: AffiliateLinkConfig;
   commissionNotes: string | null;
   status: CloudGpuProviderStatus;

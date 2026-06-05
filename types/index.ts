@@ -7,7 +7,6 @@ export type { Comparison } from "./comparison";
 export type { Build } from "./build";
 export type { Guide } from "./guide";
 export type {
-  CloudGpuAffiliateStatus,
   CloudGpuDataConfidence,
   CloudGpuPricingModel,
   CloudGpuProvider,

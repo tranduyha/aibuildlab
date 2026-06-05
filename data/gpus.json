@@ -87,7 +87,7 @@
     "powerConsumptionWatts": 170,
     "powerConnectors": "1 x 8-pin",
     "affiliate": {
-      "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3060-3060ti/"
+      "url": null
     }
   },
   {
@@ -243,7 +243,7 @@
     "memorySpeedGbps": 21,
     "powerConsumptionWatts": 200,
     "affiliate": {
-      "url": "https://us.msi.com/Graphics-Card/GeForce-RTX-4070-VENTUS-3X-12G-OC/Specification"
+      "url": null
     }
   },
   {
@@ -337,7 +337,7 @@
     "cardDimensionsMm": "244 x 112 x 41",
     "displayOutputs": "HDMI, 3 x DisplayPort",
     "affiliate": {
-      "url": "https://www.techspot.com/specs/gpu/289555-nvidia-geforce-rtx-4070-super.html"
+      "url": null
     }
   },
   {

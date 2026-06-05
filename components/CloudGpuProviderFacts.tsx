@@ -24,15 +24,6 @@ const pricingModelLabels: Record<CloudGpuProvider["pricingModel"], string> = {
   usage_based: "Usage based",
 };
 
-const affiliateStatusLabels: Record<CloudGpuProvider["affiliateStatus"], string> = {
-  available_unverified: "Affiliate program unverified",
-  available_verified: "Affiliate program verified",
-  not_applicable: "Not applicable",
-  referral_verified: "Referral verified",
-  unavailable: "No program verified",
-  unknown: "Unknown",
-};
-
 function formatValue(value: string | null): string {
   return value && value.trim().length > 0 ? value : "Needs verification";
 }
@@ -41,10 +32,6 @@ export default function CloudGpuProviderFacts({
   provider,
   showPlanningNotices = true,
 }: CloudGpuProviderFactsProps) {
-  const hasVerifiedReferral =
-    provider.affiliateStatus === "referral_verified" ||
-    provider.affiliateStatus === "available_verified";
-
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="provider-facts-heading">
       <h2 id="provider-facts-heading" className="text-lg font-semibold tracking-normal text-slate-950">
@@ -74,10 +61,6 @@ export default function CloudGpuProviderFacts({
           <dd className="mt-1 text-slate-700">{pricingModelLabels[provider.pricingModel]}</dd>
         </div>
         <div className="rounded-2xl bg-slate-50 p-3">
-          <dt className="font-semibold text-slate-950">Affiliate status</dt>
-          <dd className="mt-1 text-slate-700">{affiliateStatusLabels[provider.affiliateStatus]}</dd>
-        </div>
-        <div className="rounded-2xl bg-slate-50 p-3">
           <dt className="font-semibold text-slate-950">Last verified</dt>
           <dd className="mt-1 text-slate-700">{formatValue(provider.lastVerifiedAt)}</dd>
         </div>
@@ -95,29 +78,6 @@ export default function CloudGpuProviderFacts({
         {showPlanningNotices && provider.pricingNotes === null ? (
           <p className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-amber-900">
             Exact pricing is not stored. Check the official provider pricing page before cost planning.
-          </p>
-        ) : null}
-        {showPlanningNotices && provider.affiliateStatus === "unknown" ? (
-          <p className="rounded-2xl border border-amber-200 bg-amber-50 p-3 text-amber-900">
-            Affiliate or referral status has not been verified from an official source.
-          </p>
-        ) : null}
-        {showPlanningNotices && hasVerifiedReferral ? (
-          <p className="rounded-2xl border border-sky-200 bg-sky-50 p-3 text-sky-900">
-            Referral or affiliate status is linked to an official source, but terms should be rechecked before use.
-          </p>
-        ) : null}
-        {provider.affiliateProgramUrl ? (
-          <p className="text-xs leading-5 text-slate-600">
-            Referral reference:{" "}
-            <a
-              className="text-sky-700 underline-offset-4 hover:underline"
-              href={provider.affiliateProgramUrl}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              official program page
-            </a>
           </p>
         ) : null}
       </div>

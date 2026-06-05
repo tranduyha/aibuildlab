@@ -9,7 +9,6 @@ export interface CloudGpuProviderListItem {
   provider: CloudGpuProvider;
   warnings: string[];
   dataConfidence: CloudGpuDataConfidence;
-  affiliateNotice: string | null;
   pricingNotice: string;
 }
 
@@ -17,8 +16,6 @@ export interface CloudGpuProviderDetail extends CloudGpuProviderListItem {
   provider: CloudGpuProvider;
 }
 
-const UNKNOWN_AFFILIATE_NOTICE =
-  "Affiliate or referral status has not been verified from an official source.";
 const LOW_CONFIDENCE_WARNING =
   "Provider details are draft planning data and should be verified before use.";
 const UNKNOWN_PRICING_NOTICE =
@@ -56,7 +53,6 @@ function createListItem(provider: CloudGpuProvider): CloudGpuProviderListItem {
     provider,
     warnings: getCloudGpuProviderWarnings(provider),
     dataConfidence: getCloudGpuProviderDataConfidence(provider),
-    affiliateNotice: getCloudGpuProviderAffiliateNotice(provider),
     pricingNotice: getCloudGpuProviderPricingNotice(provider),
   };
 }
@@ -97,10 +93,6 @@ export function getCloudGpuProviderWarnings(provider: CloudGpuProvider): string[
     warnings.add(LOW_CONFIDENCE_WARNING);
   }
 
-  if (provider.affiliateStatus === "unknown") {
-    warnings.add(UNKNOWN_AFFILIATE_NOTICE);
-  }
-
   if (provider.pricingModel === "unknown") {
     warnings.add(UNKNOWN_PRICING_NOTICE);
   }
@@ -116,22 +108,6 @@ export function getCloudGpuProviderDataConfidence(
   provider: CloudGpuProvider,
 ): CloudGpuDataConfidence {
   return provider.dataConfidence;
-}
-
-export function getCloudGpuProviderAffiliateNotice(provider: CloudGpuProvider): string | null {
-  if (provider.affiliateStatus === "unknown") {
-    return UNKNOWN_AFFILIATE_NOTICE;
-  }
-
-  if (provider.affiliateStatus === "available_unverified") {
-    return "Affiliate or referral status still needs official verification.";
-  }
-
-  if (provider.affiliateStatus === "referral_verified" || provider.affiliateStatus === "available_verified") {
-    return "Referral or affiliate status is linked to an official source, but terms should be rechecked before use.";
-  }
-
-  return null;
 }
 
 export function getCloudGpuProviderPricingNotice(provider: CloudGpuProvider): string {
@@ -179,7 +155,6 @@ export const cloudGpuProviderService = {
   getCloudGpuProvidersForUseCase,
   getCloudGpuProviderWarnings,
   getCloudGpuProviderDataConfidence,
-  getCloudGpuProviderAffiliateNotice,
   getCloudGpuProviderPricingNotice,
   getCloudGpuProvidersForBuildIntent,
 };

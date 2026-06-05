@@ -1,6 +1,5 @@
 import cloudGpuProviderData from "@/data/cloud-gpu-providers.json";
 import type {
-  CloudGpuAffiliateStatus,
   CloudGpuProvider,
   CloudGpuProviderSource,
   CloudGpuProviderStatus,
@@ -9,14 +8,6 @@ import type {
 } from "@/types/cloud-gpu-provider";
 
 const providerStatuses: CloudGpuProviderStatus[] = ["draft", "reviewed", "published", "archived"];
-const affiliateStatuses: CloudGpuAffiliateStatus[] = [
-  "unknown",
-  "unavailable",
-  "available_unverified",
-  "available_verified",
-  "referral_verified",
-  "not_applicable",
-];
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");
@@ -64,8 +55,6 @@ function isCloudGpuProvider(value: unknown): value is CloudGpuProvider {
     isStringArray(provider.useCases) &&
     typeof provider.pricingModel === "string" &&
     (typeof provider.pricingNotes === "string" || provider.pricingNotes === null) &&
-    typeof provider.affiliateStatus === "string" &&
-    (typeof provider.affiliateProgramUrl === "string" || provider.affiliateProgramUrl === null) &&
     isAffiliateConfig(provider.affiliate) &&
     (typeof provider.commissionNotes === "string" || provider.commissionNotes === null) &&
     typeof provider.status === "string" &&
@@ -76,8 +65,7 @@ function isCloudGpuProvider(value: unknown): value is CloudGpuProvider {
     provider.sources.every(isSource) &&
     (typeof provider.lastVerifiedAt === "string" || provider.lastVerifiedAt === null) &&
     (typeof provider.notes === "string" || provider.notes === null) &&
-    isStringArray(provider.unsafeToPublishFields) &&
-    affiliateStatuses.includes(provider.affiliateStatus as CloudGpuAffiliateStatus)
+    isStringArray(provider.unsafeToPublishFields)
   );
 }
 
@@ -107,12 +95,6 @@ export function getCloudGpuProvidersByType(providerType: CloudGpuProviderType): 
   return cloudGpuProviders.filter((provider) => provider.providerType === providerType);
 }
 
-export function getCloudGpuProvidersByAffiliateStatus(
-  affiliateStatus: CloudGpuAffiliateStatus,
-): CloudGpuProvider[] {
-  return cloudGpuProviders.filter((provider) => provider.affiliateStatus === affiliateStatus);
-}
-
 export function getDraftCloudGpuProviders(): CloudGpuProvider[] {
   return cloudGpuProviders.filter((provider) => provider.status === "draft");
 }
@@ -131,7 +113,6 @@ export const cloudGpuProviderRepository = {
   getCloudGpuProviderSlugs,
   getCloudGpuProvidersByUseCase,
   getCloudGpuProvidersByType,
-  getCloudGpuProvidersByAffiliateStatus,
   getDraftCloudGpuProviders,
   getReviewedCloudGpuProviders,
   getPublishedCloudGpuProviders,
