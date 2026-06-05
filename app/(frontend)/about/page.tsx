@@ -1,23 +1,218 @@
-import ArchitectureFlow from "@/components/ArchitectureFlow";
-import { buildMetadata } from "@/lib/seo";
+import Link from "next/link";
+import { buildMetadata, getSiteSettings } from "@/lib/seo";
+
+const settings = getSiteSettings();
 
 export const metadata = buildMetadata({
-  title: "About",
-  description: "The organization and data approach used by this AI hardware workspace.",
+  title: "About | GPU, VRAM, and AI Hardware Planning",
+  description: `Learn how ${settings.name} sources GPU, VRAM, cloud GPU, and local AI build data, including editorial standards, affiliate transparency, AI-assisted workflows, and correction policy.`,
   path: "/about",
 });
 
+const audienceCards = [
+  {
+    title: "Local AI users",
+    description:
+      "Choosing GPUs for local LLMs, image generation, video generation, inference testing, and AI experimentation.",
+  },
+  {
+    title: "Developers",
+    description:
+      "Comparing local GPU setups with cloud GPU providers before testing workloads or planning infrastructure.",
+  },
+  {
+    title: "PC builders",
+    description:
+      "Checking GPU specifications, VRAM limits, power planning, and practical hardware trade-offs.",
+  },
+  {
+    title: "Creators",
+    description:
+      "Planning AI-assisted workflows where VRAM, runtime support, and repeatable testing matter.",
+  },
+  {
+    title: "Technical beginners",
+    description:
+      "Looking for clear GPU explanations without marketing hype or unsupported purchase claims.",
+  },
+];
+
+const coverageItems = [
+  { label: "GPU profiles", href: "/gpu" },
+  { label: "VRAM-focused GPU comparisons", href: "/compare" },
+  { label: "VRAM calculator guidance", href: "/tools/vram-calculator" },
+  { label: "Local AI build planning", href: "/builds" },
+  { label: "Cloud GPU provider profiles", href: "/cloud-gpu" },
+  { label: "AI hardware and software planning guides", href: "/guides" },
+];
+
+const editorialStandards = [
+  "Official website links, source links, and affiliate or referral links are treated as separate link types.",
+  "Official links must not be replaced with monetized links.",
+  "Source trails should remain non-affiliate.",
+  "Unsupported claims such as best, cheapest, guaranteed, or recommended are avoided unless the context and source support the statement.",
+  "Assumptions should be explained where they affect planning guidance.",
+];
+
 export default function AboutPage() {
+  const siteName = settings.name;
+
   return (
-    <section className="shell section page-section about-content">
-      <p className="eyebrow">Architecture</p>
-      <h1>Simple storage today, stable boundaries for tomorrow.</h1>
-      <p className="detail-lead">
-        The initial application reads JSON fixtures from the local data directory.
-        Components remain independent of that choice because repositories and
-        services own data access.
-      </p>
-      <ArchitectureFlow />
-    </section>
+    <article className="tool-page">
+      <div className="shell">
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span aria-current="page">About</span>
+        </nav>
+
+        <header className="tool-hero">
+          <p className="eyebrow">About</p>
+          <h1>About {siteName}</h1>
+          <p className="tool-lead">
+            {siteName} is an independent GPU and AI hardware planning resource built to help users
+            understand VRAM, compare graphics cards, and plan local or cloud GPU setups for AI workloads.
+          </p>
+          <p className="mt-5 text-sm font-semibold text-slate-700">
+            Maintained by the {siteName} team.
+          </p>
+        </header>
+
+        <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="eyebrow">Mission</p>
+          <h2>Practical planning before hardware decisions</h2>
+          <div className="intro-copy">
+            <p>
+              {siteName} helps users make practical GPU and VRAM decisions without relying only on
+              marketing names, benchmark headlines, or unsupported claims.
+            </p>
+            <p>
+              The goal is to make trade-offs easier to understand: VRAM requirements, GPU comparisons,
+              local AI builds, cloud GPU options, AI workload planning, and the constraints that affect
+              real-world fit.
+            </p>
+          </div>
+        </section>
+
+        <section className="tool-section">
+          <p className="eyebrow">Who it helps</p>
+          <h2>Built for GPU planning questions</h2>
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {audienceCards.map((card) => (
+              <article key={card.title} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold tracking-normal text-slate-950">{card.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="eyebrow">Coverage</p>
+          <h2>What {siteName} covers</h2>
+          <p className="max-w-3xl text-base leading-7 text-slate-700">
+            {siteName} publishes GPU profiles, VRAM-focused specifications, comparison pages,
+            calculator guidance, local AI build planning pages, cloud GPU provider profiles, and
+            practical guides for choosing between local hardware and cloud GPU options.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {coverageItems.map((item) => (
+              <Link
+                className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold text-slate-950 transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-800"
+                href={item.href}
+                key={item.href}
+              >
+                {item.label} <span aria-hidden="true">-&gt;</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="eyebrow">Data sources</p>
+          <h2>How data is sourced</h2>
+          <div className="intro-copy">
+            <p>
+              {siteName} prioritizes official manufacturer pages, provider documentation, pricing pages,
+              product specifications, and clearly marked references. When possible, data-backed pages
+              include source trails, verification dates, and review notes.
+            </p>
+            <p>
+              Fields that are uncertain, incomplete, or under review should be marked clearly instead of
+              presented as confirmed. Data can change over time, especially prices, availability, driver
+              support, provider regions, and AI model requirements.
+            </p>
+          </div>
+        </section>
+
+        <section className="tool-section rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="eyebrow">Editorial standards</p>
+          <h2>Explaining trade-offs without pushing blindly</h2>
+          <p className="max-w-3xl text-base leading-7 text-slate-700">
+            {siteName} aims to explain planning trade-offs with neutral, practical wording. The site
+            should separate source references, official destinations, and monetized links so users can
+            understand what each link type is for.
+          </p>
+          <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700 md:grid-cols-2">
+            {editorialStandards.map((standard) => (
+              <li className="rounded-2xl border border-slate-200 bg-slate-50 p-4" key={standard}>
+                {standard}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="tool-section grid gap-5 lg:grid-cols-2">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="eyebrow">Transparency</p>
+            <h2>Affiliate and referral links</h2>
+            <p className="text-base leading-7 text-slate-700">
+              Some future pages may include affiliate or referral links. When used, they will be
+              disclosed clearly and will not affect the price users pay. Affiliate links do not change
+              {` ${siteName}'s `}source policy, official links, or editorial explanations.
+            </p>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="eyebrow">Workflow</p>
+            <h2>AI-assisted workflow</h2>
+            <p className="text-base leading-7 text-slate-700">
+              {siteName} may use AI-assisted workflows to organize research, structure data, draft
+              summaries, or check consistency. Important technical claims should be reviewed against
+              source material before publication.
+            </p>
+          </article>
+        </section>
+
+        <section className="tool-section grid gap-5 lg:grid-cols-2">
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="eyebrow">Corrections</p>
+            <h2>Corrections</h2>
+            <div className="space-y-4 text-base leading-7 text-slate-700">
+              <p>
+                GPU specifications, pricing, driver support, cloud provider availability, and AI model
+                requirements can change over time. {siteName} may add a dedicated contact or feedback
+                path as the site grows.
+              </p>
+              <p>
+                Until then, users should verify important purchase, deployment, or production decisions
+                with official vendor documentation, product pages, and provider terms.
+              </p>
+            </div>
+          </article>
+
+          <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="eyebrow">Limitations</p>
+            <h2>Planning resource, not final approval</h2>
+            <p className="text-base leading-7 text-slate-700">
+              {siteName} is an informational planning resource. Specs, prices, availability, and AI
+              model requirements can vary by quantization, batch size, context length, driver stack, and
+              software configuration. Final purchase, deployment, or production decisions should be
+              verified with official vendor documentation, product pages, and provider terms.
+            </p>
+          </article>
+        </section>
+      </div>
+    </article>
   );
 }

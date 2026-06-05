@@ -95,6 +95,15 @@ Cluster C - AI SaaS / software bridge:
 
 ## Done Today
 
+- [x] Rebuilt `/about` as a trust-focused About page using the configured site name from `data/site-settings.json`.
+- [x] Added About sections for mission, audience, coverage, data sourcing, editorial standards, affiliate/referral transparency, AI-assisted workflow, corrections, and limitations.
+- [x] Kept existing About links in header/footer unchanged.
+- [x] Confirmed no email address, personal name, fake company details, affiliate link, or affiliate CTA was added to `/about`.
+- [x] Ran `npm run data:validate` with 0 errors and 41 existing unrelated GPU warnings.
+- [x] Ran `npm run lint`.
+- [x] Ran `npm run build`.
+- [x] Confirmed no hardcoded public brand/domain strings were introduced in app/components/lib/services/repositories.
+
 - [x] Created branch `affiliate-inline-fields` from `dev`.
 - [x] Chose inline affiliate schema: `affiliate: { "url": null }`.
 - [x] Added inline affiliate objects to `data/gpus.json`, `data/cloud-gpu-providers.json`, and `data/ai-tools.json`.

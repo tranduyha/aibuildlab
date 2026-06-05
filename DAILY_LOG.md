@@ -38,6 +38,41 @@ Việc nên làm tiếp theo
 
 ---
 
+## 2026-06-05 - Trust-focused About page
+
+### Agent
+Codex
+
+### Planned Task
+Replace the placeholder About page with a professional SEO and trust-focused About page for the site.
+
+### Completed
+- [x] Rebuilt `/about` as a trust-focused About page using the configured site name.
+- [x] Added sections for mission, audience, coverage, data sourcing, editorial standards, affiliate/referral transparency, AI-assisted workflow, corrections, and limitations.
+- [x] Added internal links to GPU profiles, comparisons, VRAM calculator, local AI builds, Cloud GPU profiles, and guides.
+- [x] Kept existing header/footer navigation unchanged because `/about` was already linked.
+- [x] Avoided email addresses, personal names, fake company details, fake credentials, affiliate links, and affiliate CTA rendering.
+- [x] Confirmed no hardcoded public brand/domain strings were introduced in app/components/lib/services/repositories.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 41 existing GPU source-field mapping warnings.
+- [x] `npm run lint`
+- [x] `npm run build`
+- [x] Hardcoded brand/domain scan for app/components/lib/services/repositories.
+
+### Issues
+- Existing GPU source-field mapping warnings remain unrelated to this About page task.
+
+### Files Changed
+- `app/(frontend)/about/page.tsx`
+- `TASK_STATUS.md`
+- `DAILY_LOG.md`
+
+### Next Step
+Review the live `/about` layout visually after deploy or local preview.
+
+---
+
 ## 2026-06-05 - Inline affiliate URL fields
 
 ### Agent
