@@ -1,7 +1,18 @@
-# AI Build Lab
+# AI Build Lab / VRAMForge
 
-Next.js starter organized after the layering pattern used by `anthupc`, with local
-JSON files replacing the CMS/data API layer for now.
+Next.js App Router project for the public VRAMForge site.
+
+The site is a Cloudflare-first static SEO utility platform for AI hardware
+planning:
+
+- VRAM estimation.
+- GPU profiles and comparisons.
+- Local AI workstation builds.
+- Cloud GPU planning.
+- Future AI software and workflow bridges.
+
+Month 1 is complete. The active work phase is Month 2: data authority, SEO
+expansion, and monetization readiness.
 
 ## Development
 
@@ -10,25 +21,77 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open:
 
-## Organization
-
-- `app/(frontend)`: route group and frontend layouts/pages.
-- `components`: reusable presentation components.
-- `data`: JSON content used as the initial data source.
-- `repositories`: reads and queries JSON data.
-- `services`: application-facing use cases.
-- `types`: shared domain types.
-- `lib`: shared configuration and formatting helpers.
-
-## Data boundary
-
-Pages and components do not import JSON files directly. New data access should be
-implemented through repositories and exposed through services:
-
-```text
-data/*.json -> repositories/* -> services/* -> app/components
+```txt
+http://localhost:3000
 ```
 
-Payload CMS is intentionally not included in this initial structure.
+## Verification
+
+Use these commands before marking work complete:
+
+```sh
+npm run data:validate
+npm run lint
+npm run build
+```
+
+`npm run data:validate` is required when production data changes.
+
+## Production Target
+
+```txt
+Domain: vramforge.com
+Cloudflare Pages branch: publish
+Framework preset: Next.js (Static HTML Export)
+Build command: npm run build
+Output directory: out
+```
+
+The current MVP does not use a production database, auth, payment system, Worker,
+OpenNext, or SSR runtime.
+
+## Project Structure
+
+```txt
+app/(frontend)/      public routes, layouts, sitemap
+components/          reusable UI components
+data/                JSON production data
+repositories/        data read/query layer
+services/            business logic and page models
+types/               TypeScript domain types
+lib/                 SEO, formatting, shared helpers
+public/              static assets
+docs/                operating docs and roadmaps
+daily_data_update/   source-backed data operations playbook
+```
+
+Standard data flow:
+
+```txt
+data/*.json -> repositories/*.repository.ts -> services/*.service.ts -> app/components
+```
+
+## Current Docs
+
+- `AGENTS.md` - operating rules for Codex/dev agents.
+- `TASK_STATUS.md` - current phase, active scope, blockers, next task.
+- `DAILY_LOG.md` - Month 2 daily execution log.
+- `docs/MONTH_1_SUMMARY.md` - closed Month 1 phase summary.
+- `docs/MONTH_2_ROADMAP.md` - active Month 2 roadmap.
+- `docs/DATA_SOURCES.md` - source policy for specs, models, prices, images.
+- `docs/CHECKLIST_NGHIEM_THU.md` - release and SEO QA checklist.
+- `daily_data_update/README.md` - data research/enrichment workflow.
+
+## Non-Negotiables
+
+- Do not create `src/`.
+- Do not move `app/(frontend)`.
+- Do not hardcode brand/domain in pages/components/helpers.
+- Do not invent hardware specs, AI model facts, benchmarks, prices, or
+  availability.
+- Do not use Google Images as an image source.
+- Do not enable affiliate links before disclosure and URL readiness.
+- Keep the site static-export compatible.
+

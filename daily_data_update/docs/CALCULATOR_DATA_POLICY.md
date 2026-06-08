@@ -15,7 +15,7 @@ data/calculator-validation.json optional
 
 ## Calculator model target
 
-Month 1 target:
+Month 2 target:
 
 ```txt
 15–20 source-backed AI model/use-case records

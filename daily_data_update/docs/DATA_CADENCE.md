@@ -10,9 +10,9 @@
 | Cloud GPU candidates | 2–3x/week | weekly or when pricing/provider pages change | 01 |
 | Comparison/build/guide candidates | weekly | weekly | 06 |
 | Price/affiliate candidates | only after approved API/feed | daily only when API exists | 07 |
-| Month 1 audit | weekly | weekly + end of month | 08 |
+| Legacy foundation audit | as needed | when checking the closed Month 1 baseline | 08 |
 
-## Month 1 hard targets
+## Month 2 hard targets
 
 - `/gpu` should have at least 10 public GPU profile pages.
 - At least 10 GPU records should have source-backed core specs where possible.

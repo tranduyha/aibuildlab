@@ -1,6 +1,9 @@
 # daily_data_update v1
 
-This folder is the data-operations playbook for `aibuildlab` Month 1.
+This folder is the data-operations playbook for `aibuildlab`.
+
+It was created during the Month 1 foundation phase, but it remains active for
+Month 2 data authority work.
 
 It is intentionally separate from production data. The public site should keep reading from the normal project files such as `data/gpus.json`, `data/ai-models.json`, `data/calculator-assumptions.json`, services, components, and pages.
 
@@ -10,7 +13,7 @@ Use this folder to research, enrich, validate, and hand off source-backed data u
 
 ## 1. What this folder is for
 
-Month 1 scope:
+Active Month 2 scope:
 
 ```txt
 GPU data
@@ -220,30 +223,28 @@ Draft records may appear only with clear warning.
 | Wire exact model -> VRAM -> GPU matching | `05_CALCULATOR_GPU_MATCHING.md` | after GPU/model data changes |
 | Generate comparison/build/guide candidates | `06_WEEKLY_COMPARISON_BUILD_GUIDE.md` | weekly |
 | Price/affiliate update | `07_PRICE_AFFILIATE_UPDATE_WHEN_READY.md` | only after approved API/feed |
-| Month 1 audit | `08_MONTH_1_DATA_AUDIT.md` | weekly + end of month |
+| Legacy foundation audit | `08_MONTH_1_DATA_AUDIT.md` | use only when checking the closed Month 1 baseline |
 
 ---
 
-## 6. Recommended order from today
+## 6. Recommended order for Month 2
 
 ```txt
-Step 1: Replace/copy this daily_data_update/ folder into project root.
-Step 2: If install is not done, run prompt 00_INSTALL_DAILY_DATA_UPDATE.md.
-Step 3: Run 10_SOURCE_GAP_AUDIT.md.
-Step 4: Run 02_GPU_ENRICHMENT_10_PUBLISHABLE.md.
-Step 5: Run 11_GPU_MULTI_SOURCE_ENRICHMENT.md if important GPU fields are still null.
-Step 6: Run 03_CALCULATOR_DATA_FOUNDATION.md.
-Step 7: Run 04_AI_MODEL_ENRICHMENT_FOR_CALCULATOR.md.
-Step 8: Run 05_CALCULATOR_GPU_MATCHING.md.
-Step 9: Run npm run data:validate, npm run lint, npm run build.
-Step 10: Update DAILY_LOG.md and TASK_STATUS.md.
+Step 1: Run 10_SOURCE_GAP_AUDIT.md.
+Step 2: Run 02_GPU_ENRICHMENT_10_PUBLISHABLE.md for the first core GPU batch.
+Step 3: Run 11_GPU_MULTI_SOURCE_ENRICHMENT.md if important GPU fields are still null or under-sourced.
+Step 4: Run 03_CALCULATOR_DATA_FOUNDATION.md.
+Step 5: Run 04_AI_MODEL_ENRICHMENT_FOR_CALCULATOR.md.
+Step 6: Run 05_CALCULATOR_GPU_MATCHING.md.
+Step 7: Run npm run data:validate, npm run lint, npm run build.
+Step 8: Update DAILY_LOG.md and TASK_STATUS.md.
 ```
 
-After this, continue with Day 5 GPU profile SEO upgrade.
+After this, continue with the active task in `docs/MONTH_2_ROADMAP.md`.
 
 ---
 
-## 7. Month 1 production targets
+## 7. Month 2 production targets
 
 ### GPU
 
@@ -253,7 +254,7 @@ At least 10 GPU records with source-backed core specs.
 Draft records may remain visible as planning profiles only with warning.
 ```
 
-Preferred Month 1 GPU set:
+Preferred core GPU set:
 
 ```txt
 RTX 3060 12GB

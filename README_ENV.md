@@ -1,44 +1,51 @@
-# AIBUILDLAB ENV FILES
+# Environment Files
 
-File cấu hình mẫu:
+Use `.env.local` for local secrets. Do not commit real API keys.
+
+## Recommended Files
 
 ```txt
 .env.example
+.env.local
 ```
 
-## Cách dùng
+Rules:
 
-1. Commit `.env.example` với các giá trị API key để trống.
-2. Copy `.env.example` thành `.env.local`.
-3. Điền key thật vào `.env.local`.
-4. Đảm bảo `.env.local` nằm trong `.gitignore`.
-5. Không đặt API key thật vào file mẫu hoặc tài liệu.
+1. Keep `.env.example` committed with empty placeholder values.
+2. Copy `.env.example` to `.env.local`.
+3. Put real local keys only in `.env.local`.
+4. Ensure `.env.local` remains ignored by Git.
+5. Never place real keys in docs, code, or sample files.
 
-## Khuyến nghị giai đoạn đầu
-
-Bạn chỉ cần đăng ký và điền:
+## Current Optional Keys
 
 ```txt
 PEXELS_API_KEY
 ```
 
-Các API khác có thể để trống.
-
-Chạy tải ảnh:
+Used by:
 
 ```sh
 npm run images:fetch
-npm run images:fetch -- --category hero --count 1
 ```
 
-## Nguồn ảnh ưu tiên
+## Image Source Rules
 
-1. Pexels API: ảnh minh họa chung.
-2. Unsplash API: ảnh minh họa dự phòng.
-3. Wikimedia Commons API: ảnh có license mở.
-4. eBay Browse API: ảnh sản phẩm/linh kiện nếu dùng product data.
-5. Amazon PA API: chỉ dùng sau khi được duyệt affiliate.
+Allowed image sources:
 
-## Không dùng
+- Project-created images.
+- Pexels API.
+- Unsplash API.
+- Wikimedia Commons API.
+- eBay Browse API.
+- Official affiliate/product feeds.
+- Official press/media kits when the terms allow reuse.
 
-Không tải ảnh trực tiếp từ Google Images.
+Do not download images from Google Images.
+
+Every downloaded image must have metadata in:
+
+```txt
+data/images/image-manifest.json
+```
+

@@ -36,7 +36,7 @@ Enrich GPU data using approved multi-source coverage.
 Target:
 
 ```txt
-At least 10 Month 1 GPU records with source-backed core fields.
+At least 10 core GPU records with source-backed core fields.
 Important null fields either filled or tracked as source gaps.
 No invented specs.
 No unverified benchmark, price, availability, affiliate, tokens/s, or image speed claims.
@@ -156,9 +156,9 @@ If current schema does not support `scope` or `variantName`, add them only if sa
 
 ---
 
-## Target Month 1 GPU set
+## Target core GPU set
 
-Prioritize the existing Month 1 GPU records.
+Prioritize the existing core GPU records before adding new records.
 
 Preferred target set:
 
@@ -383,10 +383,10 @@ DAILY_LOG.md must include:
 TASK_STATUS.md must include:
 
 ```txt
-- Current Day as Day 4.x if still before Day 5
-- Done Today
-- Last Completed Task only if checks pass
-- Open Limitations
+- Current Month 2 task
+- Completed work only if checks pass
+- Open limitations
+- Next recommended task
 ```
 
 ---
