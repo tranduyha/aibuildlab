@@ -593,3 +593,43 @@ the current dense LLM calculator policy.
 ### Next Step
 Add source-backed model profile pages for the strongest calculator models, or
 implement a MoE planning policy before exposing DeepSeek-R1 in the calculator.
+
+---
+
+## 2026-06-09 - GSC breadcrumb item fix
+
+### Agent
+Codex
+
+### Planned Task
+Fix Google Search Console's missing `item` warning inside
+`BreadcrumbList.itemListElement` for `/tools/vram-calculator`.
+
+### Completed
+- [x] Removed the schema-only `Tools` breadcrumb item because the site does not
+  have a real `/tools` index URL.
+- [x] Kept the calculator JSON-LD breadcrumb as `Home` -> `VRAM Calculator`,
+  with both ListItem entries carrying valid canonical `item` URLs.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 50 static pages.
+- [x] Parsed `.next/server/app/tools/vram-calculator.html` and confirmed the
+  calculator BreadcrumbList has 0 missing `item` entries.
+- [x] Parsed 34 built BreadcrumbList schemas and confirmed every ListItem has
+  an `item` URL.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- GSC may take time to clear the warning after deployment and validation.
+
+### Files Changed
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Deploy the fix, then use GSC's "Validate fix" action for the affected
+Breadcrumb issue.

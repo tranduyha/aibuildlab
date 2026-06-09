@@ -225,6 +225,13 @@ npm run lint -> passed
 npm run build -> passed, 50 static pages generated
 calculator eligible dense LLM count -> 14 total, including 4 DeepSeek Distill records
 DeepSeek-R1 full -> published data profile but hidden from calculator until MoE policy exists
+
+2026-06-09 GSC breadcrumb item fix:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 50 static pages generated
+/tools/vram-calculator BreadcrumbList -> 0 missing item entries
+sitewide built BreadcrumbList scan -> 34 schemas checked, 0 missing item entries
 ```
 
 ## Do Not Do Next

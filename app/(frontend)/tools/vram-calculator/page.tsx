@@ -81,11 +81,6 @@ export default function VramCalculatorPage() {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Tools",
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
           name: "VRAM Calculator",
           item: pageUrl,
         },
