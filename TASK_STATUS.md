@@ -70,11 +70,12 @@ Completed:
 - Sitemap, robots, canonical metadata, Open Graph basics, and `html lang="en"`.
 - Static export with `npm run build`.
 
-Known Month 1 limitation:
+Known Month 1 limitations carried into Month 2:
 
-- GPU source-field mapping warnings remain and must be resolved before broad
-  Month 2 content scaling.
-- Calculator model data needs stronger source-backed eligibility.
+- GPU source-field mapping warnings were resolved on 2026-06-09.
+- Calculator model eligibility was tightened on 2026-06-09; the current
+  calculator has 10 eligible dense LLM records plus a separate Image Generation
+  mode for SDXL, Stable Diffusion 3.5 Large, and FLUX.1 dev planning.
 - Affiliate links should remain disabled until disclosure, URLs, and source rules
   are ready.
 
@@ -84,7 +85,7 @@ Known Month 1 limitation:
 
 Priority:
 
-- Fix source-field mapping warnings for the core GPU set.
+- Keep source-field mapping warnings at 0 while enriching the core GPU set.
 - Make source-backed GPU fields the default for public matching.
 - Create model VRAM pages only after model data is source-backed.
 - Avoid thin GPU or comparison expansion.
@@ -110,15 +111,24 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Day 16 - Month 2 readiness audit and documentation reset
+Resume non-image Month 2 priorities after image guide SEO wiring
 ```
 
 Definition of Done:
 
-- Docs point to Month 2 instead of Month 1.
-- `DAILY_LOG.md` starts clean for Month 2.
-- Month 1 history is summarized in `docs/MONTH_1_SUMMARY.md`.
-- Obsolete bootstrap docs are removed.
+- `/tools/vram-calculator` shows the expected LLM and Image Generation modes.
+- Calculator result warnings remain clearly labeled as planning guidance.
+- Image diffusion records remain out of the dense LLM formula path and use the
+  separate image-generation planning service.
+- MoE and embedding records remain hidden until separate estimate policies exist.
+- SDXL has one official-doc observed VRAM sample.
+- FLUX.1 dev has one third-party benchmark observed VRAM sample.
+- Stable Diffusion 3.5 Large has one third-party approximate VRAM sample.
+- `/guides/image-generation-vram-planning` is published and linked from the
+  calculator and guide hub.
+- `/guides/image-generation-vram-planning` is included in `sitemap.xml` and has
+  canonical, metadata, Open Graph, BreadcrumbList, WebPage, and FAQPage signals.
+- `npm run data:validate` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
 
@@ -143,6 +153,61 @@ TASK_STATUS.md
 
 None.
 
+## Latest Check
+
+```txt
+2026-06-09 GPU source-field cleanup:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+
+2026-06-09 calculator eligibility cleanup:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+
+2026-06-09 image generation calculator mode:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+local smoke check -> /tools/vram-calculator HTTP 200
+
+2026-06-09 image generation validation layer:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+
+2026-06-09 first image VRAM observed sample:
+SDXL Diffusers FP16 sample -> validated, observed peak 10.47 GB
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+
+2026-06-09 FLUX observed VRAM benchmark sample:
+FLUX.1 dev Diffusers FP16 RTX 4090 sample -> validated, observed peak 22 GB
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+
+2026-06-09 Stable Diffusion 3.5 Large approximate VRAM sample:
+SD3.5 Large Diffusers BF16 sample -> validated, approximate total VRAM 20 GB
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+
+2026-06-09 image validation UI and planning guide:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 50 static pages generated
+local smoke checks -> calculator, guides hub, and image-generation guide HTTP 200
+
+2026-06-09 image guide SEO and sitemap wiring:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 50 static pages generated
+sitemap output -> includes /guides/image-generation-vram-planning
+```
+
 ## Do Not Do Next
 
 - Do not create many new SEO pages before data cleanup.
@@ -150,4 +215,3 @@ None.
 - Do not add database/auth/payment/Payload.
 - Do not add live price/availability claims without approved source/API.
 - Do not hardcode brand/domain in code directories.
-

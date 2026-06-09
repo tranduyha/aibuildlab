@@ -1,18 +1,17 @@
 {
-  "version": "2026-05-mvp-v2",
+  "version": "2026-06-calculator-eligibility-v1",
   "status": "draft",
   "dataConfidence": "low",
   "needsReview": true,
-  "lastReviewedAt": "2026-05-29",
+  "lastReviewedAt": "2026-06-09",
   "purpose": "Make VRAM calculator assumptions explicit and versioned. This is a planning estimate, not a benchmark.",
   "supportedModelTypes": [
-    "llm",
-    "image-diffusion"
+    "llm"
   ],
   "llmEstimatePolicy": {
-    "description": "Estimate weights memory from parameter count and quantization bits, then add context/runtime overhead and safety margin.",
-    "formula": "estimatedVramGb = ((modelSizeB * quantizationBits) / 8) * overheadMultiplier + contextOverheadGb + runtimeOverheadGb + safetyMarginGb",
-    "warning": "This does not model every architecture, KV cache implementation, batch size, offloading setup, or runtime-specific optimization."
+    "description": "Estimate dense LLM weights memory from parameter count and quantization bits, then add planning overhead for quantization/runtime/context before applying a safety margin.",
+    "formula": "estimatedCoreGb = ((modelSizeB * quantizationBits) / 8) * overheadMultiplier + contextOverheadGb + runtimeOverheadGb; estimatedVramGb = estimatedCoreGb * (1 + safetyMarginPercent / 100)",
+    "warning": "Dense LLM planning only. This does not model every architecture, KV cache implementation, batch size, offloading setup, runtime-specific optimization, image diffusion workflow, or Mixture-of-Experts memory behavior."
   },
   "quantizationProfiles": [
     {
@@ -52,14 +51,14 @@
       "key": "medium",
       "label": "Medium context",
       "contextTokens": 8192,
-      "contextOverheadGb": 1.0,
+      "contextOverheadGb": 1,
       "notes": "MVP placeholder; KV cache grows with context."
     },
     {
       "key": "large",
       "label": "Large context",
       "contextTokens": 32768,
-      "contextOverheadGb": 3.0,
+      "contextOverheadGb": 3,
       "notes": "MVP placeholder; large context can dominate memory."
     }
   ],
@@ -67,28 +66,28 @@
     {
       "key": "llama-cpp",
       "label": "llama.cpp / GGUF planning",
-      "runtimeOverheadGb": 1.0,
+      "runtimeOverheadGb": 1,
       "confidence": "low",
       "notes": "Local inference runtime; exact memory varies by build/model/offload."
     },
     {
       "key": "ollama",
       "label": "Ollama planning",
-      "runtimeOverheadGb": 1.0,
+      "runtimeOverheadGb": 1,
       "confidence": "low",
       "notes": "Ollama uses model/runtime abstractions; exact memory varies."
     },
     {
       "key": "vllm",
       "label": "vLLM serving planning",
-      "runtimeOverheadGb": 2.0,
+      "runtimeOverheadGb": 2,
       "confidence": "low",
       "notes": "vLLM serving can allocate memory for KV cache and batching."
     },
     {
       "key": "transformers",
       "label": "Transformers planning",
-      "runtimeOverheadGb": 2.0,
+      "runtimeOverheadGb": 2,
       "confidence": "low",
       "notes": "Exact memory varies by dtype, device map, attention implementation."
     }
@@ -109,7 +108,8 @@
       "url": "https://huggingface.co/docs/accelerate/en/usage_guides/model_size_estimator",
       "type": "documentation",
       "fields": [
-        "llmEstimatePolicy"
+        "llmEstimatePolicy",
+        "quantizationProfiles"
       ],
       "accessedAt": "2026-05-29"
     },
@@ -143,5 +143,5 @@
       "accessedAt": "2026-05-29"
     }
   ],
-  "notes": "Keep status draft/low until formulas are validated against runtime-specific benchmarks."
+  "notes": "Keep status draft/low until formulas are validated against runtime-specific benchmarks. Image diffusion, embedding, and Mixture-of-Experts models are intentionally excluded from the default dense LLM calculator path until separate formula modes are implemented."
 }

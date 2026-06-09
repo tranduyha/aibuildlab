@@ -21,10 +21,10 @@
     "memoryType": "GDDR6",
     "memoryBusBit": 192,
     "cudaCores": 3584,
-    "streamProcessors": 3584,
-    "computeUnits": 28,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 170,
-    "tbpWatts": 170,
+    "tbpWatts": null,
     "architecture": "Ampere",
     "launchYear": 2021,
     "aiTops": 102,
@@ -74,6 +74,15 @@
           "memorySpeedGbps"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA Introduces GeForce RTX 3060 Newsroom",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-introduces-geforce-rtx-3060-next-generation-of-the-worlds-most-popular-gpu/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -112,10 +121,10 @@
     "memoryType": "GDDR6",
     "memoryBusBit": 128,
     "cudaCores": 4352,
-    "streamProcessors": 4352,
-    "computeUnits": 34,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 165,
-    "tbpWatts": 165,
+    "tbpWatts": null,
     "architecture": "Ada Lovelace",
     "launchYear": 2023,
     "aiTops": 353,
@@ -149,6 +158,15 @@
           "memoryBandwidthGbps"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 4060 and RTX 4060 Ti Announcement",
+        "url": "https://www.nvidia.com/en-ph/geforce/news/geforce-rtx-4060-4060ti/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -184,10 +202,10 @@
     "memoryType": "GDDR6 / GDDR6X",
     "memoryBusBit": 192,
     "cudaCores": 5888,
-    "streamProcessors": 5888,
-    "computeUnits": 46,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 200,
-    "tbpWatts": 200,
+    "tbpWatts": null,
     "architecture": "Ada Lovelace",
     "launchYear": 2023,
     "aiTops": 466,
@@ -219,7 +237,8 @@
           "memoryBusBit",
           "memorySpeedGbps",
           "memoryBandwidthGbps",
-          "tgpWatts"
+          "tgpWatts",
+          "launchYear"
         ],
         "accessedAt": "2026-05-29"
       },
@@ -362,10 +381,10 @@
     "memoryType": "GDDR6X",
     "memoryBusBit": 256,
     "cudaCores": 8448,
-    "streamProcessors": 8448,
-    "computeUnits": 66,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 285,
-    "tbpWatts": 285,
+    "tbpWatts": null,
     "architecture": "Ada Lovelace",
     "launchYear": 2024,
     "aiTops": 353,
@@ -413,6 +432,15 @@
           "tgpWatts"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 40 SUPER Series Announcement",
+        "url": "https://www.nvidia.com/en-us/geforce/news/gfecnt/20241/geforce-rtx-4080-4070-ti-4070-super-gpu/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -449,10 +477,10 @@
     "memoryType": "GDDR6X",
     "memoryBusBit": 256,
     "cudaCores": 10240,
-    "streamProcessors": 10240,
-    "computeUnits": 80,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 320,
-    "tbpWatts": 320,
+    "tbpWatts": null,
     "architecture": "Ada Lovelace",
     "launchYear": 2024,
     "aiTops": 836,
@@ -495,6 +523,15 @@
           "powerConnectors"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 40 SUPER Series Announcement",
+        "url": "https://www.nvidia.com/en-us/geforce/news/gfecnt/20241/geforce-rtx-4080-4070-ti-4070-super-gpu/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -531,10 +568,10 @@
     "memoryType": "GDDR6X",
     "memoryBusBit": 384,
     "cudaCores": 16384,
-    "streamProcessors": 16384,
-    "computeUnits": 128,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 450,
-    "tbpWatts": 450,
+    "tbpWatts": null,
     "architecture": "Ada Lovelace",
     "launchYear": 2022,
     "aiTops": 1321,
@@ -570,6 +607,15 @@
           "powerConsumptionWatts"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 40 Series Newsroom",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-delivers-quantum-leap-in-performance-introduces-new-era-of-neural-rendering-with-geforce-rtx-40-series",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -605,10 +651,10 @@
     "memoryType": "GDDR6X",
     "memoryBusBit": 384,
     "cudaCores": 10496,
-    "streamProcessors": 10496,
-    "computeUnits": 82,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 350,
-    "tbpWatts": 350,
+    "tbpWatts": null,
     "architecture": "Ampere",
     "launchYear": 2020,
     "aiTops": 285,
@@ -660,6 +706,15 @@
           "memorySpeedGbps"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 30 Series Newsroom",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-delivers-greatest-ever-generational-leap-in-performance-with-geforce-rtx-30-series-gpus",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -695,10 +750,10 @@
     "vramGb": 24,
     "memoryType": "GDDR6",
     "memoryBusBit": 384,
-    "cudaCores": 0,
+    "cudaCores": null,
     "streamProcessors": 6144,
     "computeUnits": 96,
-    "tgpWatts": 355,
+    "tgpWatts": null,
     "tbpWatts": 355,
     "architecture": "RDNA 3",
     "launchYear": 2022,
@@ -722,7 +777,11 @@
           "memoryBusBit",
           "boostClockGhz",
           "baseClockGhz",
-          "tbpWatts"
+          "tbpWatts",
+          "streamProcessors",
+          "computeUnits",
+          "launchYear",
+          "memorySpeedGbps"
         ],
         "accessedAt": "2026-05-29"
       },
@@ -783,10 +842,10 @@
     "memoryType": "GDDR7",
     "memoryBusBit": 512,
     "cudaCores": 21760,
-    "streamProcessors": 21760,
-    "computeUnits": 170,
+    "streamProcessors": null,
+    "computeUnits": null,
     "tgpWatts": 575,
-    "tbpWatts": 575,
+    "tbpWatts": null,
     "architecture": "Blackwell",
     "launchYear": 2025,
     "aiTops": 3052,
@@ -831,6 +890,15 @@
           "boostClockGhz"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5090 Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -867,10 +935,10 @@
     "vramGb": 16,
     "memoryType": "GDDR6",
     "memoryBusBit": 256,
-    "cudaCores": 0,
-    "streamProcessors": 4096,
-    "computeUnits": 32,
-    "tgpWatts": 225,
+    "cudaCores": null,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": null,
     "tbpWatts": 225,
     "architecture": "Xe HPG",
     "launchYear": 2022,
@@ -890,7 +958,11 @@
           "memoryType",
           "xeCores",
           "architecture",
-          "memoryBandwidthGbps"
+          "memoryBandwidthGbps",
+          "memoryBusBit",
+          "memorySpeedGbps",
+          "tbpWatts",
+          "launchYear"
         ],
         "accessedAt": "2026-05-29"
       },

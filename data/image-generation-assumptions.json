@@ -1,0 +1,177 @@
+{
+  "version": "2026-06-image-generation-planning-v1",
+  "status": "draft",
+  "dataConfidence": "low",
+  "needsReview": true,
+  "lastReviewedAt": "2026-06-09",
+  "purpose": "Provide source-aware planning presets for image-generation VRAM estimates. These are not benchmark claims.",
+  "modelProfiles": [
+    {
+      "modelSlug": "sdxl-base-1-0",
+      "label": "SDXL Base 1.0",
+      "baseVramGb": 8,
+      "notes": "Planning baseline for SDXL-class local image workflows."
+    },
+    {
+      "modelSlug": "stable-diffusion-3-5-large",
+      "label": "Stable Diffusion 3.5 Large",
+      "baseVramGb": 12,
+      "notes": "Planning baseline for larger transformer-based image workflows."
+    },
+    {
+      "modelSlug": "flux-1-dev",
+      "label": "FLUX.1 dev",
+      "baseVramGb": 16,
+      "notes": "Planning baseline for high-memory FLUX.1 dev workflows."
+    }
+  ],
+  "workflowProfiles": [
+    {
+      "key": "text-to-image",
+      "label": "Text to image",
+      "overheadGb": 0,
+      "notes": "Base single-image generation workflow."
+    },
+    {
+      "key": "img2img",
+      "label": "Image to image",
+      "overheadGb": 1,
+      "notes": "Adds planning overhead for source image processing."
+    },
+    {
+      "key": "lora",
+      "label": "LoRA workflow",
+      "overheadGb": 1,
+      "notes": "Adds planning overhead for adapter-heavy workflows."
+    },
+    {
+      "key": "controlnet",
+      "label": "ControlNet workflow",
+      "overheadGb": 3,
+      "notes": "Adds planning overhead for auxiliary conditioning models."
+    }
+  ],
+  "resolutionProfiles": [
+    {
+      "key": "512",
+      "label": "512 x 512",
+      "overheadGb": 0,
+      "notes": "Low-resolution planning preset."
+    },
+    {
+      "key": "768",
+      "label": "768 x 768",
+      "overheadGb": 1,
+      "notes": "Medium-resolution planning preset."
+    },
+    {
+      "key": "1024",
+      "label": "1024 x 1024",
+      "overheadGb": 3,
+      "notes": "Common SDXL-class planning preset."
+    },
+    {
+      "key": "wide",
+      "label": "1344 x 768 / wide",
+      "overheadGb": 2,
+      "notes": "Wide image planning preset."
+    }
+  ],
+  "precisionProfiles": [
+    {
+      "key": "fp16",
+      "label": "FP16",
+      "multiplier": 1,
+      "notes": "Common local image inference planning precision."
+    },
+    {
+      "key": "bf16",
+      "label": "BF16",
+      "multiplier": 1,
+      "notes": "Common transformer-image workflow planning precision when supported."
+    }
+  ],
+  "runtimeProfiles": [
+    {
+      "key": "diffusers",
+      "label": "Diffusers planning",
+      "overheadGb": 1,
+      "notes": "Pipeline memory varies with attention backend, offload, VAE, and model architecture."
+    },
+    {
+      "key": "comfyui",
+      "label": "ComfyUI planning",
+      "overheadGb": 1.5,
+      "notes": "Node graphs, VAEs, adapters, and ControlNet nodes can materially change memory use."
+    }
+  ],
+  "batchProfiles": [
+    {
+      "batchSize": 1,
+      "overheadGb": 0,
+      "notes": "Single image planning baseline."
+    },
+    {
+      "batchSize": 2,
+      "overheadGb": 2,
+      "notes": "Small batch planning overhead."
+    },
+    {
+      "batchSize": 4,
+      "overheadGb": 5,
+      "notes": "Higher batch planning overhead; verify exact runtime before relying on this."
+    }
+  ],
+  "safetyMarginDefaultPercent": 20,
+  "gpuSuggestionPolicy": {
+    "minHeadroomPercent": 10,
+    "preferDataConfidence": [
+      "high",
+      "medium"
+    ],
+    "allowDraftGpuCandidates": true,
+    "draftGpuLabel": "Planning-only candidate; verify exact workflow and runtime."
+  },
+  "sources": [
+    {
+      "name": "Hugging Face Diffusers memory optimization guide",
+      "url": "https://huggingface.co/docs/diffusers/en/optimization/memory",
+      "type": "documentation",
+      "fields": [
+        "workflowProfiles",
+        "resolutionProfiles",
+        "runtimeProfiles",
+        "batchProfiles"
+      ],
+      "accessedAt": "2026-06-09"
+    },
+    {
+      "name": "SDXL Base 1.0 Hugging Face model card",
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
+      "type": "model-card",
+      "fields": [
+        "modelProfiles"
+      ],
+      "accessedAt": "2026-06-09"
+    },
+    {
+      "name": "Stable Diffusion 3.5 Large Hugging Face model card",
+      "url": "https://huggingface.co/stabilityai/stable-diffusion-3.5-large",
+      "type": "model-card",
+      "fields": [
+        "modelProfiles"
+      ],
+      "accessedAt": "2026-06-09"
+    },
+    {
+      "name": "FLUX.1 dev Hugging Face model card",
+      "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev",
+      "type": "model-card",
+      "fields": [
+        "modelProfiles"
+      ],
+      "accessedAt": "2026-06-09"
+    }
+  ],
+  "notes": "Keep status draft/low until validated against runtime-specific memory measurements. Do not use these planning presets for speed, quality, or buying claims."
+}

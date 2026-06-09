@@ -2,9 +2,9 @@ import Link from "next/link";
 import VramCalculator from "@/components/VramCalculator";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
 
-const PAGE_TITLE = "VRAM Calculator for Local AI Models";
+const PAGE_TITLE = "VRAM Calculator for Local AI and Image Generation";
 const PAGE_DESCRIPTION =
-  "Estimate how much GPU VRAM you may need for local LLMs, quantized models, Stable Diffusion, and AI workloads based on model size, quantization, and context length.";
+  "Estimate how much GPU VRAM you may need for local LLMs, quantized models, Stable Diffusion, FLUX, and image-generation workflows.";
 const PAGE_PATH = "/tools/vram-calculator";
 
 export const metadata = buildMetadata({
@@ -25,9 +25,9 @@ const faqItems = [
       "It may be sufficient for some smaller or quantized workloads, but it is not a universal threshold. Image generation, longer contexts, larger batches, and different runtimes can increase memory demand.",
   },
   {
-    question: "How much VRAM do I need for a 70B model?",
+    question: "How much VRAM do I need for SDXL or FLUX?",
     answer:
-      "Large models can require substantial memory even after quantization. Use the estimate to identify a planning tier, then confirm the chosen format and runtime with a documented test before choosing hardware.",
+      "Image-generation VRAM depends on the model family, resolution, batch size, runtime, VAE, and adapters such as LoRA or ControlNet. Use the image-generation mode as a planning estimate, then validate the exact workflow.",
   },
   {
     question: "Does quantization reduce VRAM usage?",
@@ -39,7 +39,7 @@ const faqItems = [
 const relatedLinks = [
   { label: "Compare source-backed GPU profiles", href: "/compare" },
   { label: "Local LLM GPU planning guides", href: "/guides#planned-guides" },
-  { label: "Stable Diffusion hardware planning", href: "/guides#planned-guides" },
+  { label: "Image generation VRAM planning", href: "/guides/image-generation-vram-planning" },
   { label: "View matching GPU profiles", href: "/gpu" },
   { label: "Budget AI Workstation", href: "/builds#planned-builds" },
 ];
@@ -152,13 +152,25 @@ export default function VramCalculatorPage() {
                 extensions can materially alter usage.
               </p>
               <p>
-                The estimate is deliberately conservative and transparent. It uses
+                The LLM estimate is deliberately conservative and transparent. It uses
                 simple memory assumptions for FP16, INT8, and INT4 weights, adds a
                 context allowance, then applies your selected safety margin. It does
                 not report tokens per second, generation speed, or official hardware
                 support. Use it to narrow your initial options, then verify the
                 selected runtime, quantization format, driver stack, and actual
                 model on the hardware you plan to run.
+              </p>
+              <p>
+                The image-generation mode uses separate workflow presets for SDXL,
+                Stable Diffusion 3.5, and FLUX-style planning. Resolution, batch
+                size, runtime, VAE, LoRA, and ControlNet can change memory use, so
+                the output remains a planning tier rather than a benchmark-backed
+                support claim.
+              </p>
+              <p className="gpu-calc-cta-inline">
+                <Link href="/guides/image-generation-vram-planning">
+                  Read the image-generation VRAM planning guide
+                </Link>
               </p>
             </div>
           </section>

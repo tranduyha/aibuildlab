@@ -1,0 +1,93 @@
+[
+  {
+    "id": "sdxl-base-1-0-diffusers-1024-fp16-batch-1",
+    "modelSlug": "sdxl-base-1-0",
+    "runtime": "diffusers",
+    "workflow": "text-to-image",
+    "resolution": "1024",
+    "batchSize": 1,
+    "precision": "fp16",
+    "gpuSlug": null,
+    "estimatedVramGb": 14.4,
+    "observedPeakVramGb": 10.47,
+    "absoluteDeltaGb": 3.9,
+    "percentDelta": 37.5,
+    "status": "validated",
+    "source": {
+      "name": "Hugging Face Diffusers pipeline loading documentation",
+      "url": "https://huggingface.co/docs/diffusers/using-diffusers/loading",
+      "type": "documentation",
+      "fields": [
+        "modelSlug",
+        "runtime",
+        "workflow",
+        "resolution",
+        "precision",
+        "observedPeakVramGb"
+      ],
+      "accessedAt": "2026-06-09"
+    },
+    "notes": "Hugging Face Diffusers documents an SDXL AutoPipelineForText2Image FP16 CUDA run and prints Max memory reserved: 10.47 GB. Resolution is inferred from the SDXL default text-to-image behavior in Diffusers docs; keep this as a validation sample, not a universal SDXL VRAM claim."
+  },
+  {
+    "id": "stable-diffusion-3-5-large-diffusers-bf16-batch-1",
+    "modelSlug": "stable-diffusion-3-5-large",
+    "runtime": "diffusers",
+    "workflow": "text-to-image",
+    "resolution": "1024",
+    "batchSize": 1,
+    "precision": "bf16",
+    "gpuSlug": null,
+    "estimatedVramGb": 19.2,
+    "observedPeakVramGb": 20,
+    "absoluteDeltaGb": -0.8,
+    "percentDelta": -4,
+    "status": "validated",
+    "source": {
+      "name": "GIGAGPU Stable Diffusion 3.5 Large self-hosted guide",
+      "url": "https://gigagpu.com/stable-diffusion-3-5-large-self-hosted/",
+      "type": "benchmark",
+      "fields": [
+        "modelSlug",
+        "runtime",
+        "workflow",
+        "precision",
+        "observedPeakVramGb"
+      ],
+      "accessedAt": "2026-06-09"
+    },
+    "notes": "GIGAGPU reports SD 3.5 Large FP16 at approximately 20 GB total VRAM and provides a Diffusers StableDiffusion3Pipeline deployment snippet using torch.bfloat16. The source states guide data comes from real-world testing on dedicated GPU servers, but it does not print a framework max-memory counter or exact GPU setup for this number. Treat as a third-party approximate VRAM sample, not an official peak-memory measurement."
+  },
+  {
+    "id": "flux-1-dev-diffusers-fp16-batch-1",
+    "modelSlug": "flux-1-dev",
+    "runtime": "diffusers",
+    "workflow": "text-to-image",
+    "resolution": "1024",
+    "batchSize": 1,
+    "precision": "fp16",
+    "gpuSlug": "rtx-4090",
+    "estimatedVramGb": 24,
+    "observedPeakVramGb": 22,
+    "absoluteDeltaGb": 2,
+    "percentDelta": 9.1,
+    "status": "validated",
+    "source": {
+      "name": "GIGAGPU RTX 4090 FLUX.1-dev benchmark",
+      "url": "https://gigagpu.com/rtx-4090-24gb-flux-dev-benchmark/",
+      "type": "benchmark",
+      "fields": [
+        "modelSlug",
+        "runtime",
+        "workflow",
+        "resolution",
+        "batchSize",
+        "precision",
+        "gpuSlug",
+        "observedPeakVramGb"
+      ],
+      "accessedAt": "2026-06-09"
+    },
+    "notes": "Benchmark reports FLUX.1-dev FP16 on RTX 4090 24GB with Diffusers 0.30, PyTorch 2.5, Ubuntu 24.04, NVIDIA driver 560.x, CUDA 12.6, 1024x1024, 30 steps, guidance scale 3.5, and peak GPU VRAM around 22 GB. Treat as one third-party benchmark sample, not a universal FLUX requirement."
+  }
+]

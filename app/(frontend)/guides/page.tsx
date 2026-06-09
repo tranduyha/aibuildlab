@@ -4,8 +4,8 @@ import { buildMetadata } from "@/lib/seo";
 
 const plannedGuideTopics = [
   "How much VRAM do you need for AI workloads",
-  "GPU memory planning for Stable Diffusion workflows",
   "AI workstation software stack planning",
+  "12GB vs 16GB VRAM for image generation",
 ] as const;
 
 const hubSteps = [
@@ -38,6 +38,10 @@ function getGuideTopicLabel(slug: string): string {
 
   if (slug === "local-ai-vs-ai-saas") {
     return "Local vs SaaS planning";
+  }
+
+  if (slug === "image-generation-vram-planning") {
+    return "Image generation planning";
   }
 
   return "Planning guide";

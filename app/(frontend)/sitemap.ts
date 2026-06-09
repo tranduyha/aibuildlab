@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/cloud-gpu`, lastModified: new Date() },
     { url: `${SITE_URL}/guides`, lastModified: new Date() },
     { url: `${SITE_URL}/guides/cloud-gpu-vs-local-gpu`, lastModified: new Date() },
+    { url: `${SITE_URL}/guides/image-generation-vram-planning`, lastModified: new Date() },
     { url: `${SITE_URL}/guides/local-ai-vs-ai-saas`, lastModified: new Date() },
     { url: `${SITE_URL}/projects`, lastModified: new Date() },
     { url: `${SITE_URL}/about`, lastModified: new Date() },

@@ -45,7 +45,7 @@ export const calculatorAssumptionService = {
       dataConfidence: model.dataConfidence,
       group: resolveGroup(model),
       family: model.family ?? model.modelFamily ?? "Other",
-      calculatorEligible: model.calculatorEligible !== false,
+      calculatorEligible: model.calculatorEligible === true,
     }));
   },
 };

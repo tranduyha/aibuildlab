@@ -132,6 +132,44 @@
     "notes": "Planning guide only. Avoid AI tool scoring, price claims, availability claims, monetized outbound links, payout claims, commerce structured data, tool-evaluation structured data, and buying advice."
   },
   {
+    "id": "guide-image-generation-vram-planning",
+    "slug": "image-generation-vram-planning",
+    "title": "Image Generation VRAM Planning",
+    "shortDescription": "Source-aware guide for planning GPU VRAM around SDXL, Stable Diffusion 3.5 Large, and FLUX image-generation workflows.",
+    "seoTitle": "Image Generation VRAM Planning",
+    "seoDescription": "Plan GPU VRAM for SDXL, Stable Diffusion 3.5 Large, and FLUX image-generation workflows using setup-specific validation samples and cautious planning tiers.",
+    "tags": ["image-generation", "stable-diffusion", "vram"],
+    "useCases": ["stable-diffusion", "image-generation", "ai-creation"],
+    "relatedGpuSlugs": ["rtx-3060-12gb", "rtx-4060-ti-16gb", "rtx-4090"],
+    "relatedToolPaths": [
+      "/tools/vram-calculator",
+      "/gpu",
+      "/compare",
+      "/guides/cloud-gpu-vs-local-gpu"
+    ],
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Image Generation Validation Summary",
+        "url": "https://vramforge.com/guides/image-generation-vram-planning",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-09"
+      },
+      {
+        "name": "Hugging Face Diffusers pipeline loading documentation",
+        "url": "https://huggingface.co/docs/diffusers/using-diffusers/loading",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-09"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-09",
+    "notes": "Planning guide only. Observed image-generation samples are setup-specific and must not be presented as universal requirements, speed claims, buying advice, or guaranteed hardware support."
+  },
+  {
     "id": "guide-rtx-3060-12gb-ai",
     "slug": "rtx-3060-12gb-for-ai",
     "title": "RTX 3060 12GB for AI",

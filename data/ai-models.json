@@ -23,7 +23,7 @@
     "contextLength": 8192,
     "contextLengthTokens": 8192,
     "modality": "text",
-    "license": null,
+    "license": "Llama 3 Community License",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -48,7 +48,8 @@
           "modality",
           "developer",
           "modelFamily",
-          "family"
+          "family",
+          "license"
         ],
         "accessedAt": "2026-05-29"
       },
@@ -93,7 +94,7 @@
     "contextLength": 128000,
     "contextLengthTokens": 128000,
     "modality": "text",
-    "license": null,
+    "license": "Llama 3.1 Community License",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -130,7 +131,9 @@
           "parameterCountB",
           "modality",
           "modelFamily",
-          "family"
+          "family",
+          "contextLengthTokens",
+          "license"
         ],
         "accessedAt": "2026-05-29"
       }
@@ -162,7 +165,7 @@
     "contextLength": 128000,
     "contextLengthTokens": 128000,
     "modality": "text",
-    "license": null,
+    "license": "Llama 3.1 Community License",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -199,7 +202,9 @@
           "parameterCountB",
           "modality",
           "modelFamily",
-          "family"
+          "family",
+          "contextLengthTokens",
+          "license"
         ],
         "accessedAt": "2026-05-29"
       }
@@ -228,10 +233,10 @@
     "developer": "Alibaba Cloud / Qwen",
     "parameterCount": "7B",
     "parameterCountB": 7,
-    "contextLength": null,
-    "contextLengthTokens": null,
+    "contextLength": 131072,
+    "contextLengthTokens": 131072,
     "modality": "text",
-    "license": null,
+    "license": "Apache 2.0",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -269,6 +274,21 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen2.5 LLM model card table",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-llm/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "license",
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -295,10 +315,10 @@
     "developer": "Alibaba Cloud / Qwen",
     "parameterCount": "14B",
     "parameterCountB": 14,
-    "contextLength": null,
-    "contextLengthTokens": null,
+    "contextLength": 131072,
+    "contextLengthTokens": 131072,
     "modality": "text",
-    "license": null,
+    "license": "Apache 2.0",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -336,6 +356,21 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen2.5 LLM model card table",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-llm/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "license",
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -362,10 +397,10 @@
     "developer": "Alibaba Cloud / Qwen",
     "parameterCount": "32B",
     "parameterCountB": 32,
-    "contextLength": null,
-    "contextLengthTokens": null,
+    "contextLength": 131072,
+    "contextLengthTokens": 131072,
     "modality": "text",
-    "license": null,
+    "license": "Apache 2.0",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -403,6 +438,21 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen2.5 LLM model card table",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-llm/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "license",
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -429,10 +479,10 @@
     "developer": "Alibaba Cloud / Qwen",
     "parameterCount": "72B",
     "parameterCountB": 72,
-    "contextLength": null,
-    "contextLengthTokens": null,
+    "contextLength": 131072,
+    "contextLengthTokens": 131072,
     "modality": "text",
-    "license": null,
+    "license": "Qwen License",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -470,6 +520,21 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Qwen2.5 LLM model card table",
+        "url": "https://qwenlm.github.io/blog/qwen2.5-llm/",
+        "type": "official",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "license",
+          "modelFamily",
+          "family",
+          "developer",
+          "modality"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -496,10 +561,10 @@
     "developer": "Mistral AI",
     "parameterCount": "7B",
     "parameterCountB": 7,
-    "contextLength": null,
-    "contextLengthTokens": null,
+    "contextLength": 32768,
+    "contextLengthTokens": 32768,
     "modality": "text",
-    "license": null,
+    "license": "Apache 2.0",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -537,6 +602,21 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Mistral 7B v0.3 model card",
+        "url": "https://docs.mistral.ai/models/model-cards/mistral-7b-0-3",
+        "type": "documentation",
+        "fields": [
+          "parameterCountB",
+          "contextLengthTokens",
+          "license",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -566,7 +646,7 @@
     "contextLength": null,
     "contextLengthTokens": null,
     "modality": "text",
-    "license": null,
+    "license": "Gemma Terms of Use",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -604,6 +684,19 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Gemma 2 model card - Google AI for Developers",
+        "url": "https://ai.google.dev/gemma/docs/core/model_card_2",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality",
+          "license"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",
@@ -633,7 +726,7 @@
     "contextLength": null,
     "contextLengthTokens": null,
     "modality": "text",
-    "license": null,
+    "license": "Gemma Terms of Use",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
@@ -671,6 +764,19 @@
           "developer"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Gemma 2 model card - Google AI for Developers",
+        "url": "https://ai.google.dev/gemma/docs/core/model_card_2",
+        "type": "official",
+        "fields": [
+          "modelFamily",
+          "family",
+          "developer",
+          "modality",
+          "license"
+        ],
+        "accessedAt": "2026-06-09"
       }
     ],
     "lastVerifiedAt": "2026-05-29",

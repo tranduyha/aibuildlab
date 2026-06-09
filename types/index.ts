@@ -50,3 +50,21 @@ export type {
   VramAssumptionsUsed,
   VramGpuMatch,
 } from "./vram-calculator";
+export type {
+  ImageBatchSize,
+  ImageGenerationAssumption,
+  ImageGenerationAssumptionsUsed,
+  ImageGenerationCalculatorInput,
+  ImageGenerationEstimateResult,
+  ImageGenerationModelOption,
+  ImagePrecisionKey,
+  ImageResolutionKey,
+  ImageRuntimeKey,
+  ImageWorkflowKey,
+} from "./image-generation-calculator";
+export type {
+  ImageGenerationValidationComparison,
+  ImageGenerationValidationSample,
+  ImageGenerationValidationSource,
+  ImageGenerationValidationStatus,
+} from "./image-generation-validation";
