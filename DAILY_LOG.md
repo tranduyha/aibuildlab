@@ -503,3 +503,93 @@ link coverage.
 ### Next Step
 Resume Month 2 priorities outside image generation: calculator QA, internal
 link audit, or the next source-backed guide batch.
+
+---
+
+## 2026-06-09 - Image generation guide SEO polish
+
+### Agent
+Codex
+
+### Planned Task
+Improve the Image Generation VRAM Planning guide from a good published guide to
+a stronger SEO/trust page by adding direct sources, calculator workflow steps,
+and model-tier testing guidance.
+
+### Completed
+- [x] Updated the guide title and metadata to include SDXL, SD3.5, and FLUX.
+- [x] Added direct source links for the SDXL, SD3.5, and FLUX validation samples.
+- [x] Added a "How to use the calculator with this guide" workflow section.
+- [x] Added a "Which tier should you test first?" section with cautious
+  setup-specific guidance.
+- [x] Updated `data/guides.json` SEO title/description and source references.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 50 static pages.
+- [x] Built HTML includes the updated title, direct source links, canonical,
+  FAQPage, BreadcrumbList, and testing-tier section.
+- [x] `out/sitemap.xml` still includes
+  `https://vramforge.com/guides/image-generation-vram-planning`.
+
+### Issues
+- Local HTTP smoke check was skipped because no dev server was reachable, but
+  static build output was inspected directly.
+
+### Files Changed
+- `app/(frontend)/guides/image-generation-vram-planning/page.tsx`
+- `data/guides.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Move on from image generation for now; resume Month 2 non-image priorities such
+as calculator QA, internal link audit, or source-backed model VRAM pages.
+
+---
+
+## 2026-06-09 - DeepSeek model enrichment
+
+### Agent
+Codex
+
+### Planned Task
+Research DeepSeek model candidates and add only source-backed models that fit
+the current dense LLM calculator policy.
+
+### Completed
+- [x] Added DeepSeek-R1-Distill-Qwen-7B, DeepSeek-R1-Distill-Llama-8B,
+  DeepSeek-R1-Distill-Qwen-14B, and DeepSeek-R1-Distill-Qwen-32B as eligible
+  dense LLM calculator records.
+- [x] Added DeepSeek-R1 as a published but hidden MoE profile outside the dense
+  calculator formula.
+- [x] Left DeepSeek Distill context length fields `null` until a direct
+  model-card or config source is mapped.
+- [x] Updated calculator eligibility documentation with the new eligible and
+  hidden DeepSeek paths.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 50 static pages.
+- [x] Calculator model count check found 14 eligible dense LLM records, including
+  4 DeepSeek Distill records.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Full DeepSeek-R1 remains hidden because MoE memory planning needs a separate
+  policy for model-load, active-parameter, quantization, and serving behavior.
+- DeepSeek Distill context length is intentionally not claimed yet.
+
+### Files Changed
+- `data/ai-models.json`
+- `docs/CALCULATOR_MODEL_ELIGIBILITY.md`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Add source-backed model profile pages for the strongest calculator models, or
+implement a MoE planning policy before exposing DeepSeek-R1 in the calculator.

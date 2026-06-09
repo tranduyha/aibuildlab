@@ -1148,5 +1148,295 @@
     ],
     "lastVerifiedAt": "2026-05-29",
     "notes": "Not part of default VRAM calculator because embedding workloads require a separate estimation policy."
+  },
+  {
+    "id": "model-deepseek-r1-distill-qwen-7b",
+    "slug": "deepseek-r1-distill-qwen-7b",
+    "name": "DeepSeek-R1-Distill-Qwen-7B",
+    "shortDescription": "Source-backed DeepSeek reasoning distill profile for local LLM VRAM planning.",
+    "seoTitle": "DeepSeek-R1-Distill-Qwen-7B VRAM Planning Profile",
+    "seoDescription": "Source-backed DeepSeek-R1-Distill-Qwen-7B profile for local reasoning model VRAM planning.",
+    "tags": [
+      "llm",
+      "deepseek",
+      "reasoning",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "DeepSeek-R1 Distill",
+    "family": "DeepSeek",
+    "developer": "DeepSeek AI",
+    "parameterCount": "7B",
+    "parameterCountB": 7,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": "MIT",
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 7,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "DeepSeek-R1-Distill-Qwen-7B Hugging Face model card",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "license",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-06-09"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-09",
+    "notes": "Dense distill model based on Qwen2.5-Math-7B; use as planning input only. Context length is left null until a direct model-card or config source is mapped."
+  },
+  {
+    "id": "model-deepseek-r1-distill-llama-8b",
+    "slug": "deepseek-r1-distill-llama-8b",
+    "name": "DeepSeek-R1-Distill-Llama-8B",
+    "shortDescription": "Source-backed DeepSeek reasoning distill profile for local Llama-class planning.",
+    "seoTitle": "DeepSeek-R1-Distill-Llama-8B VRAM Planning Profile",
+    "seoDescription": "Source-backed DeepSeek-R1-Distill-Llama-8B profile for local AI VRAM calculator planning.",
+    "tags": [
+      "llm",
+      "deepseek",
+      "llama",
+      "reasoning",
+      "local-inference"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-coding"
+    ],
+    "modelFamily": "DeepSeek-R1 Distill",
+    "family": "DeepSeek",
+    "developer": "DeepSeek AI",
+    "parameterCount": "8B",
+    "parameterCountB": 8,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": "MIT",
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 8,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "DeepSeek-R1-Distill-Llama-8B Hugging Face model card",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "license",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-06-09"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-09",
+    "notes": "Dense distill model based on Llama-3.1-8B; use as planning input only. Context length is left null until a direct model-card or config source is mapped."
+  },
+  {
+    "id": "model-deepseek-r1-distill-qwen-14b",
+    "slug": "deepseek-r1-distill-qwen-14b",
+    "name": "DeepSeek-R1-Distill-Qwen-14B",
+    "shortDescription": "Source-backed DeepSeek reasoning distill profile for mid-size local planning.",
+    "seoTitle": "DeepSeek-R1-Distill-Qwen-14B VRAM Planning Profile",
+    "seoDescription": "Source-backed DeepSeek-R1-Distill-Qwen-14B profile for local reasoning model VRAM planning.",
+    "tags": [
+      "llm",
+      "deepseek",
+      "reasoning",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation",
+      "ai-coding"
+    ],
+    "modelFamily": "DeepSeek-R1 Distill",
+    "family": "DeepSeek",
+    "developer": "DeepSeek AI",
+    "parameterCount": "14B",
+    "parameterCountB": 14,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": "MIT",
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 14,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "DeepSeek-R1-Distill-Qwen-14B Hugging Face model card",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "license",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-06-09"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-09",
+    "notes": "Dense distill model based on Qwen2.5-14B; calculator output remains a planning estimate, not a benchmark claim. Context length is left null until a direct model-card or config source is mapped."
+  },
+  {
+    "id": "model-deepseek-r1-distill-qwen-32b",
+    "slug": "deepseek-r1-distill-qwen-32b",
+    "name": "DeepSeek-R1-Distill-Qwen-32B",
+    "shortDescription": "Source-backed DeepSeek reasoning distill profile for high-memory local workstation planning.",
+    "seoTitle": "DeepSeek-R1-Distill-Qwen-32B VRAM Planning Profile",
+    "seoDescription": "Source-backed DeepSeek-R1-Distill-Qwen-32B profile for high-memory local AI planning.",
+    "tags": [
+      "llm",
+      "deepseek",
+      "reasoning",
+      "workstation"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation",
+      "ai-coding"
+    ],
+    "modelFamily": "DeepSeek-R1 Distill",
+    "family": "DeepSeek",
+    "developer": "DeepSeek AI",
+    "parameterCount": "32B",
+    "parameterCountB": 32,
+    "contextLength": null,
+    "contextLengthTokens": null,
+    "modality": "text",
+    "license": "MIT",
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": true,
+    "calculatorGroup": "llm",
+    "defaultCalculatorProfile": {
+      "modelSizeB": 32,
+      "modelType": "llm"
+    },
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "DeepSeek-R1-Distill-Qwen-32B Hugging Face model card",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+        "type": "model-card",
+        "fields": [
+          "parameterCountB",
+          "license",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-06-09"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-09",
+    "notes": "Dense distill model based on Qwen2.5-32B; use for source-backed planning only, not speed or benchmark claims. Context length is left null until a direct model-card or config source is mapped."
+  },
+  {
+    "id": "model-deepseek-r1",
+    "slug": "deepseek-r1",
+    "name": "DeepSeek-R1",
+    "shortDescription": "Source-backed MoE reasoning profile tracked outside the dense LLM calculator path.",
+    "seoTitle": "DeepSeek-R1 Planning Profile",
+    "seoDescription": "Source-backed DeepSeek-R1 profile for MoE-aware planning notes outside the dense LLM calculator formula.",
+    "tags": [
+      "llm",
+      "deepseek",
+      "reasoning",
+      "moe"
+    ],
+    "useCases": [
+      "local-llm",
+      "ai-workstation"
+    ],
+    "modelFamily": "DeepSeek-R1",
+    "family": "DeepSeek",
+    "developer": "DeepSeek AI",
+    "parameterCount": "671B total / 37B activated",
+    "parameterCountB": null,
+    "contextLength": 128000,
+    "contextLengthTokens": 128000,
+    "modality": "text",
+    "license": "MIT",
+    "officialRuntime": null,
+    "quantizationFormats": null,
+    "vramEstimateGb": null,
+    "benchmark": null,
+    "calculatorEligible": false,
+    "calculatorGroup": "other",
+    "defaultCalculatorProfile": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "DeepSeek-R1 Hugging Face model card",
+        "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+        "type": "model-card",
+        "fields": [
+          "contextLengthTokens",
+          "license",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer"
+        ],
+        "accessedAt": "2026-06-09"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-09",
+    "notes": "MoE model with 671B total and 37B activated parameters. Excluded from the dense LLM calculator because model-load and active-parameter memory behavior need a separate MoE policy."
   }
 ]

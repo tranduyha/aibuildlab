@@ -111,7 +111,7 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Resume non-image Month 2 priorities after image guide SEO wiring
+Publish source-backed model VRAM pages or add MoE calculator policy
 ```
 
 Definition of Done:
@@ -128,6 +128,12 @@ Definition of Done:
   calculator and guide hub.
 - `/guides/image-generation-vram-planning` is included in `sitemap.xml` and has
   canonical, metadata, Open Graph, BreadcrumbList, WebPage, and FAQPage signals.
+- `/guides/image-generation-vram-planning` now includes direct source links,
+  calculator workflow steps, and cautious model-tier testing guidance.
+- The dense LLM calculator now has 14 eligible source-backed records, including
+  DeepSeek-R1-Distill-Qwen-7B, DeepSeek-R1-Distill-Llama-8B,
+  DeepSeek-R1-Distill-Qwen-14B, and DeepSeek-R1-Distill-Qwen-32B.
+- DeepSeek-R1 full remains hidden until a MoE-aware planning policy exists.
 - `npm run data:validate` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
@@ -206,6 +212,19 @@ npm run data:validate -> 0 errors, 0 warnings
 npm run lint -> passed
 npm run build -> passed, 50 static pages generated
 sitemap output -> includes /guides/image-generation-vram-planning
+
+2026-06-09 image generation guide SEO polish:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 50 static pages generated
+static HTML -> updated title, source links, canonical, FAQPage, BreadcrumbList confirmed
+
+2026-06-09 DeepSeek model enrichment:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 50 static pages generated
+calculator eligible dense LLM count -> 14 total, including 4 DeepSeek Distill records
+DeepSeek-R1 full -> published data profile but hidden from calculator until MoE policy exists
 ```
 
 ## Do Not Do Next

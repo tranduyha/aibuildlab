@@ -36,6 +36,10 @@ field-level sources.
 | `mistral-7b-instruct-v0-3` | Dense LLM with source-backed Mistral model-card coverage. |
 | `gemma-2-9b` | Dense LLM with source-backed model identity and license metadata. |
 | `gemma-2-27b` | Dense LLM with source-backed model identity and license metadata. |
+| `deepseek-r1-distill-qwen-7b` | Dense DeepSeek reasoning distill with source-backed parameter size and MIT license metadata. |
+| `deepseek-r1-distill-llama-8b` | Dense DeepSeek reasoning distill with source-backed parameter size and MIT license metadata. |
+| `deepseek-r1-distill-qwen-14b` | Dense DeepSeek reasoning distill with source-backed parameter size and MIT license metadata. |
+| `deepseek-r1-distill-qwen-32b` | Dense DeepSeek reasoning distill with source-backed parameter size and MIT license metadata. |
 
 ## Image Generation Mode Models
 
@@ -76,6 +80,7 @@ current calculator dropdown.
 | Slug | Hidden reason | Next step |
 |---|---|---|
 | `mixtral-8x7b-instruct-v0-1` | Mixture-of-Experts model; dense parameter formula can overstate or understate VRAM. | Add MoE-specific model load and active-parameter policy before inclusion. |
+| `deepseek-r1` | Mixture-of-Experts model with 671B total and 37B activated parameters; current dense formula is not MoE-aware. | Add MoE-specific load, active-parameter, quantization, and serving-policy support before inclusion. |
 | `bge-large-en-v1-5` | Embedding model; workload and batching behavior need a separate estimate policy. | Add embedding/retrieval workload mode if this becomes a calculator target. |
 | `nomic-embed-text-v1-5` | Embedding model; workload and batching behavior need a separate estimate policy. | Add embedding/retrieval workload mode if this becomes a calculator target. |
 
@@ -93,6 +98,8 @@ Suggested future dense LLM candidates:
 - Llama 3.2 3B Instruct
 - Qwen2.5 3B Instruct
 - Ministral 3 8B
+- DeepSeek-R1-Distill-Qwen-1.5B
+- DeepSeek-R1-Distill-Llama-70B
 - Gemma 3 12B
 - Phi-3.5 mini instruct
 

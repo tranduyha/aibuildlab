@@ -134,10 +134,10 @@
   {
     "id": "guide-image-generation-vram-planning",
     "slug": "image-generation-vram-planning",
-    "title": "Image Generation VRAM Planning",
+    "title": "Image Generation VRAM Planning for SDXL, SD3.5, and FLUX",
     "shortDescription": "Source-aware guide for planning GPU VRAM around SDXL, Stable Diffusion 3.5 Large, and FLUX image-generation workflows.",
-    "seoTitle": "Image Generation VRAM Planning",
-    "seoDescription": "Plan GPU VRAM for SDXL, Stable Diffusion 3.5 Large, and FLUX image-generation workflows using setup-specific validation samples and cautious planning tiers.",
+    "seoTitle": "Image Generation VRAM Planning for SDXL, SD3.5, and FLUX",
+    "seoDescription": "Plan GPU VRAM for SDXL, Stable Diffusion 3.5 Large, and FLUX image-generation workflows with calculator steps, validation samples, and cautious testing tiers.",
     "tags": ["image-generation", "stable-diffusion", "vram"],
     "useCases": ["stable-diffusion", "image-generation", "ai-creation"],
     "relatedGpuSlugs": ["rtx-3060-12gb", "rtx-4060-ti-16gb", "rtx-4090"],
@@ -162,6 +162,20 @@
         "name": "Hugging Face Diffusers pipeline loading documentation",
         "url": "https://huggingface.co/docs/diffusers/using-diffusers/loading",
         "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-09"
+      },
+      {
+        "name": "GIGAGPU Stable Diffusion 3.5 Large self-hosted guide",
+        "url": "https://gigagpu.com/stable-diffusion-3-5-large-self-hosted/",
+        "type": "benchmark",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-09"
+      },
+      {
+        "name": "GIGAGPU RTX 4090 FLUX.1-dev benchmark",
+        "url": "https://gigagpu.com/rtx-4090-24gb-flux-dev-benchmark/",
+        "type": "benchmark",
         "fields": ["notes"],
         "accessedAt": "2026-06-09"
       }
