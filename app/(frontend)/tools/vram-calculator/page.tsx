@@ -1,6 +1,7 @@
 import Link from "next/link";
 import VramCalculator from "@/components/VramCalculator";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
+import { aiModelService } from "@/services/ai-model.service";
 
 const PAGE_TITLE = "VRAM Calculator for Local AI and Image Generation";
 const PAGE_DESCRIPTION =
@@ -47,6 +48,7 @@ const relatedLinks = [
 export default function VramCalculatorPage() {
   const settings = getSiteSettings();
   const pageUrl = buildCanonicalPath(PAGE_PATH);
+  const modelVramPages = aiModelService.listModelVramPages();
   const schemas = [
     {
       "@context": "https://schema.org",
@@ -222,6 +224,27 @@ export default function VramCalculatorPage() {
                 model requirements remain draft until sourced specifications and
                 controlled workload tests are available.
               </p>
+            </div>
+          </section>
+
+          <section className="tool-section">
+            <h2>Source-backed model VRAM pages</h2>
+            <p className="related-note">
+              Use these model pages when you want a source-backed starting point before changing calculator
+              assumptions for your runtime, quantization, and context length.
+            </p>
+            <div className="guide-card-grid">
+              {modelVramPages.map((page) => (
+                <Link className="guide-card guide-card-featured" href={page.path} key={page.model.slug}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">Model VRAM</span>
+                    <span className="guide-card-topic">{page.model.parameterCount ?? "Model"}</span>
+                  </div>
+                  <strong>{page.model.name}</strong>
+                  <span>{page.model.shortDescription}</span>
+                  <small className="guide-card-action">Review VRAM planning page &rarr;</small>
+                </Link>
+              ))}
             </div>
           </section>
 

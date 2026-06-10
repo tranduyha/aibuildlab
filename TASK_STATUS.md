@@ -111,11 +111,28 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Publish source-backed model VRAM pages or add MoE calculator policy
+Choose the next Month 2 priority: MoE calculator policy or 12GB vs 16GB local AI guide
 ```
 
 Definition of Done:
 
+- `/models/[slug]/vram-requirements` framework exists and renders source-backed
+  model facts through repository/service boundaries.
+- `/models/llama-3-1-8b-instruct/vram-requirements` builds as the first
+  framework page with H1, canonical, Open Graph, BreadcrumbList, WebPage, and
+  FAQPage.
+- First batch expands to 3 source-backed dense LLM pages without thin
+  keyword-swap content: Llama 3.1 8B Instruct, Qwen2.5 7B Instruct, and
+  Mistral 7B Instruct v0.3.
+- Model pages link to the calculator and use cautious planning language.
+- Sitemap includes all 3 model VRAM pages.
+- Calculator and guide hub link to all 3 model VRAM pages.
+- Model VRAM pages cross-link to nearby model planning pages.
+- Model VRAM pages include 8GB/12GB/16GB decision sections, validation workflow
+  steps, model-specific FAQ items, and comparison notes.
+- Model VRAM pages include workload-fit guidance, estimate-driver explanations,
+  first-time-builder answers, and direct 4-bit comparison cards across the first
+  3 model pages.
 - `/tools/vram-calculator` shows the expected LLM and Image Generation modes.
 - Calculator result warnings remain clearly labeled as planning guidance.
 - Image diffusion records remain out of the dense LLM formula path and use the
@@ -232,6 +249,74 @@ npm run lint -> passed
 npm run build -> passed, 50 static pages generated
 /tools/vram-calculator BreadcrumbList -> 0 missing item entries
 sitewide built BreadcrumbList scan -> 34 schemas checked, 0 missing item entries
+
+2026-06-10 model VRAM page framework:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 51 static pages generated
+/models/llama-3-1-8b-instruct/vram-requirements -> generated static HTML with H1, canonical, Open Graph, BreadcrumbList, WebPage, FAQPage, source links, calculator link, and GPU planning references
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM batch 1:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+model VRAM pages generated -> /models/llama-3-1-8b-instruct/vram-requirements, /models/qwen2-5-7b-instruct/vram-requirements, /models/mistral-7b-instruct-v0-3/vram-requirements
+static HTML -> all 3 pages include H1, canonical, Open Graph, BreadcrumbList, WebPage, FAQPage, source links, calculator link, and model-specific notes
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM internal linking:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+sitemap output -> includes all 3 model VRAM URLs
+calculator output -> links to all 3 model VRAM pages
+guides hub output -> links to all 3 model VRAM pages
+model page output -> cross-links between nearby model VRAM pages
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM content depth pass:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+static HTML -> all 3 model pages include 8GB/12GB/16GB decision sections, validation workflows, model-specific FAQ items, and comparison notes
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM 9.2 quality pass:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+static HTML -> all 3 model pages include workload-fit sections, estimate-driver sections, first-time-builder answers, and 4-bit comparison cards
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM compare link spacing fix:
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+static HTML -> all 3 model pages include scoped model-compare-links spacing class
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM compare card contrast fix:
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+static HTML -> all 3 model pages include scoped model-compare-grid contrast class in the compare section
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM spacing and responsive pass:
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+static HTML -> all 3 model pages include scoped model-vram-page layout rules plus model-compare-grid and model-compare-links
+responsive CSS -> desktop/tablet/mobile spacing, hero text, disclaimer, grid gap, and card padding rules added
+compare card link affordance -> "Open model page" now matches the /gpu "View planning profile" CTA style
+browser screenshot check -> skipped because Playwright and a callable browser binary were not available
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 model VRAM scale-safety content guardrails:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 53 static pages generated
+static HTML -> all 3 model pages include "What the sources confirm" and "How this model differs from nearby pages"
+publish guardrails -> model VRAM pages require attached sources, 3 differentiators, 2 planning notes, and 4 model-specific FAQ items
+brand/domain hardcode scan in code directories -> no matches
 ```
 
 ## Do Not Do Next

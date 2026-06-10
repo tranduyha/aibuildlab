@@ -633,3 +633,394 @@ Fix Google Search Console's missing `item` warning inside
 ### Next Step
 Deploy the fix, then use GSC's "Validate fix" action for the affected
 Breadcrumb issue.
+
+---
+
+## 2026-06-10 - Model VRAM page framework
+
+### Agent
+Codex
+
+### Planned Task
+Create the first source-backed model VRAM page framework for
+`/models/[slug]/vram-requirements` without scaling thin model pages.
+
+### Completed
+- [x] Added a published-model repository helper for source-backed model lookup.
+- [x] Added model VRAM page service helpers with an explicit allowlist so the
+  framework can publish one testable page before the full batch.
+- [x] Added `/models/[slug]/vram-requirements` with `generateStaticParams`,
+  `generateMetadata`, canonical metadata, BreadcrumbList, WebPage, and FAQPage.
+- [x] Rendered the first framework page for
+  `/models/llama-3-1-8b-instruct/vram-requirements`.
+- [x] Reused the existing dense LLM calculator service for planning estimates
+  instead of duplicating estimate logic.
+- [x] Kept model page language cautious: planning estimates only, no tokens/s,
+  no price/stock claims, no best-GPU or guaranteed-run wording.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 51 static pages.
+- [x] Static HTML for the Llama 3.1 8B page includes H1, canonical, Open Graph,
+  BreadcrumbList, WebPage, FAQPage, source links, calculator link, and GPU
+  planning references.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- The framework intentionally exposes only one model page until the next batch
+  expands the allowlist and content coverage.
+- Sitemap/internal-link expansion is deferred to the dedicated internal-linking
+  step.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `repositories/ai-model.repository.ts`
+- `services/ai-model.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Run `THUC_THI_MODEL_VRAM_BATCH_1` to expand the framework to the first 2-3
+source-backed model VRAM pages.
+
+---
+
+## 2026-06-10 - Model VRAM batch 1
+
+### Agent
+Codex
+
+### Planned Task
+Expand the model VRAM framework to the first small batch of source-backed dense
+LLM pages without creating thin keyword-swap content.
+
+### Completed
+- [x] Published the first 3 model VRAM pages:
+  `/models/llama-3-1-8b-instruct/vram-requirements`,
+  `/models/qwen2-5-7b-instruct/vram-requirements`, and
+  `/models/mistral-7b-instruct-v0-3/vram-requirements`.
+- [x] Added an explicit allowlist for the first model page batch.
+- [x] Added model-specific planning summaries, context notes, fit notes, and
+  FAQ items for Llama 3.1 8B, Qwen2.5 7B, and Mistral 7B.
+- [x] Kept all VRAM values tied to the existing dense LLM calculator service
+  and labeled as planning estimates.
+- [x] Kept MoE, embedding, image-generation, benchmark, speed, price, stock,
+  and buying recommendation claims out of the model pages.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for all 3 model pages includes H1, canonical, Open Graph,
+  BreadcrumbList, WebPage, FAQPage, source links, calculator link, and
+  model-specific notes.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Sitemap and broader internal linking are intentionally deferred to
+  `THUC_THI_MODEL_VRAM_INTERNAL_LINKING`.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `services/ai-model.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Run `THUC_THI_MODEL_VRAM_INTERNAL_LINKING` to add sitemap entries and stronger
+links between calculator, model pages, GPU profiles, and guide surfaces.
+
+---
+
+## 2026-06-10 - Model VRAM internal linking
+
+### Agent
+Codex
+
+### Planned Task
+Wire sitemap and internal links for the first model VRAM page batch so the new
+pages are discoverable from calculator, guides, and nearby model pages.
+
+### Completed
+- [x] Added model VRAM pages to `sitemap.xml` through the AI model service.
+- [x] Added a source-backed model VRAM page section to `/tools/vram-calculator`.
+- [x] Added a model VRAM requirement page section to `/guides`.
+- [x] Added cross-links between the Llama 3.1 8B, Qwen2.5 7B, and Mistral 7B
+  model VRAM pages.
+- [x] Kept internal-link copy planning-oriented and avoided buying
+  recommendations.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] `out/sitemap.xml` includes all 3 model VRAM URLs.
+- [x] Built calculator HTML links to all 3 model VRAM pages.
+- [x] Built guide hub HTML links to all 3 model VRAM pages.
+- [x] Built Llama model page HTML links to the Qwen and Mistral model pages.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, build, sitemap, or internal-link check failures.
+- Follow-up opportunity: run a content-depth pass to add 8GB/12GB/16GB
+  decision sections and stronger validation workflows to the 3 model pages.
+
+### Files Changed
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `services/ai-model.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Run a model VRAM content-depth pass, then consider MoE calculator policy or the
+12GB vs 16GB local AI guide.
+
+---
+
+## 2026-06-10 - Model VRAM content depth pass
+
+### Agent
+Codex
+
+### Planned Task
+Deepen the first 3 model VRAM requirement pages with more useful decision
+content for 8GB, 12GB, and 16GB planning, plus clearer validation workflows.
+
+### Completed
+- [x] Added 8GB, 12GB, and 16GB tier decision sections to the Llama 3.1 8B,
+  Qwen2.5 7B, and Mistral 7B model VRAM pages.
+- [x] Added model-specific validation workflow cards that separate artifact,
+  context, runtime, and comparison checks.
+- [x] Added model-specific FAQ items for 8GB and 12GB fit questions.
+- [x] Added comparison notes between the 7B and 8B model pages.
+- [x] Kept all claims framed as planning guidance, not benchmarks, buying
+  recommendations, speed claims, or guaranteed compatibility.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for all 3 model pages includes the 8GB/12GB/16GB decision
+  section, validation workflow, model-specific FAQ, and comparison notes.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, build, static HTML, or hardcode scan failures.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `services/ai-model.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Choose the next Month 2 priority: add a MoE-aware calculator policy or publish a
+source-backed 12GB vs 16GB local AI planning guide.
+
+---
+
+## 2026-06-10 - Model VRAM 9.2 quality pass
+
+### Agent
+Codex
+
+### Planned Task
+Raise the first 3 model VRAM requirement pages above the previous quality score
+by adding stronger user-decision content, SEO intent coverage, and comparison
+depth without introducing unsupported claims.
+
+### Completed
+- [x] Added workload-fit sections for casual chat, coding/light prompting,
+  long-context, baseline 7B testing, and runtime comparison scenarios.
+- [x] Added "what changes the estimate most" sections for quantization,
+  context length, runtime package, offload, and overhead risks.
+- [x] Added direct first-time-builder answers for 8GB, 12GB, and 16GB planning
+  decisions on each model page.
+- [x] Added direct 4-bit baseline comparison cards across all 3 model pages.
+- [x] Expanded metadata descriptions to include 8GB, 12GB, 16GB, and larger GPU
+  tier planning intent.
+- [x] Kept all copy source-aware and avoided benchmark, speed, price, stock,
+  "best GPU", and buying recommendation claims.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for all 3 model pages includes workload-fit sections,
+  estimate-driver sections, first-time-builder answers, and 4-bit comparison
+  cards.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, build, static HTML, or hardcode scan failures.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `services/ai-model.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Result
+The 3 model VRAM pages now meet the target quality bar above 9.2 for content
+depth, SEO intent coverage, and user decision support.
+
+---
+
+## 2026-06-10 - Model VRAM compare link spacing fix
+
+### Agent
+Codex
+
+### Planned Task
+Fix the visual spacing between the 4-bit comparison cards and the nearby model
+link cards on the model VRAM pages.
+
+### Completed
+- [x] Added a scoped `model-compare-links` class to the nearby model links under
+  the comparison card grid.
+- [x] Added top margin for that scoped link group without changing every
+  `.related-links` block sitewide.
+
+### Checked
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for all 3 model pages includes `model-compare-links`.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No lint, build, static HTML, or hardcode scan failures.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-10 - Model VRAM scale-safety content guardrails
+
+### Agent
+Codex
+
+### Planned Task
+Increase SEO/content safety for the 3 model VRAM pages so future model-page
+scaling requires source-backed, model-specific content instead of simple
+keyword-swapped templates.
+
+### Completed
+- [x] Added a "What the sources confirm" section to separate source-backed
+  model facts from calculator assumptions.
+- [x] Added a "How this model differs from nearby pages" section with required
+  model-specific differentiators for Llama 3.1 8B, Qwen2.5 7B, and Mistral 7B.
+- [x] Added source-confirmation generation from attached model source fields.
+- [x] Added publish-time guardrails requiring attached sources, at least 3
+  differentiators, at least 2 planning notes, and at least 4 model-specific FAQ
+  items for model VRAM pages.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for all 3 model VRAM pages includes "What the sources
+  confirm" and "How this model differs from nearby pages".
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, build, static HTML, or hardcode scan failures.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `services/ai-model.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-10 - Model VRAM compare card contrast fix
+
+### Agent
+Codex
+
+### Planned Task
+Improve visual contrast for the 4-bit baseline comparison cards so they stand
+out from the surrounding page background.
+
+### Completed
+- [x] Added a scoped `model-compare-grid` class to the comparison card grid
+  under "Compare nearby model planning pages".
+- [x] Increased card contrast with a white background, clearer border, and
+  subtle shadow only for this model comparison grid.
+- [x] Confirmed the class is not applied to the VRAM planning estimate grid.
+
+### Checked
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for all 3 model pages includes `model-compare-grid` in the
+  compare section.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No lint, build, static HTML, or hardcode scan failures.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-10 - Model VRAM spacing and responsive pass
+
+### Agent
+Codex
+
+### Planned Task
+Review the full model VRAM page layout, improve vertical spacing between
+sections/cards, and tighten responsive behavior for desktop, tablet, and mobile.
+
+### Completed
+- [x] Added scoped `model-vram-page` layout rules for the model VRAM pages.
+- [x] Adjusted hero, badge, disclaimer, section heading, grid, and card spacing
+  so adjacent blocks have clearer visual separation.
+- [x] Added tablet and mobile overrides for section spacing, hero type, lead
+  text, disclaimers, grid gaps, and compact card padding.
+- [x] Kept the compare-card contrast styling scoped to the nearby-model
+  comparison grid.
+- [x] Styled the "Open model page" text link to match the `/gpu` "View planning
+  profile" CTA pattern: primary color, inline arrow spacing, 14px text, and
+  no underline.
+
+### Checked
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed.
+- [x] Build generated 53 static pages.
+- [x] Static HTML includes `model-vram-page`, `model-compare-grid`, and
+  `model-compare-links` on the model VRAM pages.
+- [x] The compare-card text link is scoped through
+  `.model-compare-grid .guide-card > a`.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Browser screenshot verification was not available in this environment because
+  Playwright and a callable browser binary were not installed.
+- `npm run data:validate` was not run because no data files changed.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`

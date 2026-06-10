@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { guideRepository } from "@/repositories/guide.repository";
 import { buildMetadata } from "@/lib/seo";
+import { aiModelService } from "@/services/ai-model.service";
 
 const plannedGuideTopics = [
   "How much VRAM do you need for AI workloads",
@@ -55,6 +56,7 @@ export const metadata = buildMetadata({
 
 export default function GuidesIndexPage() {
   const publishedGuides = guideRepository.getPublishedGuides();
+  const modelVramPages = aiModelService.listModelVramPages();
 
   return (
     <article className="tool-page">
@@ -104,6 +106,27 @@ export default function GuidesIndexPage() {
                 </h3>
                 <p className="mt-2 text-[15px] leading-7 text-[var(--muted)]">{step.description}</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="tool-section">
+          <h2>Model VRAM requirement pages</h2>
+          <p className="guide-section-lead">
+            Start here when the question is model-specific: how a dense 7B or 8B model maps to planning tiers before
+            runtime validation.
+          </p>
+          <div className="guide-card-grid">
+            {modelVramPages.map((page) => (
+              <Link className="guide-card guide-card-featured" href={page.path} key={page.model.slug}>
+                <div className="guide-card-meta">
+                  <span className="guide-card-label">Model VRAM</span>
+                  <span className="guide-card-topic">{page.model.family ?? page.model.modelFamily}</span>
+                </div>
+                <strong>{page.model.name}</strong>
+                <span>{page.model.shortDescription}</span>
+                <small className="guide-card-action">Open model page &rarr;</small>
+              </Link>
             ))}
           </div>
         </section>

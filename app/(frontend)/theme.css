@@ -948,6 +948,92 @@ body {
   color: var(--primary);
 }
 
+.model-compare-links {
+  margin-top: 28px;
+}
+
+.model-compare-grid .guide-card {
+  border-color: #bfd6e8;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(18, 74, 112, 0.08);
+}
+
+.model-compare-grid .guide-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 18px 42px rgba(18, 74, 112, 0.14);
+}
+
+.model-compare-grid .guide-card > a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.model-compare-grid .guide-card > a span {
+  color: currentColor;
+}
+
+.model-compare-grid .guide-card > a:hover,
+.model-compare-grid .guide-card > a:focus-visible {
+  color: var(--primary-dark);
+}
+
+.model-vram-page .tool-hero {
+  padding-bottom: 22px;
+}
+
+.model-vram-page .data-confidence-badges {
+  margin-top: 14px;
+}
+
+.model-vram-page .tool-disclaimer {
+  margin-top: 0;
+}
+
+.model-vram-page .tool-disclaimer + .tool-section {
+  margin-top: 48px;
+}
+
+.model-vram-page .tool-section {
+  margin-top: 54px;
+}
+
+.model-vram-page .tool-section h2 {
+  margin-bottom: 18px;
+}
+
+.model-vram-page .tool-section > .tool-lead {
+  margin-top: 0;
+}
+
+.model-vram-page .related-note {
+  margin-bottom: 18px;
+}
+
+.model-vram-page .guide-card .related-note {
+  margin-bottom: 0;
+}
+
+.model-vram-page .guide-card-grid,
+.model-vram-page .build-summary-grid,
+.model-vram-page .faq-grid,
+.model-vram-page .related-links,
+.model-vram-page .explanation-grid {
+  gap: 16px;
+}
+
+.model-vram-page .guide-card,
+.model-vram-page .faq-item,
+.model-vram-page .explanation-grid > div {
+  min-width: 0;
+}
+
 @media (max-width: 900px) {
   .hero-grid,
   .project-grid,
@@ -965,6 +1051,23 @@ body {
 
   .project-card p.muted {
     min-height: unset;
+  }
+
+  .model-vram-page .tool-hero {
+    padding-bottom: 20px;
+  }
+
+  .model-vram-page .tool-disclaimer + .tool-section,
+  .model-vram-page .tool-section {
+    margin-top: 42px;
+  }
+
+  .model-vram-page .guide-card-grid,
+  .model-vram-page .build-summary-grid,
+  .model-vram-page .faq-grid,
+  .model-vram-page .related-links,
+  .model-vram-page .explanation-grid {
+    gap: 14px;
   }
 }
 
@@ -1000,6 +1103,50 @@ body {
 
   .tool-hero h1 {
     font-size: 39px;
+  }
+
+  .model-vram-page {
+    padding-top: 20px;
+  }
+
+  .model-vram-page .tool-hero {
+    padding: 34px 0 18px;
+  }
+
+  .model-vram-page .tool-hero h1 {
+    font-size: 36px;
+    line-height: 1.08;
+  }
+
+  .model-vram-page .tool-lead {
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 1.62;
+  }
+
+  .model-vram-page .data-confidence-badges {
+    margin-top: 12px;
+  }
+
+  .model-vram-page .tool-disclaimer {
+    padding: 14px 15px;
+  }
+
+  .model-vram-page .tool-disclaimer + .tool-section,
+  .model-vram-page .tool-section {
+    margin-top: 36px;
+  }
+
+  .model-vram-page .tool-section h2 {
+    margin-bottom: 16px;
+    font-size: 27px;
+    line-height: 1.16;
+  }
+
+  .model-vram-page .guide-card,
+  .model-vram-page .faq-item,
+  .model-vram-page .explanation-grid > div {
+    padding: 18px;
   }
 
   .hero-actions,

@@ -15,6 +15,10 @@ export function getPublishedAiModels(): AiModel[] {
   return aiModels.filter((model) => model.status === "published" && !model.needsReview);
 }
 
+export function getPublishedAiModelBySlug(slug: string): AiModel | null {
+  return getPublishedAiModels().find((model) => model.slug === slug) ?? null;
+}
+
 export function getAiModelsByUseCase(useCase: string): AiModel[] {
   return aiModels.filter((model) => model.useCases.includes(useCase));
 }
@@ -22,6 +26,7 @@ export function getAiModelsByUseCase(useCase: string): AiModel[] {
 export const aiModelRepository = {
   getAllAiModels,
   getAiModelBySlug,
+  getPublishedAiModelBySlug,
   getPublishedAiModels,
   getAiModelsByUseCase,
 };
