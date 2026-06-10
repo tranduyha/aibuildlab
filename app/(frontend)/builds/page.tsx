@@ -1,8 +1,10 @@
 import Link from "next/link";
 import BuildCard from "@/components/BuildCard";
 import BuildCta from "@/components/BuildCta";
-import { buildMetadata } from "@/lib/seo";
+import { buildCanonicalUrl, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { buildService } from "@/services/build.service";
+
+const PAGE_PATH = "/builds";
 
 const relatedPlanningTools = [
   { label: "Estimate VRAM first", href: "/tools/vram-calculator" },
@@ -17,15 +19,36 @@ export const metadata = buildMetadata({
   title: "Local AI Workstation Build Planning",
   description:
     "Planning pages for local LLM, image workflow, and high-VRAM AI workstation builds with clearly labelled draft data.",
-  path: "/builds",
+  path: PAGE_PATH,
 });
 
 export default function BuildsIndexPage() {
+  const settings = getSiteSettings();
   const buildItems = buildService.getBuildListItems();
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: settings.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Builds",
+        item: buildCanonicalUrl(PAGE_PATH),
+      },
+    ],
+  };
 
   return (
-    <main className="tool-page">
-      <div className="shell">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <main className="tool-page">
+        <div className="shell">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link>
           <span>/</span>
@@ -127,7 +150,8 @@ export default function BuildsIndexPage() {
         </section>
 
         <BuildCta />
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

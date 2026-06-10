@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { guideRepository } from "@/repositories/guide.repository";
-import { buildMetadata } from "@/lib/seo";
+import { buildCanonicalUrl, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { aiModelService } from "@/services/ai-model.service";
+
+const PAGE_PATH = "/guides";
 
 const plannedGuideTopics = [
   "How much VRAM do you need for AI workloads",
@@ -51,24 +53,51 @@ function getGuideTopicLabel(slug: string): string {
 export const metadata = buildMetadata({
   title: "Local AI Hardware Guides",
   description: "Browse the planned guide hub for GPU memory, local LLMs, image generation, and workstation planning.",
-  path: "/guides",
+  path: PAGE_PATH,
 });
 
 export default function GuidesIndexPage() {
+  const settings = getSiteSettings();
   const publishedGuides = guideRepository.getPublishedGuides();
   const modelVramPages = aiModelService.listModelVramPages();
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: settings.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Guides",
+        item: buildCanonicalUrl(PAGE_PATH),
+      },
+    ],
+  };
 
   return (
-    <article className="tool-page">
-      <div className="shell">
-        <header className="tool-hero guide-hero" id="planned-guides">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <article className="tool-page">
+        <div className="shell">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span aria-current="page">Guides</span>
+          </nav>
+
+          <header className="tool-hero guide-hero" id="planned-guides">
           <p className="eyebrow">Guides</p>
           <h1>Source-aware local AI planning guides</h1>
           <p className="tool-lead">
             Use these guides to compare local hardware planning, cloud testing, and workflow tradeoffs without turning
             draft assumptions into buying advice.
           </p>
-        </header>
+          </header>
 
         <section className="tool-section">
           <h2>Published planning guides</h2>
@@ -186,7 +215,8 @@ export default function GuidesIndexPage() {
             ))}
           </div>
         </section>
-      </div>
-    </article>
+        </div>
+      </article>
+    </>
   );
 }

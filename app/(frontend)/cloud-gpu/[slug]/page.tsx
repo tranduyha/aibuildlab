@@ -221,24 +221,12 @@ export default async function CloudGpuProviderDetailPage({
   return (
     <div className="bg-slate-50">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 py-8 sm:px-6 lg:px-8">
-        <nav className="text-sm text-slate-600" aria-label="Breadcrumb">
-          <ol className="flex flex-wrap gap-2">
-            <li>
-              <Link className="text-sky-700 underline-offset-4 hover:underline" href="/">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link className="text-sky-700 underline-offset-4 hover:underline" href="/cloud-gpu">
-                Cloud GPU
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-slate-900">
-              {provider.name}
-            </li>
-          </ol>
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <Link href="/cloud-gpu">Cloud GPU</Link>
+            <span>/</span>
+            <span aria-current="page">{provider.name}</span>
         </nav>
 
         <header className="rounded-2xl border border-slate-200 bg-white px-6 py-8 shadow-sm sm:px-8 sm:py-10">

@@ -1,17 +1,38 @@
 import Link from "next/link";
 import ComparisonCard from "@/components/ComparisonCard";
-import { buildMetadata } from "@/lib/seo";
+import { buildCanonicalUrl, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { comparisonService } from "@/services/comparison.service";
+
+const PAGE_PATH = "/compare";
 
 export const metadata = buildMetadata({
   title: "GPU Comparison Hub for Local AI Planning",
   description:
     "Source-aware GPU comparison pages for local AI planning. Compare VRAM, power and constraints with cautious, verification-first guidance.",
-  path: "/compare",
+  path: PAGE_PATH,
 });
 
 export default function CompareIndexPage() {
+  const settings = getSiteSettings();
   const items = comparisonService.getComparisonListItems();
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: settings.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Compare",
+        item: buildCanonicalUrl(PAGE_PATH),
+      },
+    ],
+  };
   const groupedItems = items.reduce<Record<string, typeof items>>((groups, item) => {
     const intent = comparisonService.getComparisonIntent(item.comparison, item.gpus);
     return {
@@ -21,16 +42,24 @@ export default function CompareIndexPage() {
   }, {});
 
   return (
-    <article className="tool-page">
-      <div className="shell">
-        <header className="tool-hero">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <article className="tool-page">
+        <div className="shell">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span aria-current="page">Compare</span>
+          </nav>
+
+          <header className="tool-hero">
           <p className="eyebrow">Compare GPU options</p>
           <h1>GPU comparisons for local AI planning</h1>
           <p className="tool-lead">
             Use these source-aware comparisons to plan local AI hardware research. Treat verdicts as planning
             guidance, not benchmark-backed buying advice.
           </p>
-        </header>
+          </header>
 
         <p className="tool-disclaimer">
           Comparison records may include planning drafts. Verify exact card variants, runtime requirements, and
@@ -95,7 +124,8 @@ export default function CompareIndexPage() {
             <Link href="/guides">Read guides <span>&rarr;</span></Link>
           </div>
         </section>
-      </div>
-    </article>
+        </div>
+      </article>
+    </>
   );
 }

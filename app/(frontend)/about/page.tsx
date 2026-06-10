@@ -99,10 +99,30 @@ const boundaries = [
 
 export default function AboutPage() {
   const siteName = settings.name;
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: settings.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "About",
+        item: buildCanonicalUrl("/about"),
+      },
+    ],
+  };
 
   return (
-    <article className="tool-page">
-      <div className="shell">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <article className="tool-page">
+        <div className="shell">
         <nav className="breadcrumb" aria-label="Breadcrumb">
           <Link href="/">Home</Link>
           <span>/</span>
@@ -292,7 +312,8 @@ export default function AboutPage() {
             </p>
           </article>
         </section>
-      </div>
-    </article>
+        </div>
+      </article>
+    </>
   );
 }

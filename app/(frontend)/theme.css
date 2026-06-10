@@ -464,8 +464,18 @@ body {
   font-size: 14px;
 }
 
-.breadcrumb a:hover {
+.breadcrumb a {
   color: var(--primary);
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.breadcrumb [aria-current="page"] {
+  color: var(--foreground);
+  font-weight: 500;
 }
 
 .tool-hero {

@@ -1,17 +1,38 @@
 import Link from "next/link";
 import GpuCard from "@/components/GpuCard";
-import { buildMetadata } from "@/lib/seo";
+import { buildCanonicalUrl, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { gpuService } from "@/services/gpu.service";
+
+const PAGE_PATH = "/gpu";
 
 export const metadata = buildMetadata({
   title: "GPU Planning Profiles for Local AI",
   description:
     "Browse source-backed and draft GPU planning profiles for local AI. Start with VRAM estimates, then verify official and board-partner specs before purchase.",
-  path: "/gpu",
+  path: PAGE_PATH,
 });
 
 export default function GpuIndexPage() {
+  const settings = getSiteSettings();
   const { data: gpus, warning } = gpuService.listAllGpus();
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: settings.siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "GPU",
+        item: buildCanonicalUrl(PAGE_PATH),
+      },
+    ],
+  };
 
   const verified = gpus.filter(
     (gpu) => (gpu.status === "published" || gpu.status === "reviewed") && !gpu.needsReview,
@@ -21,15 +42,23 @@ export default function GpuIndexPage() {
   );
 
   return (
-    <article className="tool-page">
-      <div className="shell">
-        <header className="tool-hero gpu-index-hero">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <article className="tool-page">
+        <div className="shell">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span aria-current="page">GPU</span>
+          </nav>
+
+          <header className="tool-hero gpu-index-hero">
           <p className="eyebrow">GPU planning database</p>
           <h1>GPU planning profiles for local AI workloads</h1>
           <p className="tool-lead">
             Use these profiles to plan local AI hardware research. Start from VRAM requirements, then validate the exact GPU and board-partner card specs before buying.
           </p>
-        </header>
+          </header>
 
         {warning ? <p className="tool-disclaimer">{warning}</p> : null}
 
@@ -79,7 +108,8 @@ export default function GpuIndexPage() {
             </div>
           </section>
         ) : null}
-      </div>
-    </article>
+        </div>
+      </article>
+    </>
   );
 }

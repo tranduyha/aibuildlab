@@ -173,18 +173,10 @@ export default function CloudGpuPage() {
   return (
     <div className="bg-slate-50">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-8 sm:px-6 lg:px-8">
-        <nav className="text-sm text-slate-600" aria-label="Breadcrumb">
-          <ol className="flex flex-wrap gap-2">
-            <li>
-              <Link className="text-sky-700 underline-offset-4 hover:underline" href="/">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="text-slate-900">
-              Cloud GPU
-            </li>
-          </ol>
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span aria-current="page">Cloud GPU</span>
         </nav>
 
         <header className="grid gap-5 rounded-lg border border-slate-200 bg-white p-6 shadow-sm lg:grid-cols-[1fr_280px] lg:items-end">

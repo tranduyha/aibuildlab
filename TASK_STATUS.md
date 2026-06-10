@@ -365,6 +365,20 @@ npm run lint -> passed
 npm run build -> passed, 49 static pages generated
 calculator result CTA -> visible /compare action now reads "Compare GPU options before committing"
 monetization placement data -> placement-vram-calculator-result title/description/ctaLabel updated to planning-oriented copy without price, SKU, affiliate, ranking, or cloud-route mismatch
+
+2026-06-10 sitewide breadcrumb coverage pass:
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+breadcrumb audit -> 42 public routes excluding home checked, 0 missing visual breadcrumbs, 0 missing BreadcrumbList schemas
+pages updated -> /about, /builds, /cloud-gpu, /cloud-gpu/[slug], /compare, /gpu, /guides
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 breadcrumb coverage verification:
+npm.cmd run lint -> passed
+npm run build -> passed, 49 static pages generated
+static HTML breadcrumb audit -> 42 public routes excluding home and not-found checked, 0 missing visual breadcrumbs, 0 missing BreadcrumbList schemas
+page code changes -> none; current page-specific breadcrumb pattern remains appropriate
+brand/domain hardcode scan in code directories -> no matches
 ```
 
 ## Do Not Do Next

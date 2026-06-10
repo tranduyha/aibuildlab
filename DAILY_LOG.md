@@ -1290,3 +1290,91 @@ language, or mismatched cloud-GPU routing.
 If placement rendering is later activated, keep the destination aligned with the
 CTA promise: `/compare` for local GPU comparisons and cloud routes only for
 local-vs-cloud copy.
+
+---
+
+## 2026-06-10 - Sitewide breadcrumb coverage pass
+
+### Agent
+Codex
+
+### Planned Task
+Audit public static routes for missing breadcrumbs, excluding the home page, and
+add missing visual breadcrumbs or BreadcrumbList structured data.
+
+### Completed
+- [x] Added BreadcrumbList JSON-LD to `/about`.
+- [x] Added visual breadcrumb and BreadcrumbList JSON-LD to `/compare`.
+- [x] Added visual breadcrumb and BreadcrumbList JSON-LD to `/gpu`.
+- [x] Added visual breadcrumb and BreadcrumbList JSON-LD to `/guides`.
+- [x] Added BreadcrumbList JSON-LD to `/builds`.
+- [x] Standardized Cloud GPU breadcrumb markup so `/cloud-gpu` and
+  `/cloud-gpu/[slug]` are detected as visual breadcrumbs while keeping their
+  existing BreadcrumbList JSON-LD.
+
+### Checked
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and generated 49 static pages.
+- [x] Static breadcrumb audit checked 42 public routes excluding home and found
+  0 missing visual breadcrumbs and 0 missing BreadcrumbList schemas.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- None.
+
+### Files Changed
+- `app/(frontend)/about/page.tsx`
+- `app/(frontend)/builds/page.tsx`
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `app/(frontend)/cloud-gpu/[slug]/page.tsx`
+- `app/(frontend)/compare/page.tsx`
+- `app/(frontend)/gpu/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Keep new public routes on the same standard: visible breadcrumb plus
+BreadcrumbList JSON-LD, except for the home page.
+
+---
+
+## 2026-06-10 - Breadcrumb coverage verification
+
+### Agent
+Codex
+
+### Planned Task
+Re-check breadcrumb coverage across public static output, excluding the home
+page, and only patch missing pages if the audit finds a gap.
+
+### Completed
+- [x] Reviewed the existing page-level breadcrumb approach and kept it in place.
+- [x] Confirmed source-level coverage already includes visual breadcrumbs and
+  BreadcrumbList JSON-LD on every public `page.tsx` outside the home page.
+- [x] Rebuilt the static output and audited generated HTML instead of relying
+  only on source inspection.
+- [x] Found no missing visual breadcrumbs or BreadcrumbList schemas across the
+  generated public pages.
+- [x] Made no page-code changes because the audit did not find a gap.
+
+### Checked
+- [ ] `npm run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm run build` passed and generated 49 static pages.
+- [x] Static breadcrumb audit checked 42 public HTML routes excluding home and
+  not-found, with 0 missing visual breadcrumbs and 0 missing BreadcrumbList
+  schemas.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Initial `npm run lint` call was blocked by the local PowerShell execution
+  policy for `npm.ps1`; rerunning through `npm.cmd run lint` passed.
+
+### Files Changed
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Keep the current page-specific breadcrumb pattern and repeat the static audit
+after future public route additions.
