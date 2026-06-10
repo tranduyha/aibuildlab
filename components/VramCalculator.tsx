@@ -349,7 +349,7 @@ function LlmCalculatorForm({
         >
           {PROFILES.contextPresets.map((profile) => (
             <option key={profile.key} value={profile.key}>
-              {profile.label} ({profile.contextTokens.toLocaleString()} tokens)
+              {profile.label} ({profile.contextTokens.toLocaleString("en-US")} tokens)
             </option>
           ))}
         </select>
@@ -454,7 +454,7 @@ function MoeCalculatorForm({
         >
           {MOE_PROFILES.contextPresets.map((profile) => (
             <option key={profile.key} value={profile.key}>
-              {profile.label} ({profile.contextTokens.toLocaleString()} tokens)
+              {profile.label} ({profile.contextTokens.toLocaleString("en-US")} tokens)
             </option>
           ))}
         </select>
@@ -735,7 +735,7 @@ function MoeCalculatorResult({
             <strong>Total and active parameters are separated</strong>
             <span>
               {selectedModel.contextLengthTokens
-                ? `${selectedModel.contextLengthTokens.toLocaleString()} token source-backed context window`
+                ? `${selectedModel.contextLengthTokens.toLocaleString("en-US")} token source-backed context window`
                 : "Context window needs verification"}
             </span>
           </div>
