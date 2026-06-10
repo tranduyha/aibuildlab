@@ -4,7 +4,7 @@ import { aiToolService } from "@/services/ai-tool.service";
 
 const PAGE_TITLE = "Local AI vs AI SaaS for Workflow Planning";
 const PAGE_DESCRIPTION =
-  "Compare local AI hardware planning with AI SaaS and API tools across cost, privacy, setup time, quality control, reliability, and team workflow without scored lists or pricing claims.";
+  "Compare local AI hardware with AI SaaS and API tools across cost, privacy, setup time, quality control, reliability, and team workflow.";
 const PAGE_PATH = "/guides/local-ai-vs-ai-saas";
 
 const faqItems = [

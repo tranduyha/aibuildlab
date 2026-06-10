@@ -3,9 +3,9 @@ import VramCalculator from "@/components/VramCalculator";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { aiModelService } from "@/services/ai-model.service";
 
-const PAGE_TITLE = "VRAM Calculator for Local AI and Image Generation";
+const PAGE_TITLE = "VRAM Calculator for Local AI, MoE, and Image Generation";
 const PAGE_DESCRIPTION =
-  "Estimate how much GPU VRAM you may need for local LLMs, quantized models, Stable Diffusion, FLUX, and image-generation workflows.";
+  "Estimate how much GPU VRAM you may need for local LLMs, MoE models, quantized models, Stable Diffusion, FLUX, and image-generation workflows.";
 const PAGE_PATH = "/tools/vram-calculator";
 
 export const metadata = buildMetadata({
@@ -34,6 +34,16 @@ const faqItems = [
     question: "Does quantization reduce VRAM usage?",
     answer:
       "Quantization generally reduces weight memory compared with higher precision formats, but actual VRAM use also includes context, KV cache, runtime overhead, and other implementation details.",
+  },
+  {
+    question: "How does the MoE estimate work?",
+    answer:
+      "The MoE mode uses source-backed total parameters as the conservative resident weight-memory baseline, while active parameters are shown as architecture context. The result remains a planning estimate, not benchmark data or a hardware guarantee.",
+  },
+  {
+    question: "Why are active parameters not the VRAM requirement?",
+    answer:
+      "Active parameters describe the subset of parameters used for per-token computation. They do not prove that only those weights need to reside in GPU memory, especially when runtime loading, expert routing, offload, and model packaging vary.",
   },
 ];
 
@@ -158,7 +168,9 @@ export default function VramCalculatorPage() {
                 model on the hardware you plan to run.
               </p>
               <p>
-                The image-generation mode uses separate workflow presets for SDXL,
+                The MoE mode uses a separate formula for models such as DeepSeek-R1
+                and Mixtral, where total parameters and active parameters have
+                different meanings. The image-generation mode uses separate workflow presets for SDXL,
                 Stable Diffusion 3.5, and FLUX-style planning. Resolution, batch
                 size, runtime, VAE, LoRA, and ControlNet can change memory use, so
                 the output remains a planning tier rather than a benchmark-backed
@@ -223,6 +235,27 @@ export default function VramCalculatorPage() {
                 or 24 GB and above. A tier is not a GPU endorsement. GPU records and
                 model requirements remain draft until sourced specifications and
                 controlled workload tests are available.
+              </p>
+            </div>
+          </section>
+
+          <section className="tool-section">
+            <h2>Mixture-of-Experts estimate mode</h2>
+            <div className="intro-copy">
+              <p>
+                Mixture-of-Experts models now use a separate planning estimate path instead of the dense LLM formula.
+                A MoE model can have a large total parameter count, a smaller active parameter count, routing behavior,
+                and runtime-specific memory allocation that do not map cleanly to a dense parameter-size estimate.
+              </p>
+              <p>
+                This means models such as DeepSeek-R1 and Mixtral are not estimated by pretending they are ordinary
+                dense models. The MoE path distinguishes total parameters, active parameters, KV cache, context length,
+                batching, expert routing, and runtime behavior.
+              </p>
+              <p>
+                The current MoE formula is intentionally conservative: it uses total parameters, or a higher
+                source-backed packaged model size when available, as the resident weight-memory baseline. Active
+                parameters are displayed for architecture context, not as a minimum VRAM claim.
               </p>
             </div>
           </section>

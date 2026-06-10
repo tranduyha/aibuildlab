@@ -77,6 +77,14 @@ const gpuSourceRequiredFields = [
 
 const aiModelSourceRequiredFields = [
   "parameterCountB",
+  "totalParameterCountB",
+  "activeParameterCountB",
+  "packagedParameterCountB",
+  "expertCount",
+  "routedExpertCount",
+  "sharedExpertCount",
+  "activeExpertCount",
+  "moeArchitectureNotes",
   "contextLengthTokens",
   "license",
   "family",
@@ -847,6 +855,7 @@ checkFile("data/builds.json");
 checkFile("data/guides.json");
 checkFile("data/calculator-assumptions.json");
 checkFile("data/calculator-validation.json");
+checkFile("data/moe-calculator-assumptions.json");
 checkFile("data/image-generation-assumptions.json");
 checkFile("data/image-generation-validation-samples.json");
 checkCloudGpuProviders();

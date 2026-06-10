@@ -7,9 +7,24 @@ function parseModelSizeBillion(name: string): number | null {
   return match ? Number(match[1]) : null;
 }
 
-function resolveGroup(model: { calculatorGroup?: string | null; modality?: string | null }): CalculatorModelOption["group"] {
-  if (model.calculatorGroup === "llm" || model.calculatorGroup === "image-diffusion") {
+const MOE_EXCLUSION_REASON =
+  "Excluded from the dense LLM calculator: MoE models need a separate policy for total parameters, active parameters, routing, KV cache, and runtime memory behavior.";
+
+function resolveGroup(model: {
+  calculatorGroup?: string | null;
+  modality?: string | null;
+  tags?: string[] | null;
+}): CalculatorModelOption["group"] {
+  if (
+    model.calculatorGroup === "llm" ||
+    model.calculatorGroup === "image-diffusion" ||
+    model.calculatorGroup === "moe"
+  ) {
     return model.calculatorGroup;
+  }
+
+  if (model.tags?.includes("moe")) {
+    return "moe";
   }
 
   if (model.modality?.includes("image")) {
@@ -46,6 +61,7 @@ export const calculatorAssumptionService = {
       group: resolveGroup(model),
       family: model.family ?? model.modelFamily ?? "Other",
       calculatorEligible: model.calculatorEligible === true,
+      exclusionReason: resolveGroup(model) === "moe" ? MOE_EXCLUSION_REASON : undefined,
     }));
   },
 };

@@ -1024,3 +1024,222 @@ sections/cards, and tighten responsive behavior for desktop, tablet, and mobile.
 - `app/(frontend)/theme.css`
 - `DAILY_LOG.md`
 - `TASK_STATUS.md`
+
+---
+
+## 2026-06-10 - MoE calculator policy
+
+### Agent
+Codex
+
+### Planned Task
+Implement an explicit Mixture-of-Experts calculator policy so MoE records remain
+tracked but are not estimated with the dense LLM VRAM formula.
+
+### Completed
+- [x] Added `moe` as a first-class calculator model group in TypeScript types.
+- [x] Classified Mixtral 8x7B Instruct v0.1 and DeepSeek-R1 as `calculatorGroup:
+  "moe"` while keeping `calculatorEligible: false`.
+- [x] Updated the dense LLM calculator model filter so only eligible `llm`
+  records with source-backed model size enter the dropdown.
+- [x] Added an excluded-model service path with MoE-specific exclusion reasons.
+- [x] Added a calculator UI policy notice that lists tracked MoE models excluded
+  from dense LLM estimates.
+- [x] Added an indexable "Mixture-of-Experts model policy" section and FAQ item
+  on `/tools/vram-calculator`.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` initially failed in the sandbox because `next/font`
+  could not fetch Google Fonts.
+- [x] `npm run build` passed after rerunning with network permission.
+- [x] Build generated 53 static pages.
+- [x] Static HTML for `/tools/vram-calculator` includes the MoE policy section,
+  MoE FAQ item, and calculator notice listing DeepSeek-R1 and Mixtral.
+- [x] Only two records are classified as `calculatorGroup: "moe"`:
+  Mixtral 8x7B Instruct v0.1 and DeepSeek-R1.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Build requires network access for Google Fonts when the font is not already
+  cached by Next.js.
+
+### Files Changed
+- `types/vram-calculator.ts`
+- `types/ai-model.ts`
+- `data/ai-models.json`
+- `services/calculator-assumption.service.ts`
+- `services/vram-calculator.service.ts`
+- `components/VramCalculator.tsx`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Follow-Up Plan
+- Superseded by the MoE calculator estimate mode implementation entry below.
+
+---
+
+## 2026-06-10 - MoE calculator estimate mode
+
+### Agent
+Codex
+
+### Planned Task
+Implement the MoE calculator formula plan for both DeepSeek-R1 and Mixtral while
+keeping MoE separate from the dense LLM calculator path.
+
+### Completed
+- [x] Added structured MoE fields to AI model types.
+- [x] Added source-backed MoE data for DeepSeek-R1 and Mixtral 8x7B Instruct
+  v0.1, including total parameters, active parameters, expert metadata where
+  source-backed, context metadata, and MoE architecture notes.
+- [x] Added `data/moe-calculator-assumptions.json` for auditable MoE estimate
+  assumptions.
+- [x] Added a MoE assumptions repository and MoE calculator service.
+- [x] Added a separate MoE mode to `/tools/vram-calculator`.
+- [x] Kept DeepSeek-R1 and Mixtral excluded from dense LLM eligibility while
+  enabling them through `moeCalculatorEligible`.
+- [x] Updated calculator page metadata, FAQ schema, and indexable page copy for
+  the MoE estimate mode.
+- [x] Updated calculator eligibility documentation.
+- [x] Removed the completed MoE formula handoff plan document.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` initially failed in the sandbox because `next/font` could
+  not fetch Google Fonts.
+- [x] `npm run build` passed after rerunning with network permission.
+- [x] Build generated 53 static pages.
+- [x] Service smoke check confirmed MoE options:
+  `mixtral-8x7b-instruct-v0-1:47/13` and `deepseek-r1:671/37`.
+- [x] Service smoke check confirmed Mixtral estimates from a 47B resident
+  baseline and DeepSeek-R1 estimates from the conservative 685B packaged
+  baseline.
+- [x] Static HTML for `/tools/vram-calculator` includes MoE title, FAQ, and
+  estimate-mode copy.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- MoE results are still planning estimates only. No observed runtime VRAM
+  validation sample has been added for DeepSeek-R1 or Mixtral.
+- Build requires network access for Google Fonts when the font is not already
+  cached by Next.js.
+
+### Files Changed
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `components/VramCalculator.tsx`
+- `data/ai-models.json`
+- `data/moe-calculator-assumptions.json`
+- `docs/CALCULATOR_MODEL_ELIGIBILITY.md`
+- `repositories/moe-calculator-assumption.repository.ts`
+- `scripts/validate-data.ts`
+- `services/moe-vram-calculator.service.ts`
+- `types/ai-model.ts`
+- `types/index.ts`
+- `types/moe-vram-calculator.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+- Removed `docs/MOE_CALCULATOR_FORMULA_PLAN.md`
+
+### Next Step
+Publish a source-backed 12GB vs 16GB local AI guide or collect MoE runtime VRAM
+validation samples before strengthening MoE claims.
+
+---
+
+## 2026-06-10 - Project route cleanup and GPU sitemap coverage
+
+### Agent
+Codex
+
+### Planned Task
+Review whether the old `/projects` sample route is still useful, remove it if
+it is not aligned with the current VRAMForge direction, and add GPU detail pages
+to the sitemap.
+
+### Completed
+- [x] Confirmed `/projects` was a leftover portfolio/sample route with generic
+  app project entries, not a current VRAMForge hardware planning surface.
+- [x] Removed the public `/projects` index and `/projects/[slug]` routes.
+- [x] Removed unused project sample data, repository, service, component, and
+  type export.
+- [x] Added all generated GPU detail pages to `sitemap.xml`.
+- [x] Rebuilt after clearing stale `.next` route type cache.
+
+### Checked
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and generated 49 static pages.
+- [x] Static SEO audit found 43 public HTML routes and 43 sitemap URLs.
+- [x] Static SEO audit confirmed no `/projects` routes remain.
+- [x] Static SEO audit confirmed all GPU detail routes are in the sitemap.
+- [x] Static SEO audit found no missing title, description, canonical, or H1
+  issues.
+
+### Issues
+- Initial build after deleting `/projects` failed because stale `.next/dev`
+  route validator types still referenced `/projects/[slug]`; clearing `.next`
+  resolved it.
+
+### Files Changed
+- `app/(frontend)/sitemap.ts`
+- Removed `app/(frontend)/projects/page.tsx`
+- Removed `app/(frontend)/projects/[slug]/page.tsx`
+- Removed `components/ProjectCard.tsx`
+- Removed `data/projects.json`
+- Removed `repositories/project.repository.ts`
+- Removed `services/project.service.ts`
+- Removed `types/project.type.ts`
+- `types/index.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Rerun the broader SEO audit after any future route changes, then continue with
+the source-backed 12GB vs 16GB local AI guide or MoE validation sample research.
+
+---
+
+## 2026-06-10 - SEO meta description warning fix
+
+### Agent
+Codex
+
+### Planned Task
+Fix the four static SEO audit warnings where meta descriptions were longer than
+the preferred snippet range, while keeping VRAMForge copy source-aware and
+non-promotional.
+
+### Completed
+- [x] Shortened the `/about` meta description and Open Graph description.
+- [x] Shortened the `/cloud-gpu` meta description.
+- [x] Shortened the `/guides/cloud-gpu-vs-local-gpu` meta description and
+  matching guide data record.
+- [x] Shortened the `/guides/local-ai-vs-ai-saas` meta description and matching
+  guide data record.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and generated 49 static pages.
+- [x] Static SEO audit found 43 public HTML routes, 43 sitemap URLs, 0 issues,
+  and 0 warnings.
+
+### Issues
+- None.
+
+### Files Changed
+- `app/(frontend)/about/page.tsx`
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `app/(frontend)/guides/cloud-gpu-vs-local-gpu/page.tsx`
+- `app/(frontend)/guides/local-ai-vs-ai-saas/page.tsx`
+- `data/guides.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Continue with source-backed Month 2 content work, with meta descriptions kept
+near the 130-155 character range where possible.

@@ -2,7 +2,7 @@ export type ModelSizeBillion = number;
 export type Quantization = "fp16" | "int8" | "int4";
 export type ContextPreset = "basic" | "medium" | "large";
 export type RuntimeKey = "llama-cpp" | "ollama" | "vllm" | "transformers";
-export type CalculatorModelGroup = "llm" | "image-diffusion" | "other";
+export type CalculatorModelGroup = "llm" | "image-diffusion" | "moe" | "other";
 
 export interface VramCalculatorInput {
   modelSlug: string;
@@ -46,6 +46,7 @@ export interface CalculatorModelOption {
   group: CalculatorModelGroup;
   family: string;
   calculatorEligible: boolean;
+  exclusionReason?: string;
 }
 
 export interface VramEstimateResult extends VramCalculatorInput {

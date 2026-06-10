@@ -1002,16 +1002,25 @@
     "developer": "Mistral AI",
     "parameterCount": "47B total / 13B active",
     "parameterCountB": null,
-    "contextLength": null,
-    "contextLengthTokens": null,
+    "totalParameterCountB": 47,
+    "activeParameterCountB": 13,
+    "packagedParameterCountB": null,
+    "expertCount": 8,
+    "routedExpertCount": 8,
+    "sharedExpertCount": null,
+    "activeExpertCount": 2,
+    "contextLength": 32000,
+    "contextLengthTokens": 32000,
     "modality": "text",
-    "license": null,
+    "license": "Apache 2.0",
     "officialRuntime": null,
     "quantizationFormats": null,
     "vramEstimateGb": null,
     "benchmark": null,
     "calculatorEligible": false,
-    "calculatorGroup": "other",
+    "calculatorGroup": "moe",
+    "moeCalculatorEligible": true,
+    "moeArchitectureNotes": "Sparse Mixture-of-Experts model with 8 experts and 2 selected experts per token; MoE estimates use total parameters as the conservative resident weight-memory baseline.",
     "defaultCalculatorProfile": null,
     "status": "published",
     "needsReview": false,
@@ -1022,10 +1031,15 @@
         "url": "https://docs.mistral.ai/models/model-cards/mixtral-8x7b-0-1",
         "type": "documentation",
         "fields": [
+          "totalParameterCountB",
+          "activeParameterCountB",
+          "contextLengthTokens",
+          "license",
           "modelFamily",
           "family",
           "developer",
-          "modality"
+          "modality",
+          "moeArchitectureNotes"
         ],
         "accessedAt": "2026-05-29"
       },
@@ -1034,16 +1048,34 @@
         "url": "https://huggingface.co/mistralai/Mixtral-8x7B-v0.1",
         "type": "model-card",
         "fields": [
+          "totalParameterCountB",
+          "license",
           "modelFamily",
           "family",
           "developer",
           "modality"
         ],
         "accessedAt": "2026-05-29"
+      },
+      {
+        "name": "Mixtral of Experts paper",
+        "url": "https://arxiv.org/abs/2401.04088",
+        "type": "paper",
+        "fields": [
+          "totalParameterCountB",
+          "activeParameterCountB",
+          "expertCount",
+          "routedExpertCount",
+          "activeExpertCount",
+          "contextLengthTokens",
+          "license",
+          "moeArchitectureNotes"
+        ],
+        "accessedAt": "2026-06-10"
       }
     ],
-    "lastVerifiedAt": "2026-05-29",
-    "notes": "MoE parameter semantics differ from dense LLMs; excluded from default calculator path until explicit formula support is implemented."
+    "lastVerifiedAt": "2026-06-10",
+    "notes": "MoE parameter semantics differ from dense LLMs. Eligible only for the separate MoE planning estimate path, not the dense LLM calculator."
   },
   {
     "id": "model-bge-large-en-v1-5",
@@ -1406,6 +1438,13 @@
     "developer": "DeepSeek AI",
     "parameterCount": "671B total / 37B activated",
     "parameterCountB": null,
+    "totalParameterCountB": 671,
+    "activeParameterCountB": 37,
+    "packagedParameterCountB": 685,
+    "expertCount": 257,
+    "routedExpertCount": 256,
+    "sharedExpertCount": 1,
+    "activeExpertCount": 8,
     "contextLength": 128000,
     "contextLengthTokens": 128000,
     "modality": "text",
@@ -1415,7 +1454,9 @@
     "vramEstimateGb": null,
     "benchmark": null,
     "calculatorEligible": false,
-    "calculatorGroup": "other",
+    "calculatorGroup": "moe",
+    "moeCalculatorEligible": true,
+    "moeArchitectureNotes": "DeepSeek-R1 is based on DeepSeek-V3-Base architecture. The source-backed planning record separates 671B main model total parameters, 37B activated parameters, and the 685B Hugging Face displayed model size.",
     "defaultCalculatorProfile": null,
     "status": "published",
     "needsReview": false,
@@ -1426,17 +1467,50 @@
         "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
         "type": "model-card",
         "fields": [
+          "totalParameterCountB",
+          "activeParameterCountB",
+          "packagedParameterCountB",
           "contextLengthTokens",
           "license",
           "modality",
           "modelFamily",
           "family",
-          "developer"
+          "developer",
+          "moeArchitectureNotes"
         ],
-        "accessedAt": "2026-06-09"
+        "accessedAt": "2026-06-10"
+      },
+      {
+        "name": "DeepSeek-R1 GitHub repository",
+        "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+        "type": "documentation",
+        "fields": [
+          "totalParameterCountB",
+          "activeParameterCountB",
+          "contextLengthTokens",
+          "modality",
+          "modelFamily",
+          "family",
+          "developer",
+          "moeArchitectureNotes"
+        ],
+        "accessedAt": "2026-06-10"
+      },
+      {
+        "name": "DeepSeek-V3 671B inference config",
+        "url": "https://raw.githubusercontent.com/deepseek-ai/DeepSeek-V3/main/inference/configs/config_671B.json",
+        "type": "documentation",
+        "fields": [
+          "expertCount",
+          "routedExpertCount",
+          "sharedExpertCount",
+          "activeExpertCount",
+          "moeArchitectureNotes"
+        ],
+        "accessedAt": "2026-06-10"
       }
     ],
-    "lastVerifiedAt": "2026-06-09",
-    "notes": "MoE model with 671B total and 37B activated parameters. Excluded from the dense LLM calculator because model-load and active-parameter memory behavior need a separate MoE policy."
+    "lastVerifiedAt": "2026-06-10",
+    "notes": "MoE model with 671B main model total parameters, 37B activated parameters, and a 685B Hugging Face displayed model size. Eligible only for the separate MoE planning estimate path, not the dense LLM calculator."
   }
 ]

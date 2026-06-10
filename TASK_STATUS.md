@@ -111,13 +111,20 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Choose the next Month 2 priority: MoE calculator policy or 12GB vs 16GB local AI guide
+Next recommended Month 2 priority: source-backed 12GB vs 16GB local AI guide or MoE validation sample research
 ```
 
 Definition of Done:
 
 - `/models/[slug]/vram-requirements` framework exists and renders source-backed
   model facts through repository/service boundaries.
+- MoE estimate mode exists on `/tools/vram-calculator` without reusing the dense
+  LLM formula.
+- DeepSeek-R1 and Mixtral 8x7B Instruct v0.1 are available only through the MoE
+  planning estimate path.
+- MoE estimates use source-backed total parameters, or a higher source-backed
+  packaged model size when available, as the resident weight-memory baseline.
+- Active parameters are shown as architecture context, not as the VRAM floor.
 - `/models/llama-3-1-8b-instruct/vram-requirements` builds as the first
   framework page with H1, canonical, Open Graph, BreadcrumbList, WebPage, and
   FAQPage.
@@ -137,7 +144,7 @@ Definition of Done:
 - Calculator result warnings remain clearly labeled as planning guidance.
 - Image diffusion records remain out of the dense LLM formula path and use the
   separate image-generation planning service.
-- MoE and embedding records remain hidden until separate estimate policies exist.
+- Embedding records remain hidden until separate estimate policies exist.
 - SDXL has one official-doc observed VRAM sample.
 - FLUX.1 dev has one third-party benchmark observed VRAM sample.
 - Stable Diffusion 3.5 Large has one third-party approximate VRAM sample.
@@ -150,7 +157,7 @@ Definition of Done:
 - The dense LLM calculator now has 14 eligible source-backed records, including
   DeepSeek-R1-Distill-Qwen-7B, DeepSeek-R1-Distill-Llama-8B,
   DeepSeek-R1-Distill-Qwen-14B, and DeepSeek-R1-Distill-Qwen-32B.
-- DeepSeek-R1 full remains hidden until a MoE-aware planning policy exists.
+- DeepSeek-R1 full is available only in the MoE planning estimate mode.
 - `npm run data:validate` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
@@ -317,6 +324,40 @@ npm run build -> passed, 53 static pages generated
 static HTML -> all 3 model pages include "What the sources confirm" and "How this model differs from nearby pages"
 publish guardrails -> model VRAM pages require attached sources, 3 differentiators, 2 planning notes, and 4 model-specific FAQ items
 brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 MoE calculator policy:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> initial sandbox font fetch failure, rerun with network permission passed and generated 53 static pages
+calculator policy -> dense LLM dropdown now accepts only eligible llm records with model size
+MoE classification -> Mixtral 8x7B Instruct v0.1 and DeepSeek-R1 are calculatorGroup "moe" and calculatorEligible false
+UI/content -> /tools/vram-calculator includes MoE policy notice, indexable MoE section, and MoE FAQ schema item
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 MoE calculator estimate mode:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> initial sandbox font fetch failure, rerun with network permission passed and generated 53 static pages
+MoE model data -> DeepSeek-R1 and Mixtral 8x7B Instruct v0.1 have structured source-backed MoE fields
+calculator mode -> /tools/vram-calculator has separate LLM, MoE, and Image Generation modes
+service smoke check -> Mixtral uses 47B resident baseline and DeepSeek-R1 uses 685B conservative packaged baseline
+static HTML -> MoE title, FAQ, and estimate-mode copy present on /tools/vram-calculator
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-10 project route cleanup and GPU sitemap coverage:
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+/projects cleanup -> removed leftover sample portfolio routes, project sample data, project component, repository, service, and type export
+sitemap output -> 43 public HTML routes and 43 sitemap URLs
+GPU detail sitemap coverage -> all generated /gpu/[slug] pages included
+static SEO audit -> no missing title, description, canonical, or H1 issues
+
+2026-06-10 SEO meta description warning fix:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+meta descriptions shortened -> /about 140 chars, /cloud-gpu 147 chars, /guides/cloud-gpu-vs-local-gpu 145 chars, /guides/local-ai-vs-ai-saas 135 chars
+static SEO audit -> 43 public HTML routes, 43 sitemap URLs, 0 issues, 0 warnings
 ```
 
 ## Do Not Do Next

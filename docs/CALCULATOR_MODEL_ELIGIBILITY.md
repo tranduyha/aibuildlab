@@ -2,21 +2,24 @@
 
 Last reviewed: 2026-06-09
 
-This note tracks which AI model records are allowed into the current VRAM
-Calculator dropdown and which records stay hidden until a better formula or
-workflow exists.
+This note tracks which AI model records are allowed into each VRAM Calculator
+mode and which records stay hidden until a better formula or workflow exists.
 
 ## Current Calculator Mode
 
-The calculator currently supports dense text LLM planning only.
+The calculator currently supports:
+
+- Dense text LLM planning.
+- Separate MoE planning estimates for source-backed Mixture-of-Experts records.
+- Separate Image Generation planning estimates.
 
 It does not yet support:
 
-- Mixture-of-Experts memory behavior
 - embedding-specific workload estimates
 - benchmark-backed runtime performance claims
 
-Image diffusion has a separate planning mode on `/tools/vram-calculator`.
+MoE, dense LLM, and image diffusion estimates use separate formula paths on
+`/tools/vram-calculator`.
 
 ## Eligible Dense LLM Models
 
@@ -72,6 +75,18 @@ Validated samples may be used as cautious observed references. Records that
 remain `needs-source` have source-backed workflow/model references but not
 measured peak VRAM values.
 
+## MoE Estimate Mode Models
+
+These records remain excluded from the dense LLM dropdown, but are available in
+the MoE mode through a separate planning formula that uses total parameters, or
+a higher source-backed packaged model size when available, as the resident
+weight-memory baseline.
+
+| Slug | Inclusion reason | Caveat |
+|---|---|---|
+| `mixtral-8x7b-instruct-v0-1` | Source-backed MoE profile with 47B total parameters, 13B active parameters, 8 experts, 2 active experts, Apache 2.0 license, and 32K context metadata. | Planning estimate only; actual VRAM depends on runtime, quantization, offload, and package format. |
+| `deepseek-r1` | Source-backed MoE profile with 671B main model total parameters, 37B active parameters, 128K context metadata, MIT license, and DeepSeek-V3 architecture references. | Uses the higher 685B Hugging Face displayed model size as a conservative resident baseline; not a single-GPU guarantee. |
+
 ## Hidden Models
 
 These records remain in `data/ai-models.json`, but should not appear in the
@@ -79,8 +94,6 @@ current calculator dropdown.
 
 | Slug | Hidden reason | Next step |
 |---|---|---|
-| `mixtral-8x7b-instruct-v0-1` | Mixture-of-Experts model; dense parameter formula can overstate or understate VRAM. | Add MoE-specific model load and active-parameter policy before inclusion. |
-| `deepseek-r1` | Mixture-of-Experts model with 671B total and 37B activated parameters; current dense formula is not MoE-aware. | Add MoE-specific load, active-parameter, quantization, and serving-policy support before inclusion. |
 | `bge-large-en-v1-5` | Embedding model; workload and batching behavior need a separate estimate policy. | Add embedding/retrieval workload mode if this becomes a calculator target. |
 | `nomic-embed-text-v1-5` | Embedding model; workload and batching behavior need a separate estimate policy. | Add embedding/retrieval workload mode if this becomes a calculator target. |
 

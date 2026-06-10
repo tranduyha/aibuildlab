@@ -26,9 +26,21 @@ function roundToSingleDecimal(value: number): number {
 export function getCalculatorModelOptions(): CalculatorModelOption[] {
   return calculatorAssumptionService
     .getModelOptions()
-    .filter((model) => model.calculatorEligible && model.modelSizeBillion !== null)
+    .filter((model) => model.calculatorEligible && model.group === "llm" && model.modelSizeBillion !== null)
     .sort((a, b) => {
-      const groupOrder = { llm: 0, "image-diffusion": 1, other: 2 };
+      const groupOrder = { llm: 0, "image-diffusion": 1, moe: 2, other: 3 };
+      const groupScore = groupOrder[a.group] - groupOrder[b.group];
+      if (groupScore !== 0) return groupScore;
+      return a.family.localeCompare(b.family) || a.name.localeCompare(b.name);
+    });
+}
+
+export function getExcludedCalculatorModelOptions(): CalculatorModelOption[] {
+  return calculatorAssumptionService
+    .getModelOptions()
+    .filter((model) => !model.calculatorEligible || model.group !== "llm" || model.modelSizeBillion === null)
+    .sort((a, b) => {
+      const groupOrder = { moe: 0, "image-diffusion": 1, other: 2, llm: 3 };
       const groupScore = groupOrder[a.group] - groupOrder[b.group];
       if (groupScore !== 0) return groupScore;
       return a.family.localeCompare(b.family) || a.name.localeCompare(b.name);
@@ -39,6 +51,7 @@ export function getCalculatorModelGroups() {
   const groups: Record<string, CalculatorModelOption[]> = {
     llm: [],
     "image-diffusion": [],
+    moe: [],
     other: [],
   };
 

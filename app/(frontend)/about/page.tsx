@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: {
     absolute: `About ${settings.name} | GPU, VRAM, and AI Hardware Planning`,
   },
-  description: `Learn how ${settings.name} sources GPU, VRAM, cloud GPU, and local AI build data, including editorial standards, affiliate transparency, AI-assisted workflows, and correction policy.`,
+  description: `Learn how ${settings.name} reviews GPU, VRAM, cloud GPU, and local AI planning data with source trails, editorial standards, and clear corrections.`,
   alternates: {
     canonical: buildCanonicalUrl("/about"),
   },
   openGraph: {
     title: `About ${settings.name} | GPU, VRAM, and AI Hardware Planning`,
-    description: `Learn how ${settings.name} sources GPU, VRAM, cloud GPU, and local AI build data, including editorial standards, affiliate transparency, AI-assisted workflows, and correction policy.`,
+    description: `Learn how ${settings.name} reviews GPU, VRAM, cloud GPU, and local AI planning data with source trails, editorial standards, and clear corrections.`,
     type: "website",
     url: buildCanonicalUrl("/about"),
     siteName: settings.name,

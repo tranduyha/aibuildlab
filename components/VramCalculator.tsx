@@ -15,6 +15,16 @@ import {
 } from "@/services/image-generation-calculator.service";
 import { imageGenerationValidationService } from "@/services/image-generation-validation.service";
 import {
+  calculateMoeEstimatedVram,
+  formatMoeVramResult,
+  getDefaultMoeCalculatorInput,
+  getMoeCalculatorProfiles,
+  getMoeModelOptions,
+  isMoeContextPreset,
+  isMoeQuantization,
+  isMoeRuntimeKey,
+} from "@/services/moe-vram-calculator.service";
+import {
   calculateEstimatedVram,
   formatVramResult,
   getCalculatorModelGroups,
@@ -30,22 +40,28 @@ import type {
   ImageGenerationCalculatorInput,
   ImageGenerationEstimateResult,
   ImageGenerationValidationComparison,
+  MoeEstimateResult,
+  MoeModelOption,
+  MoeVramCalculatorInput,
   VramCalculatorInput,
   VramEstimateResult,
   VramGpuMatch,
 } from "@/types";
 
-type CalculatorMode = "llm" | "image";
+type CalculatorMode = "llm" | "moe" | "image";
 
 const MODEL_OPTIONS = getCalculatorModelOptions();
 const MODEL_GROUPS = getCalculatorModelGroups();
 const PROFILES = getCalculatorProfiles();
+const MOE_MODEL_OPTIONS = getMoeModelOptions();
+const MOE_PROFILES = getMoeCalculatorProfiles();
 const IMAGE_MODEL_OPTIONS = getImageGenerationModelOptions();
 const IMAGE_PROFILES = getImageGenerationProfiles();
 
 const GROUP_LABELS: Record<string, string> = {
   llm: "LLM",
   "image-diffusion": "Image diffusion",
+  moe: "Mixture-of-Experts",
   other: "Embedding / other",
 };
 
@@ -109,6 +125,7 @@ function ResultActions() {
 export default function VramCalculator() {
   const [mode, setMode] = useState<CalculatorMode>("llm");
   const [input, setInput] = useState<VramCalculatorInput>(getDefaultCalculatorInput());
+  const [moeInput, setMoeInput] = useState<MoeVramCalculatorInput>(getDefaultMoeCalculatorInput());
   const [imageInput, setImageInput] = useState<ImageGenerationCalculatorInput>(
     getDefaultImageGenerationInput(),
   );
@@ -129,6 +146,24 @@ export default function VramCalculator() {
 
   const llmResult = useMemo(() => calculateEstimatedVram(normalizedInput), [normalizedInput]);
   const recommendation = getVramRecommendation(llmResult);
+
+  const selectedMoeModel = useMemo(
+    () => MOE_MODEL_OPTIONS.find((model) => model.slug === moeInput.modelSlug) ?? MOE_MODEL_OPTIONS[0],
+    [moeInput.modelSlug],
+  );
+
+  const normalizedMoeInput = useMemo(
+    () => ({
+      ...moeInput,
+      modelSlug: selectedMoeModel?.slug ?? moeInput.modelSlug,
+    }),
+    [moeInput, selectedMoeModel],
+  );
+
+  const moeResult = useMemo(
+    () => calculateMoeEstimatedVram(normalizedMoeInput),
+    [normalizedMoeInput],
+  );
 
   const selectedImageModel = useMemo(
     () =>
@@ -165,6 +200,13 @@ export default function VramCalculator() {
     setImageInput((current) => ({ ...current, [key]: value }));
   }
 
+  function updateMoeInput<Key extends keyof MoeVramCalculatorInput>(
+    key: Key,
+    value: MoeVramCalculatorInput[Key],
+  ) {
+    setMoeInput((current) => ({ ...current, [key]: value }));
+  }
+
   return (
     <section className="calculator-card" aria-label="VRAM estimate calculator">
       <div className="calculator-form">
@@ -178,6 +220,14 @@ export default function VramCalculator() {
             LLM
           </button>
           <button
+            aria-pressed={mode === "moe"}
+            className={mode === "moe" ? "active" : ""}
+            type="button"
+            onClick={() => setMode("moe")}
+          >
+            MoE
+          </button>
+          <button
             aria-pressed={mode === "image"}
             className={mode === "image" ? "active" : ""}
             type="button"
@@ -187,8 +237,23 @@ export default function VramCalculator() {
           </button>
         </div>
 
+        <label className="calculator-mode-select">
+          Mode
+          <select
+            aria-label="Select calculator mode"
+            value={mode}
+            onChange={(event) => setMode(event.target.value as CalculatorMode)}
+          >
+            <option value="llm">LLM</option>
+            <option value="moe">MoE</option>
+            <option value="image">Image Generation</option>
+          </select>
+        </label>
+
         {mode === "llm" ? (
           <LlmCalculatorForm input={normalizedInput} updateInput={updateInput} />
+        ) : mode === "moe" ? (
+          <MoeCalculatorForm input={normalizedMoeInput} updateInput={updateMoeInput} />
         ) : (
           <ImageCalculatorForm input={normalizedImageInput} updateInput={updateImageInput} />
         )}
@@ -199,6 +264,11 @@ export default function VramCalculator() {
           recommendationTier={recommendation.gpuTier}
           result={llmResult}
           selectedModelName={selectedModel?.name ?? "Model not found"}
+        />
+      ) : mode === "moe" ? (
+        <MoeCalculatorResult
+          result={moeResult}
+          selectedModel={selectedMoeModel}
         />
       ) : (
         <ImageCalculatorResult
@@ -240,6 +310,14 @@ function LlmCalculatorForm({
           )}
         </select>
       </label>
+
+      <section className="calculator-policy-note" aria-label="Mixture-of-Experts calculator policy">
+        <strong>MoE has a separate estimate mode</strong>
+        <p>
+          Dense LLM estimates use dense model size. Switch to MoE mode for models such as
+          DeepSeek-R1 and Mixtral so total parameters and active parameters are handled separately.
+        </p>
+      </section>
 
       <label>
         Quantization
@@ -299,6 +377,111 @@ function LlmCalculatorForm({
         Safety margin: {input.safetyMarginPercent}%
         <input
           aria-label="Set safety margin percentage"
+          min={0}
+          max={50}
+          step={5}
+          type="range"
+          value={input.safetyMarginPercent}
+          onChange={(event) => updateInput("safetyMarginPercent", Number(event.target.value))}
+        />
+      </label>
+    </>
+  );
+}
+
+function MoeCalculatorForm({
+  input,
+  updateInput,
+}: {
+  input: MoeVramCalculatorInput;
+  updateInput: <Key extends keyof MoeVramCalculatorInput>(
+    key: Key,
+    value: MoeVramCalculatorInput[Key],
+  ) => void;
+}) {
+  return (
+    <>
+      <label>
+        MoE model
+        <select
+          aria-label="Select MoE model"
+          value={input.modelSlug}
+          onChange={(event) => updateInput("modelSlug", event.target.value)}
+        >
+          {MOE_MODEL_OPTIONS.map((model) => (
+            <option key={model.slug} value={model.slug}>
+              {model.name} ({model.totalParameterCountB}B total / {model.activeParameterCountB}B active)
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <section className="calculator-policy-note" aria-label="MoE estimate policy">
+        <strong>MoE planning estimate</strong>
+        <p>
+          This mode uses total parameters as the conservative resident weight-memory baseline. Active
+          parameters describe per-token compute behavior and are not treated as the VRAM floor.
+        </p>
+      </section>
+
+      <label>
+        Quantization
+        <select
+          aria-label="Select MoE quantization"
+          value={input.quantization}
+          onChange={(event) => {
+            const value = event.target.value;
+            if (isMoeQuantization(value)) updateInput("quantization", value);
+          }}
+        >
+          {MOE_PROFILES.quantizationProfiles.map((profile) => (
+            <option key={profile.key} value={profile.key}>
+              {profile.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Context preset
+        <select
+          aria-label="Select MoE context preset"
+          value={input.contextPreset}
+          onChange={(event) => {
+            const value = event.target.value;
+            if (isMoeContextPreset(value)) updateInput("contextPreset", value);
+          }}
+        >
+          {MOE_PROFILES.contextPresets.map((profile) => (
+            <option key={profile.key} value={profile.key}>
+              {profile.label} ({profile.contextTokens.toLocaleString()} tokens)
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Runtime profile
+        <select
+          aria-label="Select MoE runtime profile"
+          value={input.runtime}
+          onChange={(event) => {
+            const value = event.target.value;
+            if (isMoeRuntimeKey(value)) updateInput("runtime", value);
+          }}
+        >
+          {MOE_PROFILES.runtimeProfiles.map((profile) => (
+            <option key={profile.key} value={profile.key}>
+              {profile.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Safety margin: {input.safetyMarginPercent}%
+        <input
+          aria-label="Set MoE safety margin percentage"
           min={0}
           max={50}
           step={5}
@@ -483,6 +666,86 @@ function LlmCalculatorResult({
         </div>
       </dl>
       <p className="calculator-summary">{formatVramResult(result)}</p>
+      <p className="calculator-warning">{result.warning}</p>
+      <ul className="calculator-notes">
+        {result.notes.map((note) => (
+          <li key={note}>{note}</li>
+        ))}
+      </ul>
+      <GpuMatchSections
+        planningGpuCandidates={result.planningGpuCandidates}
+        sourceBackedGpuMatches={result.sourceBackedGpuMatches}
+      />
+      <ResultActions />
+    </div>
+  );
+}
+
+function MoeCalculatorResult({
+  result,
+  selectedModel,
+}: {
+  result: MoeEstimateResult;
+  selectedModel: MoeModelOption | undefined;
+}) {
+  return (
+    <div className="calculator-result" aria-live="polite">
+      <div className="estimate-badges" aria-label="Estimate status">
+        <span>MoE planning estimate</span>
+        <span>Not benchmark data</span>
+        <span>Assumption profile {result.assumptionVersion}</span>
+      </div>
+      <p className="estimate-value">{result.estimatedVramGb.toFixed(1)} GB</p>
+      <p className="estimate-minimum">
+        Planning minimum: <strong>{result.recommendedMinimumVramGb} GB VRAM</strong>
+      </p>
+      <dl className="estimate-details">
+        <div>
+          <dt>Planning tier</dt>
+          <dd>{result.gpuTier}</dd>
+        </div>
+        <div>
+          <dt>Selected model</dt>
+          <dd>{selectedModel?.name ?? result.assumptionsUsed.modelLabel}</dd>
+        </div>
+        <div>
+          <dt>Total parameters</dt>
+          <dd>{result.assumptionsUsed.totalParameterCountB}B</dd>
+        </div>
+        <div>
+          <dt>Active parameters</dt>
+          <dd>{result.assumptionsUsed.activeParameterCountB}B</dd>
+        </div>
+        <div>
+          <dt>Resident baseline</dt>
+          <dd>{result.assumptionsUsed.residentParameterCountB}B</dd>
+        </div>
+        <div>
+          <dt>Runtime</dt>
+          <dd>{result.assumptionsUsed.runtimeLabel}</dd>
+        </div>
+        <div>
+          <dt>Confidence</dt>
+          <dd>{result.confidence.toUpperCase()}</dd>
+        </div>
+      </dl>
+      {selectedModel ? (
+        <section className="validation-signal" aria-label="MoE model facts">
+          <div>
+            <strong>Total and active parameters are separated</strong>
+            <span>
+              {selectedModel.contextLengthTokens
+                ? `${selectedModel.contextLengthTokens.toLocaleString()} token source-backed context window`
+                : "Context window needs verification"}
+            </span>
+          </div>
+          <p>
+            {selectedModel.architectureNotes ??
+              "MoE architecture details are tracked separately from dense LLM model size."}
+          </p>
+        </section>
+      ) : null}
+      <p className="calculator-summary">{formatMoeVramResult(result)}</p>
       <p className="calculator-warning">{result.warning}</p>
       <ul className="calculator-notes">
         {result.notes.map((note) => (

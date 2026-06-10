@@ -1,0 +1,141 @@
+{
+  "version": "2026-06-moe-calculator-v1",
+  "status": "draft",
+  "dataConfidence": "low",
+  "needsReview": true,
+  "lastReviewedAt": "2026-06-10",
+  "purpose": "Make Mixture-of-Experts VRAM planning explicit without reusing the dense LLM formula incorrectly.",
+  "moeEstimatePolicy": {
+    "description": "Estimate MoE resident weight memory from source-backed total parameters, then add MoE-adjusted context and runtime overhead before applying a safety margin.",
+    "formula": "weightMemoryGb = (residentParameterCountB * bitsPerParameter / 8) * weightOverheadMultiplier; estimatedCoreGb = weightMemoryGb + (contextOverheadGb * moeContextMultiplier) + (runtimeOverheadGb * moeRuntimeMultiplier); estimatedVramGb = estimatedCoreGb * (1 + safetyMarginPercent / 100)",
+    "warning": "MoE planning only. Total parameters are used as the conservative resident weight-memory baseline. Active parameters explain per-token compute behavior, not minimum VRAM.",
+    "residentWeightPolicy": "Use source-backed total parameters as the default resident weight baseline. If a source-backed packaged parameter count is higher, use it as the conservative baseline and label the result clearly."
+  },
+  "quantizationProfiles": [
+    {
+      "key": "fp16",
+      "label": "FP16/BF16",
+      "bitsPerParameter": 16,
+      "weightOverheadMultiplier": 1.15,
+      "confidence": "low",
+      "notes": "Planning profile only; actual MoE deployment can shard or offload weights."
+    },
+    {
+      "key": "int8",
+      "label": "8-bit",
+      "bitsPerParameter": 8,
+      "weightOverheadMultiplier": 1.2,
+      "confidence": "low",
+      "notes": "Implementation-specific weight and scale overheads can vary."
+    },
+    {
+      "key": "int4",
+      "label": "4-bit / Q4 planning profile",
+      "bitsPerParameter": 4,
+      "weightOverheadMultiplier": 1.3,
+      "confidence": "low",
+      "notes": "GGUF, GPTQ, AWQ, and runtime-specific MoE quantization can differ."
+    }
+  ],
+  "contextPresets": [
+    {
+      "key": "basic",
+      "label": "Basic context",
+      "contextTokens": 4096,
+      "contextOverheadGb": 0.5,
+      "moeContextMultiplier": 1.25,
+      "notes": "MoE context overhead remains runtime-dependent."
+    },
+    {
+      "key": "medium",
+      "label": "Medium context",
+      "contextTokens": 8192,
+      "contextOverheadGb": 1,
+      "moeContextMultiplier": 1.25,
+      "notes": "KV cache and attention implementation can materially change memory use."
+    },
+    {
+      "key": "large",
+      "label": "Large context",
+      "contextTokens": 32768,
+      "contextOverheadGb": 3,
+      "moeContextMultiplier": 1.25,
+      "notes": "Large context planning should be validated on the exact runtime."
+    }
+  ],
+  "runtimeProfiles": [
+    {
+      "key": "llama-cpp",
+      "label": "llama.cpp / GGUF planning",
+      "runtimeOverheadGb": 1,
+      "moeRuntimeMultiplier": 1.25,
+      "confidence": "low",
+      "notes": "Local runtime behavior depends on quantization, offload, and backend support."
+    },
+    {
+      "key": "ollama",
+      "label": "Ollama planning",
+      "runtimeOverheadGb": 1,
+      "moeRuntimeMultiplier": 1.25,
+      "confidence": "low",
+      "notes": "Ollama memory behavior depends on its model package and backend."
+    },
+    {
+      "key": "vllm",
+      "label": "vLLM serving planning",
+      "runtimeOverheadGb": 2,
+      "moeRuntimeMultiplier": 1.35,
+      "confidence": "low",
+      "notes": "Serving workloads can allocate additional memory for KV cache, batching, and parallelism."
+    },
+    {
+      "key": "transformers",
+      "label": "Transformers planning",
+      "runtimeOverheadGb": 2,
+      "moeRuntimeMultiplier": 1.35,
+      "confidence": "low",
+      "notes": "Device map, dtype, offload, attention implementation, and trust-remote-code behavior can change memory use."
+    }
+  ],
+  "safetyMarginDefaultPercent": 20,
+  "gpuSuggestionPolicy": {
+    "minHeadroomPercent": 10,
+    "preferDataConfidence": [
+      "high",
+      "medium"
+    ],
+    "allowDraftGpuCandidates": true,
+    "draftGpuLabel": "Planning-only candidate; verify specs and runtime behavior before hardware decisions."
+  },
+  "sources": [
+    {
+      "name": "Hugging Face Accelerate Model Memory Estimator",
+      "url": "https://huggingface.co/docs/accelerate/en/usage_guides/model_size_estimator",
+      "type": "documentation",
+      "fields": [
+        "moeEstimatePolicy",
+        "quantizationProfiles"
+      ],
+      "accessedAt": "2026-06-10"
+    },
+    {
+      "name": "DeepSeek-R1 Hugging Face model card",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+      "type": "model-card",
+      "fields": [
+        "moeEstimatePolicy"
+      ],
+      "accessedAt": "2026-06-10"
+    },
+    {
+      "name": "DeepSeek-V3 GitHub repository",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+      "type": "documentation",
+      "fields": [
+        "moeEstimatePolicy"
+      ],
+      "accessedAt": "2026-06-10"
+    }
+  ],
+  "notes": "MoE estimates remain draft and low confidence until runtime-specific validation samples exist. Do not use active parameters as the VRAM floor."
+}

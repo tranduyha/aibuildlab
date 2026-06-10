@@ -9,7 +9,7 @@ import type { CloudGpuUseCase } from "@/types/cloud-gpu-provider";
 
 const PAGE_TITLE = "Cloud GPU Providers for AI Workload Planning";
 const PAGE_DESCRIPTION =
-  "Review source-aware Cloud GPU provider profiles for AI workload planning, including provider type, use cases, pricing model notes, and verification warnings without provider ranking.";
+  "Review source-aware Cloud GPU provider profiles for AI workload planning, with provider types, use cases, pricing notes, and verification warnings.";
 const PAGE_PATH = "/cloud-gpu";
 
 const sourceNotices = [

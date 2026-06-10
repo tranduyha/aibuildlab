@@ -6,7 +6,7 @@ import { cloudGpuProviderService } from "@/services/cloud-gpu-provider.service";
 
 const PAGE_TITLE = "Cloud GPU vs Local GPU for AI Workloads";
 const PAGE_DESCRIPTION =
-  "Compare cloud GPU testing and local GPU workstation planning for AI workloads, including VRAM uncertainty, setup time, privacy, scalability, and cost factors without provider ranking.";
+  "Compare cloud GPU testing and local GPU planning for AI workloads, including VRAM uncertainty, setup time, privacy, scalability, and cost checks.";
 const PAGE_PATH = "/guides/cloud-gpu-vs-local-gpu";
 
 const faqItems = [

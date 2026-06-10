@@ -1,4 +1,3 @@
-export type { Project, ProjectStatus } from "./project.type";
 export type { NavigationItem, SiteSettings } from "./site-settings.type";
 export type { AffiliateCtaModel, AffiliateLinkConfig } from "./affiliate";
 export type { ContentStatus, DataConfidence, DataSource, Gpu } from "./gpu";
@@ -50,6 +49,16 @@ export type {
   VramAssumptionsUsed,
   VramGpuMatch,
 } from "./vram-calculator";
+export type {
+  MoeAssumptionsUsed,
+  MoeCalculatorAssumption,
+  MoeContextPresetProfile,
+  MoeEstimateResult,
+  MoeModelOption,
+  MoeQuantizationProfile,
+  MoeRuntimeProfile,
+  MoeVramCalculatorInput,
+} from "./moe-vram-calculator";
 export type {
   ImageBatchSize,
   ImageGenerationAssumption,
