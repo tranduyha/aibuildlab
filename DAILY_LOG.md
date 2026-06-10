@@ -1243,3 +1243,50 @@ non-promotional.
 ### Next Step
 Continue with source-backed Month 2 content work, with meta descriptions kept
 near the 130-155 character range where possible.
+
+---
+
+## 2026-06-10 - VRAM calculator result CTA copy pass
+
+### Agent
+Codex
+
+### Planned Task
+Tighten the post-estimate calculator CTA so it gives users a clearer planning
+reason to continue, without adding buying pressure, price claims, affiliate
+language, or mismatched cloud-GPU routing.
+
+### Completed
+- [x] Reviewed the CTA render path and confirmed the visible calculator result
+  actions are hardcoded in `components/VramCalculator.tsx`.
+- [x] Reviewed `placement-vram-calculator-result` in
+  `data/monetization-placements.json` and confirmed it is data-backed but not
+  currently rendered because it remains reviewed/needs-review.
+- [x] Updated the placement title, description, and CTA label to a stronger
+  planning-oriented version.
+- [x] Updated the visible compare action below calculator results to
+  "Compare GPU options before committing".
+- [x] Avoided SKU-specific, price-specific, cloud-specific, ranking, or affiliate
+  wording.
+
+### Checked
+- [x] `npm run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm run lint` passed.
+- [x] `npm run build` passed and generated 49 static pages.
+- [x] Static HTML for `/tools/vram-calculator` includes the updated compare CTA.
+
+### Issues
+- The monetization placement system is not yet wired into the calculator result
+  UI. The JSON copy was updated for consistency, while the visible UI change was
+  made in the calculator component.
+
+### Files Changed
+- `components/VramCalculator.tsx`
+- `data/monetization-placements.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+If placement rendering is later activated, keep the destination aligned with the
+CTA promise: `/compare` for local GPU comparisons and cloud routes only for
+local-vs-cloud copy.

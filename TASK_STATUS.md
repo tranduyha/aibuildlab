@@ -358,6 +358,13 @@ npm run lint -> passed
 npm run build -> passed, 49 static pages generated
 meta descriptions shortened -> /about 140 chars, /cloud-gpu 147 chars, /guides/cloud-gpu-vs-local-gpu 145 chars, /guides/local-ai-vs-ai-saas 135 chars
 static SEO audit -> 43 public HTML routes, 43 sitemap URLs, 0 issues, 0 warnings
+
+2026-06-10 VRAM calculator result CTA copy pass:
+npm run data:validate -> 0 errors, 0 warnings
+npm run lint -> passed
+npm run build -> passed, 49 static pages generated
+calculator result CTA -> visible /compare action now reads "Compare GPU options before committing"
+monetization placement data -> placement-vram-calculator-result title/description/ctaLabel updated to planning-oriented copy without price, SKU, affiliate, ranking, or cloud-route mismatch
 ```
 
 ## Do Not Do Next

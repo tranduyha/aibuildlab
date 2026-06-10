@@ -115,7 +115,7 @@ function ResultActions() {
       <Link className="result-action-primary" href="/gpu">
         View matching GPU profiles
       </Link>
-      <Link href="/compare">Compare source-backed GPU planning profiles</Link>
+      <Link href="/compare">Compare GPU options before committing</Link>
       <Link href="/builds">Explore build planning pages</Link>
       <Link href="/guides">Read local AI planning guides</Link>
     </nav>
