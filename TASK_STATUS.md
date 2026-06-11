@@ -111,7 +111,7 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Next recommended Month 2 priority: source-backed 12GB vs 16GB local AI guide or MoE validation sample research
+Next recommended Month 2 priority: source-aware "How much VRAM do you need for AI workloads" guide if scoped without overlap, or Cloud GPU provider re-audit before another cloud planning page
 ```
 
 Definition of Done:
@@ -158,6 +158,18 @@ Definition of Done:
   DeepSeek-R1-Distill-Qwen-7B, DeepSeek-R1-Distill-Llama-8B,
   DeepSeek-R1-Distill-Qwen-14B, and DeepSeek-R1-Distill-Qwen-32B.
 - DeepSeek-R1 full is available only in the MoE planning estimate mode.
+- `/guides/12gb-vs-16gb-vram-local-ai` is published with 9.5-quality content
+  depth, source-aware 12GB/16GB/24GB+ planning sections, a workload decision
+  table, model VRAM page links, image-generation and MoE guardrails, FAQPage,
+  WebPage, BreadcrumbList, canonical, Open Graph, sitemap coverage, and links
+  from `/guides` and `/tools/vram-calculator`.
+- `/guides/how-to-choose-a-gpu-for-local-llms` is published as a source-aware
+  local LLM GPU selection workflow with model-first planning, quantization and
+  context checks, MoE guardrails, VRAM tier cards, model-page links,
+  persona-specific next routes, scope boundaries, FAQPage, WebPage,
+  BreadcrumbList, canonical, Open Graph, sitemap coverage, and links from
+  `/guides`, `/tools/vram-calculator`, and
+  `/guides/12gb-vs-16gb-vram-local-ai`.
 - `npm run data:validate` passes.
 - `npm run lint` passes.
 - `npm run build` passes.
@@ -379,6 +391,57 @@ npm run build -> passed, 49 static pages generated
 static HTML breadcrumb audit -> 42 public routes excluding home and not-found checked, 0 missing visual breadcrumbs, 0 missing BreadcrumbList schemas
 page code changes -> none; current page-specific breadcrumb pattern remains appropriate
 brand/domain hardcode scan in code directories -> no matches
+
+2026-06-11 12GB vs 16GB local AI guide:
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed after fixing one JSX unescaped quote issue
+npm run build -> passed, 50 static pages generated
+/guides/12gb-vs-16gb-vram-local-ai -> generated static HTML with one H1, canonical, Open Graph, BreadcrumbList, WebPage, FAQPage, source-aware planning language, decision table, model-page links, image-generation and MoE guardrails
+sitemap output -> includes /guides/12gb-vs-16gb-vram-local-ai
+guide hub and calculator output -> link to /guides/12gb-vs-16gb-vram-local-ai
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-11 12GB vs 16GB guide workflow layout fix:
+npm.cmd run lint -> passed
+npm run build -> passed, 50 static pages generated
+/guides/12gb-vs-16gb-vram-local-ai Planning workflow -> 4 cards now use scoped 4-column desktop grid instead of the shared 5-column guide workflow grid
+
+2026-06-11 12GB vs 16GB guide retention and scope pass:
+npm.cmd run lint -> passed
+npm run build -> passed, 50 static pages generated
+/guides/12gb-vs-16gb-vram-local-ai -> added persona-specific next-click routing and scope-boundary cards to reduce overlap with image/cloud/model guides and improve user retention
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-11 local LLM GPU selection guide:
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+/guides/how-to-choose-a-gpu-for-local-llms -> generated static HTML with one H1, canonical, Open Graph, BreadcrumbList, WebPage, FAQPage, source-aware workflow language, decision table, VRAM tier cards, model-page links, MoE/image guardrails, persona routing, scope boundaries, and continue-planning links
+sitemap output -> includes /guides/how-to-choose-a-gpu-for-local-llms
+guide hub, calculator, and 12GB vs 16GB guide output -> link to /guides/how-to-choose-a-gpu-for-local-llms
+brand/domain hardcode scan in code directories -> no matches
+sensitive-claim scan -> only negative/guardrail uses for price, stock, affiliate, benchmark, tokens-per-second, and guaranteed-fit language
+
+2026-06-11 sitewide back to top button:
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+layout -> mounts shared BackToTopButton after the footer for all frontend routes
+static HTML -> home page and newest guide include back-to-top-button
+brand/domain hardcode scan in code directories -> no matches
+follow-up -> BackToTopButton is now icon-only with an upward arrow and hover/focus "Back to top" tooltip
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+
+2026-06-11 local LLM GPU guide layout differentiation:
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+/guides/how-to-choose-a-gpu-for-local-llms -> refactored from comparison-guide rhythm into a decision workflow with 5 starter questions, 6-step diagnostic flow, model example roles, "When not to buy yet", GPU profile reading checks, and next-tool routing
+static HTML -> new decision-workflow headings present; old Quick answer, decision table, VRAM tier, and persona-route headings absent
+static HTML -> exactly 1 H1
+brand/domain hardcode scan in code directories -> no matches
+follow-up -> 6-step decision flow now uses a scoped 3-column desktop grid for a 3-over-3 card layout
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
 ```
 
 ## Do Not Do Next

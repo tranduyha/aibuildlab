@@ -48,6 +48,8 @@ const faqItems = [
 ];
 
 const relatedLinks = [
+  { label: "How to choose a GPU for local LLMs", href: "/guides/how-to-choose-a-gpu-for-local-llms" },
+  { label: "12GB vs 16GB local AI guide", href: "/guides/12gb-vs-16gb-vram-local-ai" },
   { label: "Compare source-backed GPU profiles", href: "/compare" },
   { label: "Local LLM GPU planning guides", href: "/guides#planned-guides" },
   { label: "Image generation VRAM planning", href: "/guides/image-generation-vram-planning" },

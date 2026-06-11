@@ -1378,3 +1378,316 @@ page, and only patch missing pages if the audit finds a gap.
 ### Next Step
 Keep the current page-specific breadcrumb pattern and repeat the static audit
 after future public route additions.
+
+---
+
+## 2026-06-11 - 12GB vs 16GB local AI guide
+
+### Agent
+Codex
+
+### Planned Task
+Publish a 9.5-quality source-aware content guide for comparing 12GB and 16GB
+VRAM as local AI planning tiers, with strong internal links and no unsupported
+benchmark, price, affiliate, stock, or buying claims.
+
+### Completed
+- [x] Created `/guides/12gb-vs-16gb-vram-local-ai`.
+- [x] Added quick verdicts, a 12GB vs 16GB workload decision table, planning
+  workflow, tier interpretation, image-generation/MoE guardrails, first-buyer
+  checks, continue-planning CTAs, and FAQ content.
+- [x] Linked the guide to all 3 source-backed model VRAM pages:
+  Llama 3.1 8B Instruct, Qwen2.5 7B Instruct, and Mistral 7B Instruct v0.3.
+- [x] Added BreadcrumbList, WebPage, FAQPage, canonical, Open Graph, and unique
+  H1 signals.
+- [x] Added the published guide record to `data/guides.json`.
+- [x] Added the guide to the sitemap.
+- [x] Linked the guide from `/guides` and `/tools/vram-calculator`.
+- [x] Kept the guide source-aware and avoided thin keyword-swap content,
+  benchmark claims, speed claims, price claims, stock claims, affiliate links,
+  guaranteed-fit language, and buying advice.
+
+### Checked
+- [x] Initial `npm run data:validate` was blocked by local PowerShell execution
+  policy for `npm.ps1`.
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] Initial `npm.cmd run lint` found one JSX unescaped quote issue; fixed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm run build` passed and generated 50 static pages.
+- [x] Static HTML for `/guides/12gb-vs-16gb-vram-local-ai` includes one H1,
+  canonical, Open Graph metadata, BreadcrumbList, WebPage, and FAQPage.
+- [x] `out/sitemap.xml` includes
+  `https://vramforge.com/guides/12gb-vs-16gb-vram-local-ai`.
+- [x] Static output for `/guides` and `/tools/vram-calculator` links to the new
+  guide.
+- [x] Static output for the new guide links to all 3 model VRAM pages.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Browser screenshot verification was not run because the current verification
+  path used static build output checks only.
+- Local PowerShell blocks `npm.ps1`; `npm.cmd` works for npm scripts.
+
+### Files Changed
+- `app/(frontend)/guides/12gb-vs-16gb-vram-local-ai/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `data/guides.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Quality Gate
+- [x] Meets the requested 9.5 content bar: clear user intent, decision-heavy
+  sections, source-aware wording, model-specific internal links, calculator
+  workflow, non-misleading schema, sitemap coverage, and no unsupported claims.
+
+### Next Step
+Continue the content branch with a source-aware "How to choose a GPU for local
+LLMs" guide, or switch to MoE runtime VRAM validation sample research before
+strengthening MoE public claims.
+
+---
+
+## 2026-06-11 - 12GB vs 16GB guide workflow layout fix
+
+### Agent
+Codex
+
+### Planned Task
+Fix the Planning workflow section on `/guides/12gb-vs-16gb-vram-local-ai` so
+the 4 workflow cards span the full content width instead of using the shared
+5-column guide workflow layout.
+
+### Completed
+- [x] Added a scoped `guide-workflow-grid-four` class to the new guide workflow
+  grid.
+- [x] Added desktop CSS so the 4 workflow cards render as 4 equal columns.
+- [x] Kept the existing mobile responsive rule intact.
+
+### Checked
+- [ ] `npm run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm run build` passed and generated 50 static pages.
+
+### Issues
+- None.
+
+### Files Changed
+- `app/(frontend)/guides/12gb-vs-16gb-vram-local-ai/page.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Continue the content branch with a source-aware "How to choose a GPU for local
+LLMs" guide, or run a visual pass on the new 12GB vs 16GB guide if more layout
+issues appear.
+
+---
+
+## 2026-06-11 - 12GB vs 16GB guide retention and scope pass
+
+### Agent
+Codex
+
+### Planned Task
+Raise the overall 12GB vs 16GB guide quality toward the requested 9.5 bar by
+improving user retention, clarifying how the guide differs from nearby guide
+pages, and reducing the chance of overlap with image/cloud/model content.
+
+### Completed
+- [x] Added a "Recommended next click by user type" section with routes for
+  first local LLM builders, image-generation users, MoE/large-model explorers,
+  and unsure or budget-sensitive planners.
+- [x] Added a "What this guide does not replace" section to clarify that the
+  page is for VRAM tier choice, while exact model, image workflow, and cloud
+  provider decisions belong on deeper pages.
+- [x] Kept labels short enough for card badges and moved longer reasoning into
+  card body copy.
+- [x] Kept all additions source-aware and avoided benchmark, price, stock,
+  affiliate, guaranteed-fit, and buying advice claims.
+
+### Checked
+- [ ] `npm run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm run build` passed and generated 50 static pages.
+- [x] Static HTML includes "Recommended next click by user type" and
+  "What this guide does not replace".
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- None.
+
+### Files Changed
+- `app/(frontend)/guides/12gb-vs-16gb-vram-local-ai/page.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Quality Gate
+- [x] The guide now better supports a 9.5 content score by separating page
+  scope from nearby guides and giving readers persona-specific next steps that
+  improve retention.
+
+### Next Step
+Continue the content branch with a source-aware "How to choose a GPU for local
+LLMs" guide, using the same persona-routing and scope-boundary pattern.
+
+---
+
+## 2026-06-11 - Local LLM GPU selection guide
+
+### Agent
+Codex
+
+### Planned Task
+Publish a source-aware `/guides/how-to-choose-a-gpu-for-local-llms` page as the
+next content-branch guide, with a full SEO, sitemap, internal-linking, content
+quality, and retention check before moving to the next guide.
+
+### Completed
+- [x] Added the new guide route with H1, canonical metadata, Open Graph, visual
+  breadcrumb, BreadcrumbList, WebPage, and FAQPage schema.
+- [x] Built the guide around a local LLM GPU selection workflow: workload first,
+  model assumptions, quantization/context, VRAM tier, validation, then GPU
+  profile review.
+- [x] Added a decision table, 4-step workflow, VRAM tier cards, model-specific
+  dense LLM page links, model-selection checks, persona-specific next routes,
+  mistakes to avoid, scope-boundary cards, and continue-planning links.
+- [x] Added the guide to `data/guides.json` as a published source-aware planning
+  guide.
+- [x] Added the guide URL to `app/(frontend)/sitemap.ts`.
+- [x] Linked the guide from the guides hub and VRAM calculator.
+- [x] Cross-linked the 12GB vs 16GB guide back to the new GPU selection guide.
+- [x] Removed the now-published guide topic from the planned guide backlog list.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 51 static pages.
+- [x] Build output includes `/guides/how-to-choose-a-gpu-for-local-llms`.
+- [x] `out/sitemap.xml` includes
+  `/guides/how-to-choose-a-gpu-for-local-llms`.
+- [x] Static HTML has exactly 1 H1.
+- [x] Static HTML includes canonical, Open Graph, BreadcrumbList, WebPage, and
+  FAQPage signals.
+- [x] Static outputs for `/guides`, `/tools/vram-calculator`, and
+  `/guides/12gb-vs-16gb-vram-local-ai` link to the new guide.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+- [x] Sensitive-claim scan found only negative/guardrail uses for price, stock,
+  affiliate, benchmark, tokens-per-second, and guaranteed-fit language.
+
+### Issues
+- None.
+
+### Files Changed
+- `app/(frontend)/guides/how-to-choose-a-gpu-for-local-llms/page.tsx`
+- `app/(frontend)/guides/12gb-vs-16gb-vram-local-ai/page.tsx`
+- `app/(frontend)/guides/page.tsx`
+- `app/(frontend)/sitemap.ts`
+- `app/(frontend)/tools/vram-calculator/page.tsx`
+- `data/guides.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Quality Gate
+- [x] Content is not a thin keyword-swap page because it covers a distinct
+  workflow role from the 12GB vs 16GB guide: GPU selection order and validation
+  path rather than only VRAM tier comparison.
+- [x] Retention path is strong: calculator -> guide -> tier guide/model pages/GPU
+  profiles/cloud guide, with persona-specific routing to reduce pogo-sticking.
+
+### Next Step
+Next recommended content/data move is either a source-aware "How much VRAM do
+you need for AI workloads" guide if it can be scoped without overlap, or the
+roadmap's Cloud GPU provider re-audit before adding another cloud planning page.
+
+---
+
+## 2026-06-11 - Sitewide back to top button
+
+### Agent
+Codex
+
+### Planned Task
+Add a sitewide Back to top button that works across all frontend routes without
+editing each page.
+
+### Completed
+- [x] Added a small client component for scroll-aware Back to top behavior.
+- [x] Mounted the component in the shared frontend layout after the footer.
+- [x] Added fixed-position, responsive, focus-visible, hover, and reduced-motion
+  styles in the global theme.
+- [x] Kept the control accessible with `aria-label="Back to top"` and a visible
+  "Top" label.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 51 static pages.
+- [x] Static HTML for the home page and the newest guide includes
+  `back-to-top-button`.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- None.
+
+### Files Changed
+- `components/BackToTopButton.tsx`
+- `app/(frontend)/layout.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Follow-up
+- [x] Updated the Back to top control to be icon-only with an upward arrow.
+- [x] Added a hover/focus tooltip that reads "Back to top".
+- [x] Rechecked with `npm.cmd run lint` and `npm.cmd run build`; both passed.
+
+---
+
+## 2026-06-11 - Local LLM GPU guide layout differentiation pass
+
+### Agent
+Codex
+
+### Planned Task
+Refactor `/guides/how-to-choose-a-gpu-for-local-llms` so it no longer follows
+the same comparison-guide rhythm as `/guides/12gb-vs-16gb-vram-local-ai`.
+
+### Completed
+- [x] Replaced the old "Quick answer" section with "Start with these 5
+  questions".
+- [x] Removed the local LLM GPU decision table and replaced it with a 6-step
+  decision flow from model selection to GPU profile review.
+- [x] Reframed model cards as examples of decision types instead of tier-fit
+  summaries.
+- [x] Removed the VRAM tier-card section that overlapped with the 12GB vs 16GB
+  guide.
+- [x] Added a distinct "When not to buy yet" validation-trigger section.
+- [x] Replaced persona routing with "How to read GPU profiles after estimating
+  VRAM" and "Choose your next tool" sections.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 51 static pages.
+- [x] Static HTML includes "Start with these 5 questions", "Decision flow:
+  from model to GPU profile", and "When not to buy yet".
+- [x] Static HTML no longer includes the old "Quick answer", "Local LLM GPU
+  decision table", "VRAM tiers for local LLM planning", or "Recommended route
+  by user type" headings.
+- [x] Static HTML still has exactly 1 H1.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- None.
+
+### Quality Gate
+- [x] The two newest guides now have clearer roles: the 12GB vs 16GB page is a
+  VRAM-tier comparison, while the local LLM GPU guide is a decision workflow.
+
+### Follow-up
+- [x] Updated the 6-step decision flow to use a scoped 3-column desktop grid so
+  it renders as 3 cards over 3 cards instead of 5 plus 1.
+- [x] Rechecked with `npm.cmd run lint` and `npm.cmd run build`; both passed.

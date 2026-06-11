@@ -98,6 +98,83 @@ body {
   background: var(--primary-dark);
 }
 
+.back-to-top-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  width: 46px;
+  min-height: 44px;
+  border: 1px solid rgb(20 93 143 / 22%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 14px 34px rgb(18 36 54 / 16%);
+  color: var(--primary-dark);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.back-to-top-button svg {
+  height: 22px;
+  width: 22px;
+  fill: currentColor;
+}
+
+.back-to-top-button::after {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  border-radius: 8px;
+  background: var(--foreground);
+  color: white;
+  content: attr(data-tooltip);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  padding: 8px 10px;
+  pointer-events: none;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+  white-space: nowrap;
+}
+
+.back-to-top-button:hover::after,
+.back-to-top-button:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.back-to-top-button-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top-button:hover,
+.back-to-top-button:focus-visible {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+}
+
 .hero {
   padding: 68px 0 48px;
 }
@@ -3400,6 +3477,14 @@ body {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.guide-workflow-grid-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.guide-workflow-grid-three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .guide-verdict-card,
 .guide-mode-card,
 .guide-point-card,
@@ -3994,6 +4079,18 @@ body {
 }
 
 @media (max-width: 768px) {
+  .back-to-top-button {
+    right: 16px;
+    bottom: 16px;
+    height: 44px;
+    width: 44px;
+    min-height: 44px;
+  }
+
+  .back-to-top-button::after {
+    display: none;
+  }
+
   .guide-hero-links,
   .guide-hero-links a,
   .guide-workflow-card a,
@@ -4128,5 +4225,11 @@ body {
   .cloud-vs-local-table td {
     font-size: 15px;
     line-height: 1.68;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-button {
+    transition: none;
   }
 }

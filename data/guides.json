@@ -184,6 +184,105 @@
     "notes": "Planning guide only. Observed image-generation samples are setup-specific and must not be presented as universal requirements, speed claims, buying advice, or guaranteed hardware support."
   },
   {
+    "id": "guide-12gb-vs-16gb-vram-local-ai",
+    "slug": "12gb-vs-16gb-vram-local-ai",
+    "title": "12GB vs 16GB VRAM for Local AI",
+    "shortDescription": "Source-aware guide for choosing a 12GB or 16GB local AI planning tier across dense LLMs, image generation, and MoE estimates.",
+    "seoTitle": "12GB vs 16GB VRAM for Local AI",
+    "seoDescription": "Compare 12GB and 16GB GPU VRAM for local LLMs, image generation, MoE planning, and first local AI hardware decisions.",
+    "tags": ["vram", "local-ai", "local-llm", "gpu-guide"],
+    "useCases": ["local-llm", "stable-diffusion", "image-generation", "ai-workstation"],
+    "relatedGpuSlugs": ["rtx-3060-12gb", "rtx-4060-ti-16gb", "rtx-4070", "rtx-4090"],
+    "relatedToolPaths": [
+      "/tools/vram-calculator",
+      "/gpu",
+      "/compare",
+      "/models/llama-3-1-8b-instruct/vram-requirements",
+      "/models/qwen2-5-7b-instruct/vram-requirements",
+      "/models/mistral-7b-instruct-v0-3/vram-requirements",
+      "/guides/image-generation-vram-planning",
+      "/guides/cloud-gpu-vs-local-gpu"
+    ],
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of VRAM Calculator modes",
+        "url": "https://vramforge.com/tools/vram-calculator",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-11"
+      },
+      {
+        "name": "Manual review of source-backed model VRAM pages",
+        "url": "https://vramforge.com/models/llama-3-1-8b-instruct/vram-requirements",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-11"
+      },
+      {
+        "name": "Image Generation VRAM Planning guide",
+        "url": "https://vramforge.com/guides/image-generation-vram-planning",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-11"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-11",
+    "notes": "Planning guide only. Avoid benchmark claims, tokens-per-second claims, image-speed claims, price or stock claims, affiliate links, guaranteed fit language, and buying advice."
+  },
+  {
+    "id": "guide-how-to-choose-a-gpu-for-local-llms",
+    "slug": "how-to-choose-a-gpu-for-local-llms",
+    "title": "How to Choose a GPU for Local LLMs",
+    "shortDescription": "Source-aware guide for choosing a local LLM GPU planning path from model size, quantization, context, MoE behavior, and VRAM tiers.",
+    "seoTitle": "How to Choose a GPU for Local LLMs",
+    "seoDescription": "Choose a GPU for local LLM planning by starting from model size, quantization, context length, MoE behavior, VRAM tier, and validation steps.",
+    "tags": ["local-llm", "gpu-guide", "vram", "planning"],
+    "useCases": ["local-llm", "ai-workstation"],
+    "relatedGpuSlugs": ["rtx-3060-12gb", "rtx-4060-ti-16gb", "rtx-4090", "rtx-3090"],
+    "relatedToolPaths": [
+      "/tools/vram-calculator",
+      "/gpu",
+      "/compare",
+      "/guides/12gb-vs-16gb-vram-local-ai",
+      "/guides/image-generation-vram-planning",
+      "/guides/cloud-gpu-vs-local-gpu",
+      "/models/llama-3-1-8b-instruct/vram-requirements",
+      "/models/qwen2-5-7b-instruct/vram-requirements",
+      "/models/mistral-7b-instruct-v0-3/vram-requirements"
+    ],
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "Manual review of VRAM Calculator modes",
+        "url": "https://vramforge.com/tools/vram-calculator",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-11"
+      },
+      {
+        "name": "Manual review of 12GB vs 16GB local AI guide",
+        "url": "https://vramforge.com/guides/12gb-vs-16gb-vram-local-ai",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-11"
+      },
+      {
+        "name": "Manual review of source-backed model VRAM pages",
+        "url": "https://vramforge.com/models/llama-3-1-8b-instruct/vram-requirements",
+        "type": "manual-check",
+        "fields": ["relatedToolPaths", "notes"],
+        "accessedAt": "2026-06-11"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-11",
+    "notes": "Planning guide only. Avoid benchmark claims, tokens-per-second claims, image-speed claims, price or stock claims, affiliate links, guaranteed fit language, and buying advice."
+  },
+  {
     "id": "guide-rtx-3060-12gb-ai",
     "slug": "rtx-3060-12gb-for-ai",
     "title": "RTX 3060 12GB for AI",

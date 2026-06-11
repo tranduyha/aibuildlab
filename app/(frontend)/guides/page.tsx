@@ -8,7 +8,6 @@ const PAGE_PATH = "/guides";
 const plannedGuideTopics = [
   "How much VRAM do you need for AI workloads",
   "AI workstation software stack planning",
-  "12GB vs 16GB VRAM for image generation",
 ] as const;
 
 const hubSteps = [
@@ -45,6 +44,14 @@ function getGuideTopicLabel(slug: string): string {
 
   if (slug === "image-generation-vram-planning") {
     return "Image generation planning";
+  }
+
+  if (slug === "12gb-vs-16gb-vram-local-ai") {
+    return "VRAM tier planning";
+  }
+
+  if (slug === "how-to-choose-a-gpu-for-local-llms") {
+    return "Local LLM GPU planning";
   }
 
   return "Planning guide";

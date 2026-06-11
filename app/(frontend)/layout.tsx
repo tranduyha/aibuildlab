@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import BackToTopButton from "@/components/BackToTopButton";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getSiteSettings } from "@/lib/seo";
@@ -38,6 +39,7 @@ export default function FrontendLayout({
           {children}
         </main>
         <Footer />
+        <BackToTopButton />
       </body>
     </html>
   );
