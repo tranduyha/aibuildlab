@@ -232,33 +232,6 @@ const faqItems = [
   },
 ] as const;
 
-const continuePlanningLinks = [
-  {
-    title: "Estimate VRAM first",
-    description: "Use dense LLM, MoE, and image-generation modes before comparing GPU profiles.",
-    href: "/tools/vram-calculator",
-    tone: "primary",
-  },
-  {
-    title: "Compare 12GB and 16GB",
-    description: "Decide whether a starter tier or experimentation buffer better matches your workload.",
-    href: "/guides/12gb-vs-16gb-vram-local-ai",
-    tone: "secondary",
-  },
-  {
-    title: "Review GPU profiles",
-    description: "Move to source-aware GPU pages only after you have a memory target.",
-    href: "/gpu",
-    tone: "secondary",
-  },
-  {
-    title: "Use cloud as a validation route",
-    description: "Check cloud vs local planning when the local estimate is close to the edge.",
-    href: "/guides/cloud-gpu-vs-local-gpu",
-    tone: "secondary",
-  },
-] as const;
-
 export const metadata = buildMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
@@ -503,21 +476,6 @@ export default function ChooseGpuForLocalLlmsGuidePage() {
                   <Link className="guide-card-action" href={card.href}>
                     {card.cta} &rarr;
                   </Link>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="tool-section related-section guide-primary-section">
-            <p className="eyebrow">Continue planning</p>
-            <h2>Next routes</h2>
-            <div className="guide-cta-grid">
-              {continuePlanningLinks.map((item) => (
-                <div className={`guide-cta-card guide-cta-card-${item.tone}`} key={item.title}>
-                  <span className="guide-cta-label">{item.tone === "primary" ? "Primary next step" : "Related route"}</span>
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                  <Link href={item.href}>Open route</Link>
                 </div>
               ))}
             </div>

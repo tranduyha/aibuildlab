@@ -442,6 +442,14 @@ brand/domain hardcode scan in code directories -> no matches
 follow-up -> 6-step decision flow now uses a scoped 3-column desktop grid for a 3-over-3 card layout
 npm.cmd run lint -> passed
 npm.cmd run build -> passed, 51 static pages generated
+
+2026-06-11 guide CTA consolidation and fast routing:
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+/guides/how-to-choose-a-gpu-for-local-llms -> removed duplicate Continue planning / Next routes section; Choose your next tool remains as the route selector before FAQ
+/guides/12gb-vs-16gb-vram-local-ai -> added Fast routing after your estimate with five estimate-band next-route cards
+source checks -> 12GB vs 16GB guide contains the new fast-routing heading; local LLM GPU guide no longer contains Continue planning or Next routes
+brand/domain hardcode scan in code directories -> no matches
 ```
 
 ## Do Not Do Next

@@ -1691,3 +1691,36 @@ the same comparison-guide rhythm as `/guides/12gb-vs-16gb-vram-local-ai`.
 - [x] Updated the 6-step decision flow to use a scoped 3-column desktop grid so
   it renders as 3 cards over 3 cards instead of 5 plus 1.
 - [x] Rechecked with `npm.cmd run lint` and `npm.cmd run build`; both passed.
+
+---
+
+## 2026-06-11 - Guide CTA consolidation and fast routing pass
+
+### Agent
+Codex
+
+### Planned Task
+Reduce duplicate next-step structure on the local LLM GPU guide and add a
+distinct fast-routing block to the 12GB vs 16GB guide.
+
+### Completed
+- [x] Removed the duplicate "Continue planning" / "Next routes" section from
+  `/guides/how-to-choose-a-gpu-for-local-llms`.
+- [x] Kept "Choose your next tool" as the single route selector before the FAQ.
+- [x] Added "Fast routing after your estimate" to
+  `/guides/12gb-vs-16gb-vram-local-ai`.
+- [x] Added five estimate-band cards that route users to the calculator, model
+  page, GPU profiles, or cloud-vs-local guide based on uncertainty.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 51 static pages.
+- [x] Source check confirms the 12GB vs 16GB guide includes "Fast routing after
+  your estimate".
+- [x] Source check confirms the local LLM GPU guide no longer includes
+  "Continue planning" or "Next routes".
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- None.

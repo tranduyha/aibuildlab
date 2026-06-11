@@ -67,6 +67,49 @@ const decisionRows = [
   },
 ] as const;
 
+const fastRoutingCards = [
+  {
+    estimate: "Below 8GB",
+    read: "Constraint test",
+    body:
+      "Retest assumptions before treating an 8GB-class setup as comfortable. Context, runtime overhead, and exact artifact choice can erase the margin.",
+    href: "/tools/vram-calculator",
+    cta: "Retest assumptions",
+  },
+  {
+    estimate: "Around 9-12GB",
+    read: "12GB first test",
+    body:
+      "Use 12GB as a practical first testing tier for compact dense LLM or conservative image experiments, then validate the exact runtime.",
+    href: "/models/qwen2-5-7b-instruct/vram-requirements",
+    cta: "Open a 7B model page",
+  },
+  {
+    estimate: "Around 13-16GB",
+    read: "16GB buffer",
+    body:
+      "Use 16GB as the experimentation buffer when prompt length, runtime comparison, or mixed local AI work is likely to grow.",
+    href: "/gpu",
+    cta: "Review GPU profiles",
+  },
+  {
+    estimate: "Close to 16GB limit",
+    read: "Validate before local commitment",
+    body:
+      "If the estimate nearly fills 16GB, use a smaller context test, cloud validation, or a higher tier before narrowing local hardware.",
+    href: "/guides/cloud-gpu-vs-local-gpu",
+    cta: "Compare cloud vs local",
+  },
+  {
+    estimate: "Above 16GB or uncertain",
+    read: "24GB+ or separate workflow",
+    body:
+      "Move beyond the 12GB vs 16GB question when MoE, heavier image workflows, larger dense models, or unknown runtime behavior dominate.",
+    href: "/tools/vram-calculator",
+    cta: "Use the right estimate mode",
+  },
+] as const;
+
 const planningSteps = [
   {
     label: "01",
@@ -419,6 +462,28 @@ export default function TwelveVsSixteenVramGuidePage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          <section className="tool-section guide-primary-section">
+            <h2>Fast routing after your estimate</h2>
+            <p className="related-note">
+              Match your calculator result to the closest band, then open the route that reduces the next uncertainty.
+            </p>
+            <div className="guide-card-grid">
+              {fastRoutingCards.map((card) => (
+                <div className="guide-card guide-card-featured" key={card.estimate}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">Estimate band</span>
+                    <span className="guide-card-topic">{card.estimate}</span>
+                  </div>
+                  <strong>{card.read}</strong>
+                  <span>{card.body}</span>
+                  <Link className="guide-card-action" href={card.href}>
+                    {card.cta} &rarr;
+                  </Link>
+                </div>
+              ))}
             </div>
           </section>
 
