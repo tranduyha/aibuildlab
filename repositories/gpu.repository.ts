@@ -3,20 +3,35 @@ import type { Gpu } from "@/types";
 
 const gpus = gpuData as Gpu[];
 
-export function getAllGpus(): Gpu[] {
-  return [...gpus].sort((a, b) => {
-    const score = (gpu: Gpu) => {
-      if ((gpu.status === "published" || gpu.status === "reviewed") && !gpu.needsReview) {
-        return 2;
-      }
-      if (!gpu.needsReview && gpu.dataConfidence === "medium") {
-        return 1;
-      }
-      return 0;
-    };
+function getReviewScore(gpu: Gpu): number {
+  if ((gpu.status === "published" || gpu.status === "reviewed") && !gpu.needsReview) {
+    return 2;
+  }
+  if (!gpu.needsReview && gpu.dataConfidence === "medium") {
+    return 1;
+  }
+  return 0;
+}
 
-    return score(b) - score(a);
-  });
+function getVerifiedAtTimestamp(gpu: Gpu): number {
+  if (!gpu.lastVerifiedAt) return 0;
+
+  const timestamp = Date.parse(gpu.lastVerifiedAt);
+  return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+function sortByReviewAndRecency(a: Gpu, b: Gpu): number {
+  const reviewDifference = getReviewScore(b) - getReviewScore(a);
+  if (reviewDifference !== 0) return reviewDifference;
+
+  const recencyDifference = getVerifiedAtTimestamp(b) - getVerifiedAtTimestamp(a);
+  if (recencyDifference !== 0) return recencyDifference;
+
+  return 0;
+}
+
+export function getAllGpus(): Gpu[] {
+  return [...gpus].sort(sortByReviewAndRecency);
 }
 
 export function getGpuBySlug(slug: string): Gpu | null {
@@ -24,15 +39,15 @@ export function getGpuBySlug(slug: string): Gpu | null {
 }
 
 export function getPublishedGpus(): Gpu[] {
-  return gpus.filter((gpu) => gpu.status === "published" && !gpu.needsReview);
+  return getAllGpus().filter((gpu) => gpu.status === "published" && !gpu.needsReview);
 }
 
 export function getFeaturedGpus(): Gpu[] {
-  return gpus.filter((gpu) => gpu.featured);
+  return getAllGpus().filter((gpu) => gpu.featured);
 }
 
 export function getGpusByUseCase(useCase: string): Gpu[] {
-  return gpus.filter((gpu) => gpu.useCases.includes(useCase));
+  return getAllGpus().filter((gpu) => gpu.useCases.includes(useCase));
 }
 
 export const gpuRepository = {

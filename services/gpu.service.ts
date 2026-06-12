@@ -17,10 +17,40 @@ function getGpuReviewWarning(gpu: Gpu): string | null {
   return null;
 }
 
+function getCatalogFamilyScore(gpu: Gpu): number {
+  if (gpu.vendor === "NVIDIA" && /^RTX 50/.test(gpu.name)) return 500;
+  if (gpu.vendor === "NVIDIA" && /^RTX 40/.test(gpu.name)) return 400;
+  if (gpu.vendor === "NVIDIA" && /^RTX 30/.test(gpu.name)) return 300;
+  if (gpu.vendor === "AMD") return 200;
+  if (gpu.vendor === "Intel") return 100;
+  return 0;
+}
+
+function getCatalogModelScore(gpu: Gpu): number {
+  const modelNumber = Number(gpu.name.match(/\b(\d{4})\b/)?.[1] ?? 0);
+  const variantScore =
+    (/\bTi\b/i.test(gpu.name) ? 30 : 0) +
+    (/\bSuper\b/i.test(gpu.name) ? 10 : 0);
+
+  return modelNumber * 100 + variantScore;
+}
+
+function sortForGpuCatalog(gpus: Gpu[]): Gpu[] {
+  return [...gpus].sort((a, b) => {
+    const familyDifference = getCatalogFamilyScore(b) - getCatalogFamilyScore(a);
+    if (familyDifference !== 0) return familyDifference;
+
+    const modelDifference = getCatalogModelScore(b) - getCatalogModelScore(a);
+    if (modelDifference !== 0) return modelDifference;
+
+    return a.name.localeCompare(b.name);
+  });
+}
+
 export const gpuService = {
   listAllGpus(): ReviewedResult<Gpu[]> {
     return {
-      data: gpuRepository.getAllGpus(),
+      data: sortForGpuCatalog(gpuRepository.getAllGpus()),
       warning: REVIEW_WARNING,
     };
   },

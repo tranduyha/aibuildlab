@@ -1,17 +1,63 @@
 [
   {
-    "date": "2026-05-29",
-    "topic": "Example candidate placeholder",
-    "slugSuggestion": "example-candidate",
+    "date": "2026-06-12",
+    "topic": "RunPod Cloud GPU source refresh and referral recheck",
+    "slugSuggestion": "runpod",
     "candidateType": "cloud-gpu",
-    "reason": "Replace this object during the first real update.",
-    "sourceName": null,
-    "sourceUrl": null,
-    "sourceType": null,
-    "affectedFields": [],
-    "confidence": "low",
-    "recommendedAction": "replace-placeholder",
+    "reason": "Current official pages show expanded workload categories, current GPU pricing structure, and referral/affiliate program documentation that should be reviewed before any production provider refresh or monetized use.",
+    "sourceName": "RunPod GPU Cloud Pricing",
+    "sourceUrl": "https://www.runpod.io/pricing",
+    "sourceType": "official",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "pricingModel",
+      "notes",
+      "commissionNotes"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "review-and-enrich-existing-record",
     "status": "candidate",
-    "notes": "Placeholder only; do not render this on public pages."
+    "notes": "Candidate only. Do not copy exact prices, availability, or commission terms into production without timestamped review and disclosure checks. Referral/affiliate program source should be mapped separately before commissionNotes is changed."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "DigitalOcean GPU Droplets source refresh for GradientAI wording",
+    "slugSuggestion": "digitalocean-gpu",
+    "candidateType": "cloud-gpu",
+    "reason": "Current official product and documentation pages now use GPU Droplets / GradientAI wording and include updated GPU Droplet docs that should be reviewed before a cloud planning guide or production source refresh.",
+    "sourceName": "DigitalOcean GPU Droplets",
+    "sourceUrl": "https://www.digitalocean.com/products/gpu-droplets",
+    "sourceType": "official",
+    "affectedFields": [
+      "officialWebsiteUrl",
+      "providerType",
+      "useCases",
+      "pricingModel",
+      "notes"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "review-and-enrich-existing-record",
+    "status": "candidate",
+    "notes": "Candidate only. Keep GPU SKU, region, availability, and pricing language cautious because those fields are dynamic. Cross-check the GPU Droplets documentation before production merge."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "Lambda Cloud workspace and current platform positioning refresh",
+    "slugSuggestion": "lambda",
+    "candidateType": "cloud-gpu",
+    "reason": "Lambda's current official site and June 2026 workspace announcement provide useful planning context for shared team GPU environments, but do not justify production price or affiliate claims by themselves.",
+    "sourceName": "Introducing workspaces for Lambda Cloud",
+    "sourceUrl": "https://lambda.ai/blog/introducing-workspaces-for-lambda-cloud",
+    "sourceType": "official",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "notes"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "review-and-enrich-existing-record",
+    "status": "candidate",
+    "notes": "Candidate only. Use as planning-context evidence for team/account-boundary workflows. Do not add exact GPU inventory, pricing, or referral details without separate official source review."
   }
 ]

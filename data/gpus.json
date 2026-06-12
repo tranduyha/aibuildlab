@@ -915,6 +915,469 @@
     }
   },
   {
+    "id": "gpu-rtx-5080",
+    "slug": "rtx-5080",
+    "name": "RTX 5080",
+    "shortDescription": "Source-backed planning profile for Blackwell 16GB local AI and creator workflow research.",
+    "seoTitle": "RTX 5080 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5080 planning profile for local AI workload research with official core specs and cautious planning notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "blackwell"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion",
+      "ai-workstation"
+    ],
+    "featured": false,
+    "vendor": "NVIDIA",
+    "vramGb": 16,
+    "memoryType": "GDDR7",
+    "memoryBusBit": 256,
+    "cudaCores": 10752,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": 360,
+    "tbpWatts": null,
+    "architecture": "Blackwell",
+    "launchYear": 2025,
+    "aiTops": 1801,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 5080 Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5080/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "cardDimensionsMm",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-12"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 50 Series Announcement",
+        "url": "https://www.nvidia.com/en-us/geforce/news/rtx-50-series-graphics-cards-gpu-laptop-announcements/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-12"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Core specs are from NVIDIA's official RTX 5080 page. Do not treat official shopping text as current price or availability data. Board dimensions and power connector guidance describe NVIDIA reference/Founders Edition behavior; add-in-card models can vary.",
+    "baseClockGhz": 2.3,
+    "boostClockGhz": 2.62,
+    "recommendedPsuWatts": 850,
+    "powerConnectors": "3 x PCIe 8-pin cables via adapter or 1 x 450W+ PCIe Gen 5 cable",
+    "cardDimensionsMm": "304 x 137",
+    "displayOutputs": "3 x DisplayPort, 1 x HDMI",
+    "affiliate": {
+      "url": null
+    }
+  },
+  {
+    "id": "gpu-rtx-5070-ti",
+    "slug": "rtx-5070-ti",
+    "name": "RTX 5070 Ti",
+    "shortDescription": "Source-backed planning profile for 16GB Blackwell local AI and creator workflow research.",
+    "seoTitle": "RTX 5070 Ti for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5070 Ti planning profile for local AI workload research with official core specs and cautious verification notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "blackwell"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion",
+      "ai-workstation"
+    ],
+    "featured": false,
+    "vendor": "NVIDIA",
+    "vramGb": 16,
+    "memoryType": "GDDR7",
+    "memoryBusBit": 256,
+    "cudaCores": 8960,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": 300,
+    "tbpWatts": null,
+    "architecture": "Blackwell",
+    "launchYear": 2025,
+    "aiTops": 1406,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Family Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-12"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5070 Ti Game Ready Driver",
+        "url": "https://www.nvidia.com/en-us/geforce/news/geforce-rtx-5070-ti-game-ready-driver/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-12"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Core specs are from NVIDIA's official RTX 5070 family page. Dimensions vary by manufacturer, so board dimensions are intentionally omitted. Do not add price, availability, or SKU-specific claims without separate timestamped sources.",
+    "baseClockGhz": 2.3,
+    "boostClockGhz": 2.45,
+    "recommendedPsuWatts": 750,
+    "powerConnectors": "2 x PCIe 8-pin cables via adapter or 1 x 300W+ PCIe Gen 5 cable",
+    "displayOutputs": "3 x DisplayPort, 1 x HDMI",
+    "affiliate": {
+      "url": null
+    }
+  },
+  {
+    "id": "gpu-rtx-5070",
+    "slug": "rtx-5070",
+    "name": "RTX 5070",
+    "shortDescription": "Source-backed planning profile for 12GB Blackwell local AI and creator workflow research.",
+    "seoTitle": "RTX 5070 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5070 planning profile for local AI workload research with official core specs and cautious verification notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "blackwell"
+    ],
+    "useCases": [
+      "stable-diffusion",
+      "ai-coding"
+    ],
+    "featured": false,
+    "vendor": "NVIDIA",
+    "vramGb": 12,
+    "memoryType": "GDDR7",
+    "memoryBusBit": 192,
+    "cudaCores": 6144,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": 250,
+    "tbpWatts": null,
+    "architecture": "Blackwell",
+    "launchYear": 2025,
+    "aiTops": 988,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Family Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5070-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "cardDimensionsMm",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-12"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5070 Game Ready Driver",
+        "url": "https://www.nvidia.com/en-us/geforce/news/geforce-rtx-5070-game-ready-driver/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-12"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Core specs are from NVIDIA's official RTX 5070 family page. Card dimensions and power connector guidance describe NVIDIA reference/Founders Edition behavior where listed; add-in-card models can vary.",
+    "baseClockGhz": 2.33,
+    "boostClockGhz": 2.51,
+    "recommendedPsuWatts": 650,
+    "powerConnectors": "2 x PCIe 8-pin cables via adapter or 1 x 300W+ PCIe Gen 5 cable",
+    "cardDimensionsMm": "242 x 112",
+    "displayOutputs": "3 x DisplayPort, 1 x HDMI",
+    "affiliate": {
+      "url": null
+    }
+  },
+  {
+    "id": "gpu-rtx-5060-ti-16gb",
+    "slug": "rtx-5060-ti-16gb",
+    "name": "RTX 5060 Ti 16GB",
+    "shortDescription": "Source-backed planning profile for 16GB mainstream Blackwell local AI research.",
+    "seoTitle": "RTX 5060 Ti 16GB for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5060 Ti 16GB planning profile for local AI workload research with official core specs and cautious verification notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "blackwell",
+      "local-ai"
+    ],
+    "useCases": [
+      "local-llm",
+      "stable-diffusion"
+    ],
+    "featured": false,
+    "vendor": "NVIDIA",
+    "vramGb": 16,
+    "memoryType": "GDDR7",
+    "memoryBusBit": 128,
+    "cudaCores": 4608,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": 180,
+    "tbpWatts": null,
+    "architecture": "Blackwell",
+    "launchYear": 2025,
+    "aiTops": 759,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 5060 Family Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-12"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5060 Desktop Family Announcement",
+        "url": "https://www.nvidia.com/en-us/geforce/news/rtx-5060-desktop-family-laptop-5060-coming-soon/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-12"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "NVIDIA lists RTX 5060 Ti standard memory configuration as 16GB / 8GB GDDR7. This profile is scoped to the 16GB variant for VRAM planning. Dimensions vary by manufacturer, so board dimensions are intentionally omitted.",
+    "baseClockGhz": 2.41,
+    "boostClockGhz": 2.57,
+    "recommendedPsuWatts": 600,
+    "powerConnectors": "1 x PCIe 8-pin cable or 300W+ PCIe Gen 5 cable via adapter",
+    "displayOutputs": "3 x DisplayPort, 1 x HDMI",
+    "affiliate": {
+      "url": null
+    }
+  },
+  {
+    "id": "gpu-rtx-5060",
+    "slug": "rtx-5060",
+    "name": "RTX 5060",
+    "shortDescription": "Source-backed planning profile for 8GB mainstream Blackwell creator and AI-coding research.",
+    "seoTitle": "RTX 5060 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5060 planning profile for local AI workload research with official core specs and cautious 8GB VRAM notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "blackwell"
+    ],
+    "useCases": [
+      "ai-coding",
+      "stable-diffusion"
+    ],
+    "featured": false,
+    "vendor": "NVIDIA",
+    "vramGb": 8,
+    "memoryType": "GDDR7",
+    "memoryBusBit": 128,
+    "cudaCores": 3840,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": 145,
+    "tbpWatts": null,
+    "architecture": "Blackwell",
+    "launchYear": 2025,
+    "aiTops": 614,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 5060 Family Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5060-family/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-12"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5060 Game Ready Driver",
+        "url": "https://www.nvidia.com/en-us/geforce/news/rtx-5060-dune-awakening-f1-25-geforce-game-ready-driver/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-12"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Core specs are from NVIDIA's official RTX 5060 family page. This is an 8GB VRAM profile, so local LLM and image-generation fit should be treated cautiously and validated per workload.",
+    "baseClockGhz": 2.28,
+    "boostClockGhz": 2.5,
+    "recommendedPsuWatts": 550,
+    "powerConnectors": "1 x PCIe 8-pin cable or 300W+ PCIe Gen 5 cable via adapter",
+    "displayOutputs": "3 x DisplayPort, 1 x HDMI",
+    "affiliate": {
+      "url": null
+    }
+  },
+  {
+    "id": "gpu-rtx-5050",
+    "slug": "rtx-5050",
+    "name": "RTX 5050",
+    "shortDescription": "Source-backed planning profile for entry-level 8GB Blackwell GPU research.",
+    "seoTitle": "RTX 5050 for Local AI Planning Profile",
+    "seoDescription": "Source-backed RTX 5050 planning profile for entry-level local AI research with official core specs and cautious 8GB VRAM notes.",
+    "tags": [
+      "nvidia",
+      "geforce",
+      "blackwell"
+    ],
+    "useCases": [
+      "ai-coding",
+      "stable-diffusion"
+    ],
+    "featured": false,
+    "vendor": "NVIDIA",
+    "vramGb": 8,
+    "memoryType": "GDDR6",
+    "memoryBusBit": 128,
+    "cudaCores": 2560,
+    "streamProcessors": null,
+    "computeUnits": null,
+    "tgpWatts": 130,
+    "tbpWatts": null,
+    "architecture": "Blackwell",
+    "launchYear": 2025,
+    "aiTops": 421,
+    "benchmark": null,
+    "tokensPerSecond": null,
+    "status": "published",
+    "needsReview": false,
+    "dataConfidence": "medium",
+    "sources": [
+      {
+        "name": "NVIDIA GeForce RTX 5050 Official Page",
+        "url": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5050/",
+        "type": "official",
+        "fields": [
+          "cudaCores",
+          "vramGb",
+          "memoryType",
+          "memoryBusBit",
+          "architecture",
+          "baseClockGhz",
+          "boostClockGhz",
+          "tgpWatts",
+          "aiTops",
+          "recommendedPsuWatts",
+          "powerConnectors",
+          "displayOutputs"
+        ],
+        "accessedAt": "2026-06-12"
+      },
+      {
+        "name": "NVIDIA GeForce RTX 5050 Desktop and Laptop Announcement",
+        "url": "https://www.nvidia.com/en-us/geforce/news/rtx-5050-desktop-gpu-and-laptops/",
+        "type": "official",
+        "fields": [
+          "launchYear"
+        ],
+        "accessedAt": "2026-06-12"
+      }
+    ],
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Core specs are from NVIDIA's official RTX 5050 page. Availability wording is intentionally omitted because the site should not publish stock or launch-availability claims without a timestamped policy. Treat this 8GB profile as entry-level planning data, not a local AI buying recommendation.",
+    "baseClockGhz": 2.31,
+    "boostClockGhz": 2.57,
+    "recommendedPsuWatts": 550,
+    "powerConnectors": "1 x PCIe 8-pin cable or 300W+ PCIe Gen 5 cable via adapter",
+    "displayOutputs": "3 x DisplayPort, 1 x HDMI",
+    "affiliate": {
+      "url": null
+    }
+  },
+  {
     "id": "gpu-intel-arc-a770-16gb",
     "slug": "intel-arc-a770-16gb",
     "name": "Intel Arc A770 16GB",

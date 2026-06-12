@@ -111,7 +111,7 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Next recommended Month 2 priority: source-aware "How much VRAM do you need for AI workloads" guide if scoped without overlap, or Cloud GPU provider re-audit before another cloud planning page
+Next recommended Month 2 priority: Cloud GPU planning guide outline or Cloud GPU page QA pass after safe RunPod, DigitalOcean GPU, and Lambda provider source refresh
 ```
 
 Definition of Done:
@@ -449,6 +449,72 @@ npm.cmd run build -> passed, 51 static pages generated
 /guides/how-to-choose-a-gpu-for-local-llms -> removed duplicate Continue planning / Next routes section; Choose your next tool remains as the route selector before FAQ
 /guides/12gb-vs-16gb-vram-local-ai -> added Fast routing after your estimate with five estimate-band next-route cards
 source checks -> 12GB vs 16GB guide contains the new fast-routing heading; local LLM GPU guide no longer contains Continue planning or Next routes
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-12 GPU recency ordering:
+repositories/gpu.repository.ts -> source-backed quality remains first, then lastVerifiedAt descending; same-day records preserve production data order
+repository coverage -> all, published, featured, and use-case GPU queries use the shared ordering
+calculator coverage -> LLM, MoE, and image-generation matching inherit the new ordering
+tested low-VRAM result -> RTX 5080, RTX 5070 Ti, RTX 5070, RTX 5060 Ti 16GB, RTX 5060, RTX 5050
+tested 14B result -> RTX 5080, RTX 5070 Ti, RTX 5060 Ti 16GB appear before eligible older 16GB records
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+
+2026-06-12 GPU detail duplicate FAQ risk reduction:
+/gpu/[slug] -> generic FAQ replaced with vendor, VRAM-tier, exact-card, and source-backed spec context
+RX 7900 XTX -> AMD/ROCm/non-CUDA runtime caveat visible in output
+Intel Arc A770 -> Intel runtime caveat visible in output
+RTX 5050 vs RTX 5060 -> answers now differ by CUDA cores, memory type, and power class
+FAQ similarity audit -> top pair reduced from about 0.91 to 0.867; residual risk remains for very close same-generation cards
+schema -> FAQPage uses the same generated answers as visible FAQ
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-12 GPU catalog ordering:
+/gpu -> service-level ordering only; no final HTML, card markup, or CSS changes
+order -> RTX 50, RTX 40, RTX 30, AMD Radeon, Intel Arc; each family sorted highest model tier down
+static output -> all 17 cards confirmed; order starts 5090, 5080, 5070 Ti, 5070, 5060 Ti 16GB, 5060, 5050
+calculator behavior -> repository lastVerifiedAt recency matching unchanged
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+
+2026-06-12 RTX 50 launch year completion:
+data/gpus.json -> launchYear=2025 added for RTX 5080, RTX 5070 Ti, RTX 5070, RTX 5060 Ti 16GB, RTX 5060, and RTX 5050
+source policy -> each launchYear has a separate official NVIDIA launch/driver source mapping
+blocked fields -> no price, availability, affiliate URL, commission, benchmark, or tokens-per-second data added
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+
+2026-06-12 daily data update research-only pass:
+npm.cmd run data:validate -> 0 errors, 0 warnings
+daily report -> daily_data_update/reports/2026-06-12.md
+production data -> later safe Cloud GPU provider source refresh merged for RunPod, DigitalOcean GPU, and Lambda
+candidate queues -> cloud-gpu-candidates.json updated after user confirmation with RunPod, DigitalOcean GPU, and Lambda research candidates
+findings -> RunPod, DigitalOcean GPU, and Lambda are first Cloud GPU candidate updates to review; newer RTX 50-series records remain lower-priority candidate ideas only
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+
+2026-06-12 Cloud GPU provider safe production merge:
+data/cloud-gpu-providers.json -> RunPod, DigitalOcean GPU, and Lambda refreshed with safe source trail, cautious notes, and lastVerifiedAt=2026-06-12
+DigitalOcean GPU -> officialWebsiteUrl now points to the official GPU Droplets product page
+blocked fields -> pricingNotes null, commissionNotes null, affiliate.url null, no availability fields added
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 51 static pages generated
+
+2026-06-12 RTX 50 safe production merge:
+data/gpus.json -> added RTX 5080, RTX 5070 Ti, RTX 5070, RTX 5060 Ti 16GB, RTX 5060, and RTX 5050 from official NVIDIA sources
+blocked fields -> no price, availability, affiliate URL, commission, benchmark, or tokens-per-second claims added
+candidate queues -> GPU placeholder replaced with reviewed merge history
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+static output -> RTX 5080, RTX 5060 Ti 16GB, and RTX 5050 pages plus sitemap entries confirmed
 brand/domain hardcode scan in code directories -> no matches
 ```
 

@@ -32,10 +32,33 @@
           "useCases"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "RunPod GPU Cloud Pricing",
+        "url": "https://www.runpod.io/pricing",
+        "type": "official",
+        "fields": [
+          "providerType",
+          "pricingModel",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Current official pricing page describes Pods, Serverless, Clusters, and reserved cluster planning. Do not copy dynamic prices into production without timestamped price policy."
+      },
+      {
+        "name": "RunPod Referral and Affiliate Program",
+        "url": "https://www.runpod.io/referral-and-affiliate-program",
+        "type": "referral",
+        "fields": [
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Referral program existence reviewed only as a source-gap signal. No commissionNotes or affiliate URL were added."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official pricing and referral documentation were available on 2026-06-03. Current GPU SKUs, availability, and referral terms still need ongoing review before any monetized use.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official pricing and referral documentation were rechecked on 2026-06-12. RunPod supports multiple planning surfaces such as pods, serverless workloads, and clusters, but GPU SKUs, availability, exact rates, and referral terms remain dynamic and should not be used for monetized copy without a separate timestamped review.",
     "unsafeToPublishFields": [
       "pricingNotes",
       "commissionNotes"
@@ -130,10 +153,33 @@
           "pricingModel"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Lambda Home",
+        "url": "https://lambda.ai/",
+        "type": "official",
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Current official site reviewed for broad platform positioning only. Do not copy exact inventory or pricing claims into production from this pass."
+      },
+      {
+        "name": "Introducing workspaces for Lambda Cloud",
+        "url": "https://lambda.ai/blog/introducing-workspaces-for-lambda-cloud",
+        "type": "official",
+        "fields": [
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Workspace announcement supports team/account-boundary planning context, not exact GPU inventory, price, availability, or referral claims."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official site and pricing pages were available on 2026-06-03. Current GPU inventory, billing scope, and any referral program details still need separate confirmation.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official Lambda platform pages were rechecked on 2026-06-12, including workspace planning context for shared cloud accounts. Current GPU inventory, exact billing scope, pricing, availability, and referral program details still need separate confirmation before any stronger public or monetized claim.",
     "unsafeToPublishFields": [
       "commissionNotes",
       "pricingNotes"
@@ -203,7 +249,7 @@
     "shortDescription": "DigitalOcean GPU compute planning profile for current droplet-based AI workloads with official referral verification.",
     "seoTitle": "DigitalOcean GPU Planning Profile",
     "seoDescription": "Source-aware DigitalOcean GPU planning profile covering droplet-based GPU compute, pricing model, and referral status.",
-    "officialWebsiteUrl": "https://www.digitalocean.com/products/droplets",
+    "officialWebsiteUrl": "https://www.digitalocean.com/products/gpu-droplets",
     "providerType": "cloud_compute_provider",
     "useCases": [
       "local_llm_testing",
@@ -246,10 +292,34 @@
           "pricingModel"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "DigitalOcean GPU Droplets",
+        "url": "https://www.digitalocean.com/products/gpu-droplets",
+        "type": "official",
+        "fields": [
+          "officialWebsiteUrl",
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Current official product page is specific to GPU Droplets and GradientAI positioning. Do not convert dynamic GPU SKUs, regions, or pricing into static production claims."
+      },
+      {
+        "name": "GPU Droplets - DigitalOcean Documentation",
+        "url": "https://docs.digitalocean.com/products/gpu-droplets/",
+        "type": "documentation",
+        "fields": [
+          "pricingModel",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Documentation reviewed for product positioning and planning context only. Availability and regional details remain dynamic."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official DigitalOcean pages confirm current GPU droplet positioning and a referral program, but GPU SKU mix, region availability, and exact billing scope remain dynamic.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official DigitalOcean GPU Droplet product and documentation pages were rechecked on 2026-06-12. The profile can describe GPU Droplets as a planning option for AI/ML workloads, but GPU SKU mix, region availability, pricing, and exact billing scope remain dynamic and should be verified on official pages before use.",
     "unsafeToPublishFields": [
       "pricingNotes",
       "commissionNotes"

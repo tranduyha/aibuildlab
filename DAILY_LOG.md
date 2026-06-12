@@ -1724,3 +1724,302 @@ distinct fast-routing block to the 12GB vs 16GB guide.
 
 ### Issues
 - None.
+
+---
+
+## 2026-06-12 - Daily data update research-only pass
+
+### Agent
+Codex
+
+### Planned Task
+Run the daily data update workflow in research-first mode, following the current
+Month 2 priority order and requiring user confirmation before adding or changing
+GPU, cloud, model, or production data records.
+
+### Completed
+- [x] Re-read the active operating docs, roadmap, data workflow, source policy,
+  and current task status.
+- [x] Prioritized Cloud GPU provider re-audit before new page or GPU/model
+  expansion.
+- [x] Reviewed current production counts for GPU, AI model, calculator, and
+  Cloud GPU data.
+- [x] Checked official/current sources for existing Cloud GPU providers.
+- [x] Scanned official NVIDIA, AMD, Qwen, and Mistral sources for new candidate
+  signals.
+- [x] Wrote Cloud GPU research candidates for RunPod, DigitalOcean GPU, and
+  Lambda after user confirmation.
+- [x] Updated the detailed research report at
+  `daily_data_update/reports/2026-06-12.md`.
+- [x] Did not modify production JSON.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Confirmed representative RTX 5080, RTX 5060 Ti 16GB, and RTX 5050
+  static pages and sitemap entries were generated.
+- [x] Brand/domain hardcode scan found no matches in code directories.
+- [x] Manual field check confirmed no price, availability, affiliate URL,
+  commission, benchmark, or tokens-per-second values were merged.
+
+### Issues
+- None.
+- [x] `npm.cmd run data:report` generated the daily report file.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 51 static pages.
+
+### Issues
+- None.
+
+### Findings
+- RunPod, DigitalOcean GPU, and Lambda have the clearest Cloud GPU candidate
+  updates to review first.
+- Missing/newer NVIDIA RTX 50-series records exist as possible future GPU
+  candidates, but adding them now would be lower priority than Cloud GPU
+  provider re-audit and risks thin expansion.
+
+### Files Changed
+- `daily_data_update/reports/2026-06-12.md`
+- `data/update-candidates/cloud-gpu-candidates.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Review the six generated GPU profiles for content depth before adding more GPU
+records.
+
+---
+
+## 2026-06-12 - GPU recency ordering for calculator matches
+
+### Agent
+Codex
+
+### Planned Task
+Make newly verified GPU records appear first in calculator matches and GPU
+lists without hardcoding RTX model names.
+
+### Completed
+- [x] Added a shared GPU ordering rule in `gpu.repository.ts`.
+- [x] Preserved source-backed/reviewed data ahead of lower-confidence records.
+- [x] Sorted records within the same review tier by `lastVerifiedAt`
+  descending.
+- [x] Preserved production data order for records verified on the same date.
+- [x] Applied the same ordering to all, published, featured, and use-case GPU
+  repository queries.
+- [x] Confirmed the LLM, MoE, and image-generation calculators inherit the
+  ordering through the shared repository.
+
+### Checked
+- [x] RTX 5080, RTX 5070 Ti, RTX 5070, RTX 5060 Ti 16GB, RTX 5060, and RTX
+  5050 appear first for a low-VRAM LLM estimate.
+- [x] RTX 5080, RTX 5070 Ti, and RTX 5060 Ti 16GB appear first among eligible
+  16GB matches for the tested 14B estimate.
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+
+### Issues
+- None.
+
+### Files Changed
+- `repositories/gpu.repository.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-12 - RTX 50 launch year source completion
+
+### Agent
+Codex
+
+### Planned Task
+Resolve the missing launch year on the six newly merged RTX 50 desktop GPU
+profiles using official NVIDIA sources.
+
+### Completed
+- [x] Set `launchYear: 2025` for RTX 5080, RTX 5070 Ti, RTX 5070, RTX 5060 Ti
+  16GB, RTX 5060, and RTX 5050.
+- [x] Added a separate official NVIDIA launch source with field-level
+  `launchYear` mapping to each record.
+- [x] Did not add price, availability, affiliate URL, commission, or
+  performance claims from the launch articles.
+
+### Checked
+- [x] Manual check confirmed all six records have `launchYear: 2025` and one
+  official source mapping for the field.
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+
+### Issues
+- None.
+
+### Files Changed
+- `data/gpus.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-12 - GPU catalog service-level ordering
+
+### Agent
+Codex
+
+### Planned Task
+Make the `/gpu` catalog order easier to scan without changing page HTML, card
+markup, CSS, or calculator recency matching.
+
+### Completed
+- [x] Reverted the earlier `/gpu` HTML/CSS grouping experiment.
+- [x] Kept `app/(frontend)/gpu/page.tsx`, `components/GpuCard.tsx`, and
+  `app/(frontend)/theme.css` unchanged in the final diff.
+- [x] Added a service-level catalog ordering rule in `gpu.service.ts`.
+- [x] Ordered `/gpu` by product family and model tier: RTX 50, RTX 40, RTX 30,
+  AMD Radeon, then Intel Arc.
+- [x] Kept calculator matching and repository `lastVerifiedAt` recency ordering
+  unchanged.
+
+### Checked
+- [x] Static `/gpu` output contains all 17 GPU cards.
+- [x] RTX 50 order: 5090, 5080, 5070 Ti, 5070, 5060 Ti 16GB, 5060, 5050.
+- [x] RTX 40 order: 4090, 4080 Super, 4070 Ti Super, 4070 Super, 4070,
+  4060 Ti 16GB.
+- [x] Remaining order renders RTX 30, AMD Radeon, then Intel Arc records.
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+
+### Issues
+- None.
+
+### Files Changed
+- `services/gpu.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-12 - GPU detail duplicate FAQ risk reduction
+
+### Agent
+Codex
+
+### Planned Task
+Reduce duplicate/template risk across `/gpu/[slug]` pages after the audit found
+highly similar FAQ content, especially on RX 7900 XTX and same-tier RTX pages.
+
+### Completed
+- [x] Replaced generic GPU FAQ items with generated FAQ content based on VRAM
+  tier, vendor/runtime stack, source-backed core specs, power class, and exact
+  card verification needs.
+- [x] Added AMD-specific runtime caveat language for RX 7900 XTX, including
+  ROCm and CUDA-first workflow checks.
+- [x] Added Intel-specific runtime caveat language for Arc, including oneAPI,
+  SYCL, OpenVINO, driver, OS, and framework checks.
+- [x] Added NVIDIA-specific CUDA/runtime language, with extra caution for newer
+  RTX 50 Blackwell profiles.
+- [x] Reused the same generated FAQ items for visible FAQ and FAQPage schema so
+  structured data matches visible content.
+- [x] Replaced generic VRAM limitation copy with source-backed context that
+  includes core count, memory type/bus, and board-power class.
+- [x] Removed the extra generic VRAM-tier FAQ item that was inflating duplicate
+  FAQ similarity.
+
+### Checked
+- [x] FAQ similarity high watermark dropped from about 0.91 to 0.867.
+- [x] RX 7900 XTX output includes AMD/ROCm/non-CUDA planning caveats.
+- [x] Intel Arc A770 output includes Intel runtime caveats.
+- [x] RTX 5050 and RTX 5060 FAQ answers now differ by CUDA cores, memory type,
+  and power class.
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Brand/domain hardcode scan found no matches in code directories.
+
+### Issues
+- Residual similarity remains highest between very close same-generation cards,
+  especially RTX 5050 and RTX 5060. Further reduction should come from
+  per-profile editorial notes or comparison-specific internal links, not from
+  unsupported performance claims.
+
+### Files Changed
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+---
+
+## 2026-06-12 - Cloud GPU candidate safe production merge
+
+### Agent
+Codex
+
+### Planned Task
+Review the written Cloud GPU research candidates and merge only safe,
+source-backed production data for RunPod, DigitalOcean GPU, and Lambda. Do not
+merge price, affiliate URL, commission, or availability data.
+
+### Completed
+- [x] Reviewed the RunPod, DigitalOcean GPU, and Lambda candidates.
+- [x] Added safe source trail and cautious notes to
+  `data/cloud-gpu-providers.json`.
+- [x] Updated `lastVerifiedAt` to `2026-06-12` for the 3 reviewed providers.
+- [x] Updated DigitalOcean GPU `officialWebsiteUrl` to the official GPU
+  Droplets product page.
+- [x] Kept `pricingNotes`, `commissionNotes`, and `affiliate.url` as `null`.
+- [x] Did not add availability, region, exact GPU SKU, exact price, commission,
+  or affiliate URL fields.
+- [x] Updated `daily_data_update/reports/2026-06-12.md` with merge details.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 51 static pages.
+- [x] Manual field check confirmed no price, affiliate URL, commission, or
+  availability fields were merged for the 3 updated providers.
+
+### Issues
+- None.
+
+### Files Changed
+- `data/cloud-gpu-providers.json`
+- `daily_data_update/reports/2026-06-12.md`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Move to a Cloud GPU planning guide outline or Cloud GPU page QA pass before
+writing another provider data batch.
+
+---
+
+## 2026-06-12 - RTX 50 safe production merge
+
+### Agent
+Codex
+
+### Planned Task
+Evaluate and merge the approved missing RTX 50 desktop GPU profiles without
+merging price, affiliate URL, commission, availability, or unsupported
+performance claims.
+
+### Completed
+- [x] Added source-backed profiles for RTX 5080, RTX 5070 Ti, RTX 5070,
+  RTX 5060 Ti 16GB, RTX 5060, and RTX 5050.
+- [x] Replaced GPU candidate placeholders with the reviewed merge history.
+- [x] Kept price, availability, affiliate URL, commission, benchmark, and
+  tokens-per-second claims out of the new records.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+
+### Files Changed
+- `data/gpus.json`
+- `data/update-candidates/gpu-candidates.json`
+- `daily_data_update/reports/2026-06-12.md`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
