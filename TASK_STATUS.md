@@ -516,6 +516,74 @@ npm.cmd run lint -> passed
 npm.cmd run build -> passed, 57 static pages generated
 static output -> RTX 5080, RTX 5060 Ti 16GB, and RTX 5050 pages plus sitemap entries confirmed
 brand/domain hardcode scan in code directories -> no matches
+
+2026-06-12 comparison table mobile layout fix:
+/compare/rtx-4070-super-vs-rtx-4070-ti-super-for-ai -> mobile comparison table labels simplified so cells show GPU names instead of repeating field names
+Memory planning and other section headers -> mobile pill styling fixed to avoid cramped table-card rendering
+section header CSS override -> fixed double-border/background overlap by excluding section rows from normal mobile row-header styling
+final section header rule -> one border/background lives on .comparison-table .comparison-table-section-row; th is transparent text/padding only
+mobile section header visual -> radius reduced to 12px and background strengthened so it reads as a header without looking unlike nearby cards
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-12 Cloud GPU data audit batch 2:
+candidate queue -> Vast.ai, Vultr Cloud GPU, Modal, Replicate, and Paperspace added from current official documentation
+candidate history -> RunPod, DigitalOcean GPU, and Lambda reconciled to merged after their previously approved safe refresh
+production boundary -> data/cloud-gpu-providers.json unchanged; no price, availability, commission, affiliate URL, capacity, or recommendation claims merged
+Paperspace -> transition-aware review required; official sources support DigitalOcean ownership but not full product deprecation
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+
+2026-06-12 Cloud GPU batch 2 approved safe merge:
+data/cloud-gpu-providers.json -> Vast.ai, Vultr Cloud GPU, Modal, Replicate, and Paperspace refreshed with safe source trails, notes, and lastVerifiedAt=2026-06-12
+Modal and Replicate -> safe use-case context expanded from official docs
+Paperspace -> transition-aware wording preserved without claiming full product deprecation
+blocked fields -> pricingNotes null, commissionNotes null, affiliate.url null; no price, availability, capacity, region, commission, affiliate URL, or recommendation claims added
+candidate queue -> all 8 Cloud GPU candidates now marked merged
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+
+2026-06-12 local LLM starter build planning stack CSS:
+/builds/local-llm-starter-build -> Planning stack cards now use responsive auto-fit layout, roomier card styling, clearer step badges, subtle hover treatment, and no horizontal connector lines
+build detail page cards -> h3 headings and li rows now use consistent padding and vertical spacing; list text aligns flush with headings across checklist and decision sections
+npm.cmd run data:validate -> skipped, no data files changed
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-12 cloud vs local build page depth upgrade:
+/builds/cloud-vs-local-ai-build-planning -> upgraded from generic checklist into a deeper decision page with decision-intent copy, cloud-first/local-first/hybrid verdict cards, decision matrix, user scenarios, validation workflow, stronger FAQ schema, cloud GPU routing, updated metadata, and H1 aligned to "Cloud GPU vs Local AI Build Planning"
+guardrails -> no live pricing, provider availability, provider ranking, benchmark, affiliate, or purchase-fit claims added
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+static HTML -> updated title, description, canonical, FAQPage schema, exactly one updated H1, quick verdict, decision matrix, scenario routing, workflow section, and cloud GPU internal links confirmed
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-12 local LLM starter build content depth upgrade:
+/builds/local-llm-starter-build -> upgraded from generic checklist into a starter local LLM build planning guide with GPU-first intent, starter priority order, component role map, GPU tier paths, compatibility traps, use-case routing, stronger FAQ schema, and updated metadata/checklist copy
+component boundary -> CPU, motherboard, RAM, SSD, PSU, and case SKU recommendations remain out of scope until source-backed component data exists
+guardrails -> no exact part list, live price, availability, benchmark, affiliate, or purchase recommendation claims added
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+static HTML -> updated title, description, canonical, FAQPage schema, exactly one H1, starter component map, GPU tier paths, compatibility traps, and use-case routing confirmed
+brand/domain hardcode scan in code directories -> no matches
+sensitive-claim scan -> only negative/guardrail uses for price, availability, benchmark, guarantee, and purchase recommendation language
+
+2026-06-12 local AI 16GB VRAM build content depth upgrade:
+/builds/local-ai-16gb-vram-build -> upgraded into a differentiated 16GB headroom planning page with decision-intent copy, comfortable/borderline/beyond-16GB verdicts, workload fit matrix, headroom checks, 16GB GPU path cards, post-estimate routing, stronger FAQ schema, and updated metadata/checklist copy
+differentiation -> avoids duplicating the starter component map and the cloud-vs-local decision framework; focuses on "is 16GB enough?" and what to validate next
+guardrails -> no exact price, availability, benchmark, ranking, affiliate, or purchase recommendation claims added
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+static HTML -> updated title, description, canonical, FAQPage schema, exactly one H1, quick verdict, workload fit matrix, headroom checks, 16GB GPU paths, and post-estimate routing confirmed
+brand/domain hardcode scan in code directories -> no matches
+sensitive-claim scan -> only negative/guardrail uses for guarantee, performance ranking, price, benchmark, and purchase recommendation language
 ```
 
 ## Do Not Do Next

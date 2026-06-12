@@ -251,7 +251,7 @@ export default function ComparisonTable({ gpus }: ComparisonTableProps) {
                   const noteField = row.noteFields?.[index] ?? null;
 
                   return (
-                    <td data-label={`${gpu.name} ${row.label}`} key={`${gpu.slug}-${row.label}`}>
+                    <td data-label={gpu.name} key={`${gpu.slug}-${row.label}`}>
                       {row.values[index]}
                       {hasVariantSpecificSource(gpu, noteField) ? (
                         <p className="spec-meta">Variant-specific. Verify exact card.</p>

@@ -3,9 +3,9 @@
     "id": "build-local-llm-starter-build",
     "slug": "local-llm-starter-build",
     "title": "Local LLM Starter Build Planning",
-    "shortDescription": "Planning route for a first local LLM workstation with cautious 12GB to 16GB GPU research.",
+    "shortDescription": "Starter local LLM build planning guide for choosing a GPU-first component path, checking CPU/RAM/storage roles, and avoiding compatibility traps.",
     "seoTitle": "Local LLM Starter Build Planning",
-    "seoDescription": "Plan a first local LLM workstation path with VRAM estimates, GPU profile links, comparison routes, and verification-first build constraints.",
+    "seoDescription": "Plan a starter local LLM build with GPU VRAM tiers, CPU/RAM/storage roles, compatibility checks, runtime cautions, and validation-first next steps.",
     "tags": ["local-llm", "starter", "build-planning"],
     "useCases": ["local-llm", "ai-coding"],
     "intent": "local LLM starter",
@@ -15,10 +15,10 @@
     "suggestedGpuSlugs": ["rtx-3060-12gb", "rtx-4060-ti-16gb", "intel-arc-a770-16gb"],
     "relatedComparisonSlugs": ["rtx-3060-12gb-vs-rtx-4060-ti-16gb-for-ai"],
     "checklistFocus": [
-      "Start with a calculator estimate for the target model and quantization.",
-      "Keep VRAM headroom for context growth and runtime overhead.",
-      "Verify driver/runtime support before committing to a platform.",
-      "Treat 12GB and 16GB class GPUs as planning options, not final recommendations."
+      "Start with the target model, quantization, and context length before choosing any part.",
+      "Use GPU VRAM as the first constraint, then check system RAM, storage, runtime, and compatibility.",
+      "Verify GPU length, power connectors, PSU headroom, airflow, motherboard slots, and driver/runtime support.",
+      "Treat 12GB and 16GB class GPUs as starter planning paths, not final buying recommendations."
     ],
     "uniqueFaq": {
       "question": "Why start with a 12GB to 16GB planning tier?",
@@ -33,15 +33,15 @@
     "dataConfidence": "low",
     "sources": [],
     "lastVerifiedAt": null,
-    "notes": "Planning page only. Exact parts, pricing, availability, and benchmark-backed fit require later source review."
+    "notes": "Planning page only. Use it to shape a GPU-first starter local LLM build and identify CPU, RAM, storage, power, cooling, case, and runtime checks before exact parts, pricing, availability, or benchmark-backed fit are reviewed."
   },
   {
     "id": "build-local-ai-16gb-vram-build",
     "slug": "local-ai-16gb-vram-build",
     "title": "Local AI 16GB VRAM Build Planning",
-    "shortDescription": "Planning route for users comparing 16GB VRAM GPUs for broader local AI and creator workloads.",
+    "shortDescription": "16GB VRAM local AI planning guide for deciding whether the workload has enough headroom before comparing GPU candidates.",
     "seoTitle": "Local AI 16GB VRAM Build Planning",
-    "seoDescription": "Plan a 16GB VRAM local AI workstation path with source-aware GPU options, comparison links, and compatibility checks.",
+    "seoDescription": "Plan whether 16GB VRAM is enough for local AI with workload fit checks, headroom guidance, GPU candidate paths, and validation-first routing.",
     "tags": ["16gb-vram", "local-ai", "build-planning"],
     "useCases": ["local-llm", "stable-diffusion", "ai-coding"],
     "intent": "16GB VRAM planning",
@@ -54,10 +54,10 @@
       "rtx-4070-super-vs-rtx-4070-ti-super-for-ai"
     ],
     "checklistFocus": [
-      "Check whether the calculator estimate fits comfortably under 16GB.",
-      "Compare memory bandwidth and platform/runtime support before narrowing options.",
-      "Verify exact board-partner power and connector requirements.",
-      "Avoid treating the 16GB label as a performance guarantee."
+      "Check whether the calculator estimate fits comfortably under 16GB after runtime overhead and context growth.",
+      "Separate comfortable 16GB workloads from borderline cases that need validation or a higher-VRAM path.",
+      "Compare source-backed VRAM, memory type, memory bus, power class, exact variant constraints, and runtime notes.",
+      "Avoid treating the 16GB label as a performance guarantee or universal local AI fit."
     ],
     "uniqueFaq": {
       "question": "When is 16GB VRAM a borderline local AI tier?",
@@ -72,7 +72,7 @@
     "dataConfidence": "low",
     "sources": [],
     "lastVerifiedAt": null,
-    "notes": "Planning page only. Exact component compatibility and workload behavior must be verified."
+    "notes": "Planning page only. Use it to decide whether 16GB VRAM has enough headroom for the target local AI workload before comparing GPU candidates, validating runtime behavior, or moving to higher-VRAM/cloud testing paths."
   },
   {
     "id": "build-high-vram-local-ai-workstation",
@@ -156,10 +156,10 @@
   {
     "id": "build-cloud-vs-local-ai-build-planning",
     "slug": "cloud-vs-local-ai-build-planning",
-    "title": "Cloud vs Local AI Build Planning",
-    "shortDescription": "Decision route for testing cloud GPU before local hardware commitment when workload fit is uncertain.",
-    "seoTitle": "Cloud vs Local AI Build Planning",
-    "seoDescription": "Plan whether to test cloud GPU first or continue toward local AI hardware with source-aware constraints and no provider pricing claims.",
+    "title": "Cloud GPU vs Local AI Build Planning",
+    "shortDescription": "Decision framework for testing cloud GPU first, planning local AI hardware, or using a hybrid validation path before commitment.",
+    "seoTitle": "Cloud GPU vs Local AI Build Planning",
+    "seoDescription": "Decide whether to rent cloud GPU time before buying local AI hardware with a source-aware workflow, decision matrix, and local GPU planning routes.",
     "tags": ["cloud-vs-local", "decision", "build-planning"],
     "useCases": ["local-vs-cloud-decision", "local-llm", "ai-workstation"],
     "intent": "local-vs-cloud-decision",
@@ -172,10 +172,10 @@
       "rx-7900-xtx-vs-rtx-4090-for-ai"
     ],
     "checklistFocus": [
-      "Use cloud testing when benchmark evidence is missing for your workload.",
-      "Validate model size, context, runtime, and driver assumptions before local hardware commitment.",
-      "Keep provider pricing and availability out of this planning page until sourced.",
-      "Compare local control needs against occasional high-VRAM usage."
+      "Use cloud testing when benchmark evidence is missing or the workload may exceed your local VRAM tier.",
+      "Validate model size, context length, runtime, driver support, and setup friction before local hardware commitment.",
+      "Keep provider pricing, availability, and exact provider fit out of the decision until those claims are sourced.",
+      "Compare local data-control needs against occasional high-VRAM usage and hardware commitment risk."
     ],
     "uniqueFaq": {
       "question": "When should I test cloud GPU before local hardware commitment?",
@@ -190,6 +190,6 @@
     "dataConfidence": "low",
     "sources": [],
     "lastVerifiedAt": null,
-    "notes": "Planning page only. No cloud provider price, availability, or affiliate link is attached."
+    "notes": "Planning page only. Use it to decide cloud-first, local-first, or hybrid validation before provider pricing, availability, affiliate links, or exact local parts are reviewed."
   }
 ]

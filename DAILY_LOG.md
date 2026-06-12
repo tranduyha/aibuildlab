@@ -2023,3 +2023,359 @@ performance claims.
 - `daily_data_update/reports/2026-06-12.md`
 - `DAILY_LOG.md`
 - `TASK_STATUS.md`
+
+---
+
+## 2026-06-12 - Comparison table mobile layout fix
+
+### Agent
+Codex
+
+### Planned Task
+Fix the poor mobile display on the RTX 4070 Super vs RTX 4070 Ti Super
+comparison page, especially the Memory planning section header and repeated
+mobile labels.
+
+### Completed
+- [x] Changed mobile comparison cell labels to show the GPU name only instead
+  of repeating the row field inside each cell label.
+- [x] Adjusted mobile comparison table CSS so section headers render as clear
+  full-width pills instead of cramped table-card remnants.
+- [x] Fixed the mobile CSS override that made section pills look double-bordered
+  by excluding section rows from the normal row-header background rule.
+- [x] Moved the section header border/background to the section row only and
+  increased selector specificity so the generic table row card style cannot
+  create a second visible layer.
+- [x] Adjusted mobile section header radius and background so it reads as a
+  header without feeling visually disconnected from the surrounding cards.
+- [x] Kept the fix scoped to comparison table rendering and responsive CSS.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped; no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Brand/domain hardcode scan in code directories returned no matches.
+
+### Issues
+- No validation, lint, or build failures.
+- Manual browser screenshot verification was not run in this session.
+
+### Files Changed
+- `components/ComparisonTable.tsx`
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Spot-check the comparison page on a real mobile viewport, then continue with
+the Cloud GPU provider audit or calculator assumptions confidence pass.
+
+---
+
+## 2026-06-12 - Cloud GPU data audit batch 2
+
+### Agent
+Codex
+
+### Planned Task
+Audit official sources for Vast.ai, Vultr Cloud GPU, Modal, Replicate, and
+Paperspace using the candidate-first workflow. Do not merge production data,
+price, availability, affiliate URL, or commission fields.
+
+### Completed
+- [x] Reviewed current official documentation for all 5 providers.
+- [x] Added source-refresh candidates for `vast-ai`, `vultr-cloud-gpu`,
+  `modal`, `replicate`, and `paperspace`.
+- [x] Reconciled RunPod, DigitalOcean GPU, and Lambda candidate history to
+  `merged` because their safe source refresh was previously approved and
+  completed.
+- [x] Updated the 2026-06-12 daily data report with provider-level findings.
+- [x] Kept `data/cloud-gpu-providers.json` unchanged pending user approval.
+- [x] Excluded price, availability, capacity, commission, affiliate URL, and
+  unsupported recommendation claims.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Candidate queue check confirmed 8 entries: 3 merged and 5 pending.
+
+### Issues
+- No validation, lint, or build failures.
+- Paperspace needs transition-aware wording; official sources confirm it is
+  part of DigitalOcean but do not support assuming all products are deprecated.
+
+### Files Changed
+- `data/update-candidates/cloud-gpu-candidates.json`
+- `daily_data_update/reports/2026-06-12.md`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Review the 5 pending candidates and merge only approved safe source trails,
+use-case context, notes, and verification dates into production.
+
+---
+
+## 2026-06-12 - Cloud GPU batch 2 approved safe merge
+
+### Agent
+Codex
+
+### Planned Task
+After user approval, merge safe fields for Vast.ai, Vultr Cloud GPU, Modal,
+Replicate, and Paperspace into production without merging price, availability,
+commission, or affiliate URL.
+
+### Completed
+- [x] Added safe source trails and refreshed notes for all 5 approved providers.
+- [x] Set `lastVerifiedAt` to `2026-06-12` for `vast-ai`,
+  `vultr-cloud-gpu`, `modal`, `replicate`, and `paperspace`.
+- [x] Added safe use-case context for Modal and Replicate where official docs
+  supported broader planning workflows.
+- [x] Preserved transition-aware Paperspace wording without claiming full
+  product deprecation.
+- [x] Marked all 5 batch 2 candidates as `merged`.
+- [x] Kept `pricingNotes`, `commissionNotes`, and `affiliate.url` as `null`.
+- [x] Did not add price, availability, capacity, region, commission, affiliate
+  URL, or recommendation claims.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Manual safety check confirmed the 5 approved providers still have null
+  `pricingNotes`, `commissionNotes`, and `affiliate.url`.
+
+### Issues
+- No validation, lint, or build failures.
+
+### Files Changed
+- `data/cloud-gpu-providers.json`
+- `data/update-candidates/cloud-gpu-candidates.json`
+- `daily_data_update/reports/2026-06-12.md`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Run a Cloud GPU page copy QA pass or move to calculator assumptions confidence
+cleanup.
+
+---
+
+## 2026-06-12 - Local LLM starter build planning stack CSS pass
+
+### Agent
+Codex
+
+### Planned Task
+Restyle the Planning stack block on `/builds/local-llm-starter-build` without
+changing build data or page copy.
+
+### Completed
+- [x] Updated the build planning stack grid to use responsive `auto-fit` cards
+  instead of a fixed five-column-only layout.
+- [x] Restyled stack cards with roomier spacing, softer borders, subtle depth,
+  clearer step badges, and hover affordance.
+- [x] Removed the horizontal connector line between planning stack cards.
+- [x] Aligned build detail card `h3` headings and list items with consistent
+  padding and vertical spacing across checklist and decision cards.
+- [x] Removed list indentation so `li` text aligns flush with the card `h3`
+  headings on `/builds/cloud-vs-local-ai-build-planning`.
+- [x] Kept the change scoped to build detail page CSS.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No lint or build failures.
+- Manual browser screenshot verification was not run in this session.
+
+### Files Changed
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Spot-check `/builds/local-llm-starter-build` in a browser viewport, then
+continue with Cloud GPU page copy QA or calculator assumptions confidence
+cleanup.
+
+---
+
+## 2026-06-12 - Cloud vs local build page depth upgrade
+
+### Agent
+Codex
+
+### Planned Task
+Upgrade `/builds/cloud-vs-local-ai-build-planning` from a generic checklist
+page into a deeper user decision page for cloud-first, local-first, and hybrid
+AI hardware validation paths.
+
+### Completed
+- [x] Added a decision-intent section for users comparing cloud GPU testing,
+  local AI hardware, and local LLM build planning.
+- [x] Added quick verdict cards for cloud-first, local-first, and hybrid paths.
+- [x] Added a cloud vs local decision matrix covering workload frequency, VRAM
+  uncertainty, data control, runtime risk, and commitment risk.
+- [x] Added scenario cards with next routes to cloud GPU providers, the VRAM
+  calculator, and VRAM tier guidance.
+- [x] Added a cloud GPU validation workflow before local hardware commitment.
+- [x] Expanded cloud-vs-local FAQ content and schema.
+- [x] Improved metadata and route-specific checklist copy in `data/builds.json`
+  without adding price, availability, provider ranking, benchmark, or buying
+  recommendation claims.
+- [x] Added scoped responsive CSS for the new sections.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static HTML includes the updated title, description, canonical,
+  FAQPage schema, one H1, quick verdict, decision matrix, scenario routing,
+  workflow section, and cloud GPU internal links.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, or build failures.
+- No live pricing, provider availability, benchmark, affiliate, or purchase-fit
+  claims were added.
+
+### Files Changed
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `data/builds.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Spot-check the page in desktop and mobile browser viewports, then consider a
+Cloud GPU page copy QA pass.
+
+### Follow-up
+- [x] Updated the visible H1/source build title to
+  `Cloud GPU vs Local AI Build Planning` so it matches the SEO title and
+  metadata intent.
+- [x] Rechecked `npm.cmd run data:validate`, `npm.cmd run lint`, and
+  `npm.cmd run build`; all passed.
+- [x] Static HTML confirms exactly one H1 with the updated title.
+
+---
+
+## 2026-06-12 - Local LLM starter build content depth upgrade
+
+### Agent
+Codex
+
+### Planned Task
+Upgrade `/builds/local-llm-starter-build` from a generic planning checklist
+into a more useful starter local LLM build planning guide while respecting the
+current data boundary that CPU, motherboard, RAM, SSD, PSU, and case product
+data are not source-backed modules yet.
+
+### Completed
+- [x] Added a starter-build intent section that explains the page is a
+  GPU-first planning guide, not a random part list or shopping page.
+- [x] Added a starter priority order: model target, GPU VRAM tier, runtime
+  compatibility, system RAM/storage, then power/cooling/case fit.
+- [x] Added a component role map for GPU, CPU, system RAM, storage,
+  motherboard/case, and PSU/cooling without naming unsupported exact parts.
+- [x] Added 12GB, 16GB, and runtime-check GPU tier paths with links to the
+  relevant GPU profiles.
+- [x] Added compatibility traps covering runtime stack, physical GPU fit,
+  system RAM, borderline model validation, and storage growth.
+- [x] Added use-case routing for private assistant/coding helper, uncertain
+  starter hardware, and one-time/high-risk model paths.
+- [x] Expanded local LLM starter FAQ content and FAQPage schema to answer CPU,
+  RAM/storage, and cloud-testing questions.
+- [x] Updated `data/builds.json` metadata, checklist focus, and notes to match
+  the deeper page intent.
+- [x] Added scoped responsive CSS for the new local starter sections.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static HTML includes updated title, description, canonical, FAQPage
+  schema, exactly one H1, starter component map, GPU tier paths,
+  compatibility traps, and use-case routing.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+- [x] Sensitive-claim scan found only negative/guardrail uses for price,
+  availability, benchmark, guarantee, and purchase recommendation language.
+
+### Issues
+- No validation, lint, or build failures.
+- Exact CPU, motherboard, RAM, SSD, PSU, and case SKU recommendations remain
+  intentionally out of scope until a source-backed component data module exists.
+
+### Files Changed
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `data/builds.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Spot-check `/builds/local-llm-starter-build` in desktop and mobile browser
+viewports, then consider whether a future source-backed component data module
+is worth adding.
+
+---
+
+## 2026-06-12 - Local AI 16GB VRAM build content depth upgrade
+
+### Agent
+Codex
+
+### Planned Task
+Upgrade `/builds/local-ai-16gb-vram-build` into a differentiated 16GB VRAM
+planning page that does not duplicate the local LLM starter component map or
+the cloud-vs-local decision page.
+
+### Completed
+- [x] Added a 16GB decision-intent section focused on headroom, not starter
+  parts or cloud-vs-local routing.
+- [x] Added quick verdict cards for comfortable 16GB, borderline 16GB, and
+  move-beyond-16GB/test-first paths.
+- [x] Added a 16GB workload fit matrix for dense local LLM experiments, image
+  generation workflows, AI coding/assistant workflows, and GPU candidate choice.
+- [x] Added headroom checks before treating 16GB as enough.
+- [x] Added 16GB GPU path cards for RTX 4060 Ti 16GB, RTX 4070 Ti Super, and
+  Intel Arc A770 16GB as planning references, not rankings.
+- [x] Added post-estimate routing for comfortable, close-to-limit, and
+  exceeds-16GB outcomes.
+- [x] Expanded 16GB-specific FAQ content and FAQPage schema.
+- [x] Updated `data/builds.json` metadata, checklist focus, and notes to match
+  the 16GB headroom intent.
+- [x] Added scoped responsive CSS for the new 16GB sections.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static HTML includes updated title, description, canonical, FAQPage
+  schema, exactly one H1, quick verdict, workload fit matrix, headroom checks,
+  16GB GPU paths, and post-estimate routing.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+- [x] Sensitive-claim scan found only negative/guardrail uses for guarantee,
+  performance ranking, price, benchmark, and purchase recommendation language.
+
+### Issues
+- No validation, lint, or build failures.
+- The page intentionally avoids exact price, availability, benchmark, ranking,
+  affiliate, or purchase recommendation claims.
+
+### Files Changed
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `data/builds.json`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Spot-check `/builds/local-ai-16gb-vram-build` in desktop and mobile browser
+viewports, then continue differentiating the remaining build pages if needed.

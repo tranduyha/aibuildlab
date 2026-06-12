@@ -100,10 +100,22 @@
           "useCases"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Vast.ai Instances Overview",
+        "url": "https://docs.vast.ai/guides/instances/overview",
+        "type": "documentation",
+        "fields": [
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Official documentation reviewed for marketplace and container-based instance planning context. Do not copy live host supply, reliability, availability, or marketplace rate details into static production data."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official pricing documentation indicates marketplace-based pricing that changes with host supply. No official affiliate or referral page was confirmed during this check.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official Vast.ai documentation was rechecked on 2026-06-12. The profile can describe Vast.ai as a GPU cloud marketplace with container-based instances for training, inference, and development workflows, including SSH and Jupyter-style planning contexts. Marketplace rates, host supply, reliability scores, availability, commission, and affiliate URL remain dynamic and excluded.",
     "unsafeToPublishFields": [
       "commissionNotes",
       "pricingNotes"
@@ -230,10 +242,32 @@
           "notes"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Paperspace - DigitalOcean Documentation",
+        "url": "https://docs.digitalocean.com/products/paperspace/",
+        "type": "documentation",
+        "fields": [
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "DigitalOcean documentation still describes Paperspace as a GPU-powered machine learning platform. Use transition-aware wording and do not infer full product deprecation."
+      },
+      {
+        "name": "Paperspace Is Now DigitalOcean",
+        "url": "https://www.paperspace.com/paperspace-is-now-digitalocean-ai-gpu-cloud-platform",
+        "type": "official",
+        "fields": [
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Official transition page confirms Paperspace is part of DigitalOcean. This supports ownership/transition context only, not price, availability, commission, or affiliate claims."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Paperspace remains relevant for legacy product research, but DigitalOcean now directs new users toward current GPU offerings. Separate affiliate or referral terms for the legacy Paperspace brand were not confirmed.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official Paperspace and DigitalOcean documentation was rechecked on 2026-06-12. Paperspace should be presented with transition-aware wording: it remains relevant for legacy GPU-powered machine learning research and is now part of DigitalOcean, while current DigitalOcean AI/GPU products should be checked separately for new planning. Pricing, availability, commission, and affiliate URL remain excluded.",
     "unsafeToPublishFields": [
       "commissionNotes",
       "pricingNotes"
@@ -369,10 +403,22 @@
           "pricingModel"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Vultr Cloud GPU Documentation",
+        "url": "https://docs.vultr.com/products/compute/instances/cloud-gpu",
+        "type": "documentation",
+        "fields": [
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Current official documentation supports broad AI, machine learning, graphics-intensive, and flexible provisioning planning context. Do not copy GPU variant, region, capacity, rate, referral, or availability details into static production data."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official product, pricing, and referral pages were available on 2026-06-03. GPU variants, regional supply, and referral terms should still be re-checked before any public recommendation flow.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official Vultr Cloud GPU documentation was rechecked on 2026-06-12. The profile can describe Cloud GPU planning for AI, machine learning, graphics-intensive, and flexible provisioning workflows. GPU variants, regional supply, rates, referral terms, commission, affiliate URL, and availability remain dynamic and excluded.",
     "unsafeToPublishFields": [
       "pricingNotes",
       "commissionNotes"
@@ -393,7 +439,9 @@
     "useCases": [
       "batch_jobs",
       "serverless_inference",
-      "model_deployment"
+      "model_deployment",
+      "fine_tuning",
+      "notebooks"
     ],
     "pricingModel": "usage_based",
     "pricingNotes": null,
@@ -422,10 +470,22 @@
           "pricingModel"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Modal Documentation Introduction",
+        "url": "https://modal.com/docs/guide",
+        "type": "documentation",
+        "fields": [
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Official introduction supports inference, parallel batch jobs, training/fine-tuning, sandboxes, and GPU-backed notebook planning context. Do not copy GPU inventory, capacity, rates, availability, commission, or affiliate URL into production."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official documentation supports serverless and usage-based positioning, but no official referral or affiliate page was confirmed during this audit.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official Modal documentation was rechecked on 2026-06-12. The profile can describe Modal as an AI infrastructure platform for low-latency inference, parallel batch jobs, training or fine-tuning, sandboxes, and GPU-backed notebooks. GPU inventory, rates, capacity, availability, commission, and affiliate URL remain excluded.",
     "unsafeToPublishFields": [
       "commissionNotes",
       "pricingNotes"
@@ -447,7 +507,8 @@
       "serverless_inference",
       "model_deployment",
       "stable_diffusion",
-      "batch_jobs"
+      "batch_jobs",
+      "fine_tuning"
     ],
     "pricingModel": "usage_based",
     "pricingNotes": null,
@@ -477,10 +538,22 @@
           "useCases"
         ],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "Replicate Documentation",
+        "url": "https://replicate.com/docs",
+        "type": "documentation",
+        "fields": [
+          "providerType",
+          "useCases",
+          "notes"
+        ],
+        "accessedAt": "2026-06-12",
+        "notes": "Official documentation supports cloud API model execution, fine-tuning, and custom deployment workflow context. Do not copy per-model costs, hardware rates, availability, commission, or affiliate URL into production."
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
-    "notes": "Official pricing and product documentation were available on 2026-06-03. Per-model costs and hardware-backed rates change over time, and no official referral program page was confirmed in this audit.",
+    "lastVerifiedAt": "2026-06-12",
+    "notes": "Official Replicate documentation was rechecked on 2026-06-12. The profile can describe hosted model prediction, cloud API model execution, fine-tuning, and custom deployment workflows. Per-model costs, hardware rates, availability, commission, and affiliate URL remain dynamic and excluded.",
     "unsafeToPublishFields": [
       "commissionNotes",
       "pricingNotes"

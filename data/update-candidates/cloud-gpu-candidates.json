@@ -16,9 +16,9 @@
       "commissionNotes"
     ],
     "confidence": "medium",
-    "recommendedAction": "review-and-enrich-existing-record",
-    "status": "candidate",
-    "notes": "Candidate only. Do not copy exact prices, availability, or commission terms into production without timestamped review and disclosure checks. Referral/affiliate program source should be mapped separately before commissionNotes is changed."
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Safe source trail, notes, and lastVerifiedAt were merged after user approval. Exact prices, availability, commission terms, and affiliate URL remain excluded."
   },
   {
     "date": "2026-06-12",
@@ -37,9 +37,9 @@
       "notes"
     ],
     "confidence": "medium",
-    "recommendedAction": "review-and-enrich-existing-record",
-    "status": "candidate",
-    "notes": "Candidate only. Keep GPU SKU, region, availability, and pricing language cautious because those fields are dynamic. Cross-check the GPU Droplets documentation before production merge."
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Safe official URL, source trail, notes, and lastVerifiedAt were merged after user approval. GPU SKU, region, availability, pricing, commission, and affiliate URL remain excluded."
   },
   {
     "date": "2026-06-12",
@@ -56,8 +56,108 @@
       "notes"
     ],
     "confidence": "medium",
-    "recommendedAction": "review-and-enrich-existing-record",
-    "status": "candidate",
-    "notes": "Candidate only. Use as planning-context evidence for team/account-boundary workflows. Do not add exact GPU inventory, pricing, or referral details without separate official source review."
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Safe planning-context source trail, notes, and lastVerifiedAt were merged after user approval. Exact GPU inventory, pricing, availability, referral terms, commission, and affiliate URL remain excluded."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "Vast.ai marketplace and instance workflow source refresh",
+    "slugSuggestion": "vast-ai",
+    "candidateType": "cloud-gpu",
+    "reason": "Current official documentation clearly describes Vast.ai as a GPU cloud marketplace and documents container-based instances for training, inference, and development, providing stronger planning context than the existing pricing-only source trail.",
+    "sourceName": "Vast.ai Instances Overview",
+    "sourceUrl": "https://docs.vast.ai/guides/instances/overview",
+    "sourceType": "documentation",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "notes",
+      "lastVerifiedAt"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Merged safe source trail, notes, and lastVerifiedAt after user approval. Marketplace rates, host supply, reliability, availability, commission, and affiliate URL remain excluded."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "Vultr Cloud GPU official documentation refresh",
+    "slugSuggestion": "vultr-cloud-gpu",
+    "candidateType": "cloud-gpu",
+    "reason": "Current official Cloud GPU documentation supports AI, machine learning, graphics-intensive, and flexible provisioning context and was updated in May 2026.",
+    "sourceName": "Vultr Cloud GPU Documentation",
+    "sourceUrl": "https://docs.vultr.com/products/compute/instances/cloud-gpu",
+    "sourceType": "documentation",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "notes",
+      "lastVerifiedAt"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Merged safe source trail, notes, and lastVerifiedAt after user approval. Current GPU variants, regions, capacity, rates, referral terms, commission, and affiliate URL remain excluded."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "Modal AI infrastructure use-case refresh",
+    "slugSuggestion": "modal",
+    "candidateType": "cloud-gpu",
+    "reason": "Current official introduction documents low-latency inference, parallel batch jobs, training or fine-tuning, sandboxes, and GPU-backed notebooks, which can improve the existing narrow serverless profile.",
+    "sourceName": "Modal Documentation Introduction",
+    "sourceUrl": "https://modal.com/docs/guide",
+    "sourceType": "documentation",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "notes",
+      "lastVerifiedAt"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Merged safe source trail, use-case context, notes, and lastVerifiedAt after user approval. GPU inventory, rates, capacity, availability, commission, and affiliate URL remain excluded."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "Replicate model execution and deployment workflow refresh",
+    "slugSuggestion": "replicate",
+    "candidateType": "cloud-gpu",
+    "reason": "Current official documentation distinguishes hosted model predictions from configurable deployments and supports a clearer inference-platform profile without making hardware or price claims.",
+    "sourceName": "Replicate Documentation",
+    "sourceUrl": "https://replicate.com/docs",
+    "sourceType": "documentation",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "notes",
+      "lastVerifiedAt"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Merged safe source trail, use-case context, notes, and lastVerifiedAt after user approval. Per-model costs, hardware rates, availability, commission, and affiliate URL remain excluded."
+  },
+  {
+    "date": "2026-06-12",
+    "topic": "Paperspace lifecycle and DigitalOcean documentation refresh",
+    "slugSuggestion": "paperspace",
+    "candidateType": "cloud-gpu",
+    "reason": "DigitalOcean documentation still describes Paperspace as a GPU-powered machine learning platform, while the official brand page confirms it is part of DigitalOcean. The production profile needs transition-aware source context rather than a stronger standalone-provider claim.",
+    "sourceName": "Paperspace - DigitalOcean Documentation",
+    "sourceUrl": "https://docs.digitalocean.com/products/paperspace/",
+    "sourceType": "documentation",
+    "affectedFields": [
+      "providerType",
+      "useCases",
+      "notes",
+      "lastVerifiedAt"
+    ],
+    "confidence": "medium",
+    "recommendedAction": "merged-safe-fields-after-user-approval",
+    "status": "merged",
+    "notes": "Merged safe transition-aware source trail, notes, and lastVerifiedAt after user approval. Legacy/transition wording was preserved without inferring full product deprecation. Pricing, availability, commission, and affiliate URL remain excluded."
   }
 ]
