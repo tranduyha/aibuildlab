@@ -49,9 +49,12 @@ function sortForGpuCatalog(gpus: Gpu[]): Gpu[] {
 
 export const gpuService = {
   listAllGpus(): ReviewedResult<Gpu[]> {
+    const data = sortForGpuCatalog(gpuRepository.getAllGpus());
+    const hasPlanningDraft = data.some((gpu) => getGpuReviewWarning(gpu));
+
     return {
-      data: sortForGpuCatalog(gpuRepository.getAllGpus()),
-      warning: REVIEW_WARNING,
+      data,
+      warning: hasPlanningDraft ? REVIEW_WARNING : null,
     };
   },
 

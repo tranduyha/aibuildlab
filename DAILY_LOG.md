@@ -2379,3 +2379,111 @@ the cloud-vs-local decision page.
 ### Next Step
 Spot-check `/builds/local-ai-16gb-vram-build` in desktop and mobile browser
 viewports, then continue differentiating the remaining build pages if needed.
+
+---
+
+## 2026-06-15 - GPU page duplicate content reduction
+
+### Agent
+Codex
+
+### Planned Task
+Reduce duplicate content risk on `/gpu` and `/gpu/[slug]` after a UX and Google
+SEO audit found too much template-level overlap across generated GPU profiles.
+
+### Completed
+- [x] Reworked `/gpu/[slug]` from repeated FAQ/checklist content into a
+  decision-oriented profile layout with role, reason to consider, main
+  constraint, interpretation notes, runtime question, exact-card verification,
+  nearby GPU alternatives, comparisons, and source trail.
+- [x] Added `services/gpu-profile.service.ts` to keep per-GPU editorial
+  decision content and nearby GPU selection logic outside the page component.
+- [x] Removed generic FAQPage output from GPU detail pages because the FAQ
+  answers repeated visible sections and increased page-to-page similarity.
+- [x] Updated GPU detail metadata to include GPU name, VRAM tier, platform, and
+  page purpose without exceeding the static SEO description threshold.
+- [x] Reworked `/gpu` into a VRAM-tier catalog grouped by 8GB, 12GB, 16GB, and
+  24GB+ profiles, with workflow guidance and routing to calculator, comparison,
+  guide, and cloud GPU pages.
+- [x] Updated GPU card planning-focus labels from internal slugs to
+  user-facing labels.
+- [x] Scoped responsive CSS for GPU decision cards, nearby alternatives,
+  catalog tier navigation, and catalog workflow blocks.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static GPU SEO audit checked 18 GPU pages with 0 missing/long title,
+  description, canonical, or H1 issues.
+- [x] Duplicate-content similarity audit improved the worst normalized
+  5-word-shingle pair from about 0.854 to 0.455; heading-sequence uniqueness
+  improved from 6/17 to 17/17; repeated long sentences on 10+ GPU pages dropped
+  from 14 to 3.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, or build failures.
+- Residual repeated sentences remain for safe boilerplate around benchmark
+  non-claims, nearby alternatives not being rankings, and exact-card checks.
+  This is acceptable guardrail copy but can be reduced further if later needed.
+
+### Files Changed
+- `app/(frontend)/gpu/[slug]/page.tsx`
+- `app/(frontend)/gpu/page.tsx`
+- `app/(frontend)/theme.css`
+- `components/GpuCard.tsx`
+- `services/gpu-profile.service.ts`
+- `services/gpu.service.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Spot-check `/gpu` and several `/gpu/[slug]` pages in desktop and mobile
+viewports, then continue with the Cloud GPU planning guide or Cloud GPU page QA
+pass.
+
+### Follow-up
+- [x] Replaced the non-ASCII nearby-card separator in `/gpu/[slug]` with ASCII
+  `-`.
+- [x] Added curated compare paths for all 17 GPU profiles so the next GPU links
+  prioritize same-tier comparisons, capacity step-ups, and runtime alternatives
+  over generic architecture proximity.
+- [x] Updated the detail section copy from generic "Nearby options" to
+  "Compare path" / "Next GPU profiles to compare" and changed card CTAs to
+  "Compare this profile".
+- [x] Improved fallback nearby scoring for future GPU records by weighting same
+  VRAM first, then meaningful step-ups, then vendor/architecture/use-case
+  overlap.
+- [x] Rechecked `npm.cmd run data:validate`, `npm.cmd run lint`, and
+  `npm.cmd run build`; all passed and build generated 57 static pages.
+- [x] Static GPU SEO audit checked 18 GPU pages with 0 title, description,
+  canonical, or H1 issues.
+- [x] Compare-path spot check confirmed RTX 5070, RTX 5080, RTX 5050,
+  RX 7900 XTX, and Intel Arc A770 16GB now route to more intent-appropriate
+  next GPU profiles.
+- [x] Similarity audit improved the top pair from 0.455 to 0.433 after the
+  curated compare-path pass.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+- [x] Added targeted decision-depth sections to the 8 highest-risk similarity
+  profiles: RTX 5050, RTX 5060, RTX 5070, RTX 5080, RTX 5060 Ti 16GB,
+  RTX 5070 Ti, RTX 3090, and RTX 4090.
+- [x] Each targeted page now has user intent, "use this profile when",
+  "skip or test first when", and compare-against cards with GPU-specific
+  reasons.
+- [x] Kept non-target GPU pages free of generic depth filler so the improvement
+  reduces thin-template risk without adding new boilerplate sitewide.
+- [x] Rechecked `npm.cmd run data:validate`, `npm.cmd run lint`, and
+  `npm.cmd run build`; all passed and build generated 57 static pages.
+- [x] Static GPU SEO audit checked 18 GPU pages with 0 title, description,
+  canonical, or H1 issues.
+- [x] Depth-section output check confirmed the 8 target pages include Decision
+  depth and sample non-target pages do not.
+- [x] Similarity audit improved the top pair again from 0.433 to 0.303; the
+  RTX 5050 vs RTX 5060 pair dropped to 0.289.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+- [x] Follow-up UI polish: adjusted `gpu-depth-section` card backgrounds so
+  "Use this profile when", "Skip or test first when", and "Compare against
+  these profiles next" no longer appear as detached white blocks.
+- [x] Rechecked `npm.cmd run lint` and `npm.cmd run build`; both passed and
+  build generated 57 static pages.

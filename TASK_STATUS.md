@@ -584,6 +584,45 @@ npm.cmd run build -> passed, 57 static pages generated
 static HTML -> updated title, description, canonical, FAQPage schema, exactly one H1, quick verdict, workload fit matrix, headroom checks, 16GB GPU paths, and post-estimate routing confirmed
 brand/domain hardcode scan in code directories -> no matches
 sensitive-claim scan -> only negative/guardrail uses for guarantee, performance ranking, price, benchmark, and purchase recommendation language
+
+2026-06-15 GPU duplicate content reduction:
+/gpu -> reworked into a VRAM-tier catalog grouped by 8GB, 12GB, 16GB, and 24GB+ profiles with calculator, comparison, guide, and cloud GPU routing
+/gpu/[slug] -> reworked into decision-oriented GPU profiles with per-GPU role, reason to consider, main constraint, interpretation notes, runtime question, exact-card verification, nearby alternatives, comparisons, and source trail
+FAQPage -> removed from GPU detail pages because generic FAQ answers repeated visible content and increased page-to-page similarity
+similarity audit -> worst normalized 5-word-shingle pair reduced from about 0.854 to 0.455; heading-sequence uniqueness improved from 6/17 to 17/17; repeated long sentences on 10+ GPU pages dropped from 14 to 3
+static GPU SEO audit -> 18 GPU pages checked, 0 missing/long title, description, canonical, or H1 issues
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-15 GPU compare-path optimization:
+/gpu/[slug] -> non-ASCII nearby-card separator replaced with ASCII "-"
+nearby GPU logic -> all 17 GPU profiles now have curated compare paths prioritizing same VRAM tier, capacity step-up/down decisions, and runtime alternatives for better user retention
+fallback nearby logic -> same VRAM now outranks same architecture for future GPU records, with step-up capacity weighted ahead of generic proximity
+detail section copy -> "Nearby options" changed to "Compare path" / "Next GPU profiles to compare" and CTAs now read "Compare this profile"
+spot checks -> RTX 5070 routes to RTX 4070 Super, RTX 4070, and RTX 5060 Ti 16GB; RTX 5080 routes to RTX 5070 Ti, RTX 4080 Super, and RTX 4090; RX 7900 XTX routes to RTX 4090, RTX 3090, and Intel Arc A770 16GB
+static GPU SEO audit -> 18 GPU pages checked, 0 title, description, canonical, or H1 issues
+similarity audit -> worst normalized 5-word-shingle pair reduced again from 0.455 to 0.433
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-15 GPU targeted depth pass:
+/gpu/[slug] -> added Decision depth sections to the 8 highest-similarity-risk profiles: RTX 5050, RTX 5060, RTX 5070, RTX 5080, RTX 5060 Ti 16GB, RTX 5070 Ti, RTX 3090, and RTX 4090
+Decision depth -> each targeted page now has user intent, "use this profile when", "skip or test first when", and GPU-specific compare-against cards
+scope guard -> non-target GPU pages were left without generic filler so the pass improves differentiated value without adding sitewide boilerplate
+static GPU SEO audit -> 18 GPU pages checked, 0 title, description, canonical, or H1 issues
+depth output check -> all 8 targeted pages include Decision depth; sample non-target pages do not
+similarity audit -> worst normalized 5-word-shingle pair reduced from 0.433 to 0.303; RTX 5050 vs RTX 5060 reduced to 0.289
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+UI polish -> gpu-depth-section backgrounds adjusted so use/skip and compare-against cards blend with the surrounding section instead of rendering as detached white blocks
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
 ```
 
 ## Do Not Do Next

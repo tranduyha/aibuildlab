@@ -556,7 +556,6 @@ body {
 }
 
 .tool-hero {
-  max-width: 870px;
   padding: 46px 0 32px;
 }
 
@@ -2629,6 +2628,289 @@ body {
   padding-bottom: 24px;
 }
 
+.gpu-decision-section {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 7%, transparent), transparent 56%),
+    var(--surface);
+}
+
+.gpu-decision-grid,
+.gpu-nearby-grid,
+.gpu-catalog-workflow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.gpu-decision-grid > div,
+.gpu-nearby-grid > article,
+.gpu-catalog-workflow > div {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--background);
+  padding: 18px;
+}
+
+.gpu-decision-grid span,
+.gpu-nearby-grid > article > span,
+.gpu-catalog-workflow > div > span {
+  display: inline-flex;
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.gpu-decision-grid p,
+.gpu-nearby-grid p,
+.gpu-catalog-workflow p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.gpu-primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gpu-primary-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.gpu-primary-actions a:first-child {
+  background: var(--primary);
+  color: #fff;
+}
+
+.gpu-interpretation-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 20px;
+}
+
+.gpu-interpretation-section aside {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 20px;
+}
+
+.gpu-interpretation-section aside h3 {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.gpu-interpretation-section aside h3:not(:first-child) {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.gpu-interpretation-section aside p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.gpu-depth-section {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-alt) 78%, transparent), transparent 76%),
+    var(--background);
+}
+
+.gpu-depth-grid,
+.gpu-depth-compare-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.gpu-depth-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gpu-depth-grid > div,
+.gpu-depth-compare {
+  border: 1px solid color-mix(in srgb, var(--border) 82%, var(--primary) 18%);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--surface-alt) 72%, var(--surface) 28%);
+  padding: 18px;
+}
+
+.gpu-depth-grid h3,
+.gpu-depth-compare h3 {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.gpu-depth-grid .gpu-checklist {
+  margin-top: 12px;
+}
+
+.gpu-depth-compare {
+  margin-top: 16px;
+}
+
+.gpu-depth-compare-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gpu-depth-compare-grid a {
+  display: grid;
+  gap: 7px;
+  border: 1px solid color-mix(in srgb, var(--border) 78%, var(--primary) 22%);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--surface) 86%, var(--surface-alt) 14%), var(--surface-alt));
+  padding: 14px;
+}
+
+.gpu-depth-compare-grid a:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.gpu-depth-compare-grid span {
+  color: var(--foreground);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.gpu-depth-compare-grid small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.gpu-nearby-grid > article {
+  display: flex;
+  flex-direction: column;
+}
+
+.gpu-nearby-grid h3 {
+  margin-top: 10px;
+  font-size: 21px;
+  letter-spacing: -0.025em;
+}
+
+.gpu-nearby-grid h3 a:hover {
+  color: var(--primary);
+}
+
+.gpu-nearby-grid > article > a {
+  display: inline-flex;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 16px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.gpu-source-note {
+  margin-top: 16px;
+  border-left: 3px solid var(--primary);
+  padding: 10px 0 10px 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.gpu-catalog-start {
+  scroll-margin-top: 20px;
+}
+
+.gpu-catalog-start > div:first-child > p:last-child,
+.gpu-runtime-routing > div:first-child p {
+  margin-top: 10px;
+  max-width: 780px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.gpu-tier-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.gpu-tier-nav a {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--background);
+  padding: 15px;
+}
+
+.gpu-tier-nav a:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.gpu-tier-nav strong {
+  font-size: 20px;
+}
+
+.gpu-tier-nav span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.gpu-catalog-workflow {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gpu-catalog-workflow h3 {
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.gpu-tier-section {
+  scroll-margin-top: 20px;
+}
+
+.gpu-tier-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+}
+
+.gpu-tier-heading .related-note {
+  max-width: 760px;
+}
+
+.gpu-tier-top-link {
+  flex: 0 0 auto;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gpu-runtime-routing {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 24px;
+  align-items: start;
+}
+
 .gpu-spec-table-wrap {
   overflow-x: auto;
 }
@@ -2678,6 +2960,44 @@ body {
 @media (max-width: 900px) {
   .gpu-card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .gpu-decision-grid,
+  .gpu-nearby-grid,
+  .gpu-depth-grid,
+  .gpu-depth-compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gpu-catalog-workflow,
+  .gpu-tier-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gpu-interpretation-section,
+  .gpu-runtime-routing {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .gpu-catalog-workflow,
+  .gpu-tier-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .gpu-tier-heading {
+    display: grid;
+    align-items: start;
+  }
+
+  .gpu-primary-actions {
+    display: grid;
+  }
+
+  .gpu-primary-actions a {
+    justify-content: center;
+    text-align: center;
   }
 }
 

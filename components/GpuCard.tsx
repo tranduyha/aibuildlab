@@ -7,8 +7,18 @@ interface GpuCardProps {
 }
 
 function getPlanningFocus(gpu: Gpu): string {
+  const labels: Record<string, string> = {
+    "local-llm": "Local LLMs",
+    "stable-diffusion": "Image generation",
+    "ai-coding": "AI coding",
+    "ai-workstation": "AI workstation",
+  };
+
   if (gpu.useCases.length > 0) {
-    return gpu.useCases.slice(0, 2).join(" + ");
+    return gpu.useCases
+      .slice(0, 2)
+      .map((useCase) => labels[useCase] ?? useCase.replaceAll("-", " "))
+      .join(" + ");
   }
 
   return "Needs verification";
