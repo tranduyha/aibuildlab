@@ -194,6 +194,20 @@ const comparisonProfileRequiredFields = [
   "faq",
 ];
 
+const buildProfileRequiredFields = [
+  "slug",
+  "intentSummary",
+  "decisionPrompts",
+  "quickVerdicts",
+  "decisionRows",
+  "workloadRows",
+  "gpuPaths",
+  "systemConstraints",
+  "validationWorkflow",
+  "nextRoutes",
+  "faq",
+];
+
 const aiToolRequiredFields = [
   "id",
   "slug",
@@ -938,6 +952,219 @@ function checkComparisonProfiles() {
   }
 }
 
+function checkBuildProfiles() {
+  const file = "data/build-profiles.json";
+  const data = readJsonMaybe(file);
+  if (!data) return;
+
+  if (!Array.isArray(data)) {
+    logError(`${file}: must be a JSON array`);
+    return;
+  }
+
+  const buildData = readJsonMaybe("data/builds.json");
+  const buildSlugs = new Set(
+    Array.isArray(buildData)
+      ? buildData
+          .map((record) => (record && typeof record === "object" ? (record as RecordLike).slug : null))
+          .filter((slug): slug is string => typeof slug === "string")
+      : [],
+  );
+  const gpuData = readJsonMaybe("data/gpus.json");
+  const gpuSlugs = new Set(
+    Array.isArray(gpuData)
+      ? gpuData
+          .map((record) => (record && typeof record === "object" ? (record as RecordLike).slug : null))
+          .filter((slug): slug is string => typeof slug === "string")
+      : [],
+  );
+
+  const records = data as RecordLike[];
+  if (records.length === 0) {
+    logWarning(`${file}: no records`);
+    return;
+  }
+
+  checkUniqueSlugs(file, records);
+  checkRequiredFields(file, records, buildProfileRequiredFields);
+
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || "unknown";
+
+    if (typeof rec.slug !== "string" || !buildSlugs.has(rec.slug)) {
+      logError(`${file}:${label}: slug must match an existing build slug`);
+    }
+
+    if (typeof rec.intentSummary !== "string" || rec.intentSummary.trim().split(/\s+/).length < 24) {
+      logError(`${file}:${label}: intentSummary must be a useful build-specific paragraph`);
+    }
+
+    if (!isNonEmptyStringArray(rec.decisionPrompts) || rec.decisionPrompts.length < 4) {
+      logError(`${file}:${label}: decisionPrompts must contain at least 4 strings`);
+    }
+
+    if (!isNonEmptyStringArray(rec.validationWorkflow) || rec.validationWorkflow.length < 4) {
+      logError(`${file}:${label}: validationWorkflow must contain at least 4 strings`);
+    }
+
+    for (const field of ["quickVerdicts", "decisionRows", "workloadRows", "gpuPaths", "systemConstraints", "nextRoutes", "faq"]) {
+      const value = rec[field];
+      if (!Array.isArray(value) || value.length < 3) {
+        logError(`${file}:${label}: ${field} must contain at least 3 items`);
+      }
+    }
+
+    const quickVerdicts = Array.isArray(rec.quickVerdicts) ? rec.quickVerdicts : [];
+    const decisionRows = Array.isArray(rec.decisionRows) ? rec.decisionRows : [];
+    const workloadRows = Array.isArray(rec.workloadRows) ? rec.workloadRows : [];
+    const gpuPaths = Array.isArray(rec.gpuPaths) ? rec.gpuPaths : [];
+    const systemConstraints = Array.isArray(rec.systemConstraints) ? rec.systemConstraints : [];
+    const nextRoutes = Array.isArray(rec.nextRoutes) ? rec.nextRoutes : [];
+    const faqs = Array.isArray(rec.faq) ? rec.faq : [];
+
+    for (const item of [...quickVerdicts, ...systemConstraints]) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: title/description section items must be objects`);
+        continue;
+      }
+
+      const sectionItem = item as { title?: unknown; description?: unknown };
+      if (typeof sectionItem.title !== "string" || typeof sectionItem.description !== "string") {
+        logError(`${file}:${label}: title/description section items require title and description`);
+      }
+    }
+
+    for (const item of decisionRows) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: decisionRows items must be objects`);
+        continue;
+      }
+
+      const row = item as { signal?: unknown; localPath?: unknown; testFirstPath?: unknown };
+      if (typeof row.signal !== "string" || typeof row.localPath !== "string" || typeof row.testFirstPath !== "string") {
+        logError(`${file}:${label}: decisionRows items require signal, localPath, and testFirstPath`);
+      }
+    }
+
+    for (const item of workloadRows) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: workloadRows items must be objects`);
+        continue;
+      }
+
+      const row = item as { workload?: unknown; usefulWhen?: unknown; riskSignal?: unknown };
+      if (typeof row.workload !== "string" || typeof row.usefulWhen !== "string" || typeof row.riskSignal !== "string") {
+        logError(`${file}:${label}: workloadRows items require workload, usefulWhen, and riskSignal`);
+      }
+    }
+
+    for (const item of gpuPaths) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: gpuPaths items must be objects`);
+        continue;
+      }
+
+      const pathItem = item as { slug?: unknown; label?: unknown; role?: unknown; watchout?: unknown };
+      if (typeof pathItem.slug !== "string" || !gpuSlugs.has(pathItem.slug)) {
+        logError(`${file}:${label}: gpuPaths slug must match an existing GPU`);
+      }
+      if (typeof pathItem.label !== "string" || typeof pathItem.role !== "string" || typeof pathItem.watchout !== "string") {
+        logError(`${file}:${label}: gpuPaths items require label, role, and watchout`);
+      }
+    }
+
+    for (const item of nextRoutes) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: nextRoutes items must be objects`);
+        continue;
+      }
+
+      const route = item as { title?: unknown; description?: unknown; href?: unknown; cta?: unknown };
+      if (
+        typeof route.title !== "string" ||
+        typeof route.description !== "string" ||
+        typeof route.href !== "string" ||
+        !route.href.startsWith("/") ||
+        typeof route.cta !== "string"
+      ) {
+        logError(`${file}:${label}: nextRoutes items require title, description, internal href, and cta`);
+      }
+    }
+
+    for (const item of faqs) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: faq items must be objects`);
+        continue;
+      }
+
+      const faq = item as { question?: unknown; answer?: unknown };
+      if (typeof faq.question !== "string" || !faq.question.includes("?") || typeof faq.answer !== "string") {
+        logError(`${file}:${label}: faq items require a question ending with ? and an answer`);
+      }
+    }
+
+    const searchableText = [
+      rec.intentSummary,
+      ...(Array.isArray(rec.decisionPrompts) ? (rec.decisionPrompts as string[]) : []),
+      ...(quickVerdicts as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(decisionRows as Array<{ signal?: string; localPath?: string; testFirstPath?: string }>).flatMap((item) => [
+        item.signal,
+        item.localPath,
+        item.testFirstPath,
+      ]),
+      ...(workloadRows as Array<{ workload?: string; usefulWhen?: string; riskSignal?: string }>).flatMap((item) => [
+        item.workload,
+        item.usefulWhen,
+        item.riskSignal,
+      ]),
+      ...(gpuPaths as Array<{ label?: string; role?: string; watchout?: string }>).flatMap((item) => [
+        item.label,
+        item.role,
+        item.watchout,
+      ]),
+      ...(systemConstraints as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(Array.isArray(rec.validationWorkflow) ? (rec.validationWorkflow as string[]) : []),
+      ...(nextRoutes as Array<{ title?: string; description?: string; cta?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+        item.cta,
+      ]),
+      ...(faqs as Array<{ question?: string; answer?: string }>).flatMap((item) => [
+        item.question,
+        item.answer,
+      ]),
+    ]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ")
+      .toLowerCase();
+
+    for (const blockedPhrase of [
+      "cheapest",
+      "guaranteed",
+      "buy this",
+      "current price",
+      "currently available",
+      "fastest",
+      "top-rated",
+      "best gpu",
+      "best workstation",
+      "tokens per second",
+      "tokens/s",
+      "images per minute",
+    ]) {
+      if (searchableText.includes(blockedPhrase)) {
+        logError(`${file}:${label}: unsupported "${blockedPhrase}" wording`);
+      }
+    }
+  }
+}
+
 function checkAiTools() {
   const file = "data/ai-tools.json";
   const data = readJsonMaybe(file);
@@ -1185,6 +1412,7 @@ checkFile("data/image-generation-validation-samples.json");
 checkCloudGpuProviders();
 checkCloudGpuProviderProfiles();
 checkComparisonProfiles();
+checkBuildProfiles();
 checkAiTools();
 checkMonetizationPlacements();
 

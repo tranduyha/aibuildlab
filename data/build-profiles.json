@@ -1,0 +1,166 @@
+[
+  {
+    "slug": "high-vram-local-ai-workstation",
+    "intentSummary": "Use this page when the real question is no longer whether local AI can run at all, but whether a 24GB+ workstation path is worth validating before you commit to local hardware. The page separates high-VRAM usefulness from power, cooling, runtime, exact-card, and workload evidence.",
+    "decisionPrompts": [
+      "Will the target workload repeatedly need more than a 16GB planning tier?",
+      "Is the workload frequent enough to justify local system complexity?",
+      "Can the runtime stack support the GPU vendor and exact workflow?",
+      "Have power, connector, cooling, case, RAM, and storage constraints been checked?",
+      "Would a short cloud test reduce uncertainty before local hardware commitment?"
+    ],
+    "quickVerdicts": [
+      {
+        "title": "24GB+ local path can make sense",
+        "description": "Use this path when the workload is frequent, data-control matters, the model or image workflow needs clear headroom, and the system can support sustained GPU load."
+      },
+      {
+        "title": "Test first when fit is uncertain",
+        "description": "Use cloud or borrowed-hardware validation when the workload is near a memory boundary, runtime behavior is unclear, or the exact GPU variant may create power or thermal risk."
+      },
+      {
+        "title": "Do not treat VRAM as the whole build",
+        "description": "A high-VRAM card still needs connector, PSU, case, cooling, OS, driver, framework, RAM, storage, and workload checks before the plan is hardware-ready."
+      }
+    ],
+    "decisionRows": [
+      {
+        "signal": "Workload frequency",
+        "localPath": "Repeated local runs, private data, and long-running experiments can justify deeper workstation validation.",
+        "testFirstPath": "One-off experiments or occasional large jobs should be validated in cloud before local complexity grows."
+      },
+      {
+        "signal": "Memory pressure",
+        "localPath": "Move into 24GB+ planning when 16GB estimates are close to the limit or the workflow needs clear headroom.",
+        "testFirstPath": "If the estimate only barely exceeds 16GB, validate the exact model, context, image settings, and runtime before choosing a tier."
+      },
+      {
+        "signal": "Runtime confidence",
+        "localPath": "A CUDA-first path may be easier to validate when the workload and framework are already known.",
+        "testFirstPath": "AMD, Intel, newer GPUs, or unusual frameworks need extra runtime checks before local hardware commitment."
+      },
+      {
+        "signal": "System risk",
+        "localPath": "Local planning is stronger when PSU, connector, case clearance, airflow, RAM, and storage are already mapped.",
+        "testFirstPath": "If the system would need major rebuild work, use a validation run before narrowing exact cards."
+      }
+    ],
+    "workloadRows": [
+      {
+        "workload": "Larger local LLM experiments",
+        "usefulWhen": "The model, quantization, and context path need more headroom than a 16GB page can comfortably plan around.",
+        "riskSignal": "Long context, MoE behavior, offload, or package format can change memory needs; verify with the calculator and model-specific pages."
+      },
+      {
+        "workload": "Image-generation workflows",
+        "usefulWhen": "Resolution, model size, extension stack, or repeated local runs make 16GB feel constrained.",
+        "riskSignal": "Extensions, batch growth, cache, and runtime settings can break a simple VRAM estimate."
+      },
+      {
+        "workload": "Research workstation use",
+        "usefulWhen": "You expect repeated experiments, local files, privacy needs, and enough system support for sustained GPU sessions.",
+        "riskSignal": "A workstation plan is weak if storage, RAM, cooling, and driver/runtime setup are still unknown."
+      },
+      {
+        "workload": "Cloud-to-local validation",
+        "usefulWhen": "A cloud run has already shown the workload fits a high-VRAM tier and is frequent enough to revisit local planning.",
+        "riskSignal": "Do not translate cloud success into local readiness until exact GPU variant and system constraints are checked."
+      }
+    ],
+    "gpuPaths": [
+      {
+        "slug": "rtx-3090",
+        "label": "RTX 3090",
+        "role": "24GB used-market planning anchor for high-VRAM local AI research.",
+        "watchout": "Exact card condition, thermals, power delivery, and used-hardware risk need separate verification."
+      },
+      {
+        "slug": "rtx-4090",
+        "label": "RTX 4090",
+        "role": "24GB high-end local AI planning reference when CUDA workflow support matters.",
+        "watchout": "Power connector, case clearance, sustained cooling, and exact board-partner design still matter."
+      },
+      {
+        "slug": "rx-7900-xtx",
+        "label": "RX 7900 XTX",
+        "role": "24GB alternative path when VRAM capacity is attractive but runtime support needs closer review.",
+        "watchout": "ROCm, framework, OS, and workload compatibility should be validated before treating the VRAM as practical fit."
+      },
+      {
+        "slug": "rtx-5090",
+        "label": "RTX 5090",
+        "role": "Newer high-VRAM planning reference for users tracking current-generation local AI hardware.",
+        "watchout": "Do not infer workload speed or availability; use source-backed specs and separate validation evidence."
+      }
+    ],
+    "systemConstraints": [
+      {
+        "title": "Power delivery and connectors",
+        "description": "Check PSU headroom, PCIe connector requirements, adapter handling, and exact board-partner guidance before assuming the system can support the GPU."
+      },
+      {
+        "title": "Cooling and sustained load",
+        "description": "A high-VRAM workstation may run long sessions. Validate airflow, case spacing, fan noise tolerance, and thermal behavior under sustained work."
+      },
+      {
+        "title": "Case and motherboard fit",
+        "description": "Confirm GPU length, slot thickness, connector clearance, PCIe slot placement, and whether other cards or storage devices block airflow."
+      },
+      {
+        "title": "RAM, storage, and local workflow",
+        "description": "Plan for model files, image outputs, cache, datasets, logs, offload paths, and normal multitasking outside GPU VRAM."
+      }
+    ],
+    "validationWorkflow": [
+      "Estimate the target model or image workflow before comparing high-VRAM GPUs.",
+      "Classify the result as comfortable 16GB, borderline 16GB, 24GB+ local path, or cloud-test-first.",
+      "Run the exact model, context, image settings, extensions, or runtime stack when the result is close to a tier boundary.",
+      "Review GPU profile source fields and exact-card constraints instead of relying on a model name alone.",
+      "Check PSU, connector, cooling, case clearance, RAM, storage, OS, driver, and framework support before hardware commitment."
+    ],
+    "nextRoutes": [
+      {
+        "title": "You have not estimated VRAM yet",
+        "description": "Start with the calculator so the workstation page has a real memory target instead of a GPU wish list.",
+        "href": "/tools/vram-calculator",
+        "cta": "Estimate VRAM"
+      },
+      {
+        "title": "You are comparing 24GB cards",
+        "description": "Use the RTX 3090 vs RTX 4090 comparison to separate high-VRAM roles and validation questions.",
+        "href": "/compare/rtx-3090-vs-rtx-4090-for-local-llm",
+        "cta": "Compare 24GB paths"
+      },
+      {
+        "title": "Runtime support is uncertain",
+        "description": "Use the AMD-vs-NVIDIA comparison path when VRAM is attractive but framework support needs validation.",
+        "href": "/compare/rx-7900-xtx-vs-rtx-4090-for-ai",
+        "cta": "Check runtime tradeoffs"
+      },
+      {
+        "title": "Local commitment still feels risky",
+        "description": "Use cloud-vs-local planning to decide whether a short validation run should come before hardware narrowing.",
+        "href": "/builds/cloud-vs-local-ai-build-planning",
+        "cta": "Use cloud-vs-local path"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is 24GB VRAM enough for a local AI workstation?",
+        "answer": "It can be enough for some local AI paths, but the answer depends on the exact model, quantization, context length, image settings, runtime, and overhead. Use 24GB as a planning tier, then validate the workload."
+      },
+      {
+        "question": "Should I compare RTX 3090 and RTX 4090 for local AI?",
+        "answer": "Yes, if you are evaluating 24GB CUDA-first paths. Compare source-backed GPU fields, exact-card constraints, power and cooling requirements, and workload validation needs rather than treating the pair as a simple ranking."
+      },
+      {
+        "question": "Can AMD 24GB cards work for high-VRAM AI planning?",
+        "answer": "They can be part of the planning set when VRAM capacity is important, but runtime, framework, OS, and workload support need extra validation before the card is treated as a practical local fit."
+      },
+      {
+        "question": "When should I test cloud GPU before building locally?",
+        "answer": "Test cloud first when the workload is occasional, the estimate is near a memory boundary, runtime behavior is uncertain, or the local build would require major system changes before you have evidence."
+      }
+    ]
+  }
+]

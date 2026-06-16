@@ -10,6 +10,15 @@ export type {
   ComparisonProfileLink,
 } from "./comparison-profile";
 export type { Build } from "./build";
+export type {
+  BuildProfile,
+  BuildProfileDecision,
+  BuildProfileFaq,
+  BuildProfileGpuPath,
+  BuildProfileItem,
+  BuildProfileNextRoute,
+  BuildProfileWorkload,
+} from "./build-profile";
 export type { Guide } from "./guide";
 export type {
   CloudGpuDataConfidence,

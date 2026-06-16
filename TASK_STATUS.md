@@ -111,7 +111,7 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Next recommended Month 2 priority: Cloud GPU planning guide outline or Cloud GPU page QA pass after safe RunPod, DigitalOcean GPU, and Lambda provider source refresh
+Next recommended Month 2 priority: deploy refreshed build/compare/cloud pages, then inspect high-intent URLs in Google Search Console
 ```
 
 Definition of Done:
@@ -198,6 +198,19 @@ None.
 ## Latest Check
 
 ```txt
+2026-06-16 High-VRAM workstation build retention upgrade:
+/builds/high-vram-local-ai-workstation -> upgraded from a mostly generic planning route into a dedicated 24GB+ local AI workstation decision page with high-VRAM intent summary, decision prompts, quick verdicts, decision map, workload fit rows, GPU role cards, system constraints, validation workflow, risk-based next routes, and stronger FAQ
+data boundary -> added data/build-profiles.json plus repository/service/type layer; high-VRAM editorial content is outside route code for easier daily updates
+data/builds.json -> updated high-VRAM metadata, short description, checklist focus, notes, and unique FAQ while keeping the page as a cautious planning guide
+validation -> scripts/validate-data.ts now validates build profile slugs, section depth, GPU path slugs, internal next-route hrefs, FAQ shape, and unsafe wording
+claim guardrails -> no price, availability, benchmark, tokens-per-second, image-speed, ranking, affiliate, or buying claims added
+static HTML audit -> about 2,000 visible words, exactly 1 H1, 29 internal links, canonical, WebPage, BreadcrumbList, and FAQPage schema
+duplicate audit -> high-VRAM build highest 5-word-shingle overlap vs other build pages reduced from about 0.352 to 0.147
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
 2026-06-16 Comparison page differentiation:
 /compare -> added decision-type routing for starter VRAM, 24 GB local LLM, runtime compatibility risk, and image workflow headroom; cards now explain why each pair exists and use nested h4 card titles
 /compare/[slug] -> refactored from repeated generic interpretation/FAQ into pair-specific decision summaries, why-this-pair sections, best-fit questions, watchouts, source-backed differences, unresolved questions, nearby comparisons, and FAQ

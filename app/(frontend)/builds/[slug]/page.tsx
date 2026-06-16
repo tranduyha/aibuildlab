@@ -10,6 +10,7 @@ import BuildRelatedComparisons from "@/components/BuildRelatedComparisons";
 import DataConfidenceBadge from "@/components/DataConfidenceBadge";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { canRenderAffiliateUrl } from "@/services/affiliate.service";
+import { buildProfileService } from "@/services/build-profile.service";
 import { buildService } from "@/services/build.service";
 
 interface BuildDetailPageProps {
@@ -547,10 +548,11 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
   const pageUrl = buildCanonicalPath(pagePath);
   const seoTitle = cleanBuildSeoTitle(build.seoTitle);
   const buildSpecificNotes = getBuildSpecificNotes(build.slug);
+  const buildProfile = buildProfileService.getBuildProfile(build);
   const isCloudVsLocal = isCloudVsLocalBuild(build.slug);
   const isLocalLlmStarter = isLocalLlmStarterBuild(build.slug);
   const isLocalAi16gb = isLocalAi16gbBuild(build.slug);
-  const faqItems = getBuildFaqItems(build);
+  const faqItems = buildProfile?.faq ?? getBuildFaqItems(build);
   const affiliateGpus = gpus.filter((gpu) => canRenderAffiliateUrl(gpu.affiliate, settings));
 
   const breadcrumbSchema = {
@@ -645,6 +647,129 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
             <h2>Planning outcome</h2>
             <p>{getPlanningOutcome(build.slug)}</p>
           </section>
+
+          {buildProfile ? (
+            <>
+              <section className="tool-section build-profile-intro">
+                <div>
+                  <p className="eyebrow">Workstation decision</p>
+                  <h2>Decide whether high VRAM is the right next validation step</h2>
+                  <p>{buildProfile.intentSummary}</p>
+                </div>
+                <div className="build-profile-prompt-card">
+                  <strong>Answer these before narrowing cards</strong>
+                  {buildProfile.decisionPrompts.map((prompt) => (
+                    <span key={prompt}>{prompt}</span>
+                  ))}
+                </div>
+              </section>
+
+              <section className="tool-section">
+                <h2>Quick verdict for 24GB+ workstation planning</h2>
+                <div className="build-profile-verdict-grid">
+                  {buildProfile.quickVerdicts.map((item) => (
+                    <article key={item.title}>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="tool-section">
+                <h2>24GB+ decision map</h2>
+                <p className="related-note">
+                  Use this table before comparing cards. The goal is to decide whether local high-VRAM validation is
+                  justified, or whether a short test should happen before hardware commitment.
+                </p>
+                <div className="build-profile-decision-map" role="table" aria-label="High VRAM workstation decision map">
+                  <div className="build-profile-decision-row build-profile-decision-head" role="row">
+                    <span role="columnheader">Decision signal</span>
+                    <span role="columnheader">Local 24GB+ path is stronger when</span>
+                    <span role="columnheader">Test first when</span>
+                  </div>
+                  {buildProfile.decisionRows.map((row) => (
+                    <div className="build-profile-decision-row" role="row" key={row.signal}>
+                      <span role="cell">{row.signal}</span>
+                      <span role="cell">{row.localPath}</span>
+                      <span role="cell">{row.testFirstPath}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="tool-section">
+                <h2>Workload fit for high-VRAM local AI</h2>
+                <div className="build-profile-workload-grid">
+                  {buildProfile.workloadRows.map((row) => (
+                    <article key={row.workload}>
+                      <h3>{row.workload}</h3>
+                      <p>{row.usefulWhen}</p>
+                      <strong>{row.riskSignal}</strong>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="tool-section">
+                <h2>High-VRAM GPU paths to inspect</h2>
+                <p className="related-note">
+                  These are roles in the planning process, not rankings. Open the GPU profile when the role matches
+                  your workload, then verify exact-card and runtime details.
+                </p>
+                <div className="build-profile-gpu-grid">
+                  {buildProfile.gpuPaths.map((gpuPath) => (
+                    <article key={gpuPath.slug}>
+                      <p>{gpuPath.role}</p>
+                      <h3>{gpuPath.label}</h3>
+                      <span>{gpuPath.watchout}</span>
+                      <Link href={`/gpu/${gpuPath.slug}`}>Open GPU profile <span>&rarr;</span></Link>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="tool-section">
+                <h2>System constraints that decide whether the workstation is real</h2>
+                <div className="build-profile-constraint-grid">
+                  {buildProfile.systemConstraints.map((item) => (
+                    <article key={item.title}>
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section className="tool-section build-profile-workflow">
+                <div>
+                  <h2>Validation workflow before local hardware commitment</h2>
+                  <p>
+                    High VRAM becomes useful only after the workload, runtime, exact card, and system constraints
+                    survive review. Use this sequence before treating the plan as ready.
+                  </p>
+                </div>
+                <ol>
+                  {buildProfile.validationWorkflow.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </section>
+
+              <section className="tool-section">
+                <h2>Choose the next route from your risk level</h2>
+                <div className="build-profile-route-grid">
+                  {buildProfile.nextRoutes.map((route) => (
+                    <article key={route.title}>
+                      <h3>{route.title}</h3>
+                      <p>{route.description}</p>
+                      <Link href={route.href}>{route.cta} <span>&rarr;</span></Link>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            </>
+          ) : null}
 
           {isLocalLlmStarter ? (
             <>
@@ -981,7 +1106,7 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
                 </div>
               </div>
             </section>
-          ) : (
+          ) : !buildProfile ? (
             <section className="tool-section explanation-grid">
               <div>
                 <h2>Local planning notes</h2>
@@ -998,17 +1123,20 @@ export default async function BuildDetailPage({ params }: BuildDetailPageProps) 
                 </p>
               </div>
             </section>
-          )}
+          ) : null}
 
           <section className="tool-section">
             <h2>
               {isCloudVsLocal
                 ? "Local hardware tiers to compare against cloud testing"
+                : buildProfile
+                  ? "Source-backed GPU profile cards"
                 : "GPU planning candidates"}
             </h2>
             <p className="related-note">
-              These GPUs may fit this planning tier. Treat them as secondary planning references and verify sources,
-              exact variants, runtime support, and benchmark evidence before hardware decisions.
+              {buildProfile
+                ? "Use these source-backed profile cards after the decision map. They add spec context, confidence labels, and exact-card reminders for the GPU roles above."
+                : "These GPUs may fit this planning tier. Treat them as secondary planning references and verify sources, exact variants, runtime support, and benchmark evidence before hardware decisions."}
             </p>
             <BuildGpuOptions gpus={gpus} missingGpuSlugs={missingGpuSlugs} />
             {affiliateGpus.length > 0 ? (

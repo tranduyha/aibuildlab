@@ -41,6 +41,111 @@ Codex
 
 ---
 
+## 2026-06-16 - Build profile route-grid button spacing fix
+
+### Agent
+Antigravity
+
+### Planned Task
+Fix the spacing between description text and the CTA link/button in the
+`build-profile-route-grid` cards on `/builds/high-vram-local-ai-workstation`.
+
+### Completed
+- [x] Separated `build-profile-route-grid article` from the shared grid rule
+  to use `display: flex; flex-direction: column` so the CTA link is properly
+  pushed down.
+- [x] Gave `.build-profile-route-grid a` a dedicated rule with `margin-top: 20px`,
+  pill-style border + rounded shape, and a hover fill transition for clear
+  visual separation between description text and the action link.
+- [x] Removed `.build-profile-route-grid a` from the shared gpu/route link rule
+  so the two link styles no longer conflict.
+
+### Checked
+- [x] `npm.cmd run lint` passed.
+- [ ] `npm.cmd run build` not rerun (CSS-only change, no data or schema change).
+
+### Issues
+- None.
+
+### Files Changed
+- `app/(frontend)/theme.css`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Verify the visual result on `/builds/high-vram-local-ai-workstation` in the
+local dev server.
+
+---
+
+## 2026-06-16 - High-VRAM workstation build retention upgrade
+
+### Agent
+Codex
+
+### Planned Task
+Upgrade `/builds/high-vram-local-ai-workstation` for Google indexing,
+duplicate-content reduction, and real-user retention while keeping editable
+editorial content outside page code.
+
+### Completed
+- [x] Added `data/build-profiles.json` as a separate editorial profile layer
+  for build-specific decision prompts, verdicts, decision map rows, workload
+  fit rows, GPU path roles, system constraints, validation workflow, next
+  routes, and FAQ.
+- [x] Added build profile type, repository, and service boundaries so future
+  daily editorial updates can happen through data instead of route code.
+- [x] Refactored `/builds/[slug]` to render profile-backed sections when a
+  build profile exists, starting with the high-VRAM workstation page.
+- [x] Updated high-VRAM build metadata, summary copy, checklist focus, and FAQ
+  in `data/builds.json` without adding price, availability, benchmark,
+  tokens-per-second, speed, affiliate, or buying claims.
+- [x] Added validation coverage for `data/build-profiles.json`, including
+  slug matching, GPU slug checks, section depth, internal route checks, FAQ
+  shape, and unsafe wording guards.
+- [x] Added responsive CSS for the new profile cards, decision map, workload
+  grid, GPU path cards, constraint cards, and validation workflow.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static HTML audit: `/builds/high-vram-local-ai-workstation` has about
+  2,000 visible words, exactly 1 H1, 29 internal links, canonical, WebPage,
+  BreadcrumbList, and FAQPage schema.
+- [x] Content audit confirms the page includes the new 24GB+ decision map,
+  high-VRAM GPU role cards, system constraints, validation workflow, and
+  risk-based next routes.
+- [x] Duplicate audit: highest 5-word-shingle overlap for the high-VRAM page
+  versus other build pages is now 0.147, down from about 0.352 before the
+  upgrade.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, or build failures.
+- The page remains a planning guide, not a benchmark-backed part list, because
+  exact components, prices, availability, and workload speed evidence are not
+  source-backed modules yet.
+
+### Files Changed
+- `app/(frontend)/builds/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `data/builds.json`
+- `data/build-profiles.json`
+- `repositories/build-profile.repository.ts`
+- `services/build-profile.service.ts`
+- `types/build-profile.ts`
+- `types/index.ts`
+- `scripts/validate-data.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Deploy the static export and inspect the updated high-VRAM build page in Google
+Search Console after the new content is live.
+
+---
+
 ## 2026-06-16 - Comparison page differentiation
 
 ### Agent
