@@ -41,6 +41,74 @@ Codex
 
 ---
 
+## 2026-06-16 - Comparison page differentiation
+
+### Agent
+Codex
+
+### Planned Task
+Differentiate `/compare` and `/compare/[slug]` pages for Google indexing,
+real-user usefulness, and retention without adding unsupported benchmark,
+price, availability, or buying claims.
+
+### Completed
+- [x] Added `data/comparison-profiles.json` as a separate editorial data layer
+  for pair-specific decision summaries, why-this-pair sections, best-fit
+  questions, watchouts, source-backed differences, unresolved questions,
+  nearby comparisons, and FAQ.
+- [x] Added comparison profile types, repository, and service with a
+  conservative fallback for future comparison records.
+- [x] Refactored `/compare/[slug]` to render pair-specific profile sections
+  instead of repeated generic interpretation and FAQ blocks.
+- [x] Updated `/compare` hub so cards explain why each pair exists and the hub
+  routes users by decision type: starter VRAM, 24 GB local LLM, runtime risk,
+  and image workflow headroom.
+- [x] Reduced comparison card badge clutter on the hub and fixed card heading
+  hierarchy from repeated `h2` card titles to nested `h4` titles.
+- [x] Added validation coverage for `data/comparison-profiles.json`, including
+  slug matching, minimum editorial sections, nearby comparison slugs, FAQ
+  shape, and unsafe wording guards.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static comparison audit: 5 comparison detail pages, 1 H1 each, no
+  repeated same-page sentences, no duplicate FAQ questions across comparison
+  pages.
+- [x] Duplicate audit: highest 5-word-shingle pair reduced from 0.538 to 0.193;
+  lowest pair 0.128; common all-page 5-shingles 204.
+- [x] Hub audit: `/compare` now has 771 words, nested card headings, and no
+  repeated "Needs verification" or "Benchmark evidence missing" card text.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, or build failures.
+- Remaining shared overlap is mostly expected badges, comparison table field
+  labels, source-warning language, CTA/footer, and repeated source-backed GPU
+  table structure.
+
+### Files Changed
+- `app/(frontend)/compare/page.tsx`
+- `app/(frontend)/compare/[slug]/page.tsx`
+- `app/(frontend)/theme.css`
+- `components/ComparisonCard.tsx`
+- `components/ComparisonVerdict.tsx`
+- `data/comparison-profiles.json`
+- `repositories/comparison-profile.repository.ts`
+- `services/comparison-profile.service.ts`
+- `types/comparison-profile.ts`
+- `types/index.ts`
+- `scripts/validate-data.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Deploy the static export and inspect `/compare` plus at least two comparison
+detail URLs in Google Search Console after the new content is live.
+
+---
+
 ## 2026-06-16 - Cloud GPU provider profile differentiation
 
 ### Agent

@@ -3156,18 +3156,19 @@ body {
   padding: 20px;
 }
 
-.comparison-card h2 {
+.comparison-card h4 {
   margin-top: 10px;
   font-size: 23px;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
+  line-height: 1.15;
 }
 
-.comparison-card h2 a {
+.comparison-card h4 a {
   transition: color 160ms ease;
 }
 
-.comparison-card h2 a:hover,
-.comparison-card h2 a:focus-visible {
+.comparison-card h4 a:hover,
+.comparison-card h4 a:focus-visible {
   color: var(--primary);
 }
 
@@ -3175,6 +3176,23 @@ body {
   margin-top: 9px;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.comparison-card-status,
+.comparison-card-reason {
+  font-size: 13px;
+}
+
+.comparison-card-status {
+  margin-top: 0;
+  color: var(--primary-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.comparison-card-reason {
+  border-left: 3px solid var(--primary);
+  padding-left: 10px;
 }
 
 .comparison-card-intent {

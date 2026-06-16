@@ -182,6 +182,18 @@ const cloudGpuProviderProfileRequiredFields = [
   "faq",
 ];
 
+const comparisonProfileRequiredFields = [
+  "slug",
+  "decisionSummary",
+  "whyThisPairMatters",
+  "bestFitQuestions",
+  "watchouts",
+  "sourceBackedDifferences",
+  "unresolvedQuestions",
+  "nearbyComparisons",
+  "faq",
+];
+
 const aiToolRequiredFields = [
   "id",
   "slug",
@@ -771,6 +783,161 @@ function checkCloudGpuProviderProfiles() {
   }
 }
 
+function checkComparisonProfiles() {
+  const file = "data/comparison-profiles.json";
+  const data = readJsonMaybe(file);
+  if (!data) return;
+
+  if (!Array.isArray(data)) {
+    logError(`${file}: must be a JSON array`);
+    return;
+  }
+
+  const comparisonData = readJsonMaybe("data/comparisons.json");
+  const comparisonSlugs = new Set(
+    Array.isArray(comparisonData)
+      ? comparisonData
+          .map((record) => (record && typeof record === "object" ? (record as RecordLike).slug : null))
+          .filter((slug): slug is string => typeof slug === "string")
+      : [],
+  );
+
+  const records = data as RecordLike[];
+  if (records.length === 0) {
+    logWarning(`${file}: no records`);
+    return;
+  }
+
+  checkUniqueSlugs(file, records);
+  checkRequiredFields(file, records, comparisonProfileRequiredFields);
+
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || "unknown";
+
+    if (typeof rec.slug !== "string" || !comparisonSlugs.has(rec.slug)) {
+      logError(`${file}:${label}: slug must match an existing comparison slug`);
+    }
+
+    if (typeof rec.decisionSummary !== "string" || rec.decisionSummary.trim().split(/\s+/).length < 18) {
+      logError(`${file}:${label}: decisionSummary must be a useful pair-specific sentence`);
+    }
+
+    for (const field of ["whyThisPairMatters", "bestFitQuestions", "watchouts", "nearbyComparisons", "faq"]) {
+      const value = rec[field];
+      if (!Array.isArray(value) || value.length < 3) {
+        logError(`${file}:${label}: ${field} must contain at least 3 items`);
+      }
+    }
+
+    for (const field of ["sourceBackedDifferences", "unresolvedQuestions"]) {
+      const value = rec[field];
+      if (!isNonEmptyStringArray(value) || value.length < 3) {
+        logError(`${file}:${label}: ${field} must contain at least 3 strings`);
+      }
+    }
+
+    const whyThisPairMatters = Array.isArray(rec.whyThisPairMatters) ? rec.whyThisPairMatters : [];
+    const bestFitQuestions = Array.isArray(rec.bestFitQuestions) ? rec.bestFitQuestions : [];
+    const watchouts = Array.isArray(rec.watchouts) ? rec.watchouts : [];
+    const nearbyComparisons = Array.isArray(rec.nearbyComparisons) ? rec.nearbyComparisons : [];
+    const faqs = Array.isArray(rec.faq) ? rec.faq : [];
+    const sourceBackedDifferences = Array.isArray(rec.sourceBackedDifferences) ? rec.sourceBackedDifferences : [];
+    const unresolvedQuestions = Array.isArray(rec.unresolvedQuestions) ? rec.unresolvedQuestions : [];
+
+    for (const item of [...whyThisPairMatters, ...bestFitQuestions, ...watchouts]) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: profile section items must be objects`);
+        continue;
+      }
+
+      const profileItem = item as { title?: unknown; description?: unknown };
+      if (typeof profileItem.title !== "string" || typeof profileItem.description !== "string") {
+        logError(`${file}:${label}: profile section items require title and description`);
+      }
+    }
+
+    for (const item of nearbyComparisons) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: nearbyComparisons items must be objects`);
+        continue;
+      }
+
+      const nearby = item as { slug?: unknown; label?: unknown; reason?: unknown };
+      if (typeof nearby.slug !== "string" || !comparisonSlugs.has(nearby.slug)) {
+        logError(`${file}:${label}: nearby comparison slug must match an existing comparison`);
+      }
+      if (nearby.slug === rec.slug) {
+        logError(`${file}:${label}: nearby comparison must not point to itself`);
+      }
+      if (typeof nearby.label !== "string" || typeof nearby.reason !== "string") {
+        logError(`${file}:${label}: nearby comparison items require label and reason`);
+      }
+    }
+
+    for (const item of faqs) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: faq items must be objects`);
+        continue;
+      }
+
+      const faq = item as { question?: unknown; answer?: unknown };
+      if (typeof faq.question !== "string" || !faq.question.includes("?") || typeof faq.answer !== "string") {
+        logError(`${file}:${label}: faq items require a question ending with ? and an answer`);
+      }
+    }
+
+    const searchableText = [
+      rec.decisionSummary,
+      ...(whyThisPairMatters as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(bestFitQuestions as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(watchouts as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(sourceBackedDifferences as string[]),
+      ...(unresolvedQuestions as string[]),
+      ...(nearbyComparisons as Array<{ label?: string; reason?: string }>).flatMap((item) => [
+        item.label,
+        item.reason,
+      ]),
+      ...(faqs as Array<{ question?: string; answer?: string }>).flatMap((item) => [
+        item.question,
+        item.answer,
+      ]),
+    ]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ")
+      .toLowerCase();
+
+    for (const blockedPhrase of [
+      "cheapest",
+      "guaranteed",
+      "buy this",
+      "current price",
+      "currently available",
+      "fastest",
+      "top-rated",
+      "recommended gpu",
+      "recommended card",
+      "best gpu",
+      "best card",
+      "tokens per second",
+      "images per minute",
+      "seconds per image",
+    ]) {
+      if (searchableText.includes(blockedPhrase)) {
+        logError(`${file}:${label}: unsupported "${blockedPhrase}" wording`);
+      }
+    }
+  }
+}
+
 function checkAiTools() {
   const file = "data/ai-tools.json";
   const data = readJsonMaybe(file);
@@ -1017,6 +1184,7 @@ checkFile("data/image-generation-assumptions.json");
 checkFile("data/image-generation-validation-samples.json");
 checkCloudGpuProviders();
 checkCloudGpuProviderProfiles();
+checkComparisonProfiles();
 checkAiTools();
 checkMonetizationPlacements();
 

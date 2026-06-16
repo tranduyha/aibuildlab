@@ -3,6 +3,12 @@ export type { AffiliateCtaModel, AffiliateLinkConfig } from "./affiliate";
 export type { ContentStatus, DataConfidence, DataSource, Gpu } from "./gpu";
 export type { AiModel } from "./ai-model";
 export type { Comparison } from "./comparison";
+export type {
+  ComparisonProfile,
+  ComparisonProfileFaq,
+  ComparisonProfileItem,
+  ComparisonProfileLink,
+} from "./comparison-profile";
 export type { Build } from "./build";
 export type { Guide } from "./guide";
 export type {

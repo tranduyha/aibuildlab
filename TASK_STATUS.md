@@ -198,6 +198,19 @@ None.
 ## Latest Check
 
 ```txt
+2026-06-16 Comparison page differentiation:
+/compare -> added decision-type routing for starter VRAM, 24 GB local LLM, runtime compatibility risk, and image workflow headroom; cards now explain why each pair exists and use nested h4 card titles
+/compare/[slug] -> refactored from repeated generic interpretation/FAQ into pair-specific decision summaries, why-this-pair sections, best-fit questions, watchouts, source-backed differences, unresolved questions, nearby comparisons, and FAQ
+data boundary -> added data/comparison-profiles.json plus repository/service/type layer; comparison editorial is outside page code and data/comparisons.json was left unchanged
+daily update support -> scripts/validate-data.ts now validates comparison profile slugs, required editorial fields, nearby comparison slugs, FAQ shape, and unsafe wording
+claim guardrails -> no price, availability, benchmark, tokens-per-second, image-speed, ranking, affiliate, or buying claims added
+duplicate audit -> highest comparison-page 5-word-shingle overlap reduced from 0.538 to 0.193, lowest pair 0.128, common all-page 5-shingles 204, duplicate comparison FAQ questions 0, repeated same-page sentences 0
+hub audit -> /compare now has 771 words, nested card headings, and no repeated "Needs verification" or "Benchmark evidence missing" card text
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
 2026-06-16 Cloud GPU provider profile differentiation:
 /cloud-gpu/[slug] -> refactored from generic repeated planning blocks to provider-specific decision summaries, best-fit scenarios, watchouts, source interpretation, unresolved questions, compare paths, and provider-specific FAQ
 data boundary -> added data/cloud-gpu-provider-profiles.json plus repository/service/type layer; provider editorial is outside page code and data/cloud-gpu-providers.json was left unchanged

@@ -84,7 +84,6 @@ function getPlanningLabels(gpus: Gpu[]): string[] {
     );
   }
 
-  labels.push("Benchmark evidence still missing");
   return labels;
 }
 
@@ -134,20 +133,17 @@ function getVerdictCopy(gpus: Gpu[]): string[] {
       ? observations.slice(0, 2).join(" ")
       : "Available source-backed planning fields do not create a clear split between these GPUs yet.";
 
-  return [
-    summary,
-    "This is not a benchmark verdict, and it should not be treated as purchase guidance.",
-    "Final fit still depends on model size, quantization, runtime support, drivers, and tested workload behavior.",
-  ];
+  return [summary];
 }
 
 export default function ComparisonVerdict({ comparison, gpus }: ComparisonVerdictProps) {
   const labels = getPlanningLabels(gpus);
   const paragraphs = comparison.verdict ? [comparison.verdict] : getVerdictCopy(gpus);
+  const pairName = gpus.length >= 2 ? `${gpus[0].name} vs ${gpus[1].name}` : comparison.title;
 
   return (
     <section className="comparison-verdict">
-      <h2>Cautious verdict</h2>
+      <h2>Source-backed planning signals</h2>
       <div className="comparison-verdict-labels">
         {labels.map((label) => (
           <span key={label}>{label}</span>
@@ -156,6 +152,10 @@ export default function ComparisonVerdict({ comparison, gpus }: ComparisonVerdic
       {paragraphs.map((paragraph) => (
         <p key={paragraph}>{paragraph}</p>
       ))}
+      <p>
+        Use the {pairName} signals as prompts for the validation sections below; this component does not add
+        benchmark, price, availability, or purchase claims.
+      </p>
     </section>
   );
 }

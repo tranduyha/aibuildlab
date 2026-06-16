@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ComparisonCard from "@/components/ComparisonCard";
 import { buildCanonicalUrl, buildMetadata, getSiteSettings } from "@/lib/seo";
+import { comparisonProfileService } from "@/services/comparison-profile.service";
 import { comparisonService } from "@/services/comparison.service";
 
 const PAGE_PATH = "/compare";
@@ -56,8 +57,8 @@ export default function CompareIndexPage() {
           <p className="eyebrow">Compare GPU options</p>
           <h1>GPU comparisons for local AI planning</h1>
           <p className="tool-lead">
-            Use these source-aware comparisons to plan local AI hardware research. Treat verdicts as planning
-            guidance, not benchmark-backed buying advice.
+            Use these comparison pages to narrow a GPU shortlist by workload question: starter VRAM, 24 GB local
+            LLM headroom, cross-vendor runtime risk, or image workflow capacity.
           </p>
           </header>
 
@@ -93,10 +94,32 @@ export default function CompareIndexPage() {
         </section>
 
         <section className="tool-section">
+          <h2>Choose the comparison that matches your decision</h2>
+          <div className="compare-workflow-grid">
+            <div>
+              <h3>Starter VRAM boundary</h3>
+              <p>Use 12 GB versus 16 GB comparisons when a calculator result is close to the starter-card limit.</p>
+            </div>
+            <div>
+              <h3>24 GB local LLM path</h3>
+              <p>Use 24 GB comparisons after smaller cards no longer match the model, context, or runtime target.</p>
+            </div>
+            <div>
+              <h3>Runtime compatibility risk</h3>
+              <p>Use cross-vendor comparisons when CUDA, ROCm, drivers, or framework support may decide the outcome.</p>
+            </div>
+            <div>
+              <h3>Image workflow headroom</h3>
+              <p>Use image-focused comparisons when resolution, batch size, extensions, or precision may drive VRAM needs.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="tool-section">
           <h2>Available comparisons</h2>
           <p className="related-note">
-            Cards show source-backed hints where GPU profile data exists. Planning draft records remain clearly
-            labelled until stronger sources or benchmark-specific evidence are attached.
+            Each card explains why the pair exists before you open the full table. Draft status means the page is a
+            planning workflow, not a benchmark result.
           </p>
           {Object.entries(groupedItems).map(([intent, group]) => (
             <div className="comparison-group" key={intent}>
@@ -108,6 +131,7 @@ export default function CompareIndexPage() {
                     comparison={item.comparison}
                     gpus={item.gpus}
                     gpuNames={item.gpuNames}
+                    profile={comparisonProfileService.getComparisonProfile(item.comparison)}
                   />
                 ))}
               </div>

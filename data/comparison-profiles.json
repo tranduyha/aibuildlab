@@ -1,0 +1,437 @@
+[
+  {
+    "slug": "rtx-3060-12gb-vs-rtx-4060-ti-16gb-for-ai",
+    "decisionSummary": "Use this comparison when the real question is whether an older 12 GB card is enough for a starter local AI workflow or whether a 16 GB card deserves validation before buying anything.",
+    "whyThisPairMatters": [
+      {
+        "title": "Capacity versus generation",
+        "description": "The pair separates a 12 GB older-generation option from a 16 GB newer-generation option, so the user can think about VRAM headroom without assuming newer always means better fit."
+      },
+      {
+        "title": "Starter local AI shortlist",
+        "description": "Both cards sit in a practical starter planning range, where model choice, quantization, and context length can matter more than broad GPU labels."
+      },
+      {
+        "title": "Used-card versus newer-card research",
+        "description": "The page helps frame the questions to ask before comparing an older source-backed profile with a newer 16 GB planning profile."
+      }
+    ],
+    "bestFitQuestions": [
+      {
+        "title": "Is your model near a 12 GB limit?",
+        "description": "If the calculator estimate is close to 12 GB, the 16 GB profile deserves closer testing before a local hardware decision."
+      },
+      {
+        "title": "Do you need image workflow headroom?",
+        "description": "Image workflows can become memory-sensitive as resolution, batch size, or extensions grow, so a 12 GB versus 16 GB comparison is useful before testing."
+      },
+      {
+        "title": "Will exact card condition matter?",
+        "description": "Older cards and board-partner variants should be checked carefully for power, cooling, seller details, and exact SKU behavior."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Do not turn 16 GB into a fit promise",
+        "description": "The extra capacity is planning headroom, not proof that a specific model, context length, or image workflow will run comfortably."
+      },
+      {
+        "title": "Benchmark evidence is not attached",
+        "description": "The current comparison does not include controlled runtime benchmarks, so speed conclusions are intentionally absent."
+      },
+      {
+        "title": "Exact card verification still matters",
+        "description": "Board-partner specs, power connectors, cooling, and used-card condition can change practical planning."
+      }
+    ],
+    "sourceBackedDifferences": [
+      "The linked GPU records expose a 12 GB versus 16 GB VRAM planning split.",
+      "The source-backed memory bandwidth fields point in different directions from VRAM capacity, which is why the page should not reduce the decision to one number.",
+      "The comparison can show source-backed profile fields, but the comparison record itself has no benchmark source attached."
+    ],
+    "unresolvedQuestions": [
+      "Which model, quantization, and context length are you actually targeting?",
+      "Does your image workflow need extensions, high resolution, or batch settings that push beyond starter estimates?",
+      "What does the exact board-partner card require for power, cooling, and physical fit?"
+    ],
+    "nearbyComparisons": [
+      {
+        "slug": "rtx-4070-super-vs-rtx-4070-ti-super-for-ai",
+        "label": "RTX 4070 Super vs RTX 4070 Ti Super",
+        "reason": "Compare next when the 12 GB versus 16 GB question moves into a higher Ada-generation shortlist."
+      },
+      {
+        "slug": "rtx-4080-super-vs-rtx-4090-for-stable-diffusion",
+        "label": "RTX 4080 Super vs RTX 4090",
+        "reason": "Compare next when image workflow headroom matters more than starter-card cost control."
+      },
+      {
+        "slug": "rtx-3090-vs-rtx-4090-for-local-llm",
+        "label": "RTX 3090 vs RTX 4090",
+        "reason": "Compare next when the calculator estimate points beyond the 12 GB and 16 GB class."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why compare RTX 3060 12GB with RTX 4060 Ti 16GB for AI?",
+        "answer": "This pair is useful when a user is deciding whether a 12 GB starter card is enough or whether 16 GB headroom should be tested before choosing local hardware."
+      },
+      {
+        "question": "Does the RTX 4060 Ti 16GB automatically fit larger local AI workflows?",
+        "answer": "No. It has more VRAM capacity than the 12 GB card, but fit still depends on model size, quantization, context length, runtime overhead, and exact workflow settings."
+      },
+      {
+        "question": "What should a used RTX 3060 12GB buyer verify?",
+        "answer": "Verify exact board-partner specs, seller condition, cooling, power connector requirements, driver/runtime support, and whether the target workload fits the 12 GB estimate."
+      }
+    ]
+  },
+  {
+    "slug": "rtx-3090-vs-rtx-4090-for-local-llm",
+    "decisionSummary": "Use this comparison when the capacity tier is already 24 GB and the user needs to think about bandwidth, power, architecture, and validation workflow instead of VRAM alone.",
+    "whyThisPairMatters": [
+      {
+        "title": "Same VRAM tier, different planning risks",
+        "description": "Both profiles sit at 24 GB, so the useful question shifts from capacity to bandwidth, power, generation, and runtime validation."
+      },
+      {
+        "title": "High-VRAM local LLM shortlist",
+        "description": "This pair belongs after a model estimate suggests that 12 GB or 16 GB cards are too constrained for the intended local LLM workflow."
+      },
+      {
+        "title": "Used flagship versus newer flagship",
+        "description": "The comparison helps frame why an older high-VRAM card can remain relevant while still requiring exact-card and power checks."
+      }
+    ],
+    "bestFitQuestions": [
+      {
+        "title": "Is 24 GB enough for the target model?",
+        "description": "Start with the calculator and model pages; this comparison only helps once the workload belongs in the 24 GB planning band."
+      },
+      {
+        "title": "Can the system handle power and cooling?",
+        "description": "A high-VRAM shortlist should include PSU, case airflow, connector, and heat checks before treating either card as practical."
+      },
+      {
+        "title": "Do you need tested runtime behavior?",
+        "description": "If the workload is important, validate with a cloud or borrowed setup before relying on a local purchase."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Do not infer speed from generation alone",
+        "description": "The page can compare source-backed planning fields, but speed claims need benchmark evidence for the exact workload."
+      },
+      {
+        "title": "Used-card risk changes the decision",
+        "description": "An RTX 3090 path often raises condition, warranty, power, and thermal questions that the static comparison cannot settle."
+      },
+      {
+        "title": "24 GB still has limits",
+        "description": "Long context, larger models, batch size, and runtime overhead can exceed a simple VRAM-capacity assumption."
+      }
+    ],
+    "sourceBackedDifferences": [
+      "Both linked GPU profiles expose 24 GB VRAM, making this a same-capacity planning comparison.",
+      "The source-backed memory bandwidth values differ, but the page does not convert that into runtime speed claims.",
+      "The comparison record has no benchmark source, so any final workload conclusion remains unresolved."
+    ],
+    "unresolvedQuestions": [
+      "Which model, context length, quantization format, and runtime will be used?",
+      "Can the local system handle the power, cooling, and physical card requirements?",
+      "Would a short cloud validation run reduce risk before committing to local hardware?"
+    ],
+    "nearbyComparisons": [
+      {
+        "slug": "rtx-4080-super-vs-rtx-4090-for-stable-diffusion",
+        "label": "RTX 4080 Super vs RTX 4090",
+        "reason": "Compare when the question is whether 16 GB is enough or 24 GB headroom is needed for image workflows."
+      },
+      {
+        "slug": "rx-7900-xtx-vs-rtx-4090-for-ai",
+        "label": "RX 7900 XTX vs RTX 4090",
+        "reason": "Compare when a 24 GB decision also involves CUDA versus non-CUDA runtime support."
+      },
+      {
+        "slug": "rtx-3060-12gb-vs-rtx-4060-ti-16gb-for-ai",
+        "label": "RTX 3060 12GB vs RTX 4060 Ti 16GB",
+        "reason": "Compare if the calculator estimate may still fit below the 24 GB class."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why compare RTX 3090 and RTX 4090 if both have 24 GB VRAM?",
+        "answer": "Same-capacity comparisons are useful because the decision moves toward bandwidth, power planning, architecture, used-card risk, and runtime validation."
+      },
+      {
+        "question": "Can this page say which 24 GB GPU is faster for local LLMs?",
+        "answer": "No. The comparison does not include controlled benchmark evidence, so it avoids speed conclusions and keeps the focus on planning fields."
+      },
+      {
+        "question": "When should cloud testing come before buying either card?",
+        "answer": "Cloud testing is useful when the model, context length, quantization, or runtime setup is uncertain enough that a local purchase would be premature."
+      }
+    ]
+  },
+  {
+    "slug": "rtx-4070-super-vs-rtx-4070-ti-super-for-ai",
+    "decisionSummary": "Use this comparison when the user is deciding whether to stay in a 12 GB Ada card or move to a 16 GB Ada card before validating local AI or image workflow headroom.",
+    "whyThisPairMatters": [
+      {
+        "title": "Close-generation capacity step",
+        "description": "The pair keeps the comparison inside a similar NVIDIA generation while changing the VRAM tier from 12 GB to 16 GB."
+      },
+      {
+        "title": "Borderline model planning",
+        "description": "This is useful when a calculator estimate is near the 12 GB boundary and the user needs to decide whether 16 GB deserves testing."
+      },
+      {
+        "title": "Image workflow headroom question",
+        "description": "The page is relevant for users who expect image workflow settings, extensions, or batch choices to push memory beyond a smaller card."
+      }
+    ],
+    "bestFitQuestions": [
+      {
+        "title": "Is the target workflow close to 12 GB?",
+        "description": "If the estimate is comfortably below 12 GB, the extra headroom may not be the first planning issue; if it is close, 16 GB deserves attention."
+      },
+      {
+        "title": "Will you test multiple runtimes?",
+        "description": "Different local AI and image-generation runtimes can change memory pressure, so a close comparison should be validated."
+      },
+      {
+        "title": "Do power and case fit remain reasonable?",
+        "description": "The step-up decision should include board power, connectors, cooling, and exact card dimensions."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "More VRAM is not a benchmark",
+        "description": "The 16 GB profile can offer more capacity headroom, but speed and workflow comfort still need measured evidence."
+      },
+      {
+        "title": "Same-generation names can hide different limits",
+        "description": "Close GPU names do not remove the need to compare memory bus, bandwidth, power, and exact board-partner details."
+      },
+      {
+        "title": "Avoid using this as buying guidance",
+        "description": "The record remains draft and should be used to structure validation, not to choose a card outright."
+      }
+    ],
+    "sourceBackedDifferences": [
+      "The linked profiles expose a 12 GB versus 16 GB VRAM split within nearby NVIDIA Ada-generation cards.",
+      "Memory bandwidth and other source-backed profile fields can be compared, but benchmark outcomes are not attached.",
+      "The comparison record still needs verified workload evidence before stronger conclusions are safe."
+    ],
+    "unresolvedQuestions": [
+      "Does the actual model or image workflow exceed the 12 GB comfort zone?",
+      "Which exact board-partner cards are being compared?",
+      "Does the runtime or driver stack change memory pressure enough to require testing?"
+    ],
+    "nearbyComparisons": [
+      {
+        "slug": "rtx-3060-12gb-vs-rtx-4060-ti-16gb-for-ai",
+        "label": "RTX 3060 12GB vs RTX 4060 Ti 16GB",
+        "reason": "Compare when the 12 GB versus 16 GB question starts at a more budget-oriented tier."
+      },
+      {
+        "slug": "rtx-4080-super-vs-rtx-4090-for-stable-diffusion",
+        "label": "RTX 4080 Super vs RTX 4090",
+        "reason": "Compare when image workflow planning moves from 16 GB into 24 GB headroom."
+      },
+      {
+        "slug": "rtx-3090-vs-rtx-4090-for-local-llm",
+        "label": "RTX 3090 vs RTX 4090",
+        "reason": "Compare when the workload clearly belongs in the 24 GB local LLM planning range."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why compare RTX 4070 Super with RTX 4070 Ti Super for AI?",
+        "answer": "This pair isolates a nearby-generation capacity step from 12 GB to 16 GB, which is useful for borderline local AI and image workflow planning."
+      },
+      {
+        "question": "Is 16 GB always worth choosing over 12 GB?",
+        "answer": "No. The value of 16 GB depends on the workload estimate, runtime overhead, image settings, exact card price, and whether the user actually needs the extra headroom."
+      },
+      {
+        "question": "What should I test before deciding between these two cards?",
+        "answer": "Test the target model or image workflow with the intended runtime, context or resolution settings, and a realistic safety margin."
+      }
+    ]
+  },
+  {
+    "slug": "rx-7900-xtx-vs-rtx-4090-for-ai",
+    "decisionSummary": "Use this comparison when the user is not only comparing 24 GB cards, but also deciding how much CUDA, ROCm, framework support, and cross-vendor runtime risk matter.",
+    "whyThisPairMatters": [
+      {
+        "title": "Cross-vendor runtime decision",
+        "description": "The useful question is not just VRAM capacity; it is whether the intended AI stack behaves well on the chosen vendor path."
+      },
+      {
+        "title": "24 GB capacity with different ecosystems",
+        "description": "Both profiles can sit in a high-VRAM shortlist, but runtime support and driver expectations can be very different."
+      },
+      {
+        "title": "Local AI compatibility checkpoint",
+        "description": "This page helps users pause before assuming that memory size alone makes two cards interchangeable."
+      }
+    ],
+    "bestFitQuestions": [
+      {
+        "title": "Does your runtime require CUDA?",
+        "description": "Many local AI workflows are easier to validate on CUDA-first stacks, so users should check exact software support before considering a non-CUDA card."
+      },
+      {
+        "title": "Are you prepared to test ROCm or alternative paths?",
+        "description": "A cross-vendor plan should include setup time, compatibility checks, and fallback routes."
+      },
+      {
+        "title": "Is memory capacity the real bottleneck?",
+        "description": "If both cards have enough VRAM, practical fit may depend more on framework support, drivers, and measured workflow behavior."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Do not treat 24 GB as equivalent",
+        "description": "Equal capacity does not mean equal runtime support, setup effort, or workflow reliability."
+      },
+      {
+        "title": "No performance ranking is included",
+        "description": "The page avoids speed conclusions because comparison-specific benchmarks are not attached."
+      },
+      {
+        "title": "Compatibility can decide the outcome",
+        "description": "For some AI workflows, the software stack may matter more than the raw source-backed hardware fields shown in the table."
+      }
+    ],
+    "sourceBackedDifferences": [
+      "The linked profiles expose a same-capacity 24 GB comparison across AMD and NVIDIA.",
+      "The source-backed hardware fields do not remove the need for runtime and framework checks.",
+      "No comparison-level benchmark source is attached, so performance and compatibility conclusions remain unresolved."
+    ],
+    "unresolvedQuestions": [
+      "Does the target model or image workflow officially support the intended AMD or NVIDIA runtime path?",
+      "Which driver, OS, and framework versions will be used?",
+      "Would a short cloud or borrowed-hardware validation run expose setup risk before a purchase?"
+    ],
+    "nearbyComparisons": [
+      {
+        "slug": "rtx-3090-vs-rtx-4090-for-local-llm",
+        "label": "RTX 3090 vs RTX 4090",
+        "reason": "Compare when you want to keep the decision within CUDA-oriented 24 GB planning."
+      },
+      {
+        "slug": "rtx-4080-super-vs-rtx-4090-for-stable-diffusion",
+        "label": "RTX 4080 Super vs RTX 4090",
+        "reason": "Compare when image workflow capacity is the main question rather than vendor runtime risk."
+      },
+      {
+        "slug": "rtx-4070-super-vs-rtx-4070-ti-super-for-ai",
+        "label": "RTX 4070 Super vs RTX 4070 Ti Super",
+        "reason": "Compare when the workload may fit below 24 GB and vendor risk is less central."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why is RX 7900 XTX vs RTX 4090 mainly a runtime question?",
+        "answer": "Both profiles can offer high VRAM capacity, but local AI fit often depends on CUDA, ROCm, framework support, drivers, and setup effort."
+      },
+      {
+        "question": "Can this page say the RTX 4090 is faster than RX 7900 XTX for AI?",
+        "answer": "No. It does not include controlled benchmark evidence, so it focuses on source-backed planning fields and runtime compatibility questions."
+      },
+      {
+        "question": "When should I avoid a cross-vendor GPU decision?",
+        "answer": "Avoid making the decision from specs alone when the exact model, runtime, operating system, or framework support has not been tested."
+      }
+    ]
+  },
+  {
+    "slug": "rtx-4080-super-vs-rtx-4090-for-stable-diffusion",
+    "decisionSummary": "Use this comparison when image-generation planning has moved beyond starter GPUs and the user needs to decide whether 16 GB is enough or 24 GB headroom should be validated.",
+    "whyThisPairMatters": [
+      {
+        "title": "Image workflow capacity step",
+        "description": "The comparison focuses on a 16 GB versus 24 GB planning jump for Stable Diffusion and related image-generation workflows."
+      },
+      {
+        "title": "Headroom before speed",
+        "description": "For image workflows, capacity pressure can come from resolution, batch size, extensions, ControlNet-like additions, or runtime overhead."
+      },
+      {
+        "title": "High-end local build checkpoint",
+        "description": "This pair helps users decide whether to validate a bigger local GPU path or test in cloud before buying."
+      }
+    ],
+    "bestFitQuestions": [
+      {
+        "title": "Are your image settings memory-heavy?",
+        "description": "Higher resolution, batch size, and additional processing steps can push a workflow beyond a simple base-model estimate."
+      },
+      {
+        "title": "Can the workflow be tested first?",
+        "description": "If the planned workflow is expensive or uncertain, a short cloud test may be more useful than guessing from capacity alone."
+      },
+      {
+        "title": "Does the local system support the larger card?",
+        "description": "A 24 GB path should include PSU, connector, cooling, and case checks before treating it as practical."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "No image-speed claim is included",
+        "description": "The comparison does not publish seconds-per-image or images-per-minute claims because benchmark evidence is not attached."
+      },
+      {
+        "title": "Stable Diffusion workflows vary",
+        "description": "Resolution, sampler settings, extensions, precision, and runtime can change memory needs."
+      },
+      {
+        "title": "16 GB may still be useful",
+        "description": "Do not assume the 24 GB card is necessary until the intended workflow actually pushes beyond a 16 GB planning path."
+      }
+    ],
+    "sourceBackedDifferences": [
+      "The linked profiles expose a 16 GB versus 24 GB VRAM planning split.",
+      "The comparison can show source-backed memory and power fields, but not workflow speed.",
+      "Comparison-level image-generation benchmark evidence remains missing."
+    ],
+    "unresolvedQuestions": [
+      "Which image model, runtime, precision, resolution, and batch size will be used?",
+      "Will the workflow include memory-heavy extensions or multi-stage processing?",
+      "Would cloud testing confirm whether 16 GB is enough before local hardware commitment?"
+    ],
+    "nearbyComparisons": [
+      {
+        "slug": "rtx-4070-super-vs-rtx-4070-ti-super-for-ai",
+        "label": "RTX 4070 Super vs RTX 4070 Ti Super",
+        "reason": "Compare when the image workflow may fit in a lower 12 GB versus 16 GB planning tier."
+      },
+      {
+        "slug": "rtx-3090-vs-rtx-4090-for-local-llm",
+        "label": "RTX 3090 vs RTX 4090",
+        "reason": "Compare when 24 GB planning also applies to local LLM experiments."
+      },
+      {
+        "slug": "rx-7900-xtx-vs-rtx-4090-for-ai",
+        "label": "RX 7900 XTX vs RTX 4090",
+        "reason": "Compare when 24 GB image or AI planning involves cross-vendor runtime questions."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why compare RTX 4080 Super and RTX 4090 for Stable Diffusion?",
+        "answer": "This pair helps separate a 16 GB local image workflow path from a 24 GB headroom path before making any speed or purchase assumptions."
+      },
+      {
+        "question": "Does this page prove the RTX 4090 is faster for image generation?",
+        "answer": "No. The page does not include controlled image-generation benchmarks, so it avoids speed claims and focuses on capacity planning."
+      },
+      {
+        "question": "When should I test cloud GPU before choosing between these cards?",
+        "answer": "Cloud testing is useful when resolution, batch size, extensions, or runtime settings may push beyond 16 GB but the user is not sure yet."
+      }
+    ]
+  }
+]
