@@ -41,6 +41,126 @@ Codex
 
 ---
 
+## 2026-06-16 - Cloud GPU provider profile differentiation
+
+### Agent
+Codex
+
+### Planned Task
+Differentiate `/cloud-gpu/[slug]` pages for Google indexing and real user
+value, while keeping provider-specific editorial content outside page code so
+daily data updates remain simple.
+
+### Completed
+- [x] Added `data/cloud-gpu-provider-profiles.json` as a separate editorial
+  data layer for provider decision summaries, best-fit scenarios, watchouts,
+  source interpretation, unresolved questions, compare paths, and FAQ.
+- [x] Added cloud GPU provider profile types, repository, and service with a
+  conservative fallback for future providers that do not yet have editorial
+  profile data.
+- [x] Refactored `/cloud-gpu/[slug]` to render provider-specific profile data
+  instead of generic repeated "how to use", scope, and FAQ blocks.
+- [x] Added validation coverage for `data/cloud-gpu-provider-profiles.json`,
+  including slug matching, minimum editorial sections, alternative slug checks,
+  FAQ shape, and unsafe wording guards.
+- [x] Preserved `data/cloud-gpu-providers.json` unchanged; no price,
+  availability, capacity, commission, affiliate URL, or performance claims were
+  added.
+
+### Checked
+- [x] `npm.cmd run data:validate` passed with 0 errors and 0 warnings.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static provider audit: 8 provider pages, 1 H1 each, no repeated
+  same-page sentences, no duplicate FAQ questions across provider pages.
+- [x] Duplicate audit: highest 5-word-shingle pair reduced to 0.197
+  (`digitalocean-gpu` vs `vultr-cloud-gpu`); lowest pair 0.111; common
+  all-page 5-shingles reduced to 127.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No validation, lint, or build failures.
+- Remaining shared overlap is mainly expected layout, source-warning,
+  breadcrumb, facts, CTA, and footer language.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/[slug]/page.tsx`
+- `data/cloud-gpu-provider-profiles.json`
+- `repositories/cloud-gpu-provider-profile.repository.ts`
+- `services/cloud-gpu-provider-profile.service.ts`
+- `types/cloud-gpu-provider-profile.ts`
+- `types/index.ts`
+- `scripts/validate-data.ts`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Deploy the static export and request reindexing for the refreshed Cloud GPU hub
+and provider profile URLs in Google Search Console.
+
+---
+
+## 2026-06-16 - Cloud GPU indexing QA pass
+
+### Agent
+Codex
+
+### Planned Task
+Check why `/cloud-gpu` may be in Google Search Console as crawled but not
+indexed, verify technical indexability signals, and improve the page's
+standalone value without adding unsupported provider claims.
+
+### Completed
+- [x] Checked the live `/cloud-gpu` page, `robots.txt`, and `sitemap.xml`.
+- [x] Confirmed the live page is accessible, allowed by robots, canonicalized to
+  itself, and present in the sitemap.
+- [x] Added a decision-route section for cloud-first, local-first, and hybrid
+  planning.
+- [x] Added a workload-fit table that routes users to calculator, image VRAM,
+  cloud-vs-local, and hosted-options planning pages.
+- [x] Added a source coverage snapshot from provider data and an ItemList schema
+  for provider profile links.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped; no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static HTML confirms title, description, canonical, one H1, new decision
+  sections, source snapshot, FAQPage, BreadcrumbList, WebPage, and ItemList.
+- [x] Sitemap output includes `/cloud-gpu` and all cloud provider profile URLs.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- Google indexing cannot be forced from code. The remaining likely GSC cause is
+  quality/selection: Google crawled the URL but has not yet chosen it for the
+  index.
+- Production sitemap observed during the check still showed a 2026-06-12
+  generated timestamp; redeploy after this change is needed before requesting
+  indexing again.
+
+### Files Changed
+- `app/(frontend)/cloud-gpu/page.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Deploy the static export, then use Google Search Console URL Inspection on
+`https://vramforge.com/cloud-gpu`, test the live URL, and request indexing.
+
+### Follow-up
+- [x] Re-audited `/cloud-gpu` for duplicate-content risk and real-user value
+  after the indexing QA content pass.
+- [x] Measured 5-word-shingle overlap: 0.032 vs the cloud-vs-local guide,
+  0.042 vs the cloud-vs-local build page, and about 0.088-0.094 vs individual
+  Cloud GPU provider profile pages.
+- [x] Adjusted `CloudGpuProviderCard` headings from `h2` to `h3` so provider
+  names sit under the "Source-aware provider profiles" section instead of
+  competing with major page sections in the document outline.
+- [x] Rechecked `npm.cmd run lint` and `npm.cmd run build`; both passed and
+  build generated 57 static pages.
+
+---
+
 ## 2026-06-08 - Month 2 documentation reset
 
 ### Agent

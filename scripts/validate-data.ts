@@ -171,6 +171,17 @@ const cloudGpuDisallowedExactPricingFields = [
   "gpuAvailability",
 ];
 
+const cloudGpuProviderProfileRequiredFields = [
+  "slug",
+  "decisionSummary",
+  "bestFitScenarios",
+  "watchouts",
+  "sourceConfirmedFacts",
+  "unresolvedQuestions",
+  "nearbyAlternatives",
+  "faq",
+];
+
 const aiToolRequiredFields = [
   "id",
   "slug",
@@ -614,6 +625,152 @@ function checkCloudGpuProviders() {
   }
 }
 
+function checkCloudGpuProviderProfiles() {
+  const file = "data/cloud-gpu-provider-profiles.json";
+  const data = readJsonMaybe(file);
+  if (!data) return;
+
+  if (!Array.isArray(data)) {
+    logError(`${file}: must be a JSON array`);
+    return;
+  }
+
+  const providerData = readJsonMaybe("data/cloud-gpu-providers.json");
+  const providerSlugs = new Set(
+    Array.isArray(providerData)
+      ? providerData
+          .map((record) => (record && typeof record === "object" ? (record as RecordLike).slug : null))
+          .filter((slug): slug is string => typeof slug === "string")
+      : [],
+  );
+
+  const records = data as RecordLike[];
+  if (records.length === 0) {
+    logWarning(`${file}: no records`);
+    return;
+  }
+
+  checkUniqueSlugs(file, records);
+  checkRequiredFields(file, records, cloudGpuProviderProfileRequiredFields);
+
+  for (const rec of records) {
+    const label = rec.slug || rec.id || rec.name || "unknown";
+
+    if (typeof rec.slug !== "string" || !providerSlugs.has(rec.slug)) {
+      logError(`${file}:${label}: slug must match an existing cloud GPU provider slug`);
+    }
+
+    if (typeof rec.decisionSummary !== "string" || rec.decisionSummary.trim().split(/\s+/).length < 18) {
+      logError(`${file}:${label}: decisionSummary must be a useful provider-specific sentence`);
+    }
+
+    for (const field of ["bestFitScenarios", "watchouts", "nearbyAlternatives", "faq"]) {
+      const value = rec[field];
+      if (!Array.isArray(value) || value.length < 3) {
+        logError(`${file}:${label}: ${field} must contain at least 3 items`);
+      }
+    }
+
+    for (const field of ["sourceConfirmedFacts", "unresolvedQuestions"]) {
+      const value = rec[field];
+      if (!isNonEmptyStringArray(value) || value.length < 3) {
+        logError(`${file}:${label}: ${field} must contain at least 3 strings`);
+      }
+    }
+
+    const bestFitScenarios = Array.isArray(rec.bestFitScenarios) ? rec.bestFitScenarios : [];
+    const watchouts = Array.isArray(rec.watchouts) ? rec.watchouts : [];
+    const alternatives = Array.isArray(rec.nearbyAlternatives) ? rec.nearbyAlternatives : [];
+    const faqs = Array.isArray(rec.faq) ? rec.faq : [];
+    const sourceConfirmedFacts = Array.isArray(rec.sourceConfirmedFacts) ? rec.sourceConfirmedFacts : [];
+    const unresolvedQuestions = Array.isArray(rec.unresolvedQuestions) ? rec.unresolvedQuestions : [];
+
+    const scenarios = [...bestFitScenarios, ...watchouts];
+    for (const item of scenarios) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: scenario items must be objects`);
+        continue;
+      }
+
+      const scenario = item as { title?: unknown; description?: unknown };
+      if (typeof scenario.title !== "string" || typeof scenario.description !== "string") {
+        logError(`${file}:${label}: scenario items require title and description`);
+      }
+    }
+
+    for (const item of alternatives) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: nearbyAlternatives items must be objects`);
+        continue;
+      }
+
+      const alternative = item as { slug?: unknown; label?: unknown; reason?: unknown };
+      if (typeof alternative.slug !== "string" || !providerSlugs.has(alternative.slug)) {
+        logError(`${file}:${label}: nearby alternative slug must match an existing cloud GPU provider`);
+      }
+      if (alternative.slug === rec.slug) {
+        logError(`${file}:${label}: nearby alternative must not point to itself`);
+      }
+      if (typeof alternative.label !== "string" || typeof alternative.reason !== "string") {
+        logError(`${file}:${label}: nearby alternative items require label and reason`);
+      }
+    }
+
+    for (const item of faqs) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        logError(`${file}:${label}: faq items must be objects`);
+        continue;
+      }
+
+      const faq = item as { question?: unknown; answer?: unknown };
+      if (typeof faq.question !== "string" || !faq.question.includes("?") || typeof faq.answer !== "string") {
+        logError(`${file}:${label}: faq items require a question ending with ? and an answer`);
+      }
+    }
+
+    const searchableText = [
+      rec.decisionSummary,
+      ...(bestFitScenarios as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(watchouts as Array<{ title?: string; description?: string }>).flatMap((item) => [
+        item.title,
+        item.description,
+      ]),
+      ...(sourceConfirmedFacts as string[]),
+      ...(unresolvedQuestions as string[]),
+      ...(alternatives as Array<{ label?: string; reason?: string }>).flatMap((item) => [
+        item.label,
+        item.reason,
+      ]),
+      ...(faqs as Array<{ question?: string; answer?: string }>).flatMap((item) => [
+        item.question,
+        item.answer,
+      ]),
+    ]
+      .filter((value): value is string => typeof value === "string")
+      .join(" ")
+      .toLowerCase();
+
+    for (const blockedPhrase of [
+      "cheapest",
+      "guaranteed",
+      "recommended provider",
+      "best cloud gpu",
+      "buy this",
+      "current price",
+      "currently available",
+      "fastest",
+      "top-rated",
+    ]) {
+      if (searchableText.includes(blockedPhrase)) {
+        logError(`${file}:${label}: unsupported "${blockedPhrase}" wording`);
+      }
+    }
+  }
+}
+
 function checkAiTools() {
   const file = "data/ai-tools.json";
   const data = readJsonMaybe(file);
@@ -859,6 +1016,7 @@ checkFile("data/moe-calculator-assumptions.json");
 checkFile("data/image-generation-assumptions.json");
 checkFile("data/image-generation-validation-samples.json");
 checkCloudGpuProviders();
+checkCloudGpuProviderProfiles();
 checkAiTools();
 checkMonetizationPlacements();
 

@@ -42,6 +42,24 @@ const planningSteps = [
   },
 ] as const;
 
+const decisionSignals = [
+  {
+    title: "Use cloud first",
+    description:
+      "Use cloud testing when the model, image workflow, or runtime stack is still uncertain and a short validation run can reduce hardware commitment risk.",
+  },
+  {
+    title: "Use local first",
+    description:
+      "Plan local hardware first when the workload is repeated, data movement is sensitive, and the VRAM target is already clear from calculator and profile checks.",
+  },
+  {
+    title: "Use a hybrid path",
+    description:
+      "Test the uncertain parts in cloud, then compare the result against local GPU tiers before treating a workstation purchase as justified.",
+  },
+] as const;
+
 const useCaseOrder: Array<{
   key: CloudGpuUseCase;
   label: string;
@@ -78,6 +96,43 @@ const useCaseOrder: Array<{
     description: "Testing a workload before deciding whether local hardware planning is practical.",
   },
 ];
+
+const workloadFitRows: Array<{
+  intent: string;
+  useCase: CloudGpuUseCase;
+  route: string;
+  routeLabel: string;
+  check: string;
+}> = [
+  {
+    intent: "Local LLM memory test",
+    useCase: "local_llm_testing",
+    route: "/tools/vram-calculator",
+    routeLabel: "Estimate VRAM",
+    check: "Start from a model and context estimate, then validate provider terms and runtime setup.",
+  },
+  {
+    intent: "Image generation workflow",
+    useCase: "stable_diffusion",
+    route: "/guides/image-generation-vram-planning",
+    routeLabel: "Plan image VRAM",
+    check: "Check resolution, precision, batch size, storage movement, and whether the provider supports your workflow.",
+  },
+  {
+    intent: "Cloud vs local decision",
+    useCase: "cloud_vs_local_validation",
+    route: "/guides/cloud-gpu-vs-local-gpu",
+    routeLabel: "Compare cloud vs local",
+    check: "Use cloud as a validation step when workload duration, VRAM fit, or setup risk is unclear.",
+  },
+  {
+    intent: "Temporary batch or hosted execution",
+    useCase: "batch_jobs",
+    route: "/guides/local-ai-vs-ai-saas",
+    routeLabel: "Compare hosted options",
+    check: "Review billing model, deployment flow, acceptable-use terms, and repeatability before relying on a provider.",
+  },
+] as const;
 
 const faqItems = [
   {
@@ -120,10 +175,32 @@ function countProvidersForUseCase(
   return providers.filter((item) => item.provider.useCases.includes(useCase)).length;
 }
 
+function formatReviewDate(value: string | null): string {
+  if (!value) {
+    return "Needs verification";
+  }
+
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(value));
+}
+
 export default function CloudGpuPage() {
   const siteSettings = getSiteSettings();
   const providerItems = cloudGpuProviderService.getCloudGpuProviderListItems();
   const providerCount = providerItems.length;
+  const reviewedProviderCount = providerItems.filter(
+    ({ provider }) => provider.status === "reviewed" || provider.status === "published",
+  ).length;
+  const sourceCount = providerItems.reduce((total, { provider }) => total + provider.sources.length, 0);
+  const latestVerifiedAt = providerItems
+    .map(({ provider }) => provider.lastVerifiedAt)
+    .filter((value): value is string => Boolean(value))
+    .sort()
+    .at(-1) ?? null;
 
   const jsonLd = [
     {
@@ -168,6 +245,17 @@ export default function CloudGpuPage() {
         },
       })),
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Cloud GPU provider planning profiles",
+      itemListElement: providerItems.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.provider.name,
+        url: buildCanonicalUrl(`/cloud-gpu/${item.provider.slug}`),
+      })),
+    },
   ];
 
   return (
@@ -201,6 +289,23 @@ export default function CloudGpuPage() {
         </header>
 
         <CloudGpuProviderNotice notices={sourceNotices} />
+
+        <section aria-labelledby="cloud-gpu-decision-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Decision route
+          </p>
+          <h2 id="cloud-gpu-decision-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            Decide whether cloud GPU testing belongs before local hardware
+          </h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {decisionSignals.map((signal) => (
+              <article key={signal.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-base font-semibold tracking-normal text-slate-950">{signal.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-700">{signal.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section aria-labelledby="cloud-gpu-providers-heading">
           <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -238,6 +343,35 @@ export default function CloudGpuPage() {
           </div>
         </section>
 
+        <section aria-labelledby="cloud-gpu-workload-fit-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Workload fit
+          </p>
+          <h2 id="cloud-gpu-workload-fit-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            Match the cloud GPU profile to the job you are validating
+          </h2>
+          <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200">
+            <div className="grid gap-0 bg-slate-200 text-sm md:grid-cols-[1.1fr_0.7fr_1fr_1.3fr]">
+              <div className="bg-slate-100 p-3 font-semibold text-slate-950">Planning intent</div>
+              <div className="bg-slate-100 p-3 font-semibold text-slate-950">Matching profiles</div>
+              <div className="bg-slate-100 p-3 font-semibold text-slate-950">Next route</div>
+              <div className="bg-slate-100 p-3 font-semibold text-slate-950">What to verify</div>
+              {workloadFitRows.map((row) => (
+                <div key={row.intent} className="contents">
+                  <div className="bg-white p-3 text-slate-800">{row.intent}</div>
+                  <div className="bg-white p-3 text-slate-700">{countProvidersForUseCase(providerItems, row.useCase)} providers</div>
+                  <div className="bg-white p-3">
+                    <Link className="font-semibold text-sky-700 hover:text-sky-800" href={row.route}>
+                      {row.routeLabel}
+                    </Link>
+                  </div>
+                  <div className="bg-white p-3 text-slate-700">{row.check}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section aria-labelledby="cloud-gpu-use-cases-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Neutral use cases
@@ -258,6 +392,32 @@ export default function CloudGpuPage() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section aria-labelledby="cloud-gpu-source-snapshot-heading" className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Source coverage
+          </p>
+          <h2 id="cloud-gpu-source-snapshot-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            What the hub currently verifies
+          </h2>
+          <dl className="mt-5 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <dt className="text-sm font-semibold text-slate-950">Reviewed profiles</dt>
+              <dd className="mt-2 text-3xl font-semibold tracking-normal text-slate-950">{reviewedProviderCount}</dd>
+              <p className="mt-2 text-sm leading-6 text-slate-700">Provider records with reviewed or published status.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <dt className="text-sm font-semibold text-slate-950">Source references</dt>
+              <dd className="mt-2 text-3xl font-semibold tracking-normal text-slate-950">{sourceCount}</dd>
+              <p className="mt-2 text-sm leading-6 text-slate-700">Official, documentation, pricing, terms, referral, and manual-check references in provider data.</p>
+            </div>
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <dt className="text-sm font-semibold text-slate-950">Latest provider review</dt>
+              <dd className="mt-2 text-3xl font-semibold tracking-normal text-slate-950">{formatReviewDate(latestVerifiedAt)}</dd>
+              <p className="mt-2 text-sm leading-6 text-slate-700">Use this as a data freshness signal, not as proof of current price or availability.</p>
+            </div>
+          </dl>
         </section>
 
         <CloudGpuProviderCta includeBackLink={false} />

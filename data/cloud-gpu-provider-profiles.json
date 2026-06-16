@@ -1,0 +1,586 @@
+[
+  {
+    "slug": "runpod",
+    "decisionSummary": "Use this RunPod profile when you are checking whether a pod, serverless, or cluster-style GPU workflow should be tested before local hardware planning. Treat it as a platform workflow checkpoint, not as proof of current GPU supply or cost.",
+    "bestFitScenarios": [
+      {
+        "title": "Pod-based local AI test",
+        "description": "A useful planning path when you want a temporary GPU environment for local LLM or image workflow validation before choosing a local VRAM tier."
+      },
+      {
+        "title": "Serverless experiment",
+        "description": "Relevant when the workload may become an inference or event-driven job instead of a long-running workstation session."
+      },
+      {
+        "title": "Cluster planning question",
+        "description": "Worth reviewing when the workload might outgrow one rented instance and needs a provider page that mentions pods, serverless, and cluster planning surfaces."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Do not infer current inventory",
+        "description": "The profile does not store current GPU SKUs, capacity, or availability. Check RunPod's official pages before planning a specific workload."
+      },
+      {
+        "title": "Separate pod and serverless assumptions",
+        "description": "Pod-style testing and serverless deployment can have different setup, storage, and billing questions, so avoid treating them as one workflow."
+      },
+      {
+        "title": "Keep referral details secondary",
+        "description": "Referral program existence is tracked only as a source-gap signal; this page does not use a live affiliate CTA."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "Official RunPod pricing and referral pages are attached in the provider source trail.",
+      "The provider record supports pods, serverless workloads, and clusters as planning surfaces.",
+      "The current production record intentionally excludes exact rates, GPU SKUs, availability, and referral terms."
+    ],
+    "unresolvedQuestions": [
+      "Which GPU SKUs are available for your target region or workload when you check?",
+      "Which storage, networking, and persistence settings match your test workflow?",
+      "Do pod, serverless, or cluster terms change the cost model for your specific usage pattern?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "vast-ai",
+        "label": "Vast.ai",
+        "reason": "Compare when marketplace flexibility matters more than a platform-led pod/serverless workflow."
+      },
+      {
+        "slug": "lambda",
+        "label": "Lambda",
+        "reason": "Compare when you want a more conventional AI cloud compute profile for notebooks, deployment, or fine-tuning planning."
+      },
+      {
+        "slug": "modal",
+        "label": "Modal",
+        "reason": "Compare when the workload is closer to serverless execution or batch infrastructure than GPU workstation testing."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is RunPod shown here as a ranked cloud GPU choice?",
+        "answer": "No. The page only explains how the RunPod profile can be used for planning pods, serverless workloads, and related GPU testing questions."
+      },
+      {
+        "question": "What should I verify first on RunPod?",
+        "answer": "Verify the current GPU options, pod or serverless billing details, storage behavior, workload limits, and any referral terms directly on official RunPod pages."
+      },
+      {
+        "question": "When is RunPod different from Vast.ai in this site?",
+        "answer": "RunPod is framed as a platform workflow profile with pods and serverless surfaces, while Vast.ai is framed as a marketplace profile where host-level variation needs extra review."
+      }
+    ]
+  },
+  {
+    "slug": "vast-ai",
+    "decisionSummary": "Use this Vast.ai profile when you are evaluating a GPU marketplace path and are comfortable verifying host-level details before treating a cloud test as reliable planning evidence.",
+    "bestFitScenarios": [
+      {
+        "title": "Marketplace capacity research",
+        "description": "Relevant when you want to compare host-backed GPU options but understand that supply, reliability signals, and rates are dynamic."
+      },
+      {
+        "title": "Container-based experiment",
+        "description": "Useful when the workflow can be packaged into a container-style environment and you can verify setup details before running."
+      },
+      {
+        "title": "Flexible local LLM or image test",
+        "description": "A planning option when the goal is short validation, not a claim that a specific host or GPU will be available later."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Host variation matters",
+        "description": "Marketplace hosts can differ, so reliability, storage, networking, and setup details should be checked before depending on a run."
+      },
+      {
+        "title": "No static price claim",
+        "description": "The production record does not store marketplace rates because they can change quickly."
+      },
+      {
+        "title": "Do not treat listings as recommendations",
+        "description": "This page does not rank hosts or identify a best Vast.ai listing."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "Official Vast.ai documentation is attached for pricing and instance overview context.",
+      "The provider record supports marketplace and container-based instance planning language.",
+      "Host supply, marketplace rates, reliability scores, availability, commission, and affiliate URL remain excluded."
+    ],
+    "unresolvedQuestions": [
+      "Which host and GPU option is available when you check the marketplace?",
+      "Does the host environment match your container, storage, and data movement needs?",
+      "Are marketplace reliability signals acceptable for the workload you plan to test?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "runpod",
+        "label": "RunPod",
+        "reason": "Compare when you prefer a platform-led pod or serverless workflow instead of marketplace host selection."
+      },
+      {
+        "slug": "paperspace",
+        "label": "Paperspace",
+        "reason": "Compare when notebook or legacy GPU workflow context matters more than marketplace flexibility."
+      },
+      {
+        "slug": "replicate",
+        "label": "Replicate",
+        "reason": "Compare when you may not need to manage a GPU instance and only need hosted model execution."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why does the Vast.ai page emphasize verification?",
+        "answer": "The profile represents a marketplace path, so host supply, rates, reliability signals, and exact instance details are dynamic and must be checked at the source."
+      },
+      {
+        "question": "Is Vast.ai treated like a normal cloud GPU provider here?",
+        "answer": "No. It is treated as a marketplace planning profile, which makes host-level review more important than on a single-provider product page."
+      },
+      {
+        "question": "When should I compare Vast.ai with RunPod?",
+        "answer": "Compare them when you are deciding between marketplace flexibility and a more platform-led pod or serverless workflow."
+      }
+    ]
+  },
+  {
+    "slug": "lambda",
+    "decisionSummary": "Use this Lambda profile when you want an AI cloud compute planning reference for notebooks, fine-tuning-adjacent work, deployment planning, or team/workspace questions that need official verification.",
+    "bestFitScenarios": [
+      {
+        "title": "AI cloud compute planning",
+        "description": "Useful when the workload needs a provider profile oriented around AI cloud infrastructure rather than a general marketplace."
+      },
+      {
+        "title": "Notebook or deployment research",
+        "description": "Relevant when source data points to notebooks, model deployment, or fine-tuning-adjacent planning."
+      },
+      {
+        "title": "Shared account workflow",
+        "description": "Worth checking when team or workspace boundaries may matter before moving from local tests to cloud usage."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Inventory is not stored",
+        "description": "This page does not claim current Lambda GPU inventory or availability."
+      },
+      {
+        "title": "Workspace context is not a fit guarantee",
+        "description": "Workspace source context helps planning, but billing scope and workload constraints still need official confirmation."
+      },
+      {
+        "title": "Referral status is unresolved",
+        "description": "The profile does not include a live affiliate URL or commission claim."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "Official Lambda platform and GPU cloud pricing pages are attached in the source trail.",
+      "A Lambda workspace announcement is attached for shared cloud account planning context.",
+      "Current GPU inventory, exact billing scope, pricing, availability, and referral program details remain excluded."
+    ],
+    "unresolvedQuestions": [
+      "Which current GPU options and regions are available for your workload?",
+      "How do workspace or account settings affect your team workflow?",
+      "What billing scope and service limits apply to the exact workload you plan?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "digitalocean-gpu",
+        "label": "DigitalOcean GPU",
+        "reason": "Compare when droplet-based GPU infrastructure and DigitalOcean ecosystem context matter."
+      },
+      {
+        "slug": "vultr-cloud-gpu",
+        "label": "Vultr Cloud GPU",
+        "reason": "Compare when flexible provisioning and cloud GPU product documentation are the main planning questions."
+      },
+      {
+        "slug": "runpod",
+        "label": "RunPod",
+        "reason": "Compare when pod or serverless GPU workflow testing may be more relevant than conventional AI cloud compute."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What makes the Lambda profile different from the generic Cloud GPU hub?",
+        "answer": "It focuses on Lambda's AI cloud compute planning context, including notebooks, model deployment, fine-tuning-adjacent work, and workspace review."
+      },
+      {
+        "question": "Does this page confirm Lambda GPU availability?",
+        "answer": "No. Availability and inventory are dynamic and must be checked on official Lambda pages before planning a run."
+      },
+      {
+        "question": "When should I compare Lambda with DigitalOcean GPU or Vultr?",
+        "answer": "Compare them when you are deciding between AI cloud compute positioning, droplet-style GPU infrastructure, and flexible cloud GPU provisioning."
+      }
+    ]
+  },
+  {
+    "slug": "paperspace",
+    "decisionSummary": "Use this Paperspace profile when you need transition-aware planning for legacy Paperspace workflows and want to understand how the record relates to DigitalOcean documentation.",
+    "bestFitScenarios": [
+      {
+        "title": "Legacy notebook workflow review",
+        "description": "Relevant when an existing workflow or research path still references Paperspace notebooks or GPU-powered machine learning."
+      },
+      {
+        "title": "DigitalOcean transition check",
+        "description": "Useful when you need to verify how Paperspace documentation and DigitalOcean ownership affect future planning."
+      },
+      {
+        "title": "Historical GPU workflow comparison",
+        "description": "Helpful when comparing older Paperspace planning assumptions against current DigitalOcean GPU products."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Do not assume product continuity",
+        "description": "The page uses transition-aware wording and does not claim every legacy Paperspace product remains unchanged."
+      },
+      {
+        "title": "Check current DigitalOcean pages",
+        "description": "New planning should verify current DigitalOcean AI and GPU product pages before relying on older Paperspace assumptions."
+      },
+      {
+        "title": "No availability or price claim",
+        "description": "Pricing and availability remain excluded from the production record."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "DigitalOcean documentation for Paperspace is attached in the source trail.",
+      "The official transition page confirms Paperspace is now part of DigitalOcean.",
+      "The record supports transition-aware planning, not claims about full product deprecation or continued availability."
+    ],
+    "unresolvedQuestions": [
+      "Which legacy Paperspace workflows still apply to your current account or project?",
+      "Which DigitalOcean GPU or AI product should replace a new Paperspace-style plan?",
+      "What current pricing, availability, and terms apply to your exact use case?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "digitalocean-gpu",
+        "label": "DigitalOcean GPU",
+        "reason": "Compare for current DigitalOcean GPU Droplet and AI planning context."
+      },
+      {
+        "slug": "lambda",
+        "label": "Lambda",
+        "reason": "Compare when a current AI cloud compute profile is more useful than legacy transition context."
+      },
+      {
+        "slug": "vast-ai",
+        "label": "Vast.ai",
+        "reason": "Compare when flexible marketplace GPU testing is more relevant than notebook or transition review."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why is Paperspace described as transition-aware?",
+        "answer": "The source trail includes DigitalOcean documentation and an official page confirming Paperspace is now part of DigitalOcean, so the page avoids treating it like an unchanged standalone provider."
+      },
+      {
+        "question": "Should new users start from Paperspace or DigitalOcean GPU?",
+        "answer": "This page does not choose for the user. It suggests checking current DigitalOcean GPU and AI pages when planning a new workflow."
+      },
+      {
+        "question": "Does this profile claim Paperspace is fully deprecated?",
+        "answer": "No. It only records transition-aware context supported by the attached sources and leaves current product status verification to official pages."
+      }
+    ]
+  },
+  {
+    "slug": "digitalocean-gpu",
+    "decisionSummary": "Use this DigitalOcean GPU profile when you are evaluating GPU Droplets or DigitalOcean AI infrastructure as a current cloud validation path before committing to local hardware.",
+    "bestFitScenarios": [
+      {
+        "title": "GPU Droplet planning",
+        "description": "Relevant when a droplet-based cloud GPU workflow fits your team's existing infrastructure habits."
+      },
+      {
+        "title": "Cloud vs local validation",
+        "description": "Useful when you want to test a workload before deciding whether a local workstation is practical."
+      },
+      {
+        "title": "DigitalOcean ecosystem check",
+        "description": "Worth reviewing when your project already uses DigitalOcean services and GPU planning should fit that environment."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "SKU mix is dynamic",
+        "description": "The profile does not store current GPU SKU mix, region availability, or exact billing scope."
+      },
+      {
+        "title": "Do not confuse it with legacy Paperspace",
+        "description": "This record points to current GPU Droplet planning, while Paperspace is handled as transition-aware context."
+      },
+      {
+        "title": "Price verification remains required",
+        "description": "Hourly model context is tracked, but exact rates are not stored in this static page."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "The official DigitalOcean GPU Droplets product page and documentation are attached.",
+      "The record supports AI/ML workload planning language around GPU Droplets.",
+      "GPU SKU mix, region availability, pricing, and exact billing scope remain dynamic and excluded."
+    ],
+    "unresolvedQuestions": [
+      "Which GPU Droplet options and regions are available when you check?",
+      "Does the droplet setup match your storage, networking, and data handling needs?",
+      "How does current billing scope compare with your expected validation run length?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "vultr-cloud-gpu",
+        "label": "Vultr Cloud GPU",
+        "reason": "Compare when flexible provisioning and cloud GPU documentation are the main decision points."
+      },
+      {
+        "slug": "lambda",
+        "label": "Lambda",
+        "reason": "Compare when AI cloud compute positioning or team/workspace planning matters more than droplet-style infrastructure."
+      },
+      {
+        "slug": "paperspace",
+        "label": "Paperspace",
+        "reason": "Compare only when legacy Paperspace or DigitalOcean transition context is part of your research."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should I verify before using DigitalOcean GPU Droplets?",
+        "answer": "Verify current GPU Droplet options, region availability, pricing, billing scope, storage, networking, and workload constraints on official DigitalOcean pages."
+      },
+      {
+        "question": "How is this page different from the Paperspace profile?",
+        "answer": "This page is focused on current DigitalOcean GPU Droplet planning, while the Paperspace page is transition-aware and centered on legacy Paperspace context."
+      },
+      {
+        "question": "Does this profile recommend DigitalOcean for local AI validation?",
+        "answer": "No. It only explains when the DigitalOcean GPU profile may be useful for planning and what still needs official verification."
+      }
+    ]
+  },
+  {
+    "slug": "vultr-cloud-gpu",
+    "decisionSummary": "Use this Vultr Cloud GPU profile when flexible provisioning and cloud GPU product documentation are the main planning questions for AI, machine learning, or graphics-intensive workloads.",
+    "bestFitScenarios": [
+      {
+        "title": "Flexible cloud GPU provisioning",
+        "description": "Relevant when your first question is whether a cloud GPU product can be provisioned for a temporary validation workflow."
+      },
+      {
+        "title": "AI and machine learning planning",
+        "description": "Useful when official documentation supports broad AI and machine learning context, but exact GPU variants still need checking."
+      },
+      {
+        "title": "Cloud vs local validation",
+        "description": "A planning option when you need to test whether a workload is worth moving toward local hardware."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "GPU variants are not stored",
+        "description": "The profile does not publish current GPU variants, regional supply, capacity, or rates."
+      },
+      {
+        "title": "Do not treat flexible provisioning as workload fit",
+        "description": "Provisioning language helps planning, but actual workload fit still depends on current product details and terms."
+      },
+      {
+        "title": "Referral and commission are excluded",
+        "description": "No affiliate URL, commission, or referral terms are used in the public profile."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "The official Vultr Cloud GPU product page and documentation are attached.",
+      "The provider record supports AI, machine learning, graphics-intensive, and flexible provisioning planning context.",
+      "GPU variants, regional supply, rates, referral terms, commission, affiliate URL, and availability remain excluded."
+    ],
+    "unresolvedQuestions": [
+      "Which GPU variants and regions are available when you check?",
+      "What exact provisioning, billing, and workload terms apply to your usage pattern?",
+      "Does the current product fit your runtime, storage, and data movement requirements?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "digitalocean-gpu",
+        "label": "DigitalOcean GPU",
+        "reason": "Compare when GPU Droplet and DigitalOcean ecosystem context are more important than broad flexible provisioning."
+      },
+      {
+        "slug": "lambda",
+        "label": "Lambda",
+        "reason": "Compare when AI cloud compute positioning or workspace planning is a stronger fit."
+      },
+      {
+        "slug": "runpod",
+        "label": "RunPod",
+        "reason": "Compare when pod or serverless GPU workflow testing is closer to your workload."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What makes Vultr Cloud GPU different from DigitalOcean GPU here?",
+        "answer": "The Vultr page emphasizes flexible cloud GPU provisioning and broad AI or graphics-intensive planning context, while DigitalOcean focuses on GPU Droplet and DigitalOcean ecosystem planning."
+      },
+      {
+        "question": "Does this page confirm Vultr GPU variants or regions?",
+        "answer": "No. GPU variants, regional supply, rates, and availability are dynamic and must be checked on official Vultr pages."
+      },
+      {
+        "question": "When should I use this Vultr profile?",
+        "answer": "Use it as a planning checkpoint when flexible provisioning is part of the question and you still need source verification before workload or cost planning."
+      }
+    ]
+  },
+  {
+    "slug": "modal",
+    "decisionSummary": "Use this Modal profile when the workload looks more like serverless AI infrastructure, batch execution, training/fine-tuning support, sandboxes, or GPU-backed notebooks than a rented workstation session.",
+    "bestFitScenarios": [
+      {
+        "title": "Serverless inference path",
+        "description": "Relevant when the workload may be deployed as code-driven serverless execution rather than a manually managed GPU box."
+      },
+      {
+        "title": "Parallel batch job planning",
+        "description": "Useful when queued jobs and repeatable execution patterns matter more than a single interactive session."
+      },
+      {
+        "title": "GPU-backed development environment",
+        "description": "Worth reviewing when notebooks, sandboxes, or fine-tuning-adjacent workflows are part of the experiment."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Not a simple GPU rental page",
+        "description": "Modal should not be evaluated only like an hourly cloud GPU provider because its source context points to serverless and platform workflows."
+      },
+      {
+        "title": "Inventory and rates are excluded",
+        "description": "GPU inventory, rates, capacity, and availability are not copied into static production data."
+      },
+      {
+        "title": "Workflow fit depends on code path",
+        "description": "The planning question is often whether your workload fits Modal's execution model, not just whether enough VRAM exists."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "Official Modal billing, pricing, and documentation introduction pages are attached.",
+      "The record supports inference, parallel batch jobs, training or fine-tuning, sandboxes, and GPU-backed notebook planning context.",
+      "GPU inventory, rates, capacity, availability, commission, and affiliate URL remain excluded."
+    ],
+    "unresolvedQuestions": [
+      "Does your workload fit Modal's execution and deployment model?",
+      "Which current GPU resources and limits apply to your run?",
+      "How does usage-based billing behave for your expected batch or inference pattern?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "replicate",
+        "label": "Replicate",
+        "reason": "Compare when hosted model prediction or API execution matters more than managing serverless infrastructure code."
+      },
+      {
+        "slug": "runpod",
+        "label": "RunPod",
+        "reason": "Compare when pod or serverless GPU testing may better match a GPU platform workflow."
+      },
+      {
+        "slug": "lambda",
+        "label": "Lambda",
+        "reason": "Compare when conventional AI cloud compute, notebooks, or team workspace planning are stronger requirements."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is Modal treated as a cloud GPU rental provider?",
+        "answer": "No. This page frames Modal as serverless GPU and AI infrastructure planning, where execution model and workflow fit matter as much as GPU availability."
+      },
+      {
+        "question": "When should I compare Modal with Replicate?",
+        "answer": "Compare them when deciding between building a serverless compute workflow and using a hosted model prediction platform."
+      },
+      {
+        "question": "What should I verify before planning a Modal workload?",
+        "answer": "Verify current GPU resource options, usage-based billing, execution limits, deployment flow, and whether your workload fits Modal's programming model."
+      }
+    ]
+  },
+  {
+    "slug": "replicate",
+    "decisionSummary": "Use this Replicate profile when you may not need to rent or manage a GPU instance and instead want hosted model prediction, cloud API execution, fine-tuning, or custom deployment planning.",
+    "bestFitScenarios": [
+      {
+        "title": "Hosted prediction workflow",
+        "description": "Relevant when the user path is running models through an API or hosted prediction interface rather than managing infrastructure."
+      },
+      {
+        "title": "Image or model API planning",
+        "description": "Useful when Stable Diffusion or model deployment work may fit a hosted model execution pattern."
+      },
+      {
+        "title": "Custom deployment question",
+        "description": "Worth checking when the decision is whether to package and deploy a model rather than provision a GPU VM."
+      }
+    ],
+    "watchouts": [
+      {
+        "title": "Not a raw GPU rental substitute",
+        "description": "Replicate should be compared as a hosted model execution platform, not only as cloud GPU capacity."
+      },
+      {
+        "title": "Per-model costs are excluded",
+        "description": "The static profile does not publish per-model costs, hardware rates, availability, or current limits."
+      },
+      {
+        "title": "Model availability must be checked",
+        "description": "Hosted model choices and deployment behavior can change, so check official docs before relying on a workflow."
+      }
+    ],
+    "sourceConfirmedFacts": [
+      "Official Replicate pricing, documentation, and how-it-works pages are attached.",
+      "The record supports hosted model prediction, cloud API model execution, fine-tuning, and custom deployment workflow context.",
+      "Per-model costs, hardware rates, availability, commission, and affiliate URL remain excluded."
+    ],
+    "unresolvedQuestions": [
+      "Which model or deployment path is offered for your workload when you check?",
+      "What current usage pricing, limits, and data handling terms apply?",
+      "Would hosted prediction remove enough infrastructure work compared with renting a GPU?"
+    ],
+    "nearbyAlternatives": [
+      {
+        "slug": "modal",
+        "label": "Modal",
+        "reason": "Compare when you want serverless infrastructure control rather than a hosted prediction workflow."
+      },
+      {
+        "slug": "runpod",
+        "label": "RunPod",
+        "reason": "Compare when you need pod or serverless GPU testing rather than model API execution."
+      },
+      {
+        "slug": "vast-ai",
+        "label": "Vast.ai",
+        "reason": "Compare when marketplace GPU instance control matters more than hosted model execution."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is Replicate a cloud GPU provider in the same sense as RunPod or Vultr?",
+        "answer": "No. This profile treats Replicate as hosted model execution and AI inference planning, not as a raw GPU rental page."
+      },
+      {
+        "question": "When can Replicate be more practical than renting a GPU?",
+        "answer": "It may be more practical when you only need hosted prediction, API execution, fine-tuning, or custom deployment and do not want to manage the GPU environment yourself."
+      },
+      {
+        "question": "What should I verify before using Replicate?",
+        "answer": "Verify current model availability, usage pricing, data handling terms, deployment flow, and workload limits on official Replicate pages."
+      }
+    ]
+  }
+]

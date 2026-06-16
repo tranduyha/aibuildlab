@@ -16,6 +16,12 @@ export type {
   CloudGpuUseCase,
 } from "./cloud-gpu-provider";
 export type {
+  CloudGpuProviderProfile,
+  CloudGpuProviderProfileAlternative,
+  CloudGpuProviderProfileFaq,
+  CloudGpuProviderProfileScenario,
+} from "./cloud-gpu-provider-profile";
+export type {
   AiTool,
   AiToolAffiliateStatus,
   AiToolCategory,

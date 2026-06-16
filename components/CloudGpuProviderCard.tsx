@@ -80,7 +80,7 @@ export default function CloudGpuProviderCard({
 
   return (
     <article className="flex h-full min-w-0 flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h2 className="truncate whitespace-nowrap text-xl font-semibold tracking-normal text-slate-950">
+      <h3 className="truncate whitespace-nowrap text-xl font-semibold tracking-normal text-slate-950">
         {resolvedProfileHref ? (
           <Link className="hover:text-sky-700" href={resolvedProfileHref}>
             {provider.name}
@@ -88,7 +88,7 @@ export default function CloudGpuProviderCard({
         ) : (
           provider.name
         )}
-      </h2>
+      </h3>
       <p className="mt-3 text-sm leading-6 text-slate-700">{provider.shortDescription}</p>
       <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
         {statusText}

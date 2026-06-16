@@ -198,6 +198,31 @@ None.
 ## Latest Check
 
 ```txt
+2026-06-16 Cloud GPU provider profile differentiation:
+/cloud-gpu/[slug] -> refactored from generic repeated planning blocks to provider-specific decision summaries, best-fit scenarios, watchouts, source interpretation, unresolved questions, compare paths, and provider-specific FAQ
+data boundary -> added data/cloud-gpu-provider-profiles.json plus repository/service/type layer; provider editorial is outside page code and data/cloud-gpu-providers.json was left unchanged
+daily update support -> scripts/validate-data.ts now validates cloud-gpu-provider-profiles slugs, required editorial fields, alternative slugs, FAQ shape, and unsafe wording
+claim guardrails -> no price, availability, capacity, commission, affiliate URL, ranking, benchmark, or performance claims added
+duplicate audit -> highest provider-page 5-word-shingle overlap reduced to 0.197, lowest pair 0.111, common all-page 5-shingles 127, duplicate provider FAQ questions 0, repeated same-page sentences 0
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
+2026-06-16 Cloud GPU indexing QA pass:
+live checks -> /cloud-gpu HTTP accessible, robots.txt allows crawling, sitemap includes /cloud-gpu, canonical points to https://vramforge.com/cloud-gpu
+/cloud-gpu -> added decision-route content, workload-fit routing, source coverage snapshot, and ItemList schema to improve standalone hub value
+production note -> live sitemap observed with 2026-06-12 generated timestamp, so redeploy is needed before requesting indexing again
+npm.cmd run data:validate -> skipped, no data files changed
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+static HTML -> title, description, canonical, one H1, new content sections, FAQPage, BreadcrumbList, WebPage, and ItemList confirmed
+sitemap output -> includes /cloud-gpu and all cloud provider profile URLs
+brand/domain hardcode scan in code directories -> no matches
+follow-up duplicate/value audit -> /cloud-gpu 5-word-shingle overlap measured at 0.032 vs cloud-vs-local guide, 0.042 vs cloud-vs-local build page, and about 0.088-0.094 vs provider profiles
+follow-up outline fix -> CloudGpuProviderCard provider names changed from h2 to h3 so the hub outline is easier to scan
+follow-up checks -> npm.cmd run lint passed; npm.cmd run build passed, 57 static pages generated
+
 2026-06-09 GPU source-field cleanup:
 npm run data:validate -> 0 errors, 0 warnings
 npm run lint -> passed

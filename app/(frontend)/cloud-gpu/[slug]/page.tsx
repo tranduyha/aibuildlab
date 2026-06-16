@@ -7,6 +7,7 @@ import CloudGpuProviderFacts from "@/components/CloudGpuProviderFacts";
 import CloudGpuProviderNotice from "@/components/CloudGpuProviderNotice";
 import { buildCanonicalUrl, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { cloudGpuProviderRepository } from "@/repositories/cloud-gpu-provider.repository";
+import { cloudGpuProviderProfileService } from "@/services/cloud-gpu-provider-profile.service";
 import { cloudGpuProviderService } from "@/services/cloud-gpu-provider.service";
 import type {
   CloudGpuDataConfidence,
@@ -75,55 +76,6 @@ const statusLabels: Record<CloudGpuProviderStatus, string> = {
   reviewed: "Reviewed",
 };
 
-const canTellItems = [
-  "Source-backed provider type",
-  "Broad planning use cases from the provider record",
-  "Pricing model category when sourced",
-  "Official source links and accessed dates",
-] as const;
-
-const cannotTellItems = [
-  "Current GPU capacity or inventory",
-  "Exact current cost for a workload",
-  "Expected workload performance",
-  "Whether this provider is the right fit for your situation",
-] as const;
-
-const profileUseSteps = [
-  "Check whether the provider type matches your workflow.",
-  "Compare the listed use cases with your workload.",
-  "Estimate VRAM before cost planning.",
-  "Verify pricing, capacity, and terms on official sources.",
-] as const;
-
-const faqItems = [
-  {
-    question: "Does this profile choose a provider?",
-    answer:
-      "No. This profile is a planning reference based on the current provider record and its listed sources. It does not rank providers or tell you which provider to choose.",
-  },
-  {
-    question: "Does this page include current prices?",
-    answer:
-      "No. Exact current costs are not stored here unless a future record includes source-backed, timestamped pricing notes. Use the official provider pricing page before cost planning.",
-  },
-  {
-    question: "What should I verify before using this provider?",
-    answer:
-      "Verify official pricing pages, terms, billing scope, data handling needs, workload constraints, and whether the provider still supports the type of work you plan to run.",
-  },
-  {
-    question: "When should I test cloud before buying local hardware?",
-    answer:
-      "Testing can help when VRAM needs, runtime behavior, project duration, or setup effort are uncertain. Start with a VRAM estimate, then use cloud testing only as evidence for your own planning workflow.",
-  },
-  {
-    question: "What source data does this profile use?",
-    answer:
-      "This profile uses the source entries listed on the page, including each source name, URL, type, field mapping, and accessed date. Treat those sources as the audit trail for what the profile can safely show.",
-  },
-] as const;
-
 export async function generateStaticParams() {
   return cloudGpuProviderRepository
     .getCloudGpuProviderSlugs()
@@ -163,6 +115,7 @@ export default async function CloudGpuProviderDetailPage({
   }
 
   const { provider, dataConfidence } = detail;
+  const profile = cloudGpuProviderProfileService.getCloudGpuProviderProfile(provider);
   const siteSettings = getSiteSettings();
   const pagePath = `/cloud-gpu/${provider.slug}`;
   const pageUrl = buildCanonicalUrl(pagePath);
@@ -207,7 +160,7 @@ export default async function CloudGpuProviderDetailPage({
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: faqItems.map((item) => ({
+      mainEntity: profile.faq.map((item) => ({
         "@type": "Question",
         name: item.question,
         acceptedAnswer: {
@@ -271,20 +224,14 @@ export default async function CloudGpuProviderDetailPage({
           </div>
         </header>
 
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-use-heading">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-decision-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            How to use this profile
+            Decision summary
           </p>
-          <h2 id="profile-use-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
-            Use it as a planning checkpoint
+          <h2 id="provider-decision-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            When this profile is useful
           </h2>
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {profileUseSteps.map((step) => (
-              <div key={step} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-700">
-                {step}
-              </div>
-            ))}
-          </div>
+          <p className="mt-3 max-w-4xl text-sm leading-6 text-slate-700">{profile.decisionSummary}</p>
         </section>
 
         <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="planning-fit-heading">
@@ -292,7 +239,49 @@ export default async function CloudGpuProviderDetailPage({
             Planning fit
           </p>
           <h2 id="planning-fit-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            Best-fit planning scenarios
+          </h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {profile.bestFitScenarios.map((scenario) => (
+              <article key={scenario.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <h3 className="text-base font-semibold tracking-normal text-slate-950">
+                  {scenario.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-700">
+                  {scenario.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-watchouts-heading">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            Watchouts
+          </p>
+          <h2 id="provider-watchouts-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            Verify these points before relying on the profile
+          </h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {profile.watchouts.map((watchout) => (
+              <article key={watchout.title} className="rounded-2xl border border-amber-200 bg-amber-50 p-4">
+                <h3 className="text-base font-semibold tracking-normal text-amber-950">
+                  {watchout.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-amber-950">
+                  {watchout.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="listed-use-cases-heading">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
             Listed use cases
+          </p>
+          <h2 id="listed-use-cases-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            Workload labels in the provider record
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {provider.useCases.map((useCase) => (
@@ -311,18 +300,18 @@ export default async function CloudGpuProviderDetailPage({
         <CloudGpuProviderFacts provider={provider} showPlanningNotices={false} />
         <CloudGpuProviderNotice provider={provider} />
 
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="profile-scope-heading">
+        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="source-confirmed-heading">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Profile scope
+            Source interpretation
           </p>
-          <h2 id="profile-scope-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
-            What this profile can and cannot tell you
+          <h2 id="source-confirmed-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+            What the attached sources currently support
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
-              <h3 className="text-base font-semibold tracking-normal text-emerald-950">Can tell you</h3>
+              <h3 className="text-base font-semibold tracking-normal text-emerald-950">Source-confirmed planning context</h3>
               <ul className="mt-3 space-y-2 text-sm leading-6 text-emerald-950">
-                {canTellItems.map((item) => (
+                {profile.sourceConfirmedFacts.map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" aria-hidden="true" />
                     <span>{item}</span>
@@ -331,9 +320,9 @@ export default async function CloudGpuProviderDetailPage({
               </ul>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <h3 className="text-base font-semibold tracking-normal text-slate-950">Cannot tell you</h3>
+              <h3 className="text-base font-semibold tracking-normal text-slate-950">Still unresolved</h3>
               <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
-                {cannotTellItems.map((item) => (
+                {profile.unresolvedQuestions.map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-400" aria-hidden="true" />
                     <span>{item}</span>
@@ -343,6 +332,29 @@ export default async function CloudGpuProviderDetailPage({
             </div>
           </div>
         </section>
+
+        {profile.nearbyAlternatives.length > 0 ? (
+          <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" aria-labelledby="provider-compare-heading">
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              Compare path
+            </p>
+            <h2 id="provider-compare-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
+              Nearby provider profiles to compare
+            </h2>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {profile.nearbyAlternatives.map((alternative) => (
+                <article key={alternative.slug} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <h3 className="text-base font-semibold tracking-normal text-slate-950">
+                    <Link className="text-sky-700 underline-offset-4 hover:underline" href={`/cloud-gpu/${alternative.slug}`}>
+                      {alternative.label}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">{alternative.reason}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <AffiliateCta
           affiliate={provider.affiliate}
@@ -406,10 +418,10 @@ export default async function CloudGpuProviderDetailPage({
             FAQ
           </p>
           <h2 id="provider-faq-heading" className="mt-2 text-2xl font-semibold tracking-normal text-slate-950">
-            Provider planning questions
+            {provider.name} planning questions
           </h2>
           <div className="mt-5 grid gap-4">
-            {faqItems.map((item) => (
+            {profile.faq.map((item) => (
               <article key={item.question} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <h3 className="text-base font-semibold tracking-normal text-slate-950">{item.question}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-700">{item.answer}</p>
