@@ -4553,6 +4553,63 @@ body {
   text-align: right;
 }
 
+.comparison-fast-answer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 24px;
+  margin: 32px 0;
+  border: 1px solid rgba(16, 24, 40, 0.1);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(22, 163, 74, 0.1), rgba(14, 165, 233, 0.08)),
+    var(--surface);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.comparison-fast-answer h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+}
+
+.comparison-fast-answer p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.comparison-fast-answer-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.comparison-fast-answer-grid article {
+  border: 1px solid rgba(16, 24, 40, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 18px;
+}
+
+.comparison-fast-answer-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.comparison-fast-answer-grid h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.comparison-fast-answer-grid p {
+  font-size: 0.95rem;
+}
+
 .compare-workflow-grid,
 .comparison-summary-grid,
 .comparison-source-grid {
@@ -4592,6 +4649,24 @@ body {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.58;
+}
+
+.source-link-list {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.source-link-list a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.source-link-list a:hover {
+  text-decoration: underline;
 }
 
 .guide-card-grid,
@@ -4871,6 +4946,13 @@ body {
   color: var(--primary);
   font-size: 14px;
   font-weight: 700;
+}
+
+.guide-source-inline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 4px;
 }
 
 .guide-card:hover {
@@ -5275,6 +5357,7 @@ body {
   .guide-cta-grid,
   .decision-matrix-grid,
   .guide-planned-grid,
+  .comparison-fast-answer,
   .comparison-summary-grid,
   .comparison-source-grid,
   .comparison-hero-cards,
@@ -5293,6 +5376,10 @@ body {
 
   .comparison-hero-cards {
     gap: 14px;
+  }
+
+  .comparison-fast-answer {
+    padding: 22px;
   }
 
   .comparison-cta-actions {

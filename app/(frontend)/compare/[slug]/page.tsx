@@ -163,6 +163,26 @@ export default async function CompareDetailPage({ params }: CompareDetailPagePro
 
           <ComparisonHeroVisual gpus={gpus} />
 
+          <section className="comparison-fast-answer" aria-labelledby="comparison-fast-answer-heading">
+            <div>
+              <p className="eyebrow">FAST ANSWER</p>
+              <h2 id="comparison-fast-answer-heading">Start with the decision that actually changes your workflow</h2>
+              <p>{profile.decisionSummary}</p>
+            </div>
+            <div className="comparison-fast-answer-grid">
+              <article>
+                <span>Use the page for</span>
+                <h3>{profile.bestFitQuestions[0]?.title ?? "Workflow fit"}</h3>
+                <p>{profile.bestFitQuestions[0]?.description ?? "Validate the workload before treating the table as enough."}</p>
+              </article>
+              <article>
+                <span>Main risk</span>
+                <h3>{profile.watchouts[0]?.title ?? "Validation gap"}</h3>
+                <p>{profile.watchouts[0]?.description ?? "Specs alone do not settle runtime, benchmark, or exact-card questions."}</p>
+              </article>
+            </div>
+          </section>
+
           <section className="tool-section">
             <h2>Why this comparison matters</h2>
             <p className="related-note">{profile.decisionSummary}</p>

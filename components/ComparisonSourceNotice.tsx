@@ -43,6 +43,7 @@ export default function ComparisonSourceNotice({
         {gpus.map((gpu) => {
           const sourceTypes = Array.from(new Set(gpu.sources.map((source) => source.type)));
           const hasVariantSpecific = gpu.sources.some((source) => source.scope === "variant-specific");
+          const visibleSources = gpu.sources.slice(0, 3);
 
           return (
             <div key={gpu.slug}>
@@ -50,6 +51,17 @@ export default function ComparisonSourceNotice({
               <p>Confidence: {gpu.dataConfidence}</p>
               <p>Source types: {sourceTypes.length > 0 ? sourceTypes.join(", ") : "none attached"}</p>
               {hasVariantSpecific ? <p>Includes manufacturer / variant-specific fields.</p> : null}
+              {visibleSources.length > 0 ? (
+                <ul className="source-link-list">
+                  {visibleSources.map((source) => (
+                    <li key={`${gpu.slug}-${source.name}-${source.url}`}>
+                      <a href={source.url} target="_blank" rel="noopener noreferrer">
+                        {source.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           );
         })}

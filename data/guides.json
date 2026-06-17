@@ -87,9 +87,51 @@
         "type": "manual-check",
         "fields": ["notes"],
         "accessedAt": "2026-06-03"
+      },
+      {
+        "name": "AWS EC2 Capacity Blocks for ML documentation",
+        "url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Azure Machine Learning pricing",
+        "url": "https://azure.microsoft.com/en-us/pricing/details/machine-learning/",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Google Cloud ML performance and cost optimization best practices",
+        "url": "https://cloud.google.com/blog/products/ai-machine-learning/machine-learning-performance-and-cost-optimization-best-practices",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Google Cloud Run GPU documentation",
+        "url": "https://docs.cloud.google.com/run/docs/configuring/services/gpu",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "RunPod Serverless overview",
+        "url": "https://docs.runpod.io/serverless/overview",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "NVIDIA Certified Systems configuration guide",
+        "url": "https://docs.nvidia.com/certification-programs/latest/nvidia-certified-configuration-guide.html",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
       }
     ],
-    "lastVerifiedAt": "2026-06-03",
+    "lastVerifiedAt": "2026-06-17",
     "notes": "Planning guide only. Avoid provider ranking, exact pricing, availability claims, affiliate links, and buying advice."
   },
   {
@@ -126,9 +168,58 @@
         "type": "manual-check",
         "fields": ["relatedToolPaths"],
         "accessedAt": "2026-06-04"
+      },
+      {
+        "name": "OpenAI API data controls",
+        "url": "https://developers.openai.com/api/docs/guides/your-data",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "OpenAI enterprise privacy",
+        "url": "https://openai.com/enterprise-privacy/",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Anthropic commercial customer privacy",
+        "url": "https://privacy.claude.com/en/collections/10663361-commercial-customers",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "GitHub Copilot Trust Center FAQ",
+        "url": "https://copilot.github.trust.page/faq",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "NIST AI Risk Management Framework",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Google Cloud Privacy Resource Center",
+        "url": "https://cloud.google.com/privacy",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Microsoft Responsible AI",
+        "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
       }
     ],
-    "lastVerifiedAt": "2026-06-04",
+    "lastVerifiedAt": "2026-06-17",
     "notes": "Planning guide only. Avoid AI tool scoring, price claims, availability claims, monetized outbound links, payout claims, commerce structured data, tool-evaluation structured data, and buying advice."
   },
   {
@@ -164,6 +255,34 @@
         "type": "documentation",
         "fields": ["notes"],
         "accessedAt": "2026-06-09"
+      },
+      {
+        "name": "Hugging Face Diffusers memory optimization guide",
+        "url": "https://huggingface.co/docs/diffusers/optimization/memory",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Hugging Face Diffusers SDXL guide",
+        "url": "https://huggingface.co/docs/diffusers/using-diffusers/sdxl",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Hugging Face Diffusers Stable Diffusion 3 pipeline guide",
+        "url": "https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_3",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
+      },
+      {
+        "name": "Hugging Face Diffusers Flux pipeline guide",
+        "url": "https://huggingface.co/docs/diffusers/api/pipelines/flux",
+        "type": "documentation",
+        "fields": ["notes"],
+        "accessedAt": "2026-06-17"
       },
       {
         "name": "GIGAGPU Stable Diffusion 3.5 Large self-hosted guide",

@@ -1,43 +1,12 @@
 import Link from "next/link";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
+import { imageGenerationValidationService } from "@/services/image-generation-validation.service";
+import type { ImageGenerationValidationComparison } from "@/types";
 
 const PAGE_TITLE = "Image Generation VRAM Planning for SDXL, SD3.5, and FLUX";
 const PAGE_DESCRIPTION =
   "Plan GPU VRAM for SDXL, Stable Diffusion 3.5 Large, and FLUX image-generation workflows with calculator steps, validation samples, and cautious testing tiers.";
 const PAGE_PATH = "/guides/image-generation-vram-planning";
-
-const validationSamples = [
-  {
-    model: "SDXL Base 1.0",
-    runtime: "Diffusers",
-    precision: "FP16",
-    estimate: "14.4 GB",
-    observed: "10.47 GB",
-    source: "Official Diffusers documentation",
-    href: "https://huggingface.co/docs/diffusers/using-diffusers/loading",
-    note: "Strongest current sample because the runtime docs print a max memory reserved value.",
-  },
-  {
-    model: "Stable Diffusion 3.5 Large",
-    runtime: "Diffusers",
-    precision: "BF16",
-    estimate: "19.2 GB",
-    observed: "~20 GB",
-    source: "Third-party self-hosting guide",
-    href: "https://gigagpu.com/stable-diffusion-3-5-large-self-hosted/",
-    note: "Approximate sample; useful for planning but weaker than a framework memory counter.",
-  },
-  {
-    model: "FLUX.1 dev",
-    runtime: "Diffusers",
-    precision: "FP16",
-    estimate: "24.0 GB",
-    observed: "22 GB",
-    source: "Third-party benchmark",
-    href: "https://gigagpu.com/rtx-4090-24gb-flux-dev-benchmark/",
-    note: "Benchmark sample with setup notes; treat as setup-specific evidence.",
-  },
-] as const;
 
 const workflowFactors = [
   "Model family changes the baseline memory target.",
@@ -46,6 +15,41 @@ const workflowFactors = [
   "LoRA, ControlNet, refiner, and VAE choices can add overhead.",
   "Runtime choices such as Diffusers and ComfyUI can behave differently.",
   "Offload and attention implementations can shift peak VRAM.",
+] as const;
+
+const fastTierRoutes = [
+  {
+    tier: "8 GB",
+    answer: "Treat as a constraint-solving tier.",
+    useWhen: "Use only for conservative SDXL-class tests, lower resolutions, or workflows where offload is acceptable.",
+    nextStep: "Start in the calculator, lower resolution or batch first, then validate before comparing GPUs.",
+    href: "/gpu",
+    cta: "Review low-VRAM GPU profiles",
+  },
+  {
+    tier: "12 GB",
+    answer: "A practical SDXL testing tier, not a universal comfort zone.",
+    useWhen: "Use when SDXL is the main target and ControlNet, refiner, LoRA stacks, or larger models are not assumed by default.",
+    nextStep: "Compare the estimate against the SDXL validation sample and test exact runtime settings.",
+    href: "/guides/12gb-vs-16gb-vram-local-ai",
+    cta: "Compare 12GB and 16GB planning",
+  },
+  {
+    tier: "16 GB",
+    answer: "The stronger local image-generation middle tier.",
+    useWhen: "Use when SDXL needs more headroom or when a larger workflow might be optimized enough to test locally.",
+    nextStep: "Check whether the workflow is capacity-bound or runtime-bound before moving to 24 GB.",
+    href: "/builds/local-ai-16gb-vram-build",
+    cta: "Open 16GB build planning",
+  },
+  {
+    tier: "24 GB+",
+    answer: "The current test-first tier for SD3.5 Large and FLUX-style workflows.",
+    useWhen: "Use when the model family, resolution, or pipeline components push beyond the SDXL comfort zone.",
+    nextStep: "Validate in cloud or on known hardware if setup risk is high.",
+    href: "/compare/rtx-4080-super-vs-rtx-4090-for-stable-diffusion",
+    cta: "Compare 16GB vs 24GB image paths",
+  },
 ] as const;
 
 const planningTiers = [
@@ -64,6 +68,25 @@ const planningTiers = [
   {
     tier: "24 GB+",
     use: "The current planning target for heavier SD3.5 Large or FLUX-style workflows.",
+  },
+] as const;
+
+const oomTriageSteps = [
+  {
+    title: "Lower the image workload first",
+    detail: "Reduce resolution, batch size, or multi-stage processing before assuming the GPU tier is wrong.",
+  },
+  {
+    title: "Remove optional pipeline pressure",
+    detail: "Temporarily disable LoRA stacks, ControlNet-style additions, refiner passes, or alternate VAE choices.",
+  },
+  {
+    title: "Use runtime memory options",
+    detail: "Diffusers documents model offload and memory optimization paths; use them as tests, not as universal guarantees.",
+  },
+  {
+    title: "Retest the exact workflow",
+    detail: "Record model, runtime, precision, resolution, batch, extensions, driver, and observed peak memory before changing hardware.",
   },
 ] as const;
 
@@ -87,6 +110,61 @@ const calculatorSteps = [
     label: "Evidence",
     value: "Compare estimate with observed samples",
     detail: "Observed samples are setup-specific sanity checks, not guarantees.",
+  },
+] as const;
+
+const sourceBackedDecisionInsights = [
+  {
+    title: "Treat VRAM as a test target, not a fixed requirement",
+    decision:
+      "Use the calculator to choose a tier, then validate the exact model, runtime, precision, resolution, and pipeline options.",
+    detail:
+      "Diffusers documents that memory behavior changes with model architecture and optimization choices. For planning, that means one observed sample can anchor a similar setup, but it should not become a universal SDXL, SD3.5, or FLUX requirement.",
+    sources: [
+      {
+        label: "Diffusers memory optimization",
+        href: "https://huggingface.co/docs/diffusers/optimization/memory",
+      },
+    ],
+  },
+  {
+    title: "SDXL belongs in a validation-first local tier",
+    decision:
+      "Start SDXL planning around 12GB to 16GB, then test the exact VAE, LoRA, ControlNet, refiner, and runtime settings.",
+    detail:
+      "Diffusers treats SDXL as a large model that may need memory optimization on local hardware. That supports using 12GB/16GB as planning tiers, but the comfort level depends on the workflow around the base model.",
+    sources: [
+      {
+        label: "Diffusers SDXL guide",
+        href: "https://huggingface.co/docs/diffusers/using-diffusers/sdxl",
+      },
+    ],
+  },
+  {
+    title: "SD3-style workflows need an offload and latency decision",
+    decision:
+      "Before treating 24GB as mandatory or sufficient, decide whether offload is acceptable for the workflow.",
+    detail:
+      "Diffusers documents model offloading for Stable Diffusion 3 pipelines. Offload can reduce GPU memory pressure, but it changes the practical workflow because latency and system RAM/storage behavior become part of the decision.",
+    sources: [
+      {
+        label: "Diffusers Stable Diffusion 3 guide",
+        href: "https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_3",
+      },
+    ],
+  },
+  {
+    title: "FLUX planning should separate loading from optimized inference",
+    decision:
+      "Use 24GB+ as a test-first tier, then verify whether the intended runtime loads everything on GPU or uses optimization/offload paths.",
+    detail:
+      "Diffusers documents Flux as a large pipeline where loading all components can require far more memory than optimized inference paths. For users, the key question is not only GPU capacity; it is how the chosen runtime stages model components.",
+    sources: [
+      {
+        label: "Diffusers Flux guide",
+        href: "https://huggingface.co/docs/diffusers/api/pipelines/flux",
+      },
+    ],
   },
 ] as const;
 
@@ -136,6 +214,61 @@ const relatedLinks = [
   { label: "Cloud GPU vs local GPU", href: "/guides/cloud-gpu-vs-local-gpu" },
 ] as const;
 
+const relatedGpuRoutes = [
+  {
+    label: "RTX 3060 12GB profile",
+    href: "/gpu/rtx-3060-12gb",
+    reason: "Use as a lower-bound SDXL planning reference, not as a guaranteed fit.",
+  },
+  {
+    label: "RTX 4060 Ti 16GB profile",
+    href: "/gpu/rtx-4060-ti-16gb",
+    reason: "Use when the main question is whether 16 GB changes the image workflow margin.",
+  },
+  {
+    label: "RTX 4090 profile",
+    href: "/gpu/rtx-4090",
+    reason: "Use as a 24 GB local image-generation validation reference.",
+  },
+] as const;
+
+function getModelLabel(modelSlug: string): string {
+  if (modelSlug === "sdxl-base-1-0") return "SDXL Base 1.0";
+  if (modelSlug === "stable-diffusion-3-5-large") return "Stable Diffusion 3.5 Large";
+  if (modelSlug === "flux-1-dev") return "FLUX.1 dev";
+  return modelSlug.replaceAll("-", " ");
+}
+
+function formatRuntime(value: string): string {
+  if (value === "diffusers") return "Diffusers";
+  if (value === "comfyui") return "ComfyUI";
+  return value;
+}
+
+function formatPrecision(value: string): string {
+  return value.toUpperCase();
+}
+
+function formatObserved(sample: ImageGenerationValidationComparison): string {
+  return sample.observedPeakVramGb === null ? "Needs verification" : `${sample.observedPeakVramGb} GB`;
+}
+
+function getSampleNote(sample: ImageGenerationValidationComparison): string {
+  if (sample.sample.modelSlug === "sdxl-base-1-0") {
+    return "Strongest current sample because the runtime docs print a max memory reserved value.";
+  }
+
+  if (sample.sample.modelSlug === "stable-diffusion-3-5-large") {
+    return "Approximate third-party sample; useful for planning but weaker than a framework memory counter.";
+  }
+
+  if (sample.sample.modelSlug === "flux-1-dev") {
+    return "Benchmark sample with setup notes; treat as setup-specific evidence.";
+  }
+
+  return sample.sample.notes;
+}
+
 export const metadata = buildMetadata({
   title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
@@ -146,6 +279,7 @@ export const metadata = buildMetadata({
 export default function ImageGenerationVramPlanningGuidePage() {
   const settings = getSiteSettings();
   const pageUrl = buildCanonicalPath(PAGE_PATH);
+  const validationSamples = imageGenerationValidationService.compareAllSamples();
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -216,6 +350,30 @@ export default function ImageGenerationVramPlanningGuidePage() {
             guaranteed hardware support. Observed samples are setup-specific.
           </p>
 
+          <section className="tool-section guide-primary-section">
+            <h2>Fast answer by VRAM tier</h2>
+            <p className="related-note">
+              Start with the tier that matches your estimate, then validate the exact image pipeline before treating a
+              local GPU path as comfortable.
+            </p>
+            <div className="guide-card-grid">
+              {fastTierRoutes.map((route) => (
+                <div className="guide-card guide-card-featured" key={route.tier}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">VRAM tier</span>
+                    <span className="guide-card-topic">{route.tier}</span>
+                  </div>
+                  <strong>{route.answer}</strong>
+                  <span>{route.useWhen}</span>
+                  <p className="related-note">{route.nextStep}</p>
+                  <Link className="guide-card-action" href={route.href}>
+                    {route.cta} &rarr;
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="tool-section">
             <h2>How to use the calculator with this guide</h2>
             <p className="guide-section-lead">
@@ -263,19 +421,21 @@ export default function ImageGenerationVramPlanningGuidePage() {
             </p>
             <div className="guide-card-grid">
               {validationSamples.map((sample) => (
-                <div className="guide-card guide-card-featured" key={sample.model}>
+                <div className="guide-card guide-card-featured" key={sample.sample.id}>
                   <div className="guide-card-meta">
-                    <span className="guide-card-label">{sample.runtime}</span>
-                    <span className="guide-card-topic">{sample.precision}</span>
+                    <span className="guide-card-label">{formatRuntime(sample.sample.runtime)}</span>
+                    <span className="guide-card-topic">{formatPrecision(sample.sample.precision)}</span>
                   </div>
-                  <strong>{sample.model}</strong>
+                  <strong>{getModelLabel(sample.sample.modelSlug)}</strong>
                   <span>
-                    Estimate {sample.estimate}; observed {sample.observed}.
+                    Estimate {sample.currentEstimateGb.toFixed(1)} GB; observed {formatObserved(sample)}.
                   </span>
-                  <Link href={sample.href} rel="noreferrer" target="_blank">
-                    {sample.source}
-                  </Link>
-                  <p className="related-note">{sample.note}</p>
+                  {sample.sample.source ? (
+                    <Link className="guide-card-action" href={sample.sample.source.url} rel="noreferrer" target="_blank">
+                      {sample.sample.source.name} &rarr;
+                    </Link>
+                  ) : null}
+                  <p className="related-note">{getSampleNote(sample)}</p>
                 </div>
               ))}
             </div>
@@ -319,6 +479,24 @@ export default function ImageGenerationVramPlanningGuidePage() {
           </section>
 
           <section className="tool-section">
+            <h2>Before changing GPU, debug the workflow</h2>
+            <p className="guide-section-lead">
+              A memory error can come from settings, graph shape, model family, runtime behavior, or hardware limits.
+              Work through these checks before turning the page into a hardware decision.
+            </p>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {oomTriageSteps.map((step) => (
+                <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5" key={step.title}>
+                  <h3 className="text-[17px] leading-snug font-semibold tracking-normal text-[var(--foreground)]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-7 text-[var(--muted)]">{step.detail}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tool-section">
             <h2>Planning tiers for image generation</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {planningTiers.map((tier) => (
@@ -326,6 +504,53 @@ export default function ImageGenerationVramPlanningGuidePage() {
                   <span className="font-mono text-xs font-extrabold text-[var(--primary)]">{tier.tier}</span>
                   <p className="mt-3 text-[15px] leading-7 text-[var(--muted)]">{tier.use}</p>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tool-section guide-primary-section">
+            <h2>Rules that change the VRAM tier choice</h2>
+            <p className="related-note">
+              Use these rules to decide whether to lower workflow settings, test offload, move up a VRAM tier, or
+              validate in cloud before choosing a GPU.
+            </p>
+            <div className="guide-card-grid">
+              {sourceBackedDecisionInsights.map((item) => (
+                <div className="guide-card guide-card-featured" key={item.title}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">VRAM planning rule</span>
+                    <span className="guide-card-topic">Runtime evidence</span>
+                  </div>
+                  <strong>{item.title}</strong>
+                  <span>{item.decision}</span>
+                  <p className="related-note">{item.detail}</p>
+                  <div className="guide-source-inline-links" aria-label={`Sources for ${item.title}`}>
+                    {item.sources.map((source) => (
+                      <Link className="guide-card-action" href={source.href} key={source.href} rel="noreferrer" target="_blank">
+                        {source.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tool-section guide-primary-section">
+            <h2>GPU profiles to inspect after the estimate</h2>
+            <p className="related-note">
+              Use these profiles as planning references for different image-generation tiers. They are not rankings.
+            </p>
+            <div className="guide-card-grid">
+              {relatedGpuRoutes.map((gpu) => (
+                <Link className="guide-card guide-card-featured" href={gpu.href} key={gpu.href}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">GPU profile</span>
+                    <span className="guide-card-topic">Next check</span>
+                  </div>
+                  <strong>{gpu.label}</strong>
+                  <span>{gpu.reason}</span>
+                </Link>
               ))}
             </div>
           </section>

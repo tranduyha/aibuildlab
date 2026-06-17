@@ -262,58 +262,58 @@
   },
   {
     "slug": "rx-7900-xtx-vs-rtx-4090-for-ai",
-    "decisionSummary": "Use this comparison when the user is not only comparing 24 GB cards, but also deciding how much CUDA, ROCm, framework support, and cross-vendor runtime risk matter.",
+    "decisionSummary": "Use this comparison when the real decision is not 24 GB versus 24 GB, but whether your AI workflow is CUDA-first, whether ROCm support is mature enough for your stack, and how much setup risk you can tolerate before committing to local hardware.",
     "whyThisPairMatters": [
       {
         "title": "Cross-vendor runtime decision",
-        "description": "The useful question is not just VRAM capacity; it is whether the intended AI stack behaves well on the chosen vendor path."
+        "description": "The useful first answer is that a CUDA-first workflow should be validated on an NVIDIA path, while an AMD path needs explicit ROCm or alternative-runtime testing before specs are treated as enough."
       },
       {
         "title": "24 GB capacity with different ecosystems",
-        "description": "Both profiles can sit in a high-VRAM shortlist, but runtime support and driver expectations can be very different."
+        "description": "Both profiles sit in the 24 GB planning tier, so capacity is not the differentiator; software support, driver path, operating system, and framework compatibility are the real split."
       },
       {
         "title": "Local AI compatibility checkpoint",
-        "description": "This page helps users pause before assuming that memory size alone makes two cards interchangeable."
+        "description": "This page is most useful before a user copies an NVIDIA-oriented local AI setup guide and assumes the same commands, packages, and troubleshooting path will apply to RX 7900 XTX."
       }
     ],
     "bestFitQuestions": [
       {
         "title": "Does your runtime require CUDA?",
-        "description": "Many local AI workflows are easier to validate on CUDA-first stacks, so users should check exact software support before considering a non-CUDA card."
+        "description": "If the intended model runner, image tool, extension, or install guide assumes CUDA, treat RTX 4090 as the lower-friction validation path until the exact AMD runtime path is confirmed."
       },
       {
         "title": "Are you prepared to test ROCm or alternative paths?",
-        "description": "A cross-vendor plan should include setup time, compatibility checks, and fallback routes."
+        "description": "If you are comfortable testing ROCm, Linux support notes, framework versions, and fallback runtimes, RX 7900 XTX can remain in the shortlist as a validation project rather than a spec-only substitute."
       },
       {
         "title": "Is memory capacity the real bottleneck?",
-        "description": "If both cards have enough VRAM, practical fit may depend more on framework support, drivers, and measured workflow behavior."
+        "description": "If both cards have enough VRAM for the planned model, practical fit may depend more on framework support, driver maturity, install path, and measured workflow behavior than on another memory number."
       }
     ],
     "watchouts": [
       {
         "title": "Do not treat 24 GB as equivalent",
-        "description": "Equal capacity does not mean equal runtime support, setup effort, or workflow reliability."
+        "description": "Equal capacity does not mean equal runtime support, setup effort, documentation coverage, or recovery options when a package fails to install."
       },
       {
         "title": "No performance ranking is included",
-        "description": "The page avoids speed conclusions because comparison-specific benchmarks are not attached."
+        "description": "The page avoids speed conclusions because comparison-specific benchmark sources are not attached for the exact workflows a reader might run."
       },
       {
         "title": "Compatibility can decide the outcome",
-        "description": "For some AI workflows, the software stack may matter more than the raw source-backed hardware fields shown in the table."
+        "description": "For local LLM runners, image-generation tools, and AI coding stacks, the supported software path can decide the outcome before raw source-backed hardware fields matter."
       }
     ],
     "sourceBackedDifferences": [
       "The linked profiles expose a same-capacity 24 GB comparison across AMD and NVIDIA.",
-      "The source-backed hardware fields do not remove the need for runtime and framework checks.",
-      "No comparison-level benchmark source is attached, so performance and compatibility conclusions remain unresolved."
+      "The source-backed hardware fields can compare memory and power planning inputs, but they do not prove that a CUDA-first workflow has an equivalent AMD runtime path.",
+      "No comparison-level benchmark source is attached, so speed, compatibility, and workflow-comfort conclusions remain unresolved."
     ],
     "unresolvedQuestions": [
-      "Does the target model or image workflow officially support the intended AMD or NVIDIA runtime path?",
-      "Which driver, OS, and framework versions will be used?",
-      "Would a short cloud or borrowed-hardware validation run expose setup risk before a purchase?"
+      "Does the target model runner, image workflow, extension set, or AI coding tool officially support the intended AMD or NVIDIA runtime path?",
+      "Which operating system, driver, ROCm or CUDA version, framework version, and install guide will be used?",
+      "Would a short cloud, borrowed-hardware, or existing-machine validation run expose setup risk before a local hardware commitment?"
     ],
     "nearbyComparisons": [
       {
@@ -335,15 +335,15 @@
     "faq": [
       {
         "question": "Why is RX 7900 XTX vs RTX 4090 mainly a runtime question?",
-        "answer": "Both profiles can offer high VRAM capacity, but local AI fit often depends on CUDA, ROCm, framework support, drivers, and setup effort."
+        "answer": "Both profiles can offer high VRAM capacity, but local AI fit often depends on whether the actual toolchain expects CUDA, has a documented ROCm path, and can be tested with the same driver and framework versions the user plans to run."
       },
       {
         "question": "Can this page say the RTX 4090 is faster than RX 7900 XTX for AI?",
-        "answer": "No. It does not include controlled benchmark evidence, so it focuses on source-backed planning fields and runtime compatibility questions."
+        "answer": "No. It does not include controlled benchmark evidence for the exact AI workflows, so it focuses on source-backed planning fields and runtime compatibility questions."
       },
       {
         "question": "When should I avoid a cross-vendor GPU decision?",
-        "answer": "Avoid making the decision from specs alone when the exact model, runtime, operating system, or framework support has not been tested."
+        "answer": "Avoid making the decision from specs alone when the exact model, runtime, operating system, framework version, or extension stack has not been tested on the vendor path you plan to use."
       }
     ]
   },

@@ -65,6 +65,45 @@ const quickVerdicts = [
   },
 ] as const;
 
+const workloadPatternRoutes = [
+  {
+    pattern: "One-time validation",
+    betterPath: "Cloud GPU first",
+    reasoning:
+      "Use cloud when the main job is to prove VRAM fit, runtime setup, or model behavior before narrowing a local hardware tier.",
+    nextStep: "Run a short validation session, record peak memory and setup notes, then decide whether local hardware still makes sense.",
+    href: "/cloud-gpu",
+    ctaLabel: "Review provider profiles",
+  },
+  {
+    pattern: "Repeated private workflow",
+    betterPath: "Local GPU after validation",
+    reasoning:
+      "Use local planning when the workload repeats often, the model/data path is sensitive, and you want fewer external service dependencies.",
+    nextStep: "Estimate VRAM, inspect GPU profiles, and validate the exact runtime before treating a workstation plan as stable.",
+    href: "/builds/high-vram-local-ai-workstation",
+    ctaLabel: "Open high-VRAM build planning",
+  },
+  {
+    pattern: "Bursty inference or team demo",
+    betterPath: "Cloud or serverless test",
+    reasoning:
+      "Use cloud-style deployment when requests arrive in bursts, the team needs a shareable endpoint, or idle local hardware would be hard to justify.",
+    nextStep: "Check provider billing scope, cold-start/setup behavior, storage flow, and whether the workload can tolerate external infrastructure.",
+    href: "/guides/local-ai-vs-ai-saas",
+    ctaLabel: "Compare local AI and SaaS",
+  },
+  {
+    pattern: "Output-first workflow",
+    betterPath: "SaaS or API path",
+    reasoning:
+      "Use a hosted tool when output delivery matters more than custom drivers, local model files, GPU tuning, or infrastructure ownership.",
+    nextStep: "Keep local/cloud GPU planning only if you need control over runtime, weights, privacy, or repeatable hardware-level testing.",
+    href: "/guides/local-ai-vs-ai-saas",
+    ctaLabel: "Review SaaS tradeoffs",
+  },
+] as const;
+
 const comparisonModes = [
   {
     title: "Local GPU workstation planning",
@@ -80,6 +119,92 @@ const comparisonModes = [
     title: "SaaS or API tools",
     description:
       "This path is different because the goal is usually fast output delivery with less infrastructure responsibility, not workstation ownership or runtime-level control.",
+  },
+] as const;
+
+const validationRunChecklist = [
+  {
+    title: "Define the exact workload",
+    detail:
+      "Record model, quantization or precision, context length or image settings, runtime, framework version, driver path, and expected data size.",
+  },
+  {
+    title: "Measure peak memory and setup friction",
+    detail:
+      "Use the validation run to capture whether the workload fails from VRAM, storage, dependency setup, data movement, or runtime compatibility.",
+  },
+  {
+    title: "Separate compute from surrounding costs",
+    detail:
+      "Cloud decisions can involve compute, storage, data movement, idle time, reserved capacity, and team workflow overhead; local decisions involve hardware, power, cooling, maintenance, and upgrade risk.",
+  },
+  {
+    title: "Convert the result into a route",
+    detail:
+      "If the test is rare, keep the cloud path. If it repeats and the environment is predictable, move to local GPU or build planning.",
+  },
+] as const;
+
+const sourceBackedDecisionInsights = [
+  {
+    title: "Cloud helps most when uncertainty is the job",
+    decision:
+      "Use cloud first when the main question is whether the model, runtime, or VRAM tier works at all.",
+    detail:
+      "AWS reserved-capacity guidance and RunPod serverless documentation both point to a cloud pattern that is useful for short validation windows, bursty inference, and setup discovery. In that case, the outcome you want is evidence: peak memory, install friction, storage movement, and whether the workload should become a local build later.",
+    sources: [
+      {
+        label: "AWS EC2 Capacity Blocks for ML",
+        href: "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-blocks.html",
+      },
+      {
+        label: "RunPod Serverless overview",
+        href: "https://docs.runpod.io/serverless/overview",
+      },
+    ],
+  },
+  {
+    title: "Stable repeated workloads need a cost model",
+    decision:
+      "Move beyond hourly GPU comparison when the workload will run repeatedly.",
+    detail:
+      "Azure and Google Cloud both frame ML infrastructure around workload cost and optimization, not a single headline GPU number. For repeated work, compare utilization, storage, data movement, idle time, team setup effort, local power/cooling, and upgrade risk before deciding that cloud or local is cheaper.",
+    sources: [
+      {
+        label: "Azure Machine Learning pricing",
+        href: "https://azure.microsoft.com/en-us/pricing/details/machine-learning/",
+      },
+      {
+        label: "Google Cloud ML cost optimization",
+        href: "https://cloud.google.com/blog/products/ai-machine-learning/machine-learning-performance-and-cost-optimization-best-practices",
+      },
+    ],
+  },
+  {
+    title: "Idle assumptions can break cloud economics",
+    decision:
+      "Check billing behavior before treating managed or serverless GPU as zero-commitment.",
+    detail:
+      "Some GPU-backed services still have instance-based billing, minimum instances, storage, or availability tradeoffs. If a workload sits idle between bursts, the planning question is not only compute time; it is whether the service charges for readiness, storage, redundancy, or reserved capacity.",
+    sources: [
+      {
+        label: "Google Cloud Run GPU billing notes",
+        href: "https://docs.cloud.google.com/run/docs/configuring/services/gpu",
+      },
+    ],
+  },
+  {
+    title: "Local builds still need workload-specific validation",
+    decision:
+      "Do not turn local ownership into a universal answer before the workload is measured.",
+    detail:
+      "NVIDIA's system configuration guidance treats GPU server configuration as workload-dependent. For a local AI workstation, that means VRAM is only one part of the decision; power, cooling, storage, driver path, runtime compatibility, and future model growth still need validation.",
+    sources: [
+      {
+        label: "NVIDIA Certified Systems configuration guide",
+        href: "https://docs.nvidia.com/certification-programs/latest/nvidia-certified-configuration-guide.html",
+      },
+    ],
   },
 ] as const;
 
@@ -369,6 +494,30 @@ export default function CloudGpuVsLocalGpuGuidePage() {
             </div>
           </section>
 
+          <section className="tool-section guide-primary-section">
+            <h2>Fast answer by workload pattern</h2>
+            <p className="related-note">
+              Start from the shape of the workload, not from a provider name or GPU label. The right next step is the
+              route that reduces the biggest uncertainty first.
+            </p>
+            <div className="guide-card-grid">
+              {workloadPatternRoutes.map((route) => (
+                <div className="guide-card guide-card-featured" key={route.pattern}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">Workload pattern</span>
+                    <span className="guide-card-topic">{route.betterPath}</span>
+                  </div>
+                  <strong>{route.pattern}</strong>
+                  <span>{route.reasoning}</span>
+                  <p className="related-note">{route.nextStep}</p>
+                  <Link className="guide-card-action" href={route.href}>
+                    {route.ctaLabel} &rarr;
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="tool-section">
             <h2>What this guide compares</h2>
             <p className="guide-section-lead">
@@ -486,6 +635,22 @@ export default function CloudGpuVsLocalGpuGuidePage() {
           </section>
 
           <section className="tool-section guide-primary-section">
+            <h2>How to run a useful cloud validation test</h2>
+            <p className="related-note">
+              A short cloud test is only useful if it produces evidence you can reuse. Treat it as a measurement pass,
+              not as a casual demo.
+            </p>
+            <div className="guide-card-grid">
+              {validationRunChecklist.map((item) => (
+                <div className="guide-card guide-card-featured" key={item.title}>
+                  <strong>{item.title}</strong>
+                  <span>{item.detail}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tool-section guide-primary-section">
             <h2>Suggested planning workflow</h2>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
               {workflowSteps.map((step) => (
@@ -562,6 +727,34 @@ export default function CloudGpuVsLocalGpuGuidePage() {
               profiles use source-backed records, but users should still verify official provider pages before making
               workload or cost decisions.
             </p>
+          </section>
+
+          <section className="tool-section guide-primary-section">
+            <h2>Rules that change the cloud vs local choice</h2>
+            <p className="related-note">
+              Use these rules to decide whether the next step should be a short cloud validation run, a local build
+              plan, or a hosted tool path.
+            </p>
+            <div className="guide-card-grid">
+              {sourceBackedDecisionInsights.map((item) => (
+                <div className="guide-card guide-card-featured" key={item.title}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">Cloud/local rule</span>
+                    <span className="guide-card-topic">Infrastructure evidence</span>
+                  </div>
+                  <strong>{item.title}</strong>
+                  <span>{item.decision}</span>
+                  <p className="related-note">{item.detail}</p>
+                  <div className="guide-source-inline-links" aria-label={`Sources for ${item.title}`}>
+                    {item.sources.map((source) => (
+                      <Link className="guide-card-action" href={source.href} key={source.href} rel="noreferrer" target="_blank">
+                        {source.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
 
           <section className="tool-section related-section guide-primary-section">

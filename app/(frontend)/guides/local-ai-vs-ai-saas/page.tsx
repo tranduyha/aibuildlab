@@ -58,6 +58,49 @@ const quickVerdicts = [
   },
 ] as const;
 
+const operatingModelRoutes = [
+  {
+    pattern: "Sensitive or offline workflow",
+    likelyPath: "Local AI first",
+    reasoning:
+      "Use local planning when data handling, offline access, or internal control matters more than fast hosted onboarding.",
+    nextStep:
+      "Estimate VRAM, verify storage and runtime requirements, then decide whether a local workstation can support the workflow repeatedly.",
+    href: "/tools/vram-calculator",
+    ctaLabel: "Estimate local VRAM",
+  },
+  {
+    pattern: "Output-first team workflow",
+    likelyPath: "SaaS or API first",
+    reasoning:
+      "Use hosted tools when the team mainly needs useful outputs, collaboration, and fast onboarding rather than control over model files or drivers.",
+    nextStep:
+      "Review vendor data controls, access permissions, retention terms, and plan limits before building the workflow around a provider.",
+    href: "/cloud-gpu",
+    ctaLabel: "Compare hosted infrastructure",
+  },
+  {
+    pattern: "Uncertain model or GPU size",
+    likelyPath: "Cloud validation bridge",
+    reasoning:
+      "Use cloud GPU testing when the workflow may need more VRAM than a local plan can justify before evidence exists.",
+    nextStep:
+      "Run a short validation pass, capture peak memory and setup friction, then choose local hardware or hosted tools from evidence.",
+    href: "/guides/cloud-gpu-vs-local-gpu",
+    ctaLabel: "Read cloud vs local guide",
+  },
+  {
+    pattern: "Regulated or policy-heavy team",
+    likelyPath: "Governance review first",
+    reasoning:
+      "Use a policy-first path when procurement, security, retention, audit, or legal constraints can decide the tool before hardware does.",
+    nextStep:
+      "Map data classes, retention needs, access controls, and review process before choosing local AI, SaaS, API, or cloud GPU.",
+    href: "/guides/cloud-gpu-vs-local-gpu",
+    ctaLabel: "Review infrastructure tradeoffs",
+  },
+] as const;
+
 const tradeoffRows = [
   {
     factor: "Cost planning",
@@ -139,9 +182,32 @@ const validationSteps = [
   {
     title: "Review AI tool records internally",
     description:
-      "Use the source-aware AI tool data layer as planning context only. A public AI tools index has not been created yet.",
+      "Use the source-aware AI tool data layer as planning context only; keep public routing focused on guides until tool records are ready for a dedicated index.",
     href: null,
     cta: null,
+  },
+] as const;
+
+const operatingModelChecks = [
+  {
+    title: "Data class",
+    detail:
+      "Separate public, internal, customer, regulated, and secret data before choosing a tool path. The safest route can change by data class.",
+  },
+  {
+    title: "Runtime control",
+    detail:
+      "Decide whether you need model files, quantization choices, system prompts, local logs, custom extensions, or reproducible runtime versions.",
+  },
+  {
+    title: "Team access",
+    detail:
+      "Hosted tools can simplify collaboration, but access controls, account ownership, audit needs, and offboarding still need review.",
+  },
+  {
+    title: "Retention and training policy",
+    detail:
+      "Check whether the provider uses customer content for training, how long data may be retained, and whether stronger controls are available.",
   },
 ] as const;
 
@@ -256,6 +322,30 @@ export default function LocalAiVsAiSaasGuidePage() {
           </section>
 
           <section className="tool-section guide-primary-section">
+            <h2>Fast answer by operating model</h2>
+            <p className="related-note">
+              Start with the way the work will be operated: who touches the data, how often the workflow runs, and how
+              much control the team needs over the runtime.
+            </p>
+            <div className="guide-card-grid">
+              {operatingModelRoutes.map((route) => (
+                <div className="guide-card guide-card-featured" key={route.pattern}>
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">Operating model</span>
+                    <span className="guide-card-topic">{route.likelyPath}</span>
+                  </div>
+                  <strong>{route.pattern}</strong>
+                  <span>{route.reasoning}</span>
+                  <p className="related-note">{route.nextStep}</p>
+                  <Link className="guide-card-action" href={route.href}>
+                    {route.ctaLabel} &rarr;
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tool-section guide-primary-section">
             <h2>Local AI vs AI SaaS tradeoff table</h2>
             <p className="related-note">
               Use this table to choose the next validation step. It does not score, rank, or recommend a tool path.
@@ -279,6 +369,22 @@ export default function LocalAiVsAiSaasGuidePage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </section>
+
+          <section className="tool-section guide-primary-section">
+            <h2>Before choosing SaaS or local, check the operating model</h2>
+            <p className="related-note">
+              These checks turn a broad preference into a practical decision. They help separate a privacy problem, a
+              runtime-control problem, and a team-workflow problem.
+            </p>
+            <div className="guide-card-grid">
+              {operatingModelChecks.map((item) => (
+                <div className="guide-card guide-card-featured" key={item.title}>
+                  <strong>{item.title}</strong>
+                  <span>{item.detail}</span>
+                </div>
+              ))}
             </div>
           </section>
 

@@ -198,6 +198,73 @@ None.
 ## Latest Check
 
 ```txt
+2026-06-17 Local AI vs AI SaaS guide source-backed upgrade:
+/guides/local-ai-vs-ai-saas -> upgraded with operating-model routing, data/runtime/team/retention checklist, and source-backed workflow rules for privacy, enterprise controls, governance, and hosted-control tradeoffs
+internet research -> used official OpenAI API data controls and enterprise privacy docs, Anthropic commercial customer privacy docs, GitHub Copilot Trust Center FAQ, NIST AI RMF, Google Cloud privacy resources, and Microsoft Responsible AI guidance
+data -> data/guides.json source trail expanded for the local-AI-vs-SaaS guide and lastVerifiedAt set to 2026-06-17
+guardrails -> no AI tool rankings, tool recommendations, exact prices, availability, affiliate, payout, commerce schema, tool-evaluation schema, or buying claims added
+static HTML audit -> 2,002 visible words, exactly 1 H1, 32 internal links, 7 external source links, canonical, WebPage, BreadcrumbList, and FAQPage retained
+duplicate audit -> no repeated same-page sentences after cleanup; highest 5-word-shingle overlap measured at 0.046 before final sentence cleanup
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+follow-up source UX -> replaced repeated "Read policy source" CTA text with specific source labels in the source-backed workflow cards; npm.cmd run lint and npm.cmd run build passed
+follow-up source link polish -> removed arrow glyphs from source links in the new decision-rule blocks across /guides/cloud-gpu-vs-local-gpu, /guides/image-generation-vram-planning, and /guides/local-ai-vs-ai-saas; npm.cmd run lint and npm.cmd run build passed
+follow-up source label cleanup -> replaced repeated "Read infrastructure source" and "Read runtime source" link text with source-specific labels; scan confirmed no remaining generic source CTA strings in the three updated guide files
+follow-up local-AI-vs-SaaS source layout -> shortened source labels and added nowrap styling for source-card links so paired source links can stay on one row where card width allows; npm.cmd run lint and npm.cmd run build passed
+follow-up rule badge polish -> added `guide-rule-card-meta` to the three new decision-rule card groups so the rule/evidence badges render at equal width; npm.cmd run lint and npm.cmd run build passed
+follow-up rule badge style correction -> removed the fixed width/height rule and made the left rule badge use the same lighter visual treatment as the right evidence badge; npm.cmd run lint and npm.cmd run build passed
+follow-up rule badge cascade fix -> normalized padding, font-size, and line-height without fixed dimensions so the `.guide-card span` body-copy rule no longer makes the eight rule/evidence badges look inconsistent; npm.cmd run lint and npm.cmd run build passed
+follow-up rule badge scope correction -> moved the rule/evidence badge override after the shared `.guide-card span` rule, limited it to direct badge children, and confirmed no fixed width/height remains on `.guide-rule-card-meta`; npm.cmd run lint and npm.cmd run build passed
+rollback -> removed the `Rules that change the local AI vs SaaS choice` section and its local `sourceBackedWorkflowRules` data from /guides/local-ai-vs-ai-saas; reverted the `guide-rule-card-meta` badge CSS/class changes and the source-link nowrap override; scan confirmed no remaining local block or badge-class matches; npm.cmd run lint and npm.cmd run build passed
+
+2026-06-17 Cloud GPU vs local GPU guide source-backed upgrade:
+/guides/cloud-gpu-vs-local-gpu -> upgraded with source-backed workload-pattern routing, cloud validation test checklist, official source-trail cards, and deeper internal next routes
+internet research -> used AWS EC2 Capacity Blocks for ML docs, Azure Machine Learning pricing, Google Cloud ML cost optimization guidance, Google Cloud Run GPU billing notes, RunPod Serverless documentation, and NVIDIA Certified Systems configuration guidance
+data -> data/guides.json source trail expanded for the cloud-vs-local guide and lastVerifiedAt set to 2026-06-17
+internal linking -> added deeper routes to /builds/high-vram-local-ai-workstation and /guides/local-ai-vs-ai-saas while preserving calculator, cloud GPU, compare, GPU, and build routes
+guardrails -> no exact cloud pricing, provider ranking, availability, capacity, benchmark, speed, affiliate, commission, or buying claims added
+static HTML audit -> 3,255 visible words, exactly 1 H1, 37 internal links, 6 external source links, canonical, WebPage, BreadcrumbList, and FAQPage retained
+duplicate audit -> highest 5-word-shingle overlap versus other pages measured at 0.033
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+follow-up source UX -> replaced the source-trail directory block with source-backed decision insight cards that explain what each source changes in the cloud-vs-local decision before showing source links
+follow-up checks -> npm.cmd run lint passed; npm.cmd run build passed, 57 static pages generated; static HTML confirms the new "What these sources change in the decision" section
+
+2026-06-17 Image generation VRAM guide 9-point upgrade:
+/guides/image-generation-vram-planning -> upgraded from a short source-aware overview into a deeper answer-first planning guide with 8GB/12GB/16GB/24GB+ routing, exact workflow validation language, OOM/debug workflow, official source-trail cards, and deeper next-route links
+internet research -> used Hugging Face Diffusers memory optimization, SDXL, Stable Diffusion 3, and Flux documentation as source-backed guidance; avoided affiliate-style "best GPU" claims as primary evidence
+architecture -> validation sample rendering now uses imageGenerationValidationService instead of duplicating sample facts in the page route
+data -> data/guides.json source trail expanded with official Diffusers documentation references
+internal linking -> added deep routes to /guides/12gb-vs-16gb-vram-local-ai, /builds/local-ai-16gb-vram-build, /compare/rtx-4080-super-vs-rtx-4090-for-stable-diffusion, and RTX 3060 12GB / RTX 4060 Ti 16GB / RTX 4090 GPU profiles
+guardrails -> no universal VRAM requirements, image-speed claims, benchmark rankings, price, stock, affiliate, or buying claims added
+static HTML audit -> 1,470 visible words, exactly 1 H1, 34 internal links, 7 external source links, canonical, WebPage, BreadcrumbList, and FAQPage retained
+duplicate audit -> highest 5-word-shingle overlap versus other pages reduced from 0.087 to 0.062
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+follow-up UI polish -> nested guide-card links on /guides/image-generation-vram-planning now use the shared guide-card-action style with arrow affordance instead of bare text-link styling
+follow-up checks -> npm.cmd run lint passed; npm.cmd run build passed, 57 static pages generated
+follow-up source UX -> replaced the image-generation source-trail directory block with source-backed decision insight cards covering VRAM as a test target, SDXL validation tiers, SD3 offload tradeoffs, and FLUX loading versus optimized inference
+follow-up checks -> npm.cmd run lint passed; npm.cmd run build passed, 57 static pages generated; static HTML confirms the old source-trail heading is gone
+
+2026-06-17 RX 7900 XTX vs RTX 4090 comparison retention pass:
+/compare/rx-7900-xtx-vs-rtx-4090-for-ai -> upgraded from safe but generic draft wording into a sharper cross-vendor AI planning page focused on CUDA-first workflows, ROCm validation effort, and why 24 GB VRAM does not make AMD and NVIDIA paths interchangeable
+comparison route -> added an answer-first block before the generic table sections using pair-specific profile data
+source trust -> comparison source notice now exposes first GPU-profile source links for each compared GPU when comparison-level sources are absent
+metadata -> description now states 24 GB VRAM, CUDA versus ROCm runtime risk, source-backed specs, and validation steps
+guardrails -> no benchmark, speed, price, availability, affiliate, ranking, or purchase claims added
+static HTML audit -> 1,477 visible words, exactly 1 H1, fast-answer block present, 31 internal links, 6 external source links, canonical, WebPage, BreadcrumbList, and FAQPage retained
+duplicate audit -> highest 5-word-shingle overlap versus comparison pages reduced from 0.240 to 0.221
+npm.cmd run data:validate -> 0 errors, 0 warnings
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+
 2026-06-16 High-VRAM workstation build retention upgrade:
 /builds/high-vram-local-ai-workstation -> upgraded from a mostly generic planning route into a dedicated 24GB+ local AI workstation decision page with high-VRAM intent summary, decision prompts, quick verdicts, decision map, workload fit rows, GPU role cards, system constraints, validation workflow, risk-based next routes, and stronger FAQ
 data boundary -> added data/build-profiles.json plus repository/service/type layer; high-VRAM editorial content is outside route code for easier daily updates
