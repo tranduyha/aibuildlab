@@ -21,13 +21,35 @@ export interface ModelVramPage {
   path: string;
   estimates: ModelVramEstimateRow[];
   warning: string;
+  shortAnswerNote: string;
   planningSummary: string;
   contextNote: string;
+  sectionTitles: {
+    quickFacts: string;
+    estimateDrivers: string;
+    tierFit: string;
+    validation: string;
+    planningNotes: string;
+    differentiators: string;
+    gpuReferences: string;
+    comparison: string;
+  };
   sourceConfirmations: { label: string; body: string }[];
+  pageAngle: {
+    heading: string;
+    lead: string;
+    cards: { title: string; body: string }[];
+  };
   differentiators: { label: string; body: string }[];
   tierDecisions: { tier: string; verdict: string; nextStep: string }[];
   validationSteps: { label: string; title: string; body: string }[];
   comparisonNote: string;
+  gpuReferenceIntro: string;
+  gpuTierDescriptions: {
+    twelveGb: string;
+    sixteenGb: string;
+    twentyFourGb: string;
+  };
   workloadFits: { workload: string; fit: string; caution: string }[];
   estimateDrivers: { factor: string; impact: string }[];
   beginnerAnswer: string;
@@ -44,12 +66,17 @@ const MODEL_VRAM_PAGE_SLUGS = [
 type ModelVramPageSlug = (typeof MODEL_VRAM_PAGE_SLUGS)[number];
 
 interface ModelVramEditorialProfile {
+  shortAnswerNote: string;
   planningSummary: string;
   contextNote: string;
+  sectionTitles: ModelVramPage["sectionTitles"];
+  pageAngle: ModelVramPage["pageAngle"];
   differentiators: { label: string; body: string }[];
   tierDecisions: { tier: string; verdict: string; nextStep: string }[];
   validationSteps: { label: string; title: string; body: string }[];
   comparisonNote: string;
+  gpuReferenceIntro: string;
+  gpuTierDescriptions: ModelVramPage["gpuTierDescriptions"];
   workloadFits: { workload: string; fit: string; caution: string }[];
   estimateDrivers: { factor: string; impact: string }[];
   beginnerAnswer: string;
@@ -59,10 +86,41 @@ interface ModelVramEditorialProfile {
 
 const MODEL_VRAM_EDITORIAL_PROFILES: Record<ModelVramPageSlug, ModelVramEditorialProfile> = {
   "llama-3-1-8b-instruct": {
+    shortAnswerNote:
+      "Use the 4-bit estimate as a baseline for Llama 3.1 8B, then treat long-context testing as the first reason to move from a close fit toward a larger practical tier.",
     planningSummary:
       "Llama 3.1 8B Instruct is a source-backed 8B dense text model with long-context metadata. Treat the long context as a capability to plan around, not as a reason to ignore KV cache and runtime overhead.",
     contextNote:
       "The 128K context metadata is source-backed, but the default estimate uses the calculator's medium context preset so the page remains conservative and comparable across this first batch.",
+    sectionTitles: {
+      quickFacts: "Llama 3.1 8B facts that affect VRAM",
+      estimateDrivers: "Why the Llama estimate can move",
+      tierFit: "Llama 3.1 8B fit by workload",
+      validation: "Validate Llama context before choosing hardware",
+      planningNotes: "Llama-specific planning notes",
+      differentiators: "Why this Llama page is not a generic 7B page",
+      gpuReferences: "GPU references for Llama 3.1 8B testing",
+      comparison: "Compare Llama against nearby 7B planning pages",
+    },
+    pageAngle: {
+      heading: "Llama planning angle",
+      lead:
+        "This page is mainly about separating an 8B local-chat baseline from the much larger memory risk of long prompts and long-context experiments.",
+      cards: [
+        {
+          title: "Best use",
+          body: "Use it when you want an 8B dense LLM reference that is still practical for local 4-bit testing.",
+        },
+        {
+          title: "Validate first",
+          body: "Stress context length and KV cache behavior before treating a 12GB card as comfortable.",
+        },
+        {
+          title: "Avoid assuming",
+          body: "Do not translate 128K context metadata into a default local VRAM target without changing calculator assumptions.",
+        },
+      ],
+    },
     differentiators: [
       {
         label: "Higher 8B planning boundary",
@@ -128,6 +186,13 @@ const MODEL_VRAM_EDITORIAL_PROFILES: Record<ModelVramPageSlug, ModelVramEditoria
     ],
     comparisonNote:
       "Compared with the 7B pages, Llama 3.1 8B sits slightly higher in the default estimate and carries a stronger long-context planning caveat.",
+    gpuReferenceIntro:
+      "For Llama 3.1 8B, read GPU links through the 4-bit 12GB practical tier first, then move to 16GB when context growth or runtime overhead is part of the test plan.",
+    gpuTierDescriptions: {
+      twelveGb: "Closest practical references for the 4-bit Llama estimate when prompt length stays modest.",
+      sixteenGb: "More useful Llama testing buffer when long conversations, coding context, or runtime overhead are likely.",
+      twentyFourGb: "Headroom references for experiments that go beyond this page's medium-context baseline.",
+    },
     workloadFits: [
       {
         workload: "Casual local chat and prompt testing",
@@ -197,10 +262,41 @@ const MODEL_VRAM_EDITORIAL_PROFILES: Record<ModelVramPageSlug, ModelVramEditoria
     ],
   },
   "qwen2-5-7b-instruct": {
+    shortAnswerNote:
+      "For Qwen2.5 7B, the 4-bit calculator baseline sits near the 8GB edge, but 12GB is the more practical tier when you want repeatable local testing rather than a narrow fit.",
     planningSummary:
       "Qwen2.5 7B Instruct is a source-backed 7B dense text model with Apache 2.0 licensing in the current data. Use it as a compact local LLM planning target, then validate runtime behavior.",
     contextNote:
       "Qwen2.5 context metadata is tracked from official/model-card sources, but this page still uses a medium-context baseline so the VRAM estimate stays comparable with other 7B/8B pages.",
+    sectionTitles: {
+      quickFacts: "Qwen2.5 7B facts that affect VRAM",
+      estimateDrivers: "Where the Qwen2.5 estimate can change",
+      tierFit: "Qwen2.5 7B fit by workload",
+      validation: "Validate the Qwen artifact and context target",
+      planningNotes: "Qwen-specific planning notes",
+      differentiators: "How this Qwen page differs from the other 7B pages",
+      gpuReferences: "GPU references for Qwen2.5 7B testing",
+      comparison: "Compare Qwen with Llama and Mistral planning pages",
+    },
+    pageAngle: {
+      heading: "Qwen planning angle",
+      lead:
+        "This page is mainly about a compact 7B Qwen-family target: close enough to 8GB to test, but better treated as a 12GB practical workflow.",
+      cards: [
+        {
+          title: "Best use",
+          body: "Use it when you want a compact Qwen-family dense model with source-backed Apache 2.0 license metadata.",
+        },
+        {
+          title: "Validate first",
+          body: "Match the exact Qwen2.5 7B Instruct artifact before comparing its memory behavior with another 7B model.",
+        },
+        {
+          title: "Avoid assuming",
+          body: "Do not treat the 8GB rounded minimum as a comfortable tier for repeated sessions or higher-context tests.",
+        },
+      ],
+    },
     differentiators: [
       {
         label: "Compact Qwen-family planning target",
@@ -266,6 +362,13 @@ const MODEL_VRAM_EDITORIAL_PROFILES: Record<ModelVramPageSlug, ModelVramEditoria
     ],
     comparisonNote:
       "Qwen2.5 7B and Mistral 7B share the same default memory estimate in this calculator profile, while Llama 3.1 8B lands slightly higher because of its 8B size class.",
+    gpuReferenceIntro:
+      "For Qwen2.5 7B, GPU references should help separate an 8GB-edge test from the 12GB tier that is more practical for repeated local use.",
+    gpuTierDescriptions: {
+      twelveGb: "Practical Qwen testing references after the 8GB rounded minimum leaves little room for runtime overhead.",
+      sixteenGb: "Comfort references if the Qwen workflow may include longer prompts, 8-bit tests, or multiple runtimes.",
+      twentyFourGb: "Headroom references for broader local AI experimentation beyond this compact 7B target.",
+    },
     workloadFits: [
       {
         workload: "Compact local assistant",
@@ -335,10 +438,41 @@ const MODEL_VRAM_EDITORIAL_PROFILES: Record<ModelVramPageSlug, ModelVramEditoria
     ],
   },
   "mistral-7b-instruct-v0-3": {
+    shortAnswerNote:
+      "For Mistral 7B Instruct v0.3, use the 4-bit number as a clean dense-7B baseline: 8GB is a tight test tier, while 12GB is the saner local starting point.",
     planningSummary:
       "Mistral 7B Instruct v0.3 is a source-backed 7B dense text model with Apache 2.0 licensing in the current data. It is a useful baseline for local LLM planning and comparison against other 7B-class models.",
     contextNote:
       "The current record includes source-backed 32K context metadata. The default estimate still uses medium context so users can compare the first model-page batch on the same assumption set.",
+    sectionTitles: {
+      quickFacts: "Mistral v0.3 facts that affect VRAM",
+      estimateDrivers: "Where the Mistral estimate can change",
+      tierFit: "Mistral 7B fit by workload",
+      validation: "Validate the Mistral v0.3 variant before hardware choices",
+      planningNotes: "Mistral-specific planning notes",
+      differentiators: "Why this Mistral page is the clean 7B baseline",
+      gpuReferences: "GPU references for Mistral 7B testing",
+      comparison: "Compare Mistral against Qwen and Llama planning pages",
+    },
+    pageAngle: {
+      heading: "Mistral planning angle",
+      lead:
+        "This page is mainly a clean 7B dense baseline: useful for memory planning, not for claiming quality or speed versus Qwen or Llama.",
+      cards: [
+        {
+          title: "Best use",
+          body: "Use it when you need a non-Llama, non-Qwen 7B reference point for local VRAM tier planning.",
+        },
+        {
+          title: "Validate first",
+          body: "Confirm the v0.3 model identity and quantized package before applying the estimate to a local runtime.",
+        },
+        {
+          title: "Avoid assuming",
+          body: "Do not generalize this estimate to other Mistral releases or use it as a model-quality comparison.",
+        },
+      ],
+    },
     differentiators: [
       {
         label: "Clean 7B baseline",
@@ -404,6 +538,13 @@ const MODEL_VRAM_EDITORIAL_PROFILES: Record<ModelVramPageSlug, ModelVramEditoria
     ],
     comparisonNote:
       "Mistral 7B Instruct v0.3 is the clean 7B baseline in this batch: it compares closely with Qwen2.5 7B and slightly below Llama 3.1 8B in the default estimate.",
+    gpuReferenceIntro:
+      "For Mistral 7B Instruct v0.3, GPU references are most useful as a baseline check: start from a tight 8GB-class estimate, then use 12GB or 16GB tiers for more repeatable testing.",
+    gpuTierDescriptions: {
+      twelveGb: "Practical Mistral baseline references when you want room beyond a tight 8GB 4-bit test.",
+      sixteenGb: "Comfort references for runtime comparisons, longer chats, and experiments beyond the baseline estimate.",
+      twentyFourGb: "Headroom references for users comparing this 7B baseline against larger local workflows.",
+    },
     workloadFits: [
       {
         workload: "Baseline 7B local testing",

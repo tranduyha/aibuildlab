@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildCanonicalPath, buildMetadata, getSiteSettings } from "@/lib/seo";
 import { aiModelService } from "@/services/ai-model.service";
+import type { VramGpuMatch } from "@/types";
 
 interface ModelVramRequirementsPageProps {
   params: Promise<{ slug: string }>;
@@ -28,6 +29,14 @@ function getConfidenceLabel(dataConfidence: "low" | "medium" | "high"): string {
   if (dataConfidence === "high") return "High confidence";
   if (dataConfidence === "medium") return "Medium confidence";
   return "Low confidence";
+}
+
+function getTierText(gpuTier: string): string {
+  return gpuTier.replace(" planning tier", "");
+}
+
+function hasKnownVram(gpu: VramGpuMatch): gpu is VramGpuMatch & { vramGb: number } {
+  return gpu.vramGb !== null;
 }
 
 export async function generateStaticParams() {
@@ -70,7 +79,25 @@ export default async function ModelVramRequirementsPage({
   const settings = getSiteSettings();
   const pageUrl = buildCanonicalPath(page.path);
   const int4Estimate = estimates.find((estimate) => estimate.quantization === "int4");
-  const sourceBackedGpuMatches = int4Estimate?.result.sourceBackedGpuMatches.slice(0, 4) ?? [];
+  const sourceBackedGpuMatches = (int4Estimate?.result.sourceBackedGpuMatches ?? []).filter(hasKnownVram);
+  const firstPracticalTier = page.tierDecisions.find((item) => item.tier === "12 GB VRAM") ?? page.tierDecisions[0];
+  const gpuReferenceTiers = [
+    {
+      label: "12 GB practical tier",
+      description: page.gpuTierDescriptions.twelveGb,
+      gpus: sourceBackedGpuMatches.filter((gpu) => gpu.vramGb === 12).slice(0, 3),
+    },
+    {
+      label: "16 GB comfort tier",
+      description: page.gpuTierDescriptions.sixteenGb,
+      gpus: sourceBackedGpuMatches.filter((gpu) => gpu.vramGb === 16).slice(0, 3),
+    },
+    {
+      label: "24 GB+ headroom tier",
+      description: page.gpuTierDescriptions.twentyFourGb,
+      gpus: sourceBackedGpuMatches.filter((gpu) => gpu.vramGb >= 24).slice(0, 3),
+    },
+  ].filter((tier) => tier.gpus.length > 0);
   const relatedModelPages = aiModelService
     .listModelVramPages()
     .filter((relatedPage) => relatedPage.model.slug !== model.slug);
@@ -85,17 +112,19 @@ export default async function ModelVramRequirementsPage({
     {
       question: `How much VRAM does ${model.name} need?`,
       answer:
-        "Use the table as a planning estimate, not an exact requirement. Actual VRAM depends on quantization, runtime, context length, KV cache behavior, batching, drivers, and implementation details.",
+        int4Estimate
+          ? `The default 4-bit planning estimate is ${int4Estimate.estimatedVramGb.toFixed(1)} GB, with a ${int4Estimate.recommendedMinimumVramGb} GB rounded minimum and ${getTierText(int4Estimate.gpuTier)} as the practical tier label. Actual use still depends on quantization, runtime, context length, KV cache behavior, batching, drivers, and implementation details.`
+          : "Use the table as a planning estimate, not an exact requirement. Actual VRAM depends on quantization, runtime, context length, KV cache behavior, batching, drivers, and implementation details.",
     },
     {
       question: `Is ${model.name} supported by the calculator?`,
       answer:
-        "Yes. This page is generated only for dense text LLM records that are explicitly calculator eligible and source-backed enough for planning use.",
+        `Yes. ${model.name} is published as a dense text LLM planning record with source-backed model facts and calculator eligibility for the current dense LLM estimate path.`,
     },
     {
       question: `Can this page recommend a GPU for ${model.name}?`,
       answer:
-        "No. GPU links are planning references only. Verify official specs, runtime compatibility, and benchmark context before hardware decisions.",
+        `No. GPU links are planning references for ${model.name}, not rankings or buying recommendations. Verify official specs, runtime compatibility, and benchmark context before hardware decisions.`,
     },
     ...page.faqItems,
   ];
@@ -164,8 +193,48 @@ export default async function ModelVramRequirementsPage({
 
           <p className="tool-disclaimer">{page.warning}</p>
 
+          {int4Estimate ? (
+            <section className="tool-section">
+              <h2>Short answer</h2>
+              <div className="guide-card-grid">
+                <div className="guide-card guide-card-featured">
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">4-bit baseline</span>
+                    <span className="guide-card-topic">{getTierText(int4Estimate.gpuTier)}</span>
+                  </div>
+                  <strong>
+                    {int4Estimate.estimatedVramGb.toFixed(1)} GB estimate;{" "}
+                    {int4Estimate.recommendedMinimumVramGb} GB rounded minimum.
+                  </strong>
+                  <span>{page.shortAnswerNote}</span>
+                </div>
+                {firstPracticalTier ? (
+                  <div className="guide-card guide-card-featured">
+                    <div className="guide-card-meta">
+                      <span className="guide-card-label">Practical tier</span>
+                      <span className="guide-card-topic">{firstPracticalTier.tier}</span>
+                    </div>
+                    <strong>{firstPracticalTier.verdict}</strong>
+                    <span>{firstPracticalTier.nextStep}</span>
+                  </div>
+                ) : null}
+                <div className="guide-card guide-card-featured">
+                  <div className="guide-card-meta">
+                    <span className="guide-card-label">Next check</span>
+                    <span className="guide-card-topic">Context and runtime</span>
+                  </div>
+                  <strong>Change the estimate before choosing hardware.</strong>
+                  <span>
+                    Re-run the calculator with your quantization, context length, runtime, and safety margin before
+                    comparing GPU profiles.
+                  </span>
+                </div>
+              </div>
+            </section>
+          ) : null}
+
           <section className="tool-section">
-            <h2>Quick model facts</h2>
+            <h2>{page.sectionTitles.quickFacts}</h2>
             <div className="build-summary-grid">
               <div>
                 <span>Developer</span>
@@ -223,6 +292,10 @@ export default async function ModelVramRequirementsPage({
                     {estimate.result.assumptionsUsed.runtimeLabel}; {estimate.result.assumptionsUsed.contextLabel};
                     assumption version {estimate.result.assumptionVersion}.
                   </p>
+                  <p className="related-note">
+                    Read this as: calculator estimate first, rounded minimum second, then{" "}
+                    {getTierText(estimate.gpuTier)} as the practical GPU tier label.
+                  </p>
                 </div>
               ))}
             </div>
@@ -249,7 +322,20 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>Which workload tier fits this model?</h2>
+            <h2>{page.pageAngle.heading}</h2>
+            <p className="related-note">{page.pageAngle.lead}</p>
+            <div className="guide-card-grid">
+              {page.pageAngle.cards.map((card) => (
+                <div className="guide-card guide-card-featured" key={card.title}>
+                  <strong>{card.title}</strong>
+                  <span>{card.body}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="tool-section">
+            <h2>{page.sectionTitles.tierFit}</h2>
             <p className="related-note">
               Use this section before comparing GPU cards. It translates the VRAM estimate into local testing scenarios
               without turning the page into a performance benchmark.
@@ -269,7 +355,7 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>What changes the estimate most?</h2>
+            <h2>{page.sectionTitles.estimateDrivers}</h2>
             <p className="related-note">
               These are the first assumptions to revisit when a local run does not match the planning number.
             </p>
@@ -309,7 +395,7 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>Validation workflow before choosing hardware</h2>
+            <h2>{page.sectionTitles.validation}</h2>
             <p className="related-note">
               Use this order after reading the estimate. It keeps model facts, calculator assumptions, and real local
               validation separate.
@@ -328,7 +414,7 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>Model-specific planning notes</h2>
+            <h2>{page.sectionTitles.planningNotes}</h2>
             <div className="guide-card-grid">
               {page.fitNotes.map((note) => (
                 <div className="guide-card guide-card-featured" key={note.title}>
@@ -340,7 +426,7 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>How this model differs from nearby pages</h2>
+            <h2>{page.sectionTitles.differentiators}</h2>
             <p className="related-note">
               These notes are required before a model VRAM page is published. They keep the page from being a simple
               keyword swap of another model profile.
@@ -356,24 +442,31 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>GPU planning references</h2>
-            <p className="related-note">
-              These links come from the 4-bit planning estimate and source-backed GPU specs. They are research
-              references, not buying recommendations.
-            </p>
-            <div className="related-links">
-              {sourceBackedGpuMatches.length > 0 ? (
-                sourceBackedGpuMatches.map((gpu) => (
-                  <Link href={`/gpu/${gpu.slug}`} key={gpu.slug}>
-                    {gpu.name} ({gpu.vramGb} GB VRAM) <span>&rarr;</span>
-                  </Link>
-                ))
-              ) : (
+            <h2>{page.sectionTitles.gpuReferences}</h2>
+            <p className="related-note">{page.gpuReferenceIntro}</p>
+            {gpuReferenceTiers.length > 0 ? (
+              <div className="guide-card-grid">
+                {gpuReferenceTiers.map((tier) => (
+                  <div className="guide-card guide-card-featured" key={tier.label}>
+                    <strong>{tier.label}</strong>
+                    <span>{tier.description}</span>
+                    <div className="related-links model-gpu-tier-links">
+                      {tier.gpus.map((gpu) => (
+                        <Link href={`/gpu/${gpu.slug}`} key={gpu.slug}>
+                          {gpu.name} ({gpu.vramGb} GB VRAM) <span>&rarr;</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="related-links">
                 <Link href="/gpu">
                   Browse source-aware GPU profiles <span>&rarr;</span>
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </section>
 
           <section className="tool-section">
@@ -409,7 +502,7 @@ export default async function ModelVramRequirementsPage({
           </section>
 
           <section className="tool-section">
-            <h2>Compare nearby model planning pages</h2>
+            <h2>{page.sectionTitles.comparison}</h2>
             <p className="related-note">{page.comparisonNote}</p>
             <p className="related-note">
               These pages use the same calculator assumption set, which makes them useful for comparing 7B and

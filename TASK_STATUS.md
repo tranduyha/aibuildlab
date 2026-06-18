@@ -111,7 +111,7 @@ Priority:
 ## Current Recommended Task
 
 ```txt
-Next recommended Month 2 priority: deploy refreshed build/compare/cloud pages, then inspect high-intent URLs in Google Search Console
+Next recommended Month 2 priority: monitor deployed high-intent URLs in Google Search Console, then run monetization safety/readiness audit before enabling any affiliate surfaces
 ```
 
 Definition of Done:
@@ -198,6 +198,27 @@ None.
 ## Latest Check
 
 ```txt
+2026-06-18 Deploy and Month 2 SEO QA pass:
+deploy -> user confirmed the refreshed site changes were deployed after the model VRAM page utility/differentiation pass
+Month 2 SEO QA -> user confirmed the post-deploy SEO QA pass was completed
+guardrails -> no new page expansion, production data claims, live pricing, availability, affiliate URLs, commission claims, or buying recommendations added in this log-only update
+checks -> previous pre-deploy npm.cmd run data:validate, npm.cmd run lint, and npm.cmd run build passed; commands not rerun for this log-only update
+next -> monitor high-intent URLs in Google Search Console and keep monetization disclosure-first until a safety/readiness audit is complete
+
+2026-06-18 Llama 3.1 8B model VRAM page utility polish:
+/models/llama-3-1-8b-instruct/vram-requirements -> raised from good SEO utility page toward 9/10 by adding an above-the-fold Short answer block, clearer estimate/minimum/practical-tier wording, and tiered GPU planning references
+model VRAM template -> added typed known-VRAM guard for source-backed GPU matches before grouping references by 12GB practical and 16GB comfort tiers
+guardrails -> no data changes, benchmarks, speed claims, price, availability, affiliate CTAs, or buying recommendations added
+static output audit -> Llama page renders Short answer, 8.7 GB 4-bit estimate, 9 GB rounded minimum, 12 GB practical tier, estimate interpretation note, and tiered GPU references
+npm.cmd run data:validate -> skipped, no data files changed
+npm.cmd run lint -> passed
+npm.cmd run build -> passed, 57 static pages generated
+brand/domain hardcode scan in code directories -> no matches
+follow-up GPU tier button layout -> added scoped model-gpu-tier-links styling so each RTX reference button stacks as a full-width row inside the 12GB/16GB tier cards; npm.cmd run lint and npm.cmd run build passed, 57 static pages generated
+follow-up model page differentiation -> added scalable editorial fields for model-specific short answers, section titles, page angle cards, GPU reference intros, and tier descriptions; route now renders model-specific headings, FAQ answers, planning angle sections, and GPU copy instead of a fully shared section sequence
+similarity audit -> Llama/Qwen 5-shingle overlap improved 0.294 to 0.222, Llama/Mistral 0.295 to 0.221, Qwen/Mistral 0.345 to 0.271; same-position H2 overlap now 12/21 instead of the full shared sequence
+follow-up checks -> npm.cmd run lint passed; npm.cmd run build passed, 57 static pages generated; brand/domain hardcode scan in code directories found no matches
+
 2026-06-17 Local AI vs AI SaaS guide source-backed upgrade:
 /guides/local-ai-vs-ai-saas -> upgraded with operating-model routing, data/runtime/team/retention checklist, and source-backed workflow rules for privacy, enterprise controls, governance, and hosted-control tradeoffs
 internet research -> used official OpenAI API data controls and enterprise privacy docs, Anthropic commercial customer privacy docs, GitHub Copilot Trust Center FAQ, NIST AI RMF, Google Cloud privacy resources, and Microsoft Responsible AI guidance

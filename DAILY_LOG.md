@@ -41,6 +41,113 @@ Codex
 
 ---
 
+## 2026-06-18 - Deploy and Month 2 SEO QA pass
+
+### Agent
+Codex
+
+### Planned Task
+Record the completed deploy and Month 2 SEO QA pass after the refreshed model,
+guide, comparison, build, Cloud GPU, and calculator work was prepared for
+production.
+
+### Completed
+- [x] User confirmed the refreshed site changes were deployed.
+- [x] User confirmed the Month 2 SEO QA pass was completed after deploy.
+- [x] Recorded the deployment/QA milestone without adding new production
+  claims, page count expansion, affiliate links, pricing, or availability data.
+
+### Checked
+- [ ] `npm.cmd run data:validate` not rerun in this log-only update.
+- [ ] `npm.cmd run lint` not rerun in this log-only update.
+- [ ] `npm.cmd run build` not rerun in this log-only update.
+- [x] Previous pre-deploy checks for the current code batch passed:
+  `npm.cmd run data:validate`, `npm.cmd run lint`, and `npm.cmd run build`.
+- [x] Deploy and SEO QA completion are user-confirmed.
+
+### Issues
+- No new issues reported with the deploy or QA pass.
+- GSC/PageSpeed outcomes were not attached in this update; use them to guide
+  the next monitoring or cleanup task.
+
+### Files Changed
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Monitor high-intent URLs in Google Search Console and keep monetization
+disclosure-first; do not enable affiliate links until the safety audit and URL
+readiness checks are complete.
+
+---
+
+## 2026-06-18 - Llama 3.1 8B model VRAM page utility polish
+
+### Agent
+Codex
+
+### Planned Task
+Raise `/models/llama-3-1-8b-instruct/vram-requirements` from a good SEO
+utility page toward a 9/10 by improving above-the-fold answer clarity and GPU
+tier interpretation without changing model data or adding unsupported claims.
+
+### Completed
+- [x] Added a "Short answer" section near the top of the model VRAM template
+  so users see the 4-bit estimate, rounded minimum, practical tier, and next
+  validation check before the longer source/fact sections.
+- [x] Clarified each estimate card so the page separates calculator estimate,
+  rounded planning minimum, and practical GPU tier label.
+- [x] Reworked GPU planning references into tier-based groups so 12GB practical
+  references and 16GB comfort references are easier to understand than a flat
+  match list.
+- [x] Added a typed VRAM guard for source-backed GPU matches so the static build
+  can safely group references by VRAM tier.
+
+### Checked
+- [ ] `npm.cmd run data:validate` skipped because no data files changed.
+- [x] `npm.cmd run lint` passed.
+- [x] `npm.cmd run build` passed and generated 57 static pages.
+- [x] Static output check confirmed the Llama page renders "Short answer",
+  estimate/minimum/tier clarification, and tiered GPU references.
+- [x] Brand/domain hardcode scan in code directories found no matches.
+
+### Issues
+- No lint or build failures after the type guard fix.
+- The page still avoids benchmarks, speed claims, price, availability,
+  affiliate CTAs, and buying recommendations.
+
+### Files Changed
+- `app/(frontend)/models/[slug]/vram-requirements/page.tsx`
+- `DAILY_LOG.md`
+- `TASK_STATUS.md`
+
+### Next Step
+Consider a visual browser spot-check of the refreshed model page on mobile and
+desktop, then continue with higher-priority Month 2 data or calculator work.
+
+### Follow-up
+- [x] Changed the GPU tier reference links to use a scoped
+  `model-gpu-tier-links` class so each RTX button stacks as a full-width row
+  inside its 12GB/16GB tier card.
+- [x] Rechecked `npm.cmd run lint` and `npm.cmd run build`; both passed and
+  build generated 57 static pages.
+- [x] Static output confirms the Llama page renders the new scoped class for
+  the tiered GPU links.
+- [x] Added scalable model-page differentiation fields to the model VRAM
+  editorial profiles: model-specific short answer note, section titles, page
+  angle cards, GPU reference intro, and tier descriptions.
+- [x] Updated the model VRAM route to render model-specific headings, FAQ
+  answers, page angle sections, and GPU tier copy so future model pages must
+  carry a distinct planning angle instead of only swapping the model name.
+- [x] Re-ran static similarity audit: Llama/Qwen 5-shingle overlap improved
+  from 0.294 to 0.222, Llama/Mistral from 0.295 to 0.221, and Qwen/Mistral
+  from 0.345 to 0.271; same-position H2 overlap is now 12/21 instead of the
+  full shared sequence.
+- [x] Rechecked `npm.cmd run lint` and `npm.cmd run build`; both passed and
+  build generated 57 static pages.
+
+---
+
 ## 2026-06-17 - Local AI vs AI SaaS guide source-backed upgrade
 
 ### Agent

@@ -1143,6 +1143,16 @@ body {
   margin-bottom: 0;
 }
 
+.model-vram-page .model-gpu-tier-links {
+  grid-template-columns: 1fr;
+  margin-top: 6px;
+}
+
+.model-vram-page .model-gpu-tier-links a {
+  min-height: 52px;
+  width: 100%;
+}
+
 .model-vram-page .guide-card-grid,
 .model-vram-page .build-summary-grid,
 .model-vram-page .faq-grid,
